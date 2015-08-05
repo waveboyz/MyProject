@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>urls</key>
+	<array>
+		<string>http://d.hiphotos.baidu.com/image/w%3D2048/sign=1884ede160d9f2d3201123ef9dd48b13/0d338744ebf81a4c327f3ec9d52a6059252da665.jpg</string>
+		<string>http://a.hiphotos.baidu.com/image/w%3D2048/sign=3dd753fad3c8a786be2a4d0e5331c83d/d1160924ab18972bcccff3cae4cd7b899e510a3c.jpg</string>
+		<string>http://h.hiphotos.baidu.com/image/w%3D2048/sign=269e60e2b4fd5266a72b3b149f20962b/8326cffc1e178a821e5413a9f403738da977e84b.jpg</string>
+		<string>http://g.hiphotos.baidu.com/image/w%3D2048/sign=9c98a261938fa0ec7fc7630d12af58ee/d52a2834349b033ba5fd9c8817ce36d3d539bd6f.jpg</string>
+	</array>
+</dict>
+</plist>
