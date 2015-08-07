@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 HZHaoYuanQu. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "BaseRefreshController.h"
 
-@interface MyorderFormController : BaseViewController
+@interface MyorderFormController : BaseRefreshController
 
 @end

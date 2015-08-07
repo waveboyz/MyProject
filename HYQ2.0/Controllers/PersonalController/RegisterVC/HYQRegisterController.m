@@ -60,30 +60,30 @@
     [cancelBtn addTarget:self action:@selector(dismissRegisterController) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:cancelBtn];
     
-    UILabel *phoneLbl = [[UILabel alloc] initWithFrame:CGRectMake(20, 220, 50, 30)];
+    UILabel *phoneLbl = [[UILabel alloc] initWithFrame:CGRectMake(20, 170, 50, 30)];
     phoneLbl.textColor = [UIColor whiteColor];
     phoneLbl.font = [UIFont systemFontOfSize:13.0f];
     phoneLbl.text = @"手机";
     [_bgView addSubview:phoneLbl];
     
-    _phoneTxt = [[UITextField alloc] initWithFrame:CGRectMake(60, 220, kScreenWidth - 80, 30)];
+    _phoneTxt = [[UITextField alloc] initWithFrame:CGRectMake(60, 170, kScreenWidth - 80, 30)];
     _phoneTxt.textColor = [UIColor whiteColor];
     _phoneTxt.font = [UIFont systemFontOfSize:13.0f];
     _phoneTxt.keyboardType = UIKeyboardTypePhonePad;
     _phoneTxt.delegate = self;
     [_bgView addSubview:_phoneTxt];
     
-    UILabel *lineLbl = [[UILabel alloc] initWithFrame:CGRectMake(15, 260, kScreenWidth - 30, 1)];
+    UILabel *lineLbl = [[UILabel alloc] initWithFrame:CGRectMake(15, 210, kScreenWidth - 30, 1)];
     lineLbl.backgroundColor = [UIColor whiteColor];
     [_bgView addSubview:lineLbl];
     
-    UILabel *newCode = [[UILabel alloc] initWithFrame:CGRectMake(20, 276, 50, 30)];
+    UILabel *newCode = [[UILabel alloc] initWithFrame:CGRectMake(20, 226, 50, 30)];
     newCode.textColor = [UIColor whiteColor];
     newCode.font = [UIFont systemFontOfSize:13.0f];
     newCode.text = @"密码";
     [_bgView addSubview:newCode];
     
-    _codeTxt = [[UITextField alloc] initWithFrame:CGRectMake(60, 276, kScreenWidth - 80, 30)];
+    _codeTxt = [[UITextField alloc] initWithFrame:CGRectMake(60, 226, kScreenWidth - 80, 30)];
     _codeTxt.textColor = [UIColor whiteColor];
     _codeTxt.font = [UIFont systemFontOfSize:13.0];
     _codeTxt.secureTextEntry = YES;
@@ -91,30 +91,30 @@
     _codeTxt.delegate = self;
     [_bgView addSubview:_codeTxt];
     
-    UILabel *lineLbl2 = [[UILabel alloc] initWithFrame:CGRectMake(15, 316, kScreenWidth - 30, 1)];
+    UILabel *lineLbl2 = [[UILabel alloc] initWithFrame:CGRectMake(15, 266, kScreenWidth - 30, 1)];
     lineLbl2.backgroundColor=[UIColor whiteColor];
     [_bgView addSubview:lineLbl2];
     
     
-    UILabel *reSendLbl = [[UILabel alloc]initWithFrame:CGRectMake(20, 332, 70, 30)];
+    UILabel *reSendLbl = [[UILabel alloc]initWithFrame:CGRectMake(20, 286, 70, 30)];
     reSendLbl.textColor = [UIColor whiteColor];
     reSendLbl.font = [UIFont systemFontOfSize:13.0f];
     reSendLbl.text = @"验证码";
     [_bgView addSubview:reSendLbl];
     
-    _resendTxt = [[UITextField alloc] initWithFrame:CGRectMake(80, 332, kScreenWidth * 0.5 - 15, 30)];
+    _resendTxt = [[UITextField alloc] initWithFrame:CGRectMake(80, 286, kScreenWidth * 0.5 - 15, 30)];
     _resendTxt.textColor = [UIColor whiteColor];
     _resendTxt.font = [UIFont systemFontOfSize:13.0];
     _resendTxt.keyboardType = UIKeyboardTypeNumberPad;
     _resendTxt.delegate = self;
     [_bgView addSubview:_resendTxt];
     
-    UILabel *lineLbl3 = [[UILabel alloc] initWithFrame:CGRectMake(15, 372, kScreenWidth * 0.5 - 15, 1)];
+    UILabel *lineLbl3 = [[UILabel alloc] initWithFrame:CGRectMake(15, 322, kScreenWidth * 0.5 - 15, 1)];
     lineLbl3.backgroundColor = [UIColor whiteColor];
     [_bgView addSubview:lineLbl3];
     
     _getResendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _getResendBtn.frame = CGRectMake(CGRectGetMaxX(lineLbl3.frame), 317, kScreenWidth * 0.5 - 15, 55);
+    _getResendBtn.frame = CGRectMake(CGRectGetMaxX(lineLbl3.frame), 267, kScreenWidth * 0.5 - 15, 55);
     _getResendBtn.titleLabel.font = [UIFont systemFontOfSize:14.0f];
     _getResendBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
     _getResendBtn.alpha = 0.8;
@@ -125,7 +125,7 @@
     [_bgView addSubview:_getResendBtn];
     
     UIButton *confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    confirmBtn.frame = CGRectMake(15, 407, kScreenWidth - 30, 45);
+    confirmBtn.frame = CGRectMake(15, 357, kScreenWidth - 30, 45);
     confirmBtn.titleLabel.font = [UIFont systemFontOfSize:14.0f];
     confirmBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
     confirmBtn.alpha = 0.8;

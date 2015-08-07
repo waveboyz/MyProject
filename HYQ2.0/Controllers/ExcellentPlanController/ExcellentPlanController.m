@@ -47,7 +47,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *const EXCELLENT_CELL = @"excellent_cell";
+    static NSString *EXCELLENT_CELL = @"excellent_cell";
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:EXCELLENT_CELL];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:EXCELLENT_CELL];

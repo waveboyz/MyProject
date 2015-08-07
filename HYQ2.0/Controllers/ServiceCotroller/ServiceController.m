@@ -13,16 +13,19 @@
 
 @interface ServiceController ()
 
-@property (nonatomic, strong) NSArray *dataArr;
 @property (nonatomic, strong) VOSegmentedControl *segment;
+
 @end
 
 @implementation ServiceController
 
-- (void)viewWillAppear:(BOOL)animated
+- (id)init
 {
-    [super viewWillAppear:animated];
-    self.hidesBottomBarWhenPushed = NO;
+    if (self = [super init]) {
+        self.maxSegCnt = 5;
+    }
+    
+    return self;
 }
 
 - (void)viewDidLoad
@@ -55,6 +58,47 @@
     _segment.selectedTextColor = NAVIBAR_GREEN_COLOR;
     _segment.selectedIndicatorColor = NAVIBAR_GREEN_COLOR;
     [self.view addSubview:_segment];
+    [_segment addTarget:self action:@selector(swipSegmentWithIndexPath:) forControlEvents:UIControlEventValueChanged];
+    
+    UISwipeGestureRecognizer *rightGes = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipSegmentToRightGesture)];
+    rightGes.direction = UISwipeGestureRecognizerDirectionLeft;
+    
+    UISwipeGestureRecognizer *leftGes = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipSegmentToLeftGesture)];
+    
+    [self.tableView addGestureRecognizer:leftGes];
+    [self.tableView addGestureRecognizer:rightGes];
+}
+
+- (void)swipSegmentToLeftGesture
+{
+    if (_segment.selectedSegmentIndex == 0) {
+    }else{
+        _segment.selectedSegmentIndex --;
+        
+        [self.tableView.header beginRefreshing];
+        [self loadNewData];
+    }
+}
+
+- (void)swipSegmentToRightGesture
+{
+    if (_segment.selectedSegmentIndex == self.maxSegCnt - 1) {
+    }else{
+        _segment.selectedSegmentIndex ++;
+        
+        [self.tableView.header beginRefreshing];
+        [self loadNewData];
+    }
+}
+
+- (void)swipSegmentWithIndexPath:(NSUInteger)indexpath
+{
+    if (_segment.selectedSegmentIndex == self.maxSegCnt - 1){
+        return;
+    }
+    else{
+        [_segment setSegment:nil atIndex:(_segment.selectedSegmentIndex +1)];
+    }
 }
 
 - (void)showPersonalBtnPressed
@@ -62,6 +106,32 @@
     HYQLoginController *loginVC = [[HYQLoginController alloc] init];
     loginVC.modalPresentationStyle = UIModalPresentationCustom;
     [self.navigationController presentViewController:loginVC animated:YES completion:^(void){}];
+}
+
+#pragma mark UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *SERVICE_CELL = @"service_cell";
+    UITableViewCell *cell;
+    cell = [tableView dequeueReusableCellWithIdentifier:SERVICE_CELL];
+    
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SERVICE_CELL];
+        cell.backgroundColor = ORANGE_COLOR;
+    }
+
+    return cell;
+}
+
+#pragma mark UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

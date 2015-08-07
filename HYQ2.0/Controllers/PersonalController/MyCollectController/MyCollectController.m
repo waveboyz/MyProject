@@ -10,6 +10,8 @@
 
 @interface MyCollectController ()
 
+@property (nonatomic,strong) UITableView *tableview;
+
 @end
 
 @implementation MyCollectController
@@ -24,11 +26,47 @@
 {
     UIBarButtonItem *editItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleDone target:self action:@selector(editBtnPressed)];
     [self.navigationItem setRightBarButtonItem:editItem];
+    
+    _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
+    _tableview.delegate =self;
+    _tableview.dataSource = self;
+    _tableview.backgroundColor = ORANGE_COLOR;
+    
+    [self.view addSubview:_tableview];
 }
 
 - (void)editBtnPressed
 {
 
+}
+
+#pragma mark UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 4;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *COLLECT_CELL = @"collect_cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:COLLECT_CELL];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:COLLECT_CELL];
+    }
+    
+    return cell;
+}
+
+#pragma UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [_tableview deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

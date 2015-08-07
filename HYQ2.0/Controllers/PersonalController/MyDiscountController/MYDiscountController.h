@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 HZHaoYuanQu. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "BaseRefreshController.h"
 
-@interface MYDiscountController : BaseViewController
+@interface MYDiscountController : BaseRefreshController
 
 @end

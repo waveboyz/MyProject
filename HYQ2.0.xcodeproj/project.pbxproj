@@ -17,6 +17,7 @@
 		82067BF21B71F7AD00B803A9 /* scanIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82067BF11B71F7AD00B803A9 /* scanIcon@2x.png */; };
 		82067BF91B71F94000B803A9 /* QRIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82067BF71B71F94000B803A9 /* QRIcon.png */; };
 		82067BFA1B71F94000B803A9 /* QRIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82067BF81B71F94000B803A9 /* QRIcon@2x.png */; };
+		82067BFE1B720BC100B803A9 /* ScanCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82067BFD1B720BC100B803A9 /* ScanCameraController.m */; };
 		823FF5861B70681F008C4310 /* MainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 823FF5741B70681F008C4310 /* MainPageViewController.m */; };
 		823FF5871B70681F008C4310 /* EditPersonFileControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 823FF5771B70681F008C4310 /* EditPersonFileControllerViewController.m */; };
 		823FF5881B70681F008C4310 /* HYQForgetPSWController.m in Sources */ = {isa = PBXBuildFile; fileRef = 823FF57A1B70681F008C4310 /* HYQForgetPSWController.m */; };
@@ -35,6 +36,9 @@
 		823FF5AF1B70BF3C008C4310 /* BasePersonHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 823FF5AC1B70BF3C008C4310 /* BasePersonHeadCell.m */; };
 		823FF5B01B70BF3C008C4310 /* EditHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 823FF5AE1B70BF3C008C4310 /* EditHeaderCell.m */; };
 		823FF5B51B70BFDF008C4310 /* MyPaymentHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 823FF5B41B70BFDF008C4310 /* MyPaymentHeader.m */; };
+		8286B3C41B72F95300897A4D /* QRView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8286B3C31B72F95300897A4D /* QRView.m */; };
+		8286B3C61B72FC1A00897A4D /* qr_scan_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8286B3C51B72FC1A00897A4D /* qr_scan_line@2x.png */; };
+		8286B3CA1B73012200897A4D /* InfomationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8286B3C91B73012200897A4D /* InfomationCell.m */; };
 		82D4D55E1B70FFF4008BECC7 /* MYDiscountController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D4D55D1B70FFF4008BECC7 /* MYDiscountController.m */; };
 		82D4D5621B7104D0008BECC7 /* MyorderFormController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D4D5611B7104D0008BECC7 /* MyorderFormController.m */; };
 		82D4D5661B710726008BECC7 /* MyCollectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D4D5651B710726008BECC7 /* MyCollectController.m */; };
@@ -210,6 +214,8 @@
 		82067BF11B71F7AD00B803A9 /* scanIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanIcon@2x.png"; sourceTree = "<group>"; };
 		82067BF71B71F94000B803A9 /* QRIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QRIcon.png; sourceTree = "<group>"; };
 		82067BF81B71F94000B803A9 /* QRIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QRIcon@2x.png"; sourceTree = "<group>"; };
+		82067BFC1B720BC100B803A9 /* ScanCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanCameraController.h; sourceTree = "<group>"; };
+		82067BFD1B720BC100B803A9 /* ScanCameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanCameraController.m; sourceTree = "<group>"; };
 		823FF5731B70681F008C4310 /* MainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageViewController.h; sourceTree = "<group>"; };
 		823FF5741B70681F008C4310 /* MainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageViewController.m; sourceTree = "<group>"; };
 		823FF5761B70681F008C4310 /* EditPersonFileControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditPersonFileControllerViewController.h; sourceTree = "<group>"; };
@@ -247,6 +253,11 @@
 		823FF5B11B70BF53008C4310 /* BasePersonHeadCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasePersonHeadCell.h; sourceTree = "<group>"; };
 		823FF5B31B70BFDF008C4310 /* MyPaymentHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPaymentHeader.h; sourceTree = "<group>"; };
 		823FF5B41B70BFDF008C4310 /* MyPaymentHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPaymentHeader.m; sourceTree = "<group>"; };
+		8286B3C21B72F95300897A4D /* QRView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRView.h; sourceTree = "<group>"; };
+		8286B3C31B72F95300897A4D /* QRView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRView.m; sourceTree = "<group>"; };
+		8286B3C51B72FC1A00897A4D /* qr_scan_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr_scan_line@2x.png"; sourceTree = "<group>"; };
+		8286B3C81B73012200897A4D /* InfomationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfomationCell.h; sourceTree = "<group>"; };
+		8286B3C91B73012200897A4D /* InfomationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfomationCell.m; sourceTree = "<group>"; };
 		82D4D55C1B70FFF4008BECC7 /* MYDiscountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYDiscountController.h; sourceTree = "<group>"; };
 		82D4D55D1B70FFF4008BECC7 /* MYDiscountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYDiscountController.m; sourceTree = "<group>"; };
 		82D4D5601B7104D0008BECC7 /* MyorderFormController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyorderFormController.h; sourceTree = "<group>"; };
@@ -525,12 +536,39 @@
 		82067BEA1B71F71A00B803A9 /* main */ = {
 			isa = PBXGroup;
 			children = (
+				8286B3C51B72FC1A00897A4D /* qr_scan_line@2x.png */,
 				82067BF71B71F94000B803A9 /* QRIcon.png */,
 				82067BF81B71F94000B803A9 /* QRIcon@2x.png */,
 				82067BEF1B71F78300B803A9 /* scanIcon.png */,
 				82067BF11B71F7AD00B803A9 /* scanIcon@2x.png */,
 			);
 			path = main;
+			sourceTree = "<group>";
+		};
+		82067BFB1B720B9E00B803A9 /* scanCameraController */ = {
+			isa = PBXGroup;
+			children = (
+				82067BFC1B720BC100B803A9 /* ScanCameraController.h */,
+				82067BFD1B720BC100B803A9 /* ScanCameraController.m */,
+			);
+			path = scanCameraController;
+			sourceTree = "<group>";
+		};
+		82067BFF1B72188800B803A9 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				82067C001B7218A400B803A9 /* QRView */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		82067C001B7218A400B803A9 /* QRView */ = {
+			isa = PBXGroup;
+			children = (
+				8286B3C21B72F95300897A4D /* QRView.h */,
+				8286B3C31B72F95300897A4D /* QRView.m */,
+			);
+			path = QRView;
 			sourceTree = "<group>";
 		};
 		823FF5701B70681F008C4310 /* ExcellentPlanController */ = {
@@ -554,6 +592,7 @@
 		823FF5721B70681F008C4310 /* MainPageController */ = {
 			isa = PBXGroup;
 			children = (
+				82067BFB1B720B9E00B803A9 /* scanCameraController */,
 				823FF5731B70681F008C4310 /* MainPageViewController.h */,
 				823FF5741B70681F008C4310 /* MainPageViewController.m */,
 			);
@@ -677,6 +716,15 @@
 				82D4D55D1B70FFF4008BECC7 /* MYDiscountController.m */,
 			);
 			path = MyDiscountController;
+			sourceTree = "<group>";
+		};
+		8286B3C71B72FF8000897A4D /* Information */ = {
+			isa = PBXGroup;
+			children = (
+				8286B3C81B73012200897A4D /* InfomationCell.h */,
+				8286B3C91B73012200897A4D /* InfomationCell.m */,
+			);
+			path = Information;
 			sourceTree = "<group>";
 		};
 		82D4D55F1B7104B0008BECC7 /* MyOrderFormController */ = {
@@ -832,6 +880,8 @@
 		82D6BBC21B65FB9900B1B54B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8286B3C71B72FF8000897A4D /* Information */,
+				82067BFF1B72188800B803A9 /* Main */,
 				82067BD31B71BBED00B803A9 /* ExcellentPlan */,
 				823FF5AA1B70BF3C008C4310 /* Peronal */,
 				823FF5A01B709EE4008C4310 /* Service */,
@@ -1358,6 +1408,7 @@
 				82D6BD641B65FCBD00B1B54B /* tabbar_icon_discovery@2x.png in Resources */,
 				82D6BD711B65FCBD00B1B54B /* tabbar_icon_person_selected.png in Resources */,
 				82D6BD511B65FCBD00B1B54B /* person_icon_friendlist@2x.png in Resources */,
+				8286B3C61B72FC1A00897A4D /* qr_scan_line@2x.png in Resources */,
 				82D6BD6E1B65FCBD00B1B54B /* tabbar_icon_message_selected@2x.png in Resources */,
 				82D6BD601B65FCBD00B1B54B /* notice_place_holder@2x.png in Resources */,
 				82D6BD651B65FCBD00B1B54B /* tabbar_icon_discovery_selected.png in Resources */,
@@ -1437,6 +1488,7 @@
 				82D6BC6C1B65FC3C00B1B54B /* UIView+SDExtension.m in Sources */,
 				82D6BBDE1B65FBF200B1B54B /* AFURLRequestSerialization.m in Sources */,
 				82D6BBF91B65FC0200B1B54B /* MJFoundation.m in Sources */,
+				8286B3CA1B73012200897A4D /* InfomationCell.m in Sources */,
 				82D6BBDD1B65FBF200B1B54B /* AFURLConnectionOperation.m in Sources */,
 				82D6BBFD1B65FC0200B1B54B /* NSObject+MJKeyValue.m in Sources */,
 				823FF5A41B709F19008C4310 /* ServiceViewCell.m in Sources */,
@@ -1454,6 +1506,7 @@
 				82067BDC1B71BC4C00B803A9 /* ExcellentThirdCell.m in Sources */,
 				82D6BCA31B65FC6E00B1B54B /* GlobalConst.m in Sources */,
 				82067BDF1B71BC5E00B803A9 /* ExcellentForthCell.m in Sources */,
+				8286B3C41B72F95300897A4D /* QRView.m in Sources */,
 				82D6BC351B65FC2D00B1B54B /* MJRefreshBackGifFooter.m in Sources */,
 				82D6BC511B65FC3400B1B54B /* UIView+REFrostedViewController.m in Sources */,
 				82D6BBFF1B65FC0200B1B54B /* NSString+MJExtension.m in Sources */,
@@ -1509,6 +1562,7 @@
 				823FF59E1B708EE7008C4310 /* VOSegment.m in Sources */,
 				82D6BC6A1B65FC3C00B1B54B /* SDCollectionViewCell.m in Sources */,
 				82D6BD851B66076500B1B54B /* AppDelegate.m in Sources */,
+				82067BFE1B720BC100B803A9 /* ScanCameraController.m in Sources */,
 				82D6BC991B65FC4200B1B54B /* UIImage+GIF.m in Sources */,
 				82067BD61B71BC1000B803A9 /* ExcellentHeaderCell.m in Sources */,
 				823FF58C1B70681F008C4310 /* ServiceController.m in Sources */,

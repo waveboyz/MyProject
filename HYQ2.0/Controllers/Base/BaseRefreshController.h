@@ -11,13 +11,28 @@
 #import "MJRefresh.h"
 #import "MBProgressHUD.h"
 
-@interface BaseRefreshController : UITableViewController
+typedef NS_ENUM(NSInteger, TableviewState){
+    TableviewStateNone,
+    TableviewStateNetDrop,
+    TableviewStateLoading,
+    TableviewStateDone
+};
+
+@interface BaseRefreshController : UIViewController
 <
-MBProgressHUDDelegate
+    MBProgressHUDDelegate,
+    UITableViewDelegate,
+    UITableViewDataSource
 >
 
 @property (nonatomic, retain)MBProgressHUD *stateHud;
+@property (nonatomic, assign) NSUInteger    maxSegCnt;
 @property (nonatomic, strong) NSMutableArray *dataArr;
+@property (nonatomic, strong) UITableView   *tableView;
+@property (nonatomic)       TableviewState state;
+@property (nonatomic, strong) UIView    *loadingView;
+@property (nonatomic, strong) UIView    *emptyView;
+@property (nonatomic, strong) UIView    *netDropView;
 
 //下拉刷新
 - (void)loadNewData;

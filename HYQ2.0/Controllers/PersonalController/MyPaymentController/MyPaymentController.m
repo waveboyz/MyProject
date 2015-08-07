@@ -43,6 +43,38 @@
     _segment.selectedTextColor = NAVIBAR_GREEN_COLOR;
     _segment.selectedIndicatorColor = NAVIBAR_GREEN_COLOR;
     [self.view addSubview:_segment];
+    
+    self.tableView.frame = CGRectMake(0, 190, kScreenWidth, kScreenHeight - 190);
+}
+
+#pragma mark UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 4;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *PAYMENT_CELL = @"payment_cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PAYMENT_CELL];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:PAYMENT_CELL];
+        cell.backgroundColor = ORANGE_COLOR;
+    }
+    
+    return cell;
+}
+
+#pragma UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

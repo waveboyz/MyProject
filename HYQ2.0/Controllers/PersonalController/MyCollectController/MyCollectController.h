@@ -9,5 +9,8 @@
 #import "BaseViewController.h"
 
 @interface MyCollectController : BaseViewController
-
+<
+    UITableViewDataSource,
+    UITableViewDelegate
+>
 @end

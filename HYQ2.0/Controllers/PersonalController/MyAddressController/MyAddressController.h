@@ -9,5 +9,8 @@
 #import "BaseViewController.h"
 
 @interface MyAddressController : BaseViewController
-
+<
+    UITableViewDataSource,
+    UITableViewDelegate
+>
 @end

@@ -17,6 +17,14 @@
 
 @implementation InformationController
 
+- (id) init
+{
+    if (self = [super init]) {
+        self.maxSegCnt = 3;
+    }
+    
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"资讯活动";
@@ -41,7 +49,74 @@
     [self.view addSubview:_segment];
     [_segment setIndexChangeBlock:^(NSInteger index) {
         NSLog(@"1: block --> %@", @(index));
+        
     }];
+    [_segment addTarget:self action:@selector(swipSegmentWithIndexPath:) forControlEvents:UIControlEventValueChanged];
+    
+    UISwipeGestureRecognizer *rightGes = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipSegmentToRightGesture)];
+    rightGes.direction = UISwipeGestureRecognizerDirectionLeft;
+
+    UISwipeGestureRecognizer *leftGes = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipSegmentToLeftGesture)];
+    
+    [self.tableView addGestureRecognizer:leftGes];
+    [self.tableView addGestureRecognizer:rightGes];
+}
+
+- (void)swipSegmentToLeftGesture
+{
+    if (_segment.selectedSegmentIndex == 0) {
+    }else{
+        _segment.selectedSegmentIndex --;
+        
+        [self.tableView.header beginRefreshing];
+        [self loadNewData];
+    }
+}
+
+- (void)swipSegmentToRightGesture
+{
+    if (_segment.selectedSegmentIndex == self.maxSegCnt - 1) {
+    }else{
+        _segment.selectedSegmentIndex ++;
+        
+        [self.tableView.header beginRefreshing];
+        [self loadNewData];
+    }
+}
+
+- (void)swipSegmentWithIndexPath:(NSUInteger)indexpath
+{
+    if (_segment.selectedSegmentIndex == self.maxSegCnt - 1){
+        return;
+    }
+    else{
+        [_segment setSegment:nil atIndex:(_segment.selectedSegmentIndex +1)];
+    }
+}
+
+#pragma mark UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *INFOR_CELL = @"info_cell";
+    
+    UITableViewCell *cell;
+    cell = [tableView dequeueReusableCellWithIdentifier:INFOR_CELL];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:INFOR_CELL];
+        cell.backgroundColor = ORANGE_COLOR;
+    }
+
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

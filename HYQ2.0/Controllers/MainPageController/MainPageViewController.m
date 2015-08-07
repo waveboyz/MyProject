@@ -10,6 +10,7 @@
 #import "HYQLoginController.h"
 #import "PersonalController.h"
 #import "SDCycleScrollView.h"
+#import "scanCameraController.h"
 
 @interface MainPageController ()
 
@@ -48,7 +49,7 @@
                                                                   style:UIBarButtonItemStyleDone
                                                                  target:self
                                                                  action:@selector(showQRcodePressed)];
-    
+
     self.navigationItem.rightBarButtonItems = @[rightBtn1,rightBtn2];
     [self.navigationItem setLeftBarButtonItem:leftBtn animated:YES];
 
@@ -62,6 +63,7 @@
     self.scrollBGView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
     self.scrollBGView.backgroundColor = BG_GRAY_COLOR;
     self.scrollBGView.showsVerticalScrollIndicator = NO;
+    self.scrollBGView.alwaysBounceVertical = YES;
     
     if (IS_IHPONE4) {
         self.scrollBGView.contentSize = CGSizeMake(kScreenWidth, kScreenHeight + 90);
@@ -72,15 +74,21 @@
     
     [self.view addSubview:self.scrollBGView];
     //图片轮播...view
-    SDCycleScrollView *cycleView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 64, kScreenWidth, 160) imageURLStringsGroup:self.imgArr];
+    SDCycleScrollView *cycleView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 120, kScreenWidth, 160) imageURLStringsGroup:self.imgArr];
     cycleView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
     cycleView.placeholderImage = [UIImage imageNamed:@"notice_place_holder"];
     cycleView.pageControlStyle = SDCycleScrollViewPageContolStyleClassic;
-    [self.view addSubview:cycleView];
+    [self.scrollBGView addSubview:cycleView];
     
+    UIVisualEffectView *visualEffect = [[UIVisualEffectView alloc]initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
+    visualEffect.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+    visualEffect.alpha = 0.9;
+    
+    [self.scrollBGView addSubview:visualEffect];
+
     //园区资讯...view
-    CGFloat buttonWidth = (kScreenWidth -15) / 2;
-    CGFloat buttonHeight = (200 -15) / 2;
+//    CGFloat buttonWidth = (kScreenWidth -15) / 2;
+//    CGFloat buttonHeight = (200 -15) / 2;
 }
 
 - (void)showPersonalBtnPressed
@@ -97,7 +105,8 @@
 
 - (void)showScanPressed
 {
-    
+    ScanCameraController *scanVC = [[ScanCameraController alloc] init];
+    [self.navigationController pushViewController:scanVC animated:YES];
 }
 
 @end

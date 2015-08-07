@@ -21,21 +21,26 @@ static const CGFloat MJDuration = 1.0;
     [super viewDidLoad];
     
 //    __weak __typeof(self) weakSelf = self;
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, kScreenWidth, kScreenHeight - 40) style:UITableViewStylePlain];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
     
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     MJRefreshNormalHeader *headerView = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
     [headerView setTitle:@"我将带头冲锋~" forState:MJRefreshStateIdle];
     [headerView setTitle:@"放下无尽让我们好好说话" forState:MJRefreshStatePulling];
     [headerView setTitle:@"新姿势解锁中..." forState:MJRefreshStateRefreshing];
+    _tableView.header = headerView;
     
-    self.tableView.header = headerView;
-    [self.tableView.header beginRefreshing];
+    [_tableView.header beginRefreshing];
     
     MJRefreshBackNormalFooter *footerView = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
     [footerView setTitle:@"想要解锁更多吗？" forState:MJRefreshStateIdle];
     [footerView setTitle:@"少侠还不松手？" forState:MJRefreshStatePulling];
     [footerView setTitle:@"感觉真是日了狗" forState:MJRefreshStateRefreshing];
-    self.tableView.footer = footerView;
+    _tableView.footer = footerView;
+    
+    [self.view addSubview:_tableView];
 }
 
 //下拉刷新获取最新数据

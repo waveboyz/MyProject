@@ -10,6 +10,8 @@
 
 @interface MyAddressController ()
 
+@property (nonatomic, strong) UITableView *tableview;
+
 @end
 
 @implementation MyAddressController
@@ -30,6 +32,13 @@
     [addBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [addBtn addTarget:self action:@selector(addNewAddress) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:addBtn];
+    
+    _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 124) style:UITableViewStylePlain];
+    _tableview.delegate = self;
+    _tableview.dataSource = self;
+    _tableview.backgroundColor = ORANGE_COLOR;
+    
+    [self.view addSubview:_tableview];
 }
 
 - (void)addNewAddress
@@ -37,4 +46,32 @@
     
 }
 
+#pragma mark UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 4;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *ADDRESS_CELL = @"address_cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ADDRESS_CELL];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ADDRESS_CELL];
+    }
+    
+    return cell;
+}
+
+#pragma UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [_tableview deselectRowAtIndexPath:indexPath animated:YES];
+}
 @end

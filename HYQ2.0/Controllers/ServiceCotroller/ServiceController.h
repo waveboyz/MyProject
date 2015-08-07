@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseViewController.h"
+#import "BaseRefreshController.h"
 
-@interface ServiceController : BaseViewController
+@interface ServiceController : BaseRefreshController
 
 @end

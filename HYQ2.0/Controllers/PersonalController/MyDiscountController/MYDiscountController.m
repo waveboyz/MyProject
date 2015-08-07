@@ -12,7 +12,7 @@
 @interface MYDiscountController ()
 
 @property (nonatomic,strong) VOSegmentedControl *segment;
-
+//@property (nonatomic,strong) UITableView    *tableview;
 @end
 
 @implementation MYDiscountController
@@ -37,6 +37,37 @@
     _segment.selectedTextColor = NAVIBAR_GREEN_COLOR;
     _segment.selectedIndicatorColor = NAVIBAR_GREEN_COLOR;
     [self.view addSubview:_segment];
+    
+}
+
+#pragma mark UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 4;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *DISCOUNT_CELL = @"discount_cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:DISCOUNT_CELL];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:DISCOUNT_CELL];
+        cell.backgroundColor = ORANGE_COLOR;
+    }
+    
+    return cell;
+}
+
+#pragma UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

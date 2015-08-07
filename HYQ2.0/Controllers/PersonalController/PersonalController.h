@@ -12,8 +12,8 @@
 
 @interface PersonalController : BaseViewController
 <
-UITableViewDataSource,
-UITableViewDelegate
+    UITableViewDataSource,
+    UITableViewDelegate
 >
 
 @end
