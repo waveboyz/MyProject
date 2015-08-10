@@ -1,21 +1,22 @@
 //
-//  ExcellentSecondCell.m
+//  ExcellentThirdCell.m
 //  HYQ2.0
 //
 //  Created by waveboyz on 15/8/5.
 //  Copyright (c) 2015年 HZHaoYuanQu. All rights reserved.
 //
 
-#import "ExcellentSecondCell.h"
+#import "ExcellentThirdCell.h"
 
-@interface ExcellentSecondCell ()
+@interface ExcellentThirdCell ()
+
 @property (nonatomic, strong)UILabel *titleLbl;
-@property (nonatomic, strong)UILabel *desLbl;
 @property (nonatomic, strong)UILabel *lineLbl;
+@property (nonatomic, strong)UILabel *desLbl;
 
 @end
 
-@implementation ExcellentSecondCell
+@implementation ExcellentThirdCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -23,15 +24,15 @@
         [self setViews];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    
+
     return self;
 }
 
 - (void)setViews
 {
     if (!_titleLbl) {
-        _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, kScreenWidth, 30)];
-        _titleLbl.text = @"我们的优势";
+        _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, kScreenWidth - 20, 30)];
+        _titleLbl.text = @"加入流程";
         _titleLbl.font = [UIFont systemFontOfSize:17.0f];
         _titleLbl.textColor = [UIColor blueColor];
         
@@ -46,11 +47,12 @@
     }
     
     if (!_desLbl) {
-        _desLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 55, kScreenWidth - 20, 80)];
-        _desLbl.text = @"将通过对参加的项目进行包括""优创金融方案、优创基地、优创训练营、优创开放日""等环节进行培育辅导最终完成项目的孵化、加速、成熟的成长壮大过程。";
+        _desLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 55, kScreenWidth - 20, 75)];
+
+        _desLbl.text = @"第一步：提出申请\n第二步：填写入驻申请书\n第三步：等待审核\n第四步：完成申请";
         _desLbl.font = [UIFont systemFontOfSize:12.0f];
         _desLbl.textColor = [UIColor grayColor];
-        _desLbl.numberOfLines = 3;
+        _desLbl.numberOfLines = 5;
         
         [self.contentView addSubview:_desLbl];
     }

@@ -7,15 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		82067BD61B71BC1000B803A9 /* ExcellentHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82067BD51B71BC1000B803A9 /* ExcellentHeaderCell.m */; };
-		82067BD91B71BC3B00B803A9 /* ExcellentSecondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82067BD81B71BC3B00B803A9 /* ExcellentSecondCell.m */; };
-		82067BDC1B71BC4C00B803A9 /* ExcellentThirdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82067BDB1B71BC4C00B803A9 /* ExcellentThirdCell.m */; };
-		82067BDF1B71BC5E00B803A9 /* ExcellentForthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82067BDE1B71BC5E00B803A9 /* ExcellentForthCell.m */; };
 		82067BF01B71F78300B803A9 /* scanIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82067BEF1B71F78300B803A9 /* scanIcon.png */; };
 		82067BF21B71F7AD00B803A9 /* scanIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82067BF11B71F7AD00B803A9 /* scanIcon@2x.png */; };
 		82067BF91B71F94000B803A9 /* QRIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82067BF71B71F94000B803A9 /* QRIcon.png */; };
 		82067BFA1B71F94000B803A9 /* QRIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82067BF81B71F94000B803A9 /* QRIcon@2x.png */; };
 		82067BFE1B720BC100B803A9 /* ScanCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82067BFD1B720BC100B803A9 /* ScanCameraController.m */; };
+		821CFCC61B78875400A71BDA /* ExcellentBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821CFCC51B78875400A71BDA /* ExcellentBaseController.m */; };
+		821CFCC91B78876500A71BDA /* ExcellentCampController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821CFCC81B78876500A71BDA /* ExcellentCampController.m */; };
+		821CFCCC1B78878800A71BDA /* ExcellentFinantialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821CFCCB1B78878800A71BDA /* ExcellentFinantialController.m */; };
+		821CFCCF1B7887A500A71BDA /* ExcellentOpenDayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821CFCCE1B7887A500A71BDA /* ExcellentOpenDayController.m */; };
+		821CFCD61B78966500A71BDA /* ExcellentBaseFirstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821CFCD51B78966500A71BDA /* ExcellentBaseFirstCell.m */; };
+		821CFCE01B78A7E800A71BDA /* ExcellentForthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821CFCD91B78A7E800A71BDA /* ExcellentForthCell.m */; };
+		821CFCE11B78A7E800A71BDA /* ExcellentHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821CFCDB1B78A7E800A71BDA /* ExcellentHeaderCell.m */; };
+		821CFCE21B78A7E800A71BDA /* ExcellentSecondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821CFCDD1B78A7E800A71BDA /* ExcellentSecondCell.m */; };
+		821CFCE31B78A7E800A71BDA /* ExcellentThirdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821CFCDF1B78A7E800A71BDA /* ExcellentThirdCell.m */; };
+		821CFCE61B78B7DB00A71BDA /* ExcellentBaseSecondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821CFCE51B78B7DB00A71BDA /* ExcellentBaseSecondCell.m */; };
 		823FF5861B70681F008C4310 /* MainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 823FF5741B70681F008C4310 /* MainPageViewController.m */; };
 		823FF5871B70681F008C4310 /* EditPersonFileControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 823FF5771B70681F008C4310 /* EditPersonFileControllerViewController.m */; };
 		823FF5881B70681F008C4310 /* HYQForgetPSWController.m in Sources */ = {isa = PBXBuildFile; fileRef = 823FF57A1B70681F008C4310 /* HYQForgetPSWController.m */; };
@@ -198,20 +204,32 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		82067BD41B71BC1000B803A9 /* ExcellentHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentHeaderCell.h; sourceTree = "<group>"; };
-		82067BD51B71BC1000B803A9 /* ExcellentHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentHeaderCell.m; sourceTree = "<group>"; };
-		82067BD71B71BC3B00B803A9 /* ExcellentSecondCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentSecondCell.h; sourceTree = "<group>"; };
-		82067BD81B71BC3B00B803A9 /* ExcellentSecondCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentSecondCell.m; sourceTree = "<group>"; };
-		82067BDA1B71BC4C00B803A9 /* ExcellentThirdCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentThirdCell.h; sourceTree = "<group>"; };
-		82067BDB1B71BC4C00B803A9 /* ExcellentThirdCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentThirdCell.m; sourceTree = "<group>"; };
-		82067BDD1B71BC5E00B803A9 /* ExcellentForthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentForthCell.h; sourceTree = "<group>"; };
-		82067BDE1B71BC5E00B803A9 /* ExcellentForthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentForthCell.m; sourceTree = "<group>"; };
 		82067BEF1B71F78300B803A9 /* scanIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scanIcon.png; sourceTree = "<group>"; };
 		82067BF11B71F7AD00B803A9 /* scanIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanIcon@2x.png"; sourceTree = "<group>"; };
 		82067BF71B71F94000B803A9 /* QRIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QRIcon.png; sourceTree = "<group>"; };
 		82067BF81B71F94000B803A9 /* QRIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QRIcon@2x.png"; sourceTree = "<group>"; };
 		82067BFC1B720BC100B803A9 /* ScanCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanCameraController.h; sourceTree = "<group>"; };
 		82067BFD1B720BC100B803A9 /* ScanCameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanCameraController.m; sourceTree = "<group>"; };
+		821CFCC41B78875400A71BDA /* ExcellentBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentBaseController.h; sourceTree = "<group>"; };
+		821CFCC51B78875400A71BDA /* ExcellentBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentBaseController.m; sourceTree = "<group>"; };
+		821CFCC71B78876500A71BDA /* ExcellentCampController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentCampController.h; sourceTree = "<group>"; };
+		821CFCC81B78876500A71BDA /* ExcellentCampController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentCampController.m; sourceTree = "<group>"; };
+		821CFCCA1B78878800A71BDA /* ExcellentFinantialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentFinantialController.h; sourceTree = "<group>"; };
+		821CFCCB1B78878800A71BDA /* ExcellentFinantialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentFinantialController.m; sourceTree = "<group>"; };
+		821CFCCD1B7887A500A71BDA /* ExcellentOpenDayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentOpenDayController.h; sourceTree = "<group>"; };
+		821CFCCE1B7887A500A71BDA /* ExcellentOpenDayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentOpenDayController.m; sourceTree = "<group>"; };
+		821CFCD41B78966500A71BDA /* ExcellentBaseFirstCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentBaseFirstCell.h; sourceTree = "<group>"; };
+		821CFCD51B78966500A71BDA /* ExcellentBaseFirstCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentBaseFirstCell.m; sourceTree = "<group>"; };
+		821CFCD81B78A7E800A71BDA /* ExcellentForthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentForthCell.h; sourceTree = "<group>"; };
+		821CFCD91B78A7E800A71BDA /* ExcellentForthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentForthCell.m; sourceTree = "<group>"; };
+		821CFCDA1B78A7E800A71BDA /* ExcellentHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentHeaderCell.h; sourceTree = "<group>"; };
+		821CFCDB1B78A7E800A71BDA /* ExcellentHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentHeaderCell.m; sourceTree = "<group>"; };
+		821CFCDC1B78A7E800A71BDA /* ExcellentSecondCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentSecondCell.h; sourceTree = "<group>"; };
+		821CFCDD1B78A7E800A71BDA /* ExcellentSecondCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentSecondCell.m; sourceTree = "<group>"; };
+		821CFCDE1B78A7E800A71BDA /* ExcellentThirdCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentThirdCell.h; sourceTree = "<group>"; };
+		821CFCDF1B78A7E800A71BDA /* ExcellentThirdCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentThirdCell.m; sourceTree = "<group>"; };
+		821CFCE41B78B7DB00A71BDA /* ExcellentBaseSecondCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentBaseSecondCell.h; sourceTree = "<group>"; };
+		821CFCE51B78B7DB00A71BDA /* ExcellentBaseSecondCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentBaseSecondCell.m; sourceTree = "<group>"; };
 		823FF5731B70681F008C4310 /* MainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageViewController.h; sourceTree = "<group>"; };
 		823FF5741B70681F008C4310 /* MainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageViewController.m; sourceTree = "<group>"; };
 		823FF5761B70681F008C4310 /* EditPersonFileControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditPersonFileControllerViewController.h; sourceTree = "<group>"; };
@@ -516,14 +534,11 @@
 		82067BD31B71BBED00B803A9 /* ExcellentPlan */ = {
 			isa = PBXGroup;
 			children = (
-				82067BD41B71BC1000B803A9 /* ExcellentHeaderCell.h */,
-				82067BD51B71BC1000B803A9 /* ExcellentHeaderCell.m */,
-				82067BD71B71BC3B00B803A9 /* ExcellentSecondCell.h */,
-				82067BD81B71BC3B00B803A9 /* ExcellentSecondCell.m */,
-				82067BDA1B71BC4C00B803A9 /* ExcellentThirdCell.h */,
-				82067BDB1B71BC4C00B803A9 /* ExcellentThirdCell.m */,
-				82067BDD1B71BC5E00B803A9 /* ExcellentForthCell.h */,
-				82067BDE1B71BC5E00B803A9 /* ExcellentForthCell.m */,
+				821CFCD71B78A7E800A71BDA /* Base */,
+				821CFCD01B7888A600A71BDA /* ExcellentBase */,
+				821CFCD11B7888A600A71BDA /* ExcellentCamp */,
+				821CFCD21B7888A600A71BDA /* ExcellentFinantial */,
+				821CFCD31B7888A600A71BDA /* ExcellentOpenDay */,
 			);
 			path = ExcellentPlan;
 			sourceTree = "<group>";
@@ -566,9 +581,96 @@
 			path = QRView;
 			sourceTree = "<group>";
 		};
+		821CFCC01B78873B00A71BDA /* ExcellentBase */ = {
+			isa = PBXGroup;
+			children = (
+				821CFCC41B78875400A71BDA /* ExcellentBaseController.h */,
+				821CFCC51B78875400A71BDA /* ExcellentBaseController.m */,
+			);
+			path = ExcellentBase;
+			sourceTree = "<group>";
+		};
+		821CFCC11B78873B00A71BDA /* ExcellentCamp */ = {
+			isa = PBXGroup;
+			children = (
+				821CFCC71B78876500A71BDA /* ExcellentCampController.h */,
+				821CFCC81B78876500A71BDA /* ExcellentCampController.m */,
+			);
+			path = ExcellentCamp;
+			sourceTree = "<group>";
+		};
+		821CFCC21B78873B00A71BDA /* ExcellentFinantial */ = {
+			isa = PBXGroup;
+			children = (
+				821CFCCA1B78878800A71BDA /* ExcellentFinantialController.h */,
+				821CFCCB1B78878800A71BDA /* ExcellentFinantialController.m */,
+			);
+			path = ExcellentFinantial;
+			sourceTree = "<group>";
+		};
+		821CFCC31B78873B00A71BDA /* ExcellentOpenDay */ = {
+			isa = PBXGroup;
+			children = (
+				821CFCCD1B7887A500A71BDA /* ExcellentOpenDayController.h */,
+				821CFCCE1B7887A500A71BDA /* ExcellentOpenDayController.m */,
+			);
+			path = ExcellentOpenDay;
+			sourceTree = "<group>";
+		};
+		821CFCD01B7888A600A71BDA /* ExcellentBase */ = {
+			isa = PBXGroup;
+			children = (
+				821CFCD41B78966500A71BDA /* ExcellentBaseFirstCell.h */,
+				821CFCD51B78966500A71BDA /* ExcellentBaseFirstCell.m */,
+				821CFCE41B78B7DB00A71BDA /* ExcellentBaseSecondCell.h */,
+				821CFCE51B78B7DB00A71BDA /* ExcellentBaseSecondCell.m */,
+			);
+			path = ExcellentBase;
+			sourceTree = "<group>";
+		};
+		821CFCD11B7888A600A71BDA /* ExcellentCamp */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ExcellentCamp;
+			sourceTree = "<group>";
+		};
+		821CFCD21B7888A600A71BDA /* ExcellentFinantial */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ExcellentFinantial;
+			sourceTree = "<group>";
+		};
+		821CFCD31B7888A600A71BDA /* ExcellentOpenDay */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ExcellentOpenDay;
+			sourceTree = "<group>";
+		};
+		821CFCD71B78A7E800A71BDA /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				821CFCD81B78A7E800A71BDA /* ExcellentForthCell.h */,
+				821CFCD91B78A7E800A71BDA /* ExcellentForthCell.m */,
+				821CFCDA1B78A7E800A71BDA /* ExcellentHeaderCell.h */,
+				821CFCDB1B78A7E800A71BDA /* ExcellentHeaderCell.m */,
+				821CFCDC1B78A7E800A71BDA /* ExcellentSecondCell.h */,
+				821CFCDD1B78A7E800A71BDA /* ExcellentSecondCell.m */,
+				821CFCDE1B78A7E800A71BDA /* ExcellentThirdCell.h */,
+				821CFCDF1B78A7E800A71BDA /* ExcellentThirdCell.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		823FF5701B70681F008C4310 /* ExcellentPlanController */ = {
 			isa = PBXGroup;
 			children = (
+				821CFCC01B78873B00A71BDA /* ExcellentBase */,
+				821CFCC11B78873B00A71BDA /* ExcellentCamp */,
+				821CFCC21B78873B00A71BDA /* ExcellentFinantial */,
+				821CFCC31B78873B00A71BDA /* ExcellentOpenDay */,
 				823FF58D1B706836008C4310 /* ExcellentPlanController.h */,
 				823FF58E1B706836008C4310 /* ExcellentPlanController.m */,
 			);
@@ -1471,14 +1573,16 @@
 			files = (
 				82D6BC9E1B65FC4200B1B54B /* UIView+WebCacheOperation.m in Sources */,
 				82D6BC691B65FC3C00B1B54B /* TAPageControl.m in Sources */,
-				82067BD91B71BC3B00B803A9 /* ExcellentSecondCell.m in Sources */,
 				82D6BC3D1B65FC2D00B1B54B /* UIScrollView+MJExtension.m in Sources */,
 				82D6BC671B65FC3C00B1B54B /* TAAnimatedDotView.m in Sources */,
+				821CFCCC1B78878800A71BDA /* ExcellentFinantialController.m in Sources */,
 				82D6BC661B65FC3C00B1B54B /* TAAbstractDotView.m in Sources */,
+				821CFCE11B78A7E800A71BDA /* ExcellentHeaderCell.m in Sources */,
 				82D6BC901B65FC4200B1B54B /* NSData+ImageContentType.m in Sources */,
 				82D6BBFC1B65FC0200B1B54B /* NSObject+MJCoding.m in Sources */,
 				82D6BC9C1B65FC4200B1B54B /* UIImageView+HighlightedWebCache.m in Sources */,
 				82D6BC2D1B65FC2D00B1B54B /* MJRefreshAutoFooter.m in Sources */,
+				821CFCC61B78875400A71BDA /* ExcellentBaseController.m in Sources */,
 				82D6BC4F1B65FC3400B1B54B /* REFrostedViewController.m in Sources */,
 				82D6BC6C1B65FC3C00B1B54B /* UIView+SDExtension.m in Sources */,
 				82D6BBDE1B65FBF200B1B54B /* AFURLRequestSerialization.m in Sources */,
@@ -1493,16 +1597,17 @@
 				82D6BC9A1B65FC4200B1B54B /* UIImage+MultiFormat.m in Sources */,
 				82D6BC651B65FC3C00B1B54B /* NSData+SDDataCache.m in Sources */,
 				82D6BC681B65FC3C00B1B54B /* TADotView.m in Sources */,
+				821CFCE31B78A7E800A71BDA /* ExcellentThirdCell.m in Sources */,
+				821CFCE61B78B7DB00A71BDA /* ExcellentBaseSecondCell.m in Sources */,
 				82D6BC2F1B65FC2D00B1B54B /* MJRefreshComponent.m in Sources */,
 				82D6BC6B1B65FC3C00B1B54B /* SDCycleScrollView.m in Sources */,
 				82D4D56A1B710AF9008BECC7 /* MyAddressController.m in Sources */,
 				82D4D5661B710726008BECC7 /* MyCollectController.m in Sources */,
 				82D6BBE01B65FBF200B1B54B /* AFURLSessionManager.m in Sources */,
-				82067BDC1B71BC4C00B803A9 /* ExcellentThirdCell.m in Sources */,
 				82D6BCA31B65FC6E00B1B54B /* GlobalConst.m in Sources */,
-				82067BDF1B71BC5E00B803A9 /* ExcellentForthCell.m in Sources */,
 				8286B3C41B72F95300897A4D /* QRView.m in Sources */,
 				82D6BC351B65FC2D00B1B54B /* MJRefreshBackGifFooter.m in Sources */,
+				821CFCD61B78966500A71BDA /* ExcellentBaseFirstCell.m in Sources */,
 				82D6BC511B65FC3400B1B54B /* UIView+REFrostedViewController.m in Sources */,
 				82D6BBFF1B65FC0200B1B54B /* NSString+MJExtension.m in Sources */,
 				82D6BBDF1B65FBF200B1B54B /* AFURLResponseSerialization.m in Sources */,
@@ -1513,6 +1618,7 @@
 				823FF58F1B706836008C4310 /* ExcellentPlanController.m in Sources */,
 				823FF5871B70681F008C4310 /* EditPersonFileControllerViewController.m in Sources */,
 				82D6BC8F1B65FC4200B1B54B /* MKAnnotationView+WebCache.m in Sources */,
+				821CFCE21B78A7E800A71BDA /* ExcellentSecondCell.m in Sources */,
 				823FF5921B706853008C4310 /* InformationController.m in Sources */,
 				82D6BC9B1B65FC4200B1B54B /* UIImage+WebP.m in Sources */,
 				82D6BC3F1B65FC2D00B1B54B /* UIView+MJExtension.m in Sources */,
@@ -1559,8 +1665,9 @@
 				82D6BD851B66076500B1B54B /* AppDelegate.m in Sources */,
 				82B57CF71B74880200F659CD /* HYQResponse.m in Sources */,
 				82067BFE1B720BC100B803A9 /* ScanCameraController.m in Sources */,
+				821CFCC91B78876500A71BDA /* ExcellentCampController.m in Sources */,
 				82D6BC991B65FC4200B1B54B /* UIImage+GIF.m in Sources */,
-				82067BD61B71BC1000B803A9 /* ExcellentHeaderCell.m in Sources */,
+				821CFCCF1B7887A500A71BDA /* ExcellentOpenDayController.m in Sources */,
 				823FF58C1B70681F008C4310 /* ServiceController.m in Sources */,
 				82D6BC311B65FC2D00B1B54B /* MJRefreshHeader.m in Sources */,
 				82D4D5621B7104D0008BECC7 /* MyorderFormController.m in Sources */,
@@ -1572,6 +1679,7 @@
 				82D6BCDB1B65FC8400B1B54B /* BaseViewController.m in Sources */,
 				823FF5B51B70BFDF008C4310 /* MyPaymentHeader.m in Sources */,
 				82D6BCDC1B65FC8400B1B54B /* BaseWebVIewController.m in Sources */,
+				821CFCE01B78A7E800A71BDA /* ExcellentForthCell.m in Sources */,
 				82D6BC961B65FC4200B1B54B /* SDWebImageManager.m in Sources */,
 				82D6BBFA1B65FC0200B1B54B /* MJProperty.m in Sources */,
 				823FF5881B70681F008C4310 /* HYQForgetPSWController.m in Sources */,
