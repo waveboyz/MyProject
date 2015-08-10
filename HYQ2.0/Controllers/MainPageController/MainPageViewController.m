@@ -11,6 +11,7 @@
 #import "PersonalController.h"
 #import "SDCycleScrollView.h"
 #import "scanCameraController.h"
+#import "HYQResponse.h"
 
 @interface MainPageController ()
 
@@ -35,6 +36,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+//    HYQResponse *response = [[HYQResponse alloc] init];
+//    [response getresponseOperation];
+    
     UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"tabbar_icon_person"]
                                                                 style:UIBarButtonItemStyleDone
                                                                target:self
@@ -79,16 +83,15 @@
     cycleView.placeholderImage = [UIImage imageNamed:@"notice_place_holder"];
     cycleView.pageControlStyle = SDCycleScrollViewPageContolStyleClassic;
     [self.scrollBGView addSubview:cycleView];
-    
-    UIVisualEffectView *visualEffect = [[UIVisualEffectView alloc]initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
-    visualEffect.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
-    visualEffect.alpha = 0.9;
-    
-    [self.scrollBGView addSubview:visualEffect];
-
     //园区资讯...view
 //    CGFloat buttonWidth = (kScreenWidth -15) / 2;
 //    CGFloat buttonHeight = (200 -15) / 2;
+}
+
+- (BOOL)validateCamera
+{
+    return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] &&
+    [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear];
 }
 
 - (void)showPersonalBtnPressed
@@ -105,8 +108,14 @@
 
 - (void)showScanPressed
 {
-    ScanCameraController *scanVC = [[ScanCameraController alloc] init];
-    [self.navigationController pushViewController:scanVC animated:YES];
+    if ([self validateCamera]) {
+        ScanCameraController *scanVC = [[ScanCameraController alloc] init];
+        [self.navigationController pushViewController:scanVC animated:YES];
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"此设备不具备扫码功能" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+
 }
 
 @end
