@@ -7,6 +7,10 @@
 //
 
 #import "ExcellentFinantialController.h"
+#import "ExcellentFinantialFirstCell.h"
+#import "ExcellentFinantialSecondCell.h"
+#import "ExcellentFinantialThirdCell.h"
+#import "ExcellentFinantialForthCell.h"
 
 @interface ExcellentFinantialController ()
 
@@ -75,30 +79,50 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *BASE_FIRST_CELL = @"base_first_cell";
-    static NSString *BASE_CELL = @"base_cell";
+    static NSString *FINAN_FIRST_CELL   = @"finantial_first_cell";
+    static NSString *FINAN_SECOND_CELL  = @"finantial_second_cell";
+    static NSString *FINAN_THIRD_CELL   = @"finantial_third_cell";
+    static NSString *FINAN_FORTH_CELL   = @"finantial_forth_cell";
     
     UITableViewCell *cell;
     
-//    if (indexPath.section == 0) {
-//        cell = [tableView dequeueReusableCellWithIdentifier:BASE_FIRST_CELL];
-//        if (!cell) {
-//            cell = [[ExcellentBaseFirstCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:BASE_FIRST_CELL];
-//        }
-//    }else{
-        cell = [tableView dequeueReusableCellWithIdentifier:BASE_CELL];
+    if (indexPath.section == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:FINAN_FIRST_CELL];
         if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:BASE_CELL];
+            cell = [[ExcellentFinantialFirstCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:FINAN_FIRST_CELL];
         }
-//    }
-    
+    }else if (indexPath.section == 1){
+        cell = [tableView dequeueReusableCellWithIdentifier:FINAN_SECOND_CELL];
+        if (!cell) {
+            cell = [[ExcellentFinantialSecondCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:FINAN_SECOND_CELL];
+        }
+    }else if (indexPath.section == 2){
+        cell = [tableView dequeueReusableCellWithIdentifier:FINAN_THIRD_CELL];
+        if (!cell) {
+            cell = [[ExcellentFinantialThirdCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:FINAN_THIRD_CELL];
+        }
+    }else if (indexPath.section == 3){
+        cell = [tableView dequeueReusableCellWithIdentifier:FINAN_FORTH_CELL];
+        if (!cell) {
+            cell = [[ExcellentFinantialForthCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:FINAN_FORTH_CELL];
+        }
+    }
+
     return cell;
 }
 
 #pragma mark
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 150.0f;
+    if (indexPath.section == 0) {
+        return 150.0f;
+    }else if (indexPath.section == 1) {
+        return 190.0f;
+    }else if (indexPath.section == 2){
+        return 740.0f;
+    }
+    
+    return 645.0f;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

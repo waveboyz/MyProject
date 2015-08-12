@@ -1,15 +1,15 @@
 //
-//  EcellentBaseFirstCell.m
+//  ExcellentFinantialFirstCell.m
 //  HYQ2.0
 //
-//  Created by waveboyz on 15/8/10.
+//  Created by waveboyz on 15/8/11.
 //  Copyright (c) 2015年 HZHaoYuanQu. All rights reserved.
 //
 
-#import "ExcellentBaseFirstCell.h"
+#import "ExcellentFinantialFirstCell.h"
 #import "UIImageView+WebCache.h"
 
-@interface ExcellentBaseFirstCell ()
+@interface ExcellentFinantialFirstCell ()
 
 @property (nonatomic, strong) UIImageView   *headerView;
 @property (nonatomic, strong) UILabel       *titleLbl;
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation ExcellentBaseFirstCell
+@implementation ExcellentFinantialFirstCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -47,7 +47,7 @@
     
     if (!_titleLbl) {
         _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMidY(_headerView.frame) - 60, kScreenWidth - 20, 120)];
-        _titleLbl.font = [UIFont systemFontOfSize:14.0f];
+        _titleLbl.font = [UIFont systemFontOfSize:12.0f];
         _titleLbl.textAlignment = NSTextAlignmentLeft;
         _titleLbl.textColor = [UIColor whiteColor];
         _titleLbl.numberOfLines = 5;

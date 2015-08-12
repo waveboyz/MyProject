@@ -58,10 +58,10 @@
     
     if (!_titleLbl) {
         _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMidY(_headerView.frame) - 60, kScreenWidth - 20, 120)];
-        _titleLbl.font = [UIFont systemFontOfSize:12.0f];
+        _titleLbl.font = [UIFont systemFontOfSize:14.0f];
         _titleLbl.textAlignment = NSTextAlignmentLeft;
         _titleLbl.textColor = [UIColor whiteColor];
-        _titleLbl.numberOfLines = 5;
+        _titleLbl.numberOfLines = 6;
         _titleLbl.text = @"优创计划是好园区与搜钱网联合知名的投资机构、强大倒是团打造的优秀创新项目综合成长培育计划，计划花3年时间在全国100个园区培育1000个企业价值过亿的项目的行动计划，简称“311优创计划”，旨在为创新企业者们打造一条可复制、可执行，成功率更高的成长道路。";
         
         [self.contentView addSubview:_titleLbl];
@@ -108,12 +108,15 @@
     }
     
     if (!_firstLbl) {
-        _firstLbl = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(_firstIcon.frame) - 10, 165 + IconWidth, IconWidth + 10, 15)];
+        _firstLbl = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(_firstIcon.frame) - 10, 165 + IconWidth, IconWidth + 20, 15)];
         if (IS_IHPONE4 || IS_IPHONE5) {
             _firstLbl.frame = CGRectMake(CGRectGetMinX(_firstIcon.frame) - 10, 165 + IconWidth, IconWidth + 20, 15);
         }
         
-        _firstLbl.font = [UIFont systemFontOfSize:10.0f];
+        _firstLbl.font = [UIFont systemFontOfSize:12.0f];
+        if (IS_IHPONE4 || IS_IPHONE5) {
+            _firstLbl.font = [UIFont systemFontOfSize:10.0f];
+        }
         _firstLbl.textAlignment = NSTextAlignmentCenter;
         _firstLbl.text = @"优创金融方案";
         [_firstLbl setCenter:CGPointMake(_firstIcon.center.x, _firstLbl.center.y)];
@@ -123,7 +126,10 @@
     
     if (!_secondLbl) {
         _secondLbl = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(_secondIcon.frame) - 10, 165 + IconWidth, IconWidth + 10, 15)];
-        _secondLbl.font = [UIFont systemFontOfSize:10.0F];
+        _secondLbl.font = [UIFont systemFontOfSize:12.0F];
+        if (IS_IHPONE4 || IS_IPHONE5) {
+            _secondLbl.font = [UIFont systemFontOfSize:10.0f];
+        }
         _secondLbl.textAlignment = NSTextAlignmentCenter;
         _secondLbl.text = @"优创基地";
         [_secondLbl setCenter:CGPointMake(_secondIcon.center.x, _secondLbl.center.y)];
@@ -133,7 +139,10 @@
     
     if (!_thirdLbl) {
         _thirdLbl = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(_thirdIcon.frame) - 10 , 165 + IconWidth, IconWidth + 10, 15)];
-        _thirdLbl.font = [UIFont systemFontOfSize:10.0f];
+        _thirdLbl.font = [UIFont systemFontOfSize:12.0f];
+        if (IS_IHPONE4 || IS_IPHONE5) {
+            _thirdLbl.font = [UIFont systemFontOfSize:10.0f];
+        }
         _thirdLbl.textAlignment = NSTextAlignmentCenter;
         _thirdLbl.text = @"优创训练营";
         [_thirdLbl setCenter:CGPointMake(_thirdIcon.center.x, _thirdLbl.center.y)];
@@ -143,7 +152,10 @@
     
     if (!_forthLbl) {
         _forthLbl = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(_forthIcon.frame) - 10, 165 + IconWidth, IconWidth + 10, 15)];
-        _forthLbl.font = [UIFont systemFontOfSize:10.0f];
+        _forthLbl.font = [UIFont systemFontOfSize:12.0f];
+        if (IS_IHPONE4 || IS_IPHONE5) {
+            _forthLbl.font = [UIFont systemFontOfSize:10.0f];
+        }
         _forthLbl.textAlignment = NSTextAlignmentCenter;
         _forthLbl.text = @"优创开放日";
         [_forthLbl setCenter:CGPointMake(_forthIcon.center.x, _forthLbl.center.y)];

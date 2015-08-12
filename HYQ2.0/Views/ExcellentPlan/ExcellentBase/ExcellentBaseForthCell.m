@@ -1,22 +1,23 @@
 //
-//  ExcellentThirdCell.m
+//  ExcellentBaseForthCell.m
 //  HYQ2.0
 //
-//  Created by waveboyz on 15/8/5.
+//  Created by waveboyz on 15/8/11.
 //  Copyright (c) 2015年 HZHaoYuanQu. All rights reserved.
 //
 
-#import "ExcellentThirdCell.h"
+#import "ExcellentBaseForthCell.h"
 
-@interface ExcellentThirdCell ()
+@interface ExcellentBaseForthCell ()
 
-@property (nonatomic, strong)UILabel *titleLbl;
-@property (nonatomic, strong)UILabel *lineLbl;
-@property (nonatomic, strong)UILabel *desLbl;
+@property (nonatomic, strong) UILabel *titleLbl;
+@property (nonatomic, strong) UILabel *lineLbl;
+@property (nonatomic, strong) UIImageView *imgView1;
+@property (nonatomic, strong) UIImageView *imgView2;
 
 @end
 
-@implementation ExcellentThirdCell
+@implementation ExcellentBaseForthCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -24,7 +25,7 @@
         [self setViews];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-
+    
     return self;
 }
 
@@ -32,7 +33,7 @@
 {
     if (!_titleLbl) {
         _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, kScreenWidth - 20, 30)];
-        _titleLbl.text = @"加入流程";
+        _titleLbl.text = @"优创基地介绍";
         _titleLbl.font = [UIFont systemFontOfSize:17.0f];
         _titleLbl.textColor = [UIColor blueColor];
         
@@ -46,15 +47,18 @@
         [self.contentView addSubview:_lineLbl];
     }
     
-    if (!_desLbl) {
-        _desLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 55, kScreenWidth - 20, 75)];
-
-        _desLbl.text = @"第一步：提出申请\n第二步：填写入驻申请书\n第三步：等待审核\n第四步：完成申请";
-        _desLbl.font = [UIFont systemFontOfSize:14.0f];
-        _desLbl.textColor = [UIColor grayColor];
-        _desLbl.numberOfLines = 5;
+    if (!_imgView1) {
+        _imgView1 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 55, kScreenWidth - 20, 100)];
+        _imgView1.backgroundColor = ORANGE_COLOR;
         
-        [self.contentView addSubview:_desLbl];
+        [self.contentView addSubview:_imgView1];
+    }
+    
+    if (!_imgView2) {
+        _imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 165, kScreenWidth - 20, 100)];
+        _imgView2.backgroundColor = ORANGE_COLOR;
+        
+        [self.contentView addSubview:_imgView2];
     }
 }
 

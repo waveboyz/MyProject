@@ -1,22 +1,21 @@
 //
-//  ExcellentThirdCell.m
+//  ExcellentCampForthCell.m
 //  HYQ2.0
 //
-//  Created by waveboyz on 15/8/5.
+//  Created by waveboyz on 15/8/11.
 //  Copyright (c) 2015年 HZHaoYuanQu. All rights reserved.
 //
 
-#import "ExcellentThirdCell.h"
+#import "ExcellentCampForthCell.h"
 
-@interface ExcellentThirdCell ()
+@interface ExcellentCampForthCell ()
 
-@property (nonatomic, strong)UILabel *titleLbl;
-@property (nonatomic, strong)UILabel *lineLbl;
-@property (nonatomic, strong)UILabel *desLbl;
+@property (nonatomic, strong) UILabel *titleLbl;
+@property (nonatomic, strong) UILabel *lineLbl;
 
 @end
 
-@implementation ExcellentThirdCell
+@implementation ExcellentCampForthCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -32,7 +31,7 @@
 {
     if (!_titleLbl) {
         _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, kScreenWidth - 20, 30)];
-        _titleLbl.text = @"加入流程";
+        _titleLbl.text = @"优创训练营介绍";
         _titleLbl.font = [UIFont systemFontOfSize:17.0f];
         _titleLbl.textColor = [UIColor blueColor];
         
@@ -44,17 +43,6 @@
         _lineLbl.backgroundColor = GRAY_COLOR;
         
         [self.contentView addSubview:_lineLbl];
-    }
-    
-    if (!_desLbl) {
-        _desLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 55, kScreenWidth - 20, 75)];
-
-        _desLbl.text = @"第一步：提出申请\n第二步：填写入驻申请书\n第三步：等待审核\n第四步：完成申请";
-        _desLbl.font = [UIFont systemFontOfSize:14.0f];
-        _desLbl.textColor = [UIColor grayColor];
-        _desLbl.numberOfLines = 5;
-        
-        [self.contentView addSubview:_desLbl];
     }
 }
 

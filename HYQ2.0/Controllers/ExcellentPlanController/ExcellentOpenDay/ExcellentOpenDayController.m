@@ -7,6 +7,10 @@
 //
 
 #import "ExcellentOpenDayController.h"
+#import "ExcellentOpenFirstCell.h"
+#import "ExcellentOpenSecondCell.h"
+#import "ExcellentOpenThirdCell.h"
+#import "ExcellentOpenForthCell.h"
 
 @interface ExcellentOpenDayController ()
 
@@ -75,22 +79,34 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *BASE_FIRST_CELL = @"base_first_cell";
-    static NSString *BASE_CELL = @"base_cell";
+    static NSString *OPEN_FIRST_CELL = @"open_first_cell";
+    static NSString *OPEN_SECOND_CELL = @"open_second_cell";
+    static NSString *OPEN_THIRD_CELL = @"open_third_cell";
+    static NSString *OPEN_FORTH_CELL = @"open_firth_cell";
     
     UITableViewCell *cell;
     
-    //    if (indexPath.section == 0) {
-    //        cell = [tableView dequeueReusableCellWithIdentifier:BASE_FIRST_CELL];
-    //        if (!cell) {
-    //            cell = [[ExcellentBaseFirstCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:BASE_FIRST_CELL];
-    //        }
-    //    }else{
-    cell = [tableView dequeueReusableCellWithIdentifier:BASE_CELL];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:BASE_CELL];
+    if (indexPath.section == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:OPEN_FIRST_CELL];
+        if (!cell) {
+            cell = [[ExcellentOpenFirstCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:OPEN_FIRST_CELL];
+        }
+    }else if (indexPath.section == 1){
+        cell = [tableView dequeueReusableCellWithIdentifier:OPEN_SECOND_CELL];
+        if (!cell) {
+            cell = [[ExcellentOpenSecondCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:OPEN_SECOND_CELL];
+        }
+    }else if (indexPath.section == 2){
+        cell = [tableView dequeueReusableCellWithIdentifier:OPEN_THIRD_CELL];
+        if (!cell) {
+            cell = [[ExcellentOpenThirdCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:OPEN_THIRD_CELL];
+        }
+    }else if (indexPath.section == 3){
+        cell = [tableView dequeueReusableCellWithIdentifier:OPEN_FORTH_CELL];
+        if (!cell) {
+            cell = [[ExcellentOpenForthCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:OPEN_FORTH_CELL];
+        }
     }
-    //    }
     
     return cell;
 }

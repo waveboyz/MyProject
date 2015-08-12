@@ -120,15 +120,11 @@
         
         return 190 + IconWidth;
     }else if(indexPath.section == 1){
-        if (IS_IHPONE4||IS_IPHONE5) {
-            return 305;
-        }
-        
-        return 285;
+        return 310;
     }else if (indexPath.section == 2){
         return 145;
     }
-        return 260;
+        return 275;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

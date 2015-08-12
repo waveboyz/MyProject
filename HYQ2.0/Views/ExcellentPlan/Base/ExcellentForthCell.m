@@ -48,10 +48,10 @@
     }
     
     if (!_desLbl) {
-        _desLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 55, kScreenWidth - 20, 75)];
+        _desLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 55, kScreenWidth - 20, 90)];
         
         _desLbl.text = @"填写《优创基地入驻申请表》，优创事业部进行审核，通过审核签署《优创基地入驻协议》。投行部进行审核，符合条件的项目可以免租、优创基地事业部进行审核，通过审核签署《优创基地入驻协议》，投行部进行审核，符合条件的项目可以免租。";
-        _desLbl.font = [UIFont systemFontOfSize:12.0f];
+        _desLbl.font = [UIFont systemFontOfSize:14.0f];
         _desLbl.textColor = [UIColor grayColor];
         _desLbl.numberOfLines = 5;
         
@@ -59,7 +59,7 @@
     }
     
     if (!_contentImg) {
-        _contentImg = [[UIImageView alloc] initWithFrame:CGRectMake(10, 130, kScreenWidth - 20, 120)];
+        _contentImg = [[UIImageView alloc] initWithFrame:CGRectMake(10, 145, kScreenWidth - 20, 120)];
         _contentImg.image = [UIImage imageNamed:@"codeGetIcon"];
         _contentImg.contentMode = UIViewContentModeScaleToFill;
         

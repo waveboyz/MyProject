@@ -8,6 +8,9 @@
 
 #import "ExcellentBaseController.h"
 #import "ExcellentBaseFirstCell.h"
+#import "ExcellentBaseSecondCell.h"
+#import "ExcellentBaseThirdCell.h"
+#import "ExcellentBaseForthCell.h"
 
 @interface ExcellentBaseController ()
 
@@ -76,8 +79,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *BASE_FIRST_CELL = @"base_first_cell";
-    static NSString *BASE_CELL = @"base_cell";
+    static NSString *BASE_FIRST_CELL    = @"base_first_cell";
+    static NSString *BASE_SECOND_CELL   = @"base_second_cell";
+    static NSString *BASE_THIRD_CELL    = @"base_third_cell";
+    static NSString *BASE_FORTH_CELL    = @"base_forth_cell";
     
     UITableViewCell *cell;
     
@@ -86,10 +91,20 @@
         if (!cell) {
             cell = [[ExcellentBaseFirstCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:BASE_FIRST_CELL];
         }
-    }else{
-        cell = [tableView dequeueReusableCellWithIdentifier:BASE_CELL];
+    }else if(indexPath.section == 1){
+        cell = [tableView dequeueReusableCellWithIdentifier:BASE_SECOND_CELL];
         if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:BASE_CELL];
+            cell = [[ExcellentBaseSecondCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:BASE_SECOND_CELL];
+        }
+    }else if (indexPath.section == 2){
+        cell = [tableView dequeueReusableCellWithIdentifier:BASE_THIRD_CELL];
+        if (!cell) {
+            cell = [[ExcellentBaseThirdCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:BASE_THIRD_CELL];
+        }
+    }else if (indexPath.section == 3){
+        cell = [tableView dequeueReusableCellWithIdentifier:BASE_FORTH_CELL];
+        if (!cell) {
+            cell = [[ExcellentBaseForthCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:BASE_FORTH_CELL];
         }
     }
 
@@ -99,7 +114,13 @@
 #pragma mark
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 150.0f;
+    if (indexPath.section == 0 || indexPath.section == 1) {
+        return 150.0f;
+    }else if (indexPath.section == 2){
+        return 245.0f;
+    }
+    
+    return 275.0f;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

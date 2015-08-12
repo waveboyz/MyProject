@@ -22,6 +22,7 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self setViews];
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     return self;
@@ -31,7 +32,7 @@
 {
     if (!_titleLbl) {
         _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, kScreenWidth - 20, 30)];
-        _titleLbl.text = @"我们的优势";
+        _titleLbl.text = @"服务流程";
         _titleLbl.font = [UIFont systemFontOfSize:17.0f];
         _titleLbl.textColor = [UIColor blueColor];
         
@@ -46,9 +47,9 @@
     }
     
     if (!_desLbl) {
-        _desLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 55, kScreenWidth - 20, 200)];
+        _desLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 55, kScreenWidth - 20, 75)];
         _desLbl.text = @"第一步：填写《优创基地入驻申请表》\n第二步：优创基地事业部进行审核，通过审核签署《优创基地入驻协议》\n第三步：投行部进行审核，符合条件的项目可以免租";
-        _desLbl.font = [UIFont systemFontOfSize:12.0f];
+        _desLbl.font = [UIFont systemFontOfSize:14.0f];
         _desLbl.textColor = [UIColor grayColor];
         _desLbl.numberOfLines = 15;
         

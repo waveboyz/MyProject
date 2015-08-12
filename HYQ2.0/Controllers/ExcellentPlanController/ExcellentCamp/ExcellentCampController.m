@@ -7,6 +7,10 @@
 //
 
 #import "ExcellentCampController.h"
+#import "ExcellentCampFirstCell.h"
+#import "ExcellentCampSecondCell.h"
+#import "ExcellentCampThirdCell.h"
+#import "ExcellentCampForthCell.h"
 
 @interface ExcellentCampController ()
 
@@ -75,22 +79,34 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *BASE_FIRST_CELL = @"base_first_cell";
-    static NSString *BASE_CELL = @"base_cell";
+    static NSString *CAMP_FIRST_CELL = @"camp_first_cell";
+    static NSString *CAMP_SECOND_CELL = @"camp_second_cell";
+    static NSString *CAMP_THIRD_CELL = @"camp_third_cell";
+    static NSString *CAMP_FORTH_CELL = @"camp_forth_cell";
     
     UITableViewCell *cell;
-//    
-//    if (indexPath.section == 0) {
-//        cell = [tableView dequeueReusableCellWithIdentifier:BASE_FIRST_CELL];
-//        if (!cell) {
-//            cell = [[ExcellentBaseFirstCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:BASE_FIRST_CELL];
-//        }
-//    }else{
-        cell = [tableView dequeueReusableCellWithIdentifier:BASE_CELL];
+    
+    if (indexPath.section == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:CAMP_FIRST_CELL];
         if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:BASE_CELL];
+            cell = [[ExcellentCampFirstCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CAMP_FIRST_CELL];
         }
-//    }
+    }else if (indexPath.section == 1){
+        cell = [tableView dequeueReusableCellWithIdentifier:CAMP_SECOND_CELL];
+        if (!cell) {
+            cell = [[ExcellentCampSecondCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CAMP_SECOND_CELL];
+        }
+    }else if (indexPath.section == 2){
+        cell = [tableView dequeueReusableCellWithIdentifier:CAMP_THIRD_CELL];
+        if (!cell) {
+            cell = [[ExcellentCampThirdCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CAMP_THIRD_CELL];
+        }
+    }else if (indexPath.section == 3){
+        cell = [tableView dequeueReusableCellWithIdentifier:CAMP_FORTH_CELL];
+        if (!cell) {
+            cell = [[ExcellentCampForthCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CAMP_FORTH_CELL];
+        }
+    }
     
     return cell;
 }
@@ -98,7 +114,13 @@
 #pragma mark
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 150.0f;
+    if (indexPath.section == 2) {
+        return 740.0f;
+    }else if (indexPath.section == 3){
+        return 85.0f;
+    }
+    
+    return 150.0;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

@@ -44,6 +44,20 @@
 		8286B3C61B72FC1A00897A4D /* qr_scan_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8286B3C51B72FC1A00897A4D /* qr_scan_line@2x.png */; };
 		8286B3CA1B73012200897A4D /* InfomationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8286B3C91B73012200897A4D /* InfomationCell.m */; };
 		82B57CF71B74880200F659CD /* HYQResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B57CF61B74880200F659CD /* HYQResponse.m */; };
+		82B769531B798CDB0099EBD3 /* ExcellentBaseThirdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B769521B798CDB0099EBD3 /* ExcellentBaseThirdCell.m */; };
+		82B769561B798CFB0099EBD3 /* ExcellentBaseForthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B769551B798CFB0099EBD3 /* ExcellentBaseForthCell.m */; };
+		82B769591B799FDF0099EBD3 /* ExcellentFinantialFirstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B769581B799FDF0099EBD3 /* ExcellentFinantialFirstCell.m */; };
+		82B7695C1B799FFE0099EBD3 /* ExcellentFinantialSecondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B7695B1B799FFE0099EBD3 /* ExcellentFinantialSecondCell.m */; };
+		82B7695F1B79A0120099EBD3 /* ExcellentFinantialThirdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B7695E1B79A0120099EBD3 /* ExcellentFinantialThirdCell.m */; };
+		82B769621B79A0220099EBD3 /* ExcellentFinantialForthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B769611B79A0220099EBD3 /* ExcellentFinantialForthCell.m */; };
+		82B769651B79CB570099EBD3 /* ExcellentCampFirstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B769641B79CB570099EBD3 /* ExcellentCampFirstCell.m */; };
+		82B769681B79CB650099EBD3 /* ExcellentCampSecondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B769671B79CB650099EBD3 /* ExcellentCampSecondCell.m */; };
+		82B7696B1B79CB770099EBD3 /* ExcellentCampThirdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B7696A1B79CB770099EBD3 /* ExcellentCampThirdCell.m */; };
+		82B7696E1B79CB8A0099EBD3 /* ExcellentCampForthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B7696D1B79CB8A0099EBD3 /* ExcellentCampForthCell.m */; };
+		82B769711B79CC0D0099EBD3 /* ExcellentOpenFirstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B769701B79CC0D0099EBD3 /* ExcellentOpenFirstCell.m */; };
+		82B769741B79CC1A0099EBD3 /* ExcellentOpenSecondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B769731B79CC1A0099EBD3 /* ExcellentOpenSecondCell.m */; };
+		82B769771B79CC280099EBD3 /* ExcellentOpenThirdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B769761B79CC280099EBD3 /* ExcellentOpenThirdCell.m */; };
+		82B7697A1B79CC360099EBD3 /* ExcellentOpenForthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B769791B79CC360099EBD3 /* ExcellentOpenForthCell.m */; };
 		82D4D55E1B70FFF4008BECC7 /* MYDiscountController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D4D55D1B70FFF4008BECC7 /* MYDiscountController.m */; };
 		82D4D5621B7104D0008BECC7 /* MyorderFormController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D4D5611B7104D0008BECC7 /* MyorderFormController.m */; };
 		82D4D5661B710726008BECC7 /* MyCollectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D4D5651B710726008BECC7 /* MyCollectController.m */; };
@@ -274,6 +288,34 @@
 		8286B3C91B73012200897A4D /* InfomationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfomationCell.m; sourceTree = "<group>"; };
 		82B57CF51B74880200F659CD /* HYQResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYQResponse.h; sourceTree = "<group>"; };
 		82B57CF61B74880200F659CD /* HYQResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYQResponse.m; sourceTree = "<group>"; };
+		82B769511B798CDB0099EBD3 /* ExcellentBaseThirdCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentBaseThirdCell.h; sourceTree = "<group>"; };
+		82B769521B798CDB0099EBD3 /* ExcellentBaseThirdCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentBaseThirdCell.m; sourceTree = "<group>"; };
+		82B769541B798CFB0099EBD3 /* ExcellentBaseForthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentBaseForthCell.h; sourceTree = "<group>"; };
+		82B769551B798CFB0099EBD3 /* ExcellentBaseForthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentBaseForthCell.m; sourceTree = "<group>"; };
+		82B769571B799FDF0099EBD3 /* ExcellentFinantialFirstCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentFinantialFirstCell.h; sourceTree = "<group>"; };
+		82B769581B799FDF0099EBD3 /* ExcellentFinantialFirstCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentFinantialFirstCell.m; sourceTree = "<group>"; };
+		82B7695A1B799FFE0099EBD3 /* ExcellentFinantialSecondCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentFinantialSecondCell.h; sourceTree = "<group>"; };
+		82B7695B1B799FFE0099EBD3 /* ExcellentFinantialSecondCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentFinantialSecondCell.m; sourceTree = "<group>"; };
+		82B7695D1B79A0120099EBD3 /* ExcellentFinantialThirdCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentFinantialThirdCell.h; sourceTree = "<group>"; };
+		82B7695E1B79A0120099EBD3 /* ExcellentFinantialThirdCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentFinantialThirdCell.m; sourceTree = "<group>"; };
+		82B769601B79A0220099EBD3 /* ExcellentFinantialForthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentFinantialForthCell.h; sourceTree = "<group>"; };
+		82B769611B79A0220099EBD3 /* ExcellentFinantialForthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentFinantialForthCell.m; sourceTree = "<group>"; };
+		82B769631B79CB570099EBD3 /* ExcellentCampFirstCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentCampFirstCell.h; sourceTree = "<group>"; };
+		82B769641B79CB570099EBD3 /* ExcellentCampFirstCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentCampFirstCell.m; sourceTree = "<group>"; };
+		82B769661B79CB650099EBD3 /* ExcellentCampSecondCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentCampSecondCell.h; sourceTree = "<group>"; };
+		82B769671B79CB650099EBD3 /* ExcellentCampSecondCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentCampSecondCell.m; sourceTree = "<group>"; };
+		82B769691B79CB770099EBD3 /* ExcellentCampThirdCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentCampThirdCell.h; sourceTree = "<group>"; };
+		82B7696A1B79CB770099EBD3 /* ExcellentCampThirdCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentCampThirdCell.m; sourceTree = "<group>"; };
+		82B7696C1B79CB8A0099EBD3 /* ExcellentCampForthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentCampForthCell.h; sourceTree = "<group>"; };
+		82B7696D1B79CB8A0099EBD3 /* ExcellentCampForthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentCampForthCell.m; sourceTree = "<group>"; };
+		82B7696F1B79CC0D0099EBD3 /* ExcellentOpenFirstCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentOpenFirstCell.h; sourceTree = "<group>"; };
+		82B769701B79CC0D0099EBD3 /* ExcellentOpenFirstCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentOpenFirstCell.m; sourceTree = "<group>"; };
+		82B769721B79CC1A0099EBD3 /* ExcellentOpenSecondCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentOpenSecondCell.h; sourceTree = "<group>"; };
+		82B769731B79CC1A0099EBD3 /* ExcellentOpenSecondCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentOpenSecondCell.m; sourceTree = "<group>"; };
+		82B769751B79CC280099EBD3 /* ExcellentOpenThirdCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentOpenThirdCell.h; sourceTree = "<group>"; };
+		82B769761B79CC280099EBD3 /* ExcellentOpenThirdCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentOpenThirdCell.m; sourceTree = "<group>"; };
+		82B769781B79CC360099EBD3 /* ExcellentOpenForthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentOpenForthCell.h; sourceTree = "<group>"; };
+		82B769791B79CC360099EBD3 /* ExcellentOpenForthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentOpenForthCell.m; sourceTree = "<group>"; };
 		82D4D55C1B70FFF4008BECC7 /* MYDiscountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYDiscountController.h; sourceTree = "<group>"; };
 		82D4D55D1B70FFF4008BECC7 /* MYDiscountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYDiscountController.m; sourceTree = "<group>"; };
 		82D4D5601B7104D0008BECC7 /* MyorderFormController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyorderFormController.h; sourceTree = "<group>"; };
@@ -624,6 +666,10 @@
 				821CFCD51B78966500A71BDA /* ExcellentBaseFirstCell.m */,
 				821CFCE41B78B7DB00A71BDA /* ExcellentBaseSecondCell.h */,
 				821CFCE51B78B7DB00A71BDA /* ExcellentBaseSecondCell.m */,
+				82B769511B798CDB0099EBD3 /* ExcellentBaseThirdCell.h */,
+				82B769521B798CDB0099EBD3 /* ExcellentBaseThirdCell.m */,
+				82B769541B798CFB0099EBD3 /* ExcellentBaseForthCell.h */,
+				82B769551B798CFB0099EBD3 /* ExcellentBaseForthCell.m */,
 			);
 			path = ExcellentBase;
 			sourceTree = "<group>";
@@ -631,6 +677,14 @@
 		821CFCD11B7888A600A71BDA /* ExcellentCamp */ = {
 			isa = PBXGroup;
 			children = (
+				82B769631B79CB570099EBD3 /* ExcellentCampFirstCell.h */,
+				82B769641B79CB570099EBD3 /* ExcellentCampFirstCell.m */,
+				82B769661B79CB650099EBD3 /* ExcellentCampSecondCell.h */,
+				82B769671B79CB650099EBD3 /* ExcellentCampSecondCell.m */,
+				82B769691B79CB770099EBD3 /* ExcellentCampThirdCell.h */,
+				82B7696A1B79CB770099EBD3 /* ExcellentCampThirdCell.m */,
+				82B7696C1B79CB8A0099EBD3 /* ExcellentCampForthCell.h */,
+				82B7696D1B79CB8A0099EBD3 /* ExcellentCampForthCell.m */,
 			);
 			path = ExcellentCamp;
 			sourceTree = "<group>";
@@ -638,6 +692,14 @@
 		821CFCD21B7888A600A71BDA /* ExcellentFinantial */ = {
 			isa = PBXGroup;
 			children = (
+				82B769571B799FDF0099EBD3 /* ExcellentFinantialFirstCell.h */,
+				82B769581B799FDF0099EBD3 /* ExcellentFinantialFirstCell.m */,
+				82B7695A1B799FFE0099EBD3 /* ExcellentFinantialSecondCell.h */,
+				82B7695B1B799FFE0099EBD3 /* ExcellentFinantialSecondCell.m */,
+				82B7695D1B79A0120099EBD3 /* ExcellentFinantialThirdCell.h */,
+				82B7695E1B79A0120099EBD3 /* ExcellentFinantialThirdCell.m */,
+				82B769601B79A0220099EBD3 /* ExcellentFinantialForthCell.h */,
+				82B769611B79A0220099EBD3 /* ExcellentFinantialForthCell.m */,
 			);
 			path = ExcellentFinantial;
 			sourceTree = "<group>";
@@ -645,6 +707,14 @@
 		821CFCD31B7888A600A71BDA /* ExcellentOpenDay */ = {
 			isa = PBXGroup;
 			children = (
+				82B7696F1B79CC0D0099EBD3 /* ExcellentOpenFirstCell.h */,
+				82B769701B79CC0D0099EBD3 /* ExcellentOpenFirstCell.m */,
+				82B769721B79CC1A0099EBD3 /* ExcellentOpenSecondCell.h */,
+				82B769731B79CC1A0099EBD3 /* ExcellentOpenSecondCell.m */,
+				82B769751B79CC280099EBD3 /* ExcellentOpenThirdCell.h */,
+				82B769761B79CC280099EBD3 /* ExcellentOpenThirdCell.m */,
+				82B769781B79CC360099EBD3 /* ExcellentOpenForthCell.h */,
+				82B769791B79CC360099EBD3 /* ExcellentOpenForthCell.m */,
 			);
 			path = ExcellentOpenDay;
 			sourceTree = "<group>";
@@ -1574,8 +1644,10 @@
 				82D6BC9E1B65FC4200B1B54B /* UIView+WebCacheOperation.m in Sources */,
 				82D6BC691B65FC3C00B1B54B /* TAPageControl.m in Sources */,
 				82D6BC3D1B65FC2D00B1B54B /* UIScrollView+MJExtension.m in Sources */,
+				82B7696E1B79CB8A0099EBD3 /* ExcellentCampForthCell.m in Sources */,
 				82D6BC671B65FC3C00B1B54B /* TAAnimatedDotView.m in Sources */,
 				821CFCCC1B78878800A71BDA /* ExcellentFinantialController.m in Sources */,
+				82B7695C1B799FFE0099EBD3 /* ExcellentFinantialSecondCell.m in Sources */,
 				82D6BC661B65FC3C00B1B54B /* TAAbstractDotView.m in Sources */,
 				821CFCE11B78A7E800A71BDA /* ExcellentHeaderCell.m in Sources */,
 				82D6BC901B65FC4200B1B54B /* NSData+ImageContentType.m in Sources */,
@@ -1600,6 +1672,7 @@
 				821CFCE31B78A7E800A71BDA /* ExcellentThirdCell.m in Sources */,
 				821CFCE61B78B7DB00A71BDA /* ExcellentBaseSecondCell.m in Sources */,
 				82D6BC2F1B65FC2D00B1B54B /* MJRefreshComponent.m in Sources */,
+				82B769771B79CC280099EBD3 /* ExcellentOpenThirdCell.m in Sources */,
 				82D6BC6B1B65FC3C00B1B54B /* SDCycleScrollView.m in Sources */,
 				82D4D56A1B710AF9008BECC7 /* MyAddressController.m in Sources */,
 				82D4D5661B710726008BECC7 /* MyCollectController.m in Sources */,
@@ -1611,9 +1684,11 @@
 				82D6BC511B65FC3400B1B54B /* UIView+REFrostedViewController.m in Sources */,
 				82D6BBFF1B65FC0200B1B54B /* NSString+MJExtension.m in Sources */,
 				82D6BBDF1B65FBF200B1B54B /* AFURLResponseSerialization.m in Sources */,
+				82B769591B799FDF0099EBD3 /* ExcellentFinantialFirstCell.m in Sources */,
 				82D6BC9D1B65FC4200B1B54B /* UIImageView+WebCache.m in Sources */,
 				82D4D55E1B70FFF4008BECC7 /* MYDiscountController.m in Sources */,
 				823FF5AF1B70BF3C008C4310 /* BasePersonHeadCell.m in Sources */,
+				82B769621B79A0220099EBD3 /* ExcellentFinantialForthCell.m in Sources */,
 				823FF5A91B70BF05008C4310 /* MyPaymentController.m in Sources */,
 				823FF58F1B706836008C4310 /* ExcellentPlanController.m in Sources */,
 				823FF5871B70681F008C4310 /* EditPersonFileControllerViewController.m in Sources */,
@@ -1621,6 +1696,7 @@
 				821CFCE21B78A7E800A71BDA /* ExcellentSecondCell.m in Sources */,
 				823FF5921B706853008C4310 /* InformationController.m in Sources */,
 				82D6BC9B1B65FC4200B1B54B /* UIImage+WebP.m in Sources */,
+				82B769531B798CDB0099EBD3 /* ExcellentBaseThirdCell.m in Sources */,
 				82D6BC3F1B65FC2D00B1B54B /* UIView+MJExtension.m in Sources */,
 				82D6BCA41B65FC6E00B1B54B /* NSString+HCBStringHelper.m in Sources */,
 				82D6BBE51B65FBFB00B1B54B /* MBProgressHUD.m in Sources */,
@@ -1628,6 +1704,7 @@
 				82D6BC3A1B65FC2D00B1B54B /* MJRefreshStateHeader.m in Sources */,
 				82D6BC911B65FC4200B1B54B /* SDImageCache.m in Sources */,
 				82D6BC361B65FC2D00B1B54B /* MJRefreshBackNormalFooter.m in Sources */,
+				82B7696B1B79CB770099EBD3 /* ExcellentCampThirdCell.m in Sources */,
 				82D6BC931B65FC4200B1B54B /* SDWebImageDecoder.m in Sources */,
 				82D6BCDA1B65FC8400B1B54B /* BaseTabbarController.m in Sources */,
 				82D6BCD91B65FC8400B1B54B /* BaseRefreshController.m in Sources */,
@@ -1641,14 +1718,18 @@
 				823FF58A1B70681F008C4310 /* PersonalController.m in Sources */,
 				823FF5B01B70BF3C008C4310 /* EditHeaderCell.m in Sources */,
 				82D6BC341B65FC2D00B1B54B /* MJRefreshAutoStateFooter.m in Sources */,
+				82B769741B79CC1A0099EBD3 /* ExcellentOpenSecondCell.m in Sources */,
 				82D6BC2E1B65FC2D00B1B54B /* MJRefreshBackFooter.m in Sources */,
 				823FF5861B70681F008C4310 /* MainPageViewController.m in Sources */,
 				82D6BC4E1B65FC3400B1B54B /* REFrostedContainerViewController.m in Sources */,
 				82D6BC381B65FC2D00B1B54B /* MJRefreshGifHeader.m in Sources */,
 				82D6BBD91B65FBF200B1B54B /* AFHTTPRequestOperationManager.m in Sources */,
 				82D6BC981B65FC4200B1B54B /* UIButton+WebCache.m in Sources */,
+				82B769711B79CC0D0099EBD3 /* ExcellentOpenFirstCell.m in Sources */,
 				82D6BC521B65FC3400B1B54B /* UIViewController+REFrostedViewController.m in Sources */,
+				82B769681B79CB650099EBD3 /* ExcellentCampSecondCell.m in Sources */,
 				82D6BC3C1B65FC2D00B1B54B /* MJRefreshConst.m in Sources */,
+				82B7695F1B79A0120099EBD3 /* ExcellentFinantialThirdCell.m in Sources */,
 				82D6BC4D1B65FC3400B1B54B /* RECommonFunctions.m in Sources */,
 				82D6BC321B65FC2D00B1B54B /* MJRefreshAutoGifFooter.m in Sources */,
 				82D6BC301B65FC2D00B1B54B /* MJRefreshFooter.m in Sources */,
@@ -1668,9 +1749,11 @@
 				821CFCC91B78876500A71BDA /* ExcellentCampController.m in Sources */,
 				82D6BC991B65FC4200B1B54B /* UIImage+GIF.m in Sources */,
 				821CFCCF1B7887A500A71BDA /* ExcellentOpenDayController.m in Sources */,
+				82B7697A1B79CC360099EBD3 /* ExcellentOpenForthCell.m in Sources */,
 				823FF58C1B70681F008C4310 /* ServiceController.m in Sources */,
 				82D6BC311B65FC2D00B1B54B /* MJRefreshHeader.m in Sources */,
 				82D4D5621B7104D0008BECC7 /* MyorderFormController.m in Sources */,
+				82B769561B798CFB0099EBD3 /* ExcellentBaseForthCell.m in Sources */,
 				823FF59D1B708EE7008C4310 /* VOIndicatorAnimation.m in Sources */,
 				82D6BC501B65FC3400B1B54B /* UIImage+REFrostedViewController.m in Sources */,
 				82D6BBFB1B65FC0200B1B54B /* MJType.m in Sources */,
@@ -1685,6 +1768,7 @@
 				823FF5881B70681F008C4310 /* HYQForgetPSWController.m in Sources */,
 				82D6BBF81B65FC0200B1B54B /* MJConst.m in Sources */,
 				82D6BC971B65FC4200B1B54B /* SDWebImagePrefetcher.m in Sources */,
+				82B769651B79CB570099EBD3 /* ExcellentCampFirstCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
