@@ -16,6 +16,7 @@
 @property (nonatomic, strong) UIImageView *collectView;
 @property (nonatomic, strong) UILabel     *collectCntLbl;
 @property (nonatomic, strong) UILabel     *purchaseCntLbl;
+@property (nonatomic, strong) UILabel     *lineLbl;
 
 @end
 
@@ -36,16 +37,22 @@
     if (!_imageview) {
         _imageview = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 120, 120)];
         _imageview.image = [UIImage imageNamed:@""];
+        _imageview.backgroundColor = ORANGE_COLOR;
         [self.contentView addSubview:_imageview];
     }
     
     if (!_titleLbl) {
         _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(130, 5, kScreenWidth - 135, 20)];
+        _titleLbl.text = @"这是一条标题";
+        _titleLbl.font = [UIFont systemFontOfSize:15.0f];
         [self.contentView addSubview:_titleLbl];
     }
     
     if (!_priceLbl) {
         _priceLbl = [[UILabel alloc] initWithFrame:CGRectMake(130, 35, kScreenWidth - 135, 25)];
+        _priceLbl.text = @"￥100";
+        _priceLbl.textColor = [UIColor redColor];
+        _priceLbl.font = [UIFont systemFontOfSize:17.0f];
         [self.contentView addSubview:_priceLbl];
     }
     
@@ -56,12 +63,25 @@
     
     if (!_collectCntLbl) {
         _collectCntLbl = [[UILabel alloc] initWithFrame:CGRectMake(150, 80, (kScreenWidth - 155)*0.5, 20)];
+        _collectCntLbl.text = @"10人收藏";
+        _collectCntLbl.textColor = [UIColor grayColor];
+        _collectCntLbl.font = [UIFont systemFontOfSize:13.0f];
         [self.contentView addSubview:_collectCntLbl];
     }
     
     if (!_purchaseCntLbl) {
         _purchaseCntLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 + 77.5, 80, (kScreenWidth - 155)*0.5, 20)];
+        _purchaseCntLbl.text = @"2人购买";
+        _purchaseCntLbl.textColor = [UIColor grayColor];
+        _purchaseCntLbl.font = [UIFont systemFontOfSize:13.0f];
         [self.contentView addSubview:_purchaseCntLbl];
+    }
+    
+    if (!_lineLbl) {
+        _lineLbl = [[UILabel alloc] initWithFrame:CGRectMake(5, 130, kScreenWidth - 10, 0.5)];
+        _lineLbl.backgroundColor = [UIColor grayColor];
+        
+        [self.contentView addSubview:_lineLbl];
     }
 }
 

@@ -205,6 +205,7 @@
 		82D6BD761B65FCBD00B1B54B /* tabbar_icon_timeline_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D6BD381B65FCBD00B1B54B /* tabbar_icon_timeline_selected@2x.png */; };
 		82D6BD7F1B65FCD500B1B54B /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D6BD791B65FCD500B1B54B /* ActivityCell.m */; };
 		82D6BD851B66076500B1B54B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D6BD841B66076500B1B54B /* AppDelegate.m */; };
+		82E0D4161B7AF706007D436E /* UploadPlanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E0D4151B7AF706007D436E /* UploadPlanController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -553,6 +554,8 @@
 		82D6BD791B65FCD500B1B54B /* ActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
 		82D6BD831B66076500B1B54B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		82D6BD841B66076500B1B54B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		82E0D4141B7AF706007D436E /* UploadPlanController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadPlanController.h; sourceTree = "<group>"; };
+		82E0D4151B7AF706007D436E /* UploadPlanController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadPlanController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -743,6 +746,8 @@
 				821CFCC31B78873B00A71BDA /* ExcellentOpenDay */,
 				823FF58D1B706836008C4310 /* ExcellentPlanController.h */,
 				823FF58E1B706836008C4310 /* ExcellentPlanController.m */,
+				82E0D4141B7AF706007D436E /* UploadPlanController.h */,
+				82E0D4151B7AF706007D436E /* UploadPlanController.m */,
 			);
 			path = ExcellentPlanController;
 			sourceTree = "<group>";
@@ -1684,6 +1689,7 @@
 				82D6BC511B65FC3400B1B54B /* UIView+REFrostedViewController.m in Sources */,
 				82D6BBFF1B65FC0200B1B54B /* NSString+MJExtension.m in Sources */,
 				82D6BBDF1B65FBF200B1B54B /* AFURLResponseSerialization.m in Sources */,
+				82E0D4161B7AF706007D436E /* UploadPlanController.m in Sources */,
 				82B769591B799FDF0099EBD3 /* ExcellentFinantialFirstCell.m in Sources */,
 				82D6BC9D1B65FC4200B1B54B /* UIImageView+WebCache.m in Sources */,
 				82D4D55E1B70FFF4008BECC7 /* MYDiscountController.m in Sources */,

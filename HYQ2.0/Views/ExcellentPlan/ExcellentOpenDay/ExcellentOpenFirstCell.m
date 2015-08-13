@@ -46,7 +46,7 @@
     
     if (!_titleLbl) {
         _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMidY(_headerView.frame) - 60, kScreenWidth - 20, 120)];
-        _titleLbl.font = [UIFont systemFontOfSize:12.0f];
+        _titleLbl.font = [UIFont systemFontOfSize:14.0f];
         _titleLbl.textAlignment = NSTextAlignmentLeft;
         _titleLbl.textColor = [UIColor whiteColor];
         _titleLbl.numberOfLines = 5;

@@ -12,6 +12,8 @@
 
 @property (nonatomic, strong) UILabel *titleLbl;
 @property (nonatomic, strong) UILabel *lineLbl;
+@property (nonatomic, strong) UIImageView *imgView1;
+@property (nonatomic, strong) UIImageView *imgView2;
 
 @end
 
@@ -43,6 +45,20 @@
         _lineLbl.backgroundColor = GRAY_COLOR;
         
         [self.contentView addSubview:_lineLbl];
+    }
+    
+    if (!_imgView1) {
+        _imgView1 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 55, kScreenWidth - 20, 100)];
+        _imgView1.backgroundColor = ORANGE_COLOR;
+        
+        [self.contentView addSubview:_imgView1];
+    }
+    
+    if (!_imgView2) {
+        _imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 165, kScreenWidth - 20, 100)];
+        _imgView2.backgroundColor = ORANGE_COLOR;
+        
+        [self.contentView addSubview:_imgView2];
     }
 }
 

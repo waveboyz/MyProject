@@ -49,7 +49,7 @@
     if (!_desLbl) {
         _desLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 55, kScreenWidth - 20, 80)];
         _desLbl.text = @"第一步：在线申请具体某一期训练营\n第二步：评审团审核，邀请面谈\n第三步：审核通过的项目在线付费\n第五步：如期参加先下训练营";
-        _desLbl.font = [UIFont systemFontOfSize:12.0f];
+        _desLbl.font = [UIFont systemFontOfSize:14.0f];
         _desLbl.textColor = [UIColor grayColor];
         _desLbl.numberOfLines = 15;
         

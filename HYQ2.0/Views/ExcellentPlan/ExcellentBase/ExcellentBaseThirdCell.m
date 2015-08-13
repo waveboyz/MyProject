@@ -12,7 +12,12 @@
 
 @property (nonatomic, strong) UILabel *titleLbl;
 @property (nonatomic, strong) UILabel *lineLbl;
-@property (nonatomic, strong) UILabel *desLbl;
+@property (nonatomic, strong) UILabel *desLbl1;
+@property (nonatomic, strong) UILabel *desLbl2;
+@property (nonatomic, strong) UILabel *desLbl3;
+@property (nonatomic, strong) UIImageView *imgView1;
+@property (nonatomic, strong) UIImageView *imgView2;
+@property (nonatomic, strong) UIImageView *imgView3;
 
 @end
 @implementation ExcellentBaseThirdCell
@@ -31,7 +36,7 @@
 {
     if (!_titleLbl) {
         _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, kScreenWidth - 20, 30)];
-        _titleLbl.text = @"服务流程";
+        _titleLbl.text = @"我们的优势";
         _titleLbl.font = [UIFont systemFontOfSize:17.0f];
         _titleLbl.textColor = [UIColor blueColor];
         
@@ -45,15 +50,52 @@
         [self.contentView addSubview:_lineLbl];
     }
     
-    if (!_desLbl) {
-        _desLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 55, kScreenWidth - 20, 170)];
-        _desLbl.textAlignment = NSTextAlignmentCenter;
-        _desLbl.font = [UIFont systemFontOfSize:14.0f];
-        _desLbl.textColor = [UIColor grayColor];
-        _desLbl.numberOfLines = 16;
-        _desLbl.text = @"最的0租金，独立物理办公空间\n\n最近距离接触2000位投资人\n\n最快速1个月即可获得投资\n\n最全面享受14大服务模块\n\n最贴心专属行政助理\\拎包入驻，一年省20万开支\n\n最自由选择，全杭州布局，20余场地任你选";
+    if (!_imgView1) {
+        _imgView1 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 55, kScreenWidth - 20, 200)];
+        _imgView1.backgroundColor = ORANGE_COLOR;
         
-        [self.contentView addSubview:_desLbl];
+        [self.contentView addSubview:_imgView1];
+    }
+    
+    if (!_desLbl1) {
+        _desLbl1 = [[UILabel alloc] initWithFrame:CGRectMake(10, 260, kScreenWidth - 20, 15)];
+        _desLbl1.text = @"0租金拎包入住";
+        _desLbl1.font = [UIFont systemFontOfSize:14.0f];
+        _desLbl1.textColor = [UIColor grayColor];
+        
+        [self.contentView addSubview:_desLbl1];
+    }
+    
+    if (!_imgView2) {
+        _imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 280, kScreenWidth - 20, 200)];
+        _imgView2.backgroundColor = ORANGE_COLOR;
+        
+        [self.contentView addSubview:_imgView2];
+    }
+    
+    if (!_desLbl2) {
+        _desLbl2 = [[UILabel alloc] initWithFrame:CGRectMake(10, 485, kScreenWidth - 20, 15)];
+        _desLbl2.text = @"1秒接触2000投资人";
+        _desLbl2.font = [UIFont systemFontOfSize:14.0f];
+        _desLbl2.textColor = [UIColor grayColor];
+        
+        [self.contentView addSubview:_desLbl2];
+    }
+    
+    if (!_imgView3) {
+        _imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 505, kScreenWidth - 20, 200)];
+        _imgView3.backgroundColor = ORANGE_COLOR;
+        
+        [self.contentView addSubview:_imgView3];
+    }
+    
+    if (!_desLbl3) {
+        _desLbl3  = [[UILabel alloc] initWithFrame:CGRectMake(10, 710, kScreenWidth - 20, 15)];
+        _desLbl3.text = @"14大服务一站式供给";
+        _desLbl3.textColor = [UIColor grayColor];
+        _desLbl3.font = [UIFont systemFontOfSize:14.0f];
+        
+        [self.contentView addSubview:_desLbl3];
     }
 }
 

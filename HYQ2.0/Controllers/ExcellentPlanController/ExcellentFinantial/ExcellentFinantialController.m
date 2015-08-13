@@ -11,6 +11,7 @@
 #import "ExcellentFinantialSecondCell.h"
 #import "ExcellentFinantialThirdCell.h"
 #import "ExcellentFinantialForthCell.h"
+#import "UploadPlanController.h"
 
 @interface ExcellentFinantialController ()
 
@@ -46,14 +47,15 @@
     [joinBtn setTitle:@"申请加入" forState:UIControlStateNormal];
     [joinBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [joinBtn setBackgroundColor:NAVIBAR_GREEN_COLOR];
-    [joinBtn addTarget:self action:@selector(tableviewScrollToTop) forControlEvents:UIControlEventTouchUpInside];
+    [joinBtn addTarget:self action:@selector(joinBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:joinBtn];
 }
 
-- (void)tableviewScrollToTop
+- (void)joinBtnPressed
 {
-    [_tableview scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    UploadPlanController *uploadVC = [[UploadPlanController alloc] init];
+    [self.navigationController pushViewController:uploadVC animated:YES];
 }
 
 - (BOOL)hidesBottomBarWhenPushed

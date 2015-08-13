@@ -8,10 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GlobalConst.h"
-#import "ActivityModel.h"
 
 @interface ActivityCell : UITableViewCell
-
-@property (nonatomic, assign) ActivityModel *activityData;
 
 @end

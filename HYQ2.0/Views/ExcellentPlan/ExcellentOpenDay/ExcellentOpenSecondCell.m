@@ -47,9 +47,9 @@
     }
     
     if (!_desLbl) {
-        _desLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 55, kScreenWidth - 20, 80)];
-        _desLbl.text = @"第一步：在线申请具体某一期训练营\n第二步：评审团审核，邀请面谈\n第三步：审核通过的项目在线付费\n第五步：如期参加先下训练营";
-        _desLbl.font = [UIFont systemFontOfSize:12.0f];
+        _desLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 55, kScreenWidth - 20, 120)];
+        _desLbl.text = @"第一步：在线报名并提交项目计划书。\n第二步：专家团针对项目进行初步评审，第一轮筛选。\n第三步：在第一轮筛选通过的项目中，邀约项目面谈复审。\n第四步：通过筛选的项目由专业导师团进行创业辅导。\n第五步：经过1-6个月孵化，符合条件的项目进入天使有约开放日公开路演。";
+        _desLbl.font = [UIFont systemFontOfSize:14.0f];
         _desLbl.textColor = [UIColor grayColor];
         _desLbl.numberOfLines = 15;
         

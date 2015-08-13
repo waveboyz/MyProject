@@ -11,11 +11,9 @@
 @interface ActivityCell ()
 
 @property (nonatomic, retain) UILabel *titleLbl;
-@property (nonatomic, retain) UILabel *beginLbl;
-@property (nonatomic, retain) UILabel *endLbl;
-@property (nonatomic, retain) UILabel *locLbl;
-@property (nonatomic, retain) UIButton *joinBtn;
-@property (nonatomic, retain) UILabel *lineLbl;;
+@property (nonatomic, strong) UILabel *desLbl;
+@property (nonatomic, strong) UILabel *lineLbl;
+@property (nonatomic, strong) UIImageView *imgPicture;
 
 @end
 
@@ -24,73 +22,44 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self createUI];
+        [self setViews];
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     return self;
 }
 
-- (void)createUI
+- (void)setViews
 {
-    if (!self.titleLbl) {
-        self.titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, kScreenWidth - 20, 30)];
-        self.titleLbl.textColor = USERNAME_COLOR;
-        self.titleLbl.font = [UIFont systemFontOfSize:15.0f];
+    if (!_titleLbl) {
+        _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, kScreenWidth - 130, 30)];
+        _titleLbl.textColor = USERNAME_COLOR;
+        _titleLbl.font = [UIFont systemFontOfSize:15.0f];
+        _titleLbl.text = @"标题要长标题要长标题要长标题要长标题要长标题要长";
         [self.contentView addSubview:self.titleLbl];
     }
-    
-    if (!self.beginLbl) {
-        self.beginLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 40, kScreenWidth - 20, 20)];
-        self.beginLbl.textColor = TIME_COLOR;
-        self.beginLbl.font = [UIFont systemFontOfSize:10.0f];
-        [self.contentView addSubview:self.beginLbl];
-    }
 
-    if (!self.endLbl) {
-        self.endLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 60, kScreenWidth - 20, 20)];
-        self.endLbl.textColor = TIME_COLOR;
-        self.endLbl.font = [UIFont systemFontOfSize:10.0f];
-        [self.contentView addSubview:self.endLbl];
+    if (!_imgPicture) {
+        _imgPicture = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 125, 5, 120, 80)];
+        _imgPicture.backgroundColor = ORANGE_COLOR;
+        [self.contentView addSubview:_imgPicture];
     }
     
-    if (!self.locLbl) {
-        self.locLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 80, kScreenWidth - 20, 20)];
-        self.locLbl.textColor = TIME_COLOR;
-        self.locLbl.font = [UIFont systemFontOfSize:10.0f];
-        [self.contentView addSubview:self.locLbl];
+    if (!_desLbl) {
+        _desLbl = [[UILabel alloc] initWithFrame:CGRectMake(5, 65, kScreenWidth - 125, 15)];
+        _desLbl.font = [UIFont systemFontOfSize:11.0f];
+        _desLbl.textColor = [UIColor grayColor];
+        _desLbl.text = @"发布者|2015.8.12";
+        [self.contentView addSubview:_desLbl];
     }
     
-    if (!self.joinBtn) {
-        self.joinBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.joinBtn setFrame:CGRectMake(10, 100, 120, 30)];
-        self.joinBtn.layer.cornerRadius = 10.0f;
-        [self.joinBtn setTitle:@"报名" forState:UIControlStateNormal];
+    if (!_lineLbl) {
+        _lineLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 90, kScreenWidth, 0.5)];
+        _lineLbl.backgroundColor = [UIColor grayColor];
         
-        [self.contentView addSubview:self.joinBtn];
-    }
-    
-    if (!self.lineLbl) {
-        self.lineLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 140, kScreenWidth, 10)];
-        self.lineLbl.backgroundColor = BG_GRAY_COLOR;
-        
-        [self.contentView addSubview:self.lineLbl];
+        [self.contentView addSubview:_lineLbl];
     }
 }
 
-- (void)setActivityData:(ActivityModel *)activityData
-{
-    self.titleLbl.text = activityData.title;
-    self.beginLbl.text = activityData.begin_time;
-    self.endLbl.text = activityData.end_time;
-    self.locLbl.text = activityData.location;
-    
-    if (activityData.is_end) {
-        [self.joinBtn setTitle:@"已结束" forState:UIControlStateNormal];
-        [self.joinBtn setBackgroundColor:GRAY_COLOR];
-    }else{
-        [self.joinBtn setTitle:@"未开始" forState:UIControlStateNormal];
-        [self.joinBtn setBackgroundColor:ORANGE_COLOR];
-    }
-}
 
 @end

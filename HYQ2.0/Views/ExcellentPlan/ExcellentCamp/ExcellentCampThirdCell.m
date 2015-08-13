@@ -61,7 +61,7 @@
     if (!_desLbl1) {
         _desLbl1 = [[UILabel alloc] initWithFrame:CGRectMake(10, 260, kScreenWidth - 20, 15)];
         _desLbl1.text = @"融资成功是王道";
-        _desLbl1.font = [UIFont systemFontOfSize:12.0f];
+        _desLbl1.font = [UIFont systemFontOfSize:14.0f];
         _desLbl1.textColor = [UIColor grayColor];
         
         [self.contentView addSubview:_desLbl1];
@@ -77,7 +77,7 @@
     if (!_desLbl2) {
         _desLbl2 = [[UILabel alloc] initWithFrame:CGRectMake(10, 485, kScreenWidth - 20, 15)];
         _desLbl2.text = @"海量资源任汲取";
-        _desLbl2.font = [UIFont systemFontOfSize:12.0f];
+        _desLbl2.font = [UIFont systemFontOfSize:14.0f];
         _desLbl2.textColor = [UIColor grayColor];
         
         [self.contentView addSubview:_desLbl2];
@@ -94,7 +94,7 @@
         _desLbl3  = [[UILabel alloc] initWithFrame:CGRectMake(10, 710, kScreenWidth - 20, 15)];
         _desLbl3.text = @"名师亲传18般创业武艺";
         _desLbl3.textColor = [UIColor grayColor];
-        _desLbl3.font = [UIFont systemFontOfSize:12.0f];
+        _desLbl3.font = [UIFont systemFontOfSize:14.0f];
         
         [self.contentView addSubview:_desLbl3];
     }

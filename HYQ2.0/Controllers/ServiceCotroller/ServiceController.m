@@ -10,6 +10,7 @@
 #import "PersonalController.h"
 #import "VOSegmentedControl.h"
 #import "HYQLoginController.h"
+#import "ServiceViewCell.h"
 
 @interface ServiceController ()
 
@@ -111,7 +112,7 @@
 #pragma mark UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -121,8 +122,7 @@
     cell = [tableView dequeueReusableCellWithIdentifier:SERVICE_CELL];
     
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SERVICE_CELL];
-        cell.backgroundColor = ORANGE_COLOR;
+        cell = [[ServiceViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SERVICE_CELL];
     }
 
     return cell;
@@ -132,6 +132,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 130.5f;
 }
 
 @end

@@ -15,6 +15,7 @@
 #import "ExcellentCampController.h"
 #import "ExcellentFinantialController.h"
 #import "ExcellentOpenDayController.h"
+#import "UploadPlanController.h"
 
 @interface ExcellentPlanController ()
 <
@@ -50,15 +51,16 @@
     [joinBtn setTitle:@"申请加入" forState:UIControlStateNormal];
     [joinBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [joinBtn setBackgroundColor:NAVIBAR_GREEN_COLOR];
-    [joinBtn addTarget:self action:@selector(tableviewScrollToTop) forControlEvents:UIControlEventTouchUpInside];
+    [joinBtn addTarget:self action:@selector(joinBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:joinBtn];
     [self.view addSubview:_tableview];
 }
 
-- (void)tableviewScrollToTop
+- (void)joinBtnPressed
 {
-    [_tableview scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    UploadPlanController *uploadVC = [[UploadPlanController alloc] init];
+    [self.navigationController pushViewController:uploadVC animated:YES];
 }
 
 #pragma mark UITableViewDataSource

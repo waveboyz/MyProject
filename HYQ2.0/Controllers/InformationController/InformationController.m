@@ -8,6 +8,7 @@
 
 #import "InformationController.h"
 #import "VOSegmentedControl.h"
+#import "ActivityCell.h"
 
 @interface InformationController ()
 
@@ -97,7 +98,7 @@
 #pragma mark UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -107,11 +108,16 @@
     UITableViewCell *cell;
     cell = [tableView dequeueReusableCellWithIdentifier:INFOR_CELL];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:INFOR_CELL];
-        cell.backgroundColor = ORANGE_COLOR;
+        cell = [[ActivityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:INFOR_CELL];
     }
 
     return cell;
+}
+
+#pragma mark UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 90.5f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

@@ -41,7 +41,7 @@
         
         [self.contentView addSubview:_titleLbl];
     }
-    
+
     if (!_lineLbl) {
         _lineLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 45, kScreenWidth - 20, 0.5)];
         _lineLbl.backgroundColor = GRAY_COLOR;

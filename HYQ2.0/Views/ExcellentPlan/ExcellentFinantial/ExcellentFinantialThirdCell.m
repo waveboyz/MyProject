@@ -37,7 +37,7 @@
 {
     if (!_titleLbl) {
         _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, kScreenWidth - 20, 30)];
-        _titleLbl.text = @"服务流程";
+        _titleLbl.text = @"我们的优势";
         _titleLbl.font = [UIFont systemFontOfSize:17.0f];
         _titleLbl.textColor = [UIColor blueColor];
         
@@ -61,7 +61,7 @@
     if (!_desLbl1) {
         _desLbl1 = [[UILabel alloc] initWithFrame:CGRectMake(10, 260, kScreenWidth - 20, 15)];
         _desLbl1.text = @"额度多 10万元-10个亿";
-        _desLbl1.font = [UIFont systemFontOfSize:12.0f];
+        _desLbl1.font = [UIFont systemFontOfSize:14.0f];
         _desLbl1.textColor = [UIColor grayColor];
         
         [self.contentView addSubview:_desLbl1];
@@ -77,7 +77,7 @@
     if (!_desLbl2) {
         _desLbl2 = [[UILabel alloc] initWithFrame:CGRectMake(10, 485, kScreenWidth - 20, 15)];
         _desLbl2.text = @"放款快，最快3天放款";
-        _desLbl2.font = [UIFont systemFontOfSize:12.0f];
+        _desLbl2.font = [UIFont systemFontOfSize:14.0f];
         _desLbl2.textColor = [UIColor grayColor];
         
         [self.contentView addSubview:_desLbl2];
@@ -94,7 +94,7 @@
         _desLbl3  = [[UILabel alloc] initWithFrame:CGRectMake(10, 710, kScreenWidth - 20, 15)];
         _desLbl3.text = @"服务好 价格最实惠";
         _desLbl3.textColor = [UIColor grayColor];
-        _desLbl3.font = [UIFont systemFontOfSize:12.0f];
+        _desLbl3.font = [UIFont systemFontOfSize:14.0f];
         
         [self.contentView addSubview:_desLbl3];
     }
