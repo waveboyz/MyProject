@@ -8,6 +8,7 @@
 
 #import "MYDiscountController.h"
 #import "VOSegmentedControl.h"
+#import "MyDiscountCell.h"
 
 @interface MYDiscountController ()
 
@@ -43,12 +44,7 @@
 #pragma mark UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 4;
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -57,8 +53,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:DISCOUNT_CELL];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:DISCOUNT_CELL];
-        cell.backgroundColor = ORANGE_COLOR;
+        cell = [[MyDiscountCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:DISCOUNT_CELL];
     }
     
     return cell;
@@ -68,6 +63,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 120.0f;
 }
 
 @end

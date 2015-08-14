@@ -7,6 +7,7 @@
 //
 
 #import "MyAddressController.h"
+#import "MyAddressCell.h"
 
 @interface MyAddressController ()
 
@@ -36,7 +37,9 @@
     _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 124) style:UITableViewStylePlain];
     _tableview.delegate = self;
     _tableview.dataSource = self;
-    _tableview.backgroundColor = ORANGE_COLOR;
+    _tableview.backgroundColor = GRAY_COLOR;
+    _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableview.showsVerticalScrollIndicator = NO;
     
     [self.view addSubview:_tableview];
 }
@@ -49,12 +52,7 @@
 #pragma mark UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 4;
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -63,7 +61,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ADDRESS_CELL];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ADDRESS_CELL];
+        cell = [[MyAddressCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ADDRESS_CELL];
     }
     
     return cell;
@@ -74,4 +72,10 @@
 {
     [_tableview deselectRowAtIndexPath:indexPath animated:YES];
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80.5f;
+}
+
 @end

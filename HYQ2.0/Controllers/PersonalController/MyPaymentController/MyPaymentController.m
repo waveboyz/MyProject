@@ -9,6 +9,7 @@
 #import "MyPaymentController.h"
 #import "VOSegmentedControl.h"
 #import "MyPaymentHeader.h"
+#import "MyPaymentCell.h"
 
 @interface MyPaymentController ()
 
@@ -50,11 +51,6 @@
 #pragma mark UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
     return 4;
 }
 
@@ -64,8 +60,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PAYMENT_CELL];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:PAYMENT_CELL];
-        cell.backgroundColor = ORANGE_COLOR;
+        cell = [[MyPaymentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:PAYMENT_CELL];
     }
     
     return cell;
@@ -75,6 +70,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60.5f;
 }
 
 @end

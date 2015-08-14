@@ -25,6 +25,7 @@ static const CGFloat MJDuration = 1.0;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.showsVerticalScrollIndicator = NO;
     
     MJRefreshNormalHeader *headerView = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
     [headerView setTitle:@"我将带头冲锋~" forState:MJRefreshStateIdle];

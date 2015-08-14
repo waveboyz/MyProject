@@ -24,15 +24,15 @@
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
-    {
-        [self initViews];
+    if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]){
+        [self setViews];
+        self.selectionStyle = UITableViewCellSelectionStyleGray;
     }
     
     return self;
 }
 
-- (void)initViews
+- (void)setViews;
 {
     if (!_imageview) {
         _imageview = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 120, 120)];

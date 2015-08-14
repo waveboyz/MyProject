@@ -7,6 +7,7 @@
 //
 
 #import "MyCollectController.h"
+#import "MyCollectCell.h"
 
 @interface MyCollectController ()
 
@@ -30,7 +31,9 @@
     _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
     _tableview.delegate =self;
     _tableview.dataSource = self;
-    _tableview.backgroundColor = ORANGE_COLOR;
+    _tableview.backgroundColor = GRAY_COLOR;
+    _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableview.showsVerticalScrollIndicator = NO;
     
     [self.view addSubview:_tableview];
 }
@@ -43,12 +46,7 @@
 #pragma mark UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 4;
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -57,7 +55,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:COLLECT_CELL];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:COLLECT_CELL];
+        cell = [[MyCollectCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:COLLECT_CELL];
     }
     
     return cell;
@@ -67,6 +65,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [_tableview deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 90.5f;
 }
 
 @end
