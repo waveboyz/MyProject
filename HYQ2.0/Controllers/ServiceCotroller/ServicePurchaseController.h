@@ -1,5 +1,5 @@
 //
-//  ServiceDetailController.h
+//  ServicePurchaseController.h
 //  HYQ2.0
 //
 //  Created by waveboyz on 15/8/14.
@@ -8,10 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface ServiceDetailController : BaseViewController
-<
-    UITableViewDataSource,
-    UITableViewDelegate
->
+@interface ServicePurchaseController : BaseViewController
 
 @end

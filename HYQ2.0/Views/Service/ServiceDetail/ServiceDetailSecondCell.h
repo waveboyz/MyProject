@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GlobalConst.h"
 
 @interface ServiceDetailSecondCell : UITableViewCell
 

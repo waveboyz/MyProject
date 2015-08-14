@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = BG_GRAY_COLOR;
-    self.modalTransitionStyle = UIModalTransitionStylePartialCurl;
+    self.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     // Do any additional setup after loading the view.
 }
 

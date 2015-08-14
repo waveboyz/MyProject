@@ -11,6 +11,7 @@
 #import "VOSegmentedControl.h"
 #import "HYQLoginController.h"
 #import "ServiceViewCell.h"
+#import "ServiceDetailController.h"
 
 @interface ServiceController ()
 
@@ -131,6 +132,9 @@
 #pragma mark UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    ServiceDetailController *detail = [[ServiceDetailController alloc] init];
+    [self presentViewController:detail animated:YES completion:^(void){}];
+    
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

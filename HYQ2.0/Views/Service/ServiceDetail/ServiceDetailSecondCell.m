@@ -8,16 +8,32 @@
 
 #import "ServiceDetailSecondCell.h"
 
+@interface ServiceDetailSecondCell ()
+
+@property (nonatomic, strong) UILabel *titleLbl;
+@property (nonatomic, strong) UILabel *lineLbl;
+@property (nonatomic, strong) UILabel *desLbl1;
+@property (nonatomic, strong) UILabel *desLbl2;
+@property (nonatomic, strong) UILabel *desLbl3;
+@property (nonatomic, strong) UILabel *desLbl4;
+
+@end
+
 @implementation ServiceDetailSecondCell
 
-- (void)awakeFromNib {
-    // Initialization code
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self setViews];
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+
+    return self;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+- (void)setViews
+{
 
-    // Configure the view for the selected state
 }
 
 @end

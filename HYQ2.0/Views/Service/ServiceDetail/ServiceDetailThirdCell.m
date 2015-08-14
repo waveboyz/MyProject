@@ -10,14 +10,19 @@
 
 @implementation ServiceDetailThirdCell
 
-- (void)awakeFromNib {
-    // Initialization code
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self setViews];
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+
+    return self;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+- (void)setViews
+{
 
-    // Configure the view for the selected state
 }
 
 @end

@@ -1,5 +1,5 @@
 //
-//  ServiceDetailHeadCell.h
+//  MyOrderEvaluateController.h
 //  HYQ2.0
 //
 //  Created by waveboyz on 15/8/14.
@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GlobalConst.h"
 
-@interface ServiceDetailHeadCell : UITableViewCell
+@interface MyOrderEvaluateController : UIViewController
 
 @end

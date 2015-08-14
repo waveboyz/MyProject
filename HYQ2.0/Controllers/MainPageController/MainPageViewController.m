@@ -16,7 +16,7 @@
 @interface MainPageController ()
 
 @property (nonatomic, retain) UIScrollView *scrollBGView;
-@property (nonatomic, strong) NSMutableArray *imgArr;
+@property (nonatomic, assign) NSMutableArray *imgArr;
 
 @end
 
@@ -25,19 +25,24 @@
 - (id)init
 {
     if (self = [super init]) {
-        NSString *stringPath = [[NSBundle mainBundle] pathForResource:@"URLS.plist" ofType:nil];
-        NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithContentsOfFile:stringPath];
-        NSArray *dicArr = [dic objectForKey:@"urls"];
-        self.imgArr = [NSMutableArray arrayWithArray:dicArr];
+
     }
     return self;
+}
+
+- (NSMutableArray *)imgArr
+{
+    NSString *stringPath = [[NSBundle mainBundle] pathForResource:@"URLS.plist" ofType:nil];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithContentsOfFile:stringPath];
+    NSArray *dicArr = [dic objectForKey:@"urls"];
+    NSMutableArray *listArr = [NSMutableArray arrayWithArray:dicArr];
+    
+    return listArr;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    HYQResponse *response = [[HYQResponse alloc] init];
-//    [response getresponseOperation];
     
     UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"tabbar_icon_person"]
                                                                 style:UIBarButtonItemStyleDone

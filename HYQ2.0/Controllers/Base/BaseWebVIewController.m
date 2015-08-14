@@ -29,15 +29,15 @@
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    self.navigationController.toolbarHidden = NO;
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    self.navigationController.toolbarHidden = YES;
-}
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    self.navigationController.toolbarHidden = NO;
+//}
+//
+//- (void)viewWillDisappear:(BOOL)animated
+//{
+//    self.navigationController.toolbarHidden = YES;
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,15 +48,15 @@
 {
     self.title = _titleStr;
     
-    _backBtn = [[UIBarButtonItem alloc] initWithTitle:@"后退" style:UIBarButtonItemStyleDone target:self action:@selector(webViewBack)];
-    _forwardBtn = [[UIBarButtonItem alloc] initWithTitle:@"前进" style:UIBarButtonItemStyleDone target:self action:@selector(webViewForward)];
-    _refreshBtn = [[UIBarButtonItem alloc] initWithTitle:@"刷新" style:UIBarButtonItemStyleDone target:self action:@selector(webViewRefresh)];
-    _backBtn.enabled = _webview.canGoBack;
-    _forwardBtn.enabled = _webview.canGoForward;
-    [self.navigationController.toolbar setBarTintColor:NAVIBAR_GREEN_COLOR];
-    self.toolbarItems = @[_backBtn,_forwardBtn,_refreshBtn];
+//    _backBtn = [[UIBarButtonItem alloc] initWithTitle:@"后退" style:UIBarButtonItemStyleDone target:self action:@selector(webViewBack)];
+//    _forwardBtn = [[UIBarButtonItem alloc] initWithTitle:@"前进" style:UIBarButtonItemStyleDone target:self action:@selector(webViewForward)];
+//    _refreshBtn = [[UIBarButtonItem alloc] initWithTitle:@"刷新" style:UIBarButtonItemStyleDone target:self action:@selector(webViewRefresh)];
+//    _backBtn.enabled = _webview.canGoBack;
+//    _forwardBtn.enabled = _webview.canGoForward;
+//    [self.navigationController.toolbar setBarTintColor:NAVIBAR_GREEN_COLOR];
+//    self.toolbarItems = @[_backBtn,_forwardBtn,_refreshBtn];
     
-    _webview = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+    _webview = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 49)];
     _webview.delegate = self;
     [self.view addSubview:_webview];
     [self showWebView];
@@ -98,6 +98,7 @@
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     [self showStateHudWithText:@"网页加载失败~"];
+    [self dismissViewControllerAnimated:YES completion:^(void){}];
 }
 
 @end
