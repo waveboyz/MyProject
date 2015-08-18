@@ -10,5 +10,10 @@
 #import "BaseViewController.h"
 
 @interface MainPageController : BaseViewController
+<
+    UIScrollViewDelegate,
+    UITableViewDataSource,
+    UITableViewDelegate
+>
 
 @end

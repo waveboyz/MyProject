@@ -75,6 +75,8 @@
 		82B769741B79CC1A0099EBD3 /* ExcellentOpenSecondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B769731B79CC1A0099EBD3 /* ExcellentOpenSecondCell.m */; };
 		82B769771B79CC280099EBD3 /* ExcellentOpenThirdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B769761B79CC280099EBD3 /* ExcellentOpenThirdCell.m */; };
 		82B7697A1B79CC360099EBD3 /* ExcellentOpenForthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B769791B79CC360099EBD3 /* ExcellentOpenForthCell.m */; };
+		82D2B1961B81AE770005948E /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D2B1951B81AE770005948E /* UINavigationBar+Awesome.m */; };
+		82D2B1991B81B1D90005948E /* MainHeaderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D2B1981B81B1D90005948E /* MainHeaderViewCell.m */; };
 		82D4D55E1B70FFF4008BECC7 /* MYDiscountController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D4D55D1B70FFF4008BECC7 /* MYDiscountController.m */; };
 		82D4D5621B7104D0008BECC7 /* MyorderFormController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D4D5611B7104D0008BECC7 /* MyorderFormController.m */; };
 		82D4D5661B710726008BECC7 /* MyCollectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D4D5651B710726008BECC7 /* MyCollectController.m */; };
@@ -365,6 +367,10 @@
 		82B769761B79CC280099EBD3 /* ExcellentOpenThirdCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentOpenThirdCell.m; sourceTree = "<group>"; };
 		82B769781B79CC360099EBD3 /* ExcellentOpenForthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentOpenForthCell.h; sourceTree = "<group>"; };
 		82B769791B79CC360099EBD3 /* ExcellentOpenForthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentOpenForthCell.m; sourceTree = "<group>"; };
+		82D2B1941B81AE770005948E /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
+		82D2B1951B81AE770005948E /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
+		82D2B1971B81B1D90005948E /* MainHeaderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainHeaderViewCell.h; sourceTree = "<group>"; };
+		82D2B1981B81B1D90005948E /* MainHeaderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainHeaderViewCell.m; sourceTree = "<group>"; };
 		82D4D55C1B70FFF4008BECC7 /* MYDiscountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYDiscountController.h; sourceTree = "<group>"; };
 		82D4D55D1B70FFF4008BECC7 /* MYDiscountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYDiscountController.m; sourceTree = "<group>"; };
 		82D4D5601B7104D0008BECC7 /* MyorderFormController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyorderFormController.h; sourceTree = "<group>"; };
@@ -661,6 +667,8 @@
 			isa = PBXGroup;
 			children = (
 				82067C001B7218A400B803A9 /* QRView */,
+				82D2B1971B81B1D90005948E /* MainHeaderViewCell.h */,
+				82D2B1981B81B1D90005948E /* MainHeaderViewCell.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1130,6 +1138,8 @@
 		82D6BBBE1B65FB9900B1B54B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				82D2B1941B81AE770005948E /* UINavigationBar+Awesome.h */,
+				82D2B1951B81AE770005948E /* UINavigationBar+Awesome.m */,
 				82D6BC9F1B65FC6E00B1B54B /* GlobalConst.h */,
 				82D6BCA01B65FC6E00B1B54B /* GlobalConst.m */,
 				82D6BCA11B65FC6E00B1B54B /* NSString+HCBStringHelper.h */,
@@ -1795,6 +1805,7 @@
 				822B69AB1B7DD5E500CB0C13 /* ServicePurchaseController.m in Sources */,
 				82D6BBDE1B65FBF200B1B54B /* AFURLRequestSerialization.m in Sources */,
 				8291CDB91B7C708600656300 /* MyAddressCell.m in Sources */,
+				82D2B1991B81B1D90005948E /* MainHeaderViewCell.m in Sources */,
 				82D6BBF91B65FC0200B1B54B /* MJFoundation.m in Sources */,
 				8286B3CA1B73012200897A4D /* InfomationCell.m in Sources */,
 				82D6BBDD1B65FBF200B1B54B /* AFURLConnectionOperation.m in Sources */,
@@ -1863,6 +1874,7 @@
 				82D6BC391B65FC2D00B1B54B /* MJRefreshNormalHeader.m in Sources */,
 				8291CDC01B7C9A8B00656300 /* MyDiscountCell.m in Sources */,
 				823FF58A1B70681F008C4310 /* PersonalController.m in Sources */,
+				82D2B1961B81AE770005948E /* UINavigationBar+Awesome.m in Sources */,
 				823FF5B01B70BF3C008C4310 /* EditHeaderCell.m in Sources */,
 				82D6BC341B65FC2D00B1B54B /* MJRefreshAutoStateFooter.m in Sources */,
 				82B769741B79CC1A0099EBD3 /* ExcellentOpenSecondCell.m in Sources */,

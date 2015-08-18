@@ -34,6 +34,11 @@
     [self createUI];
 }
 
+- (BOOL)hidesBottomBarWhenPushed
+{
+    return YES;
+}
+
 - (void)createUI
 {
     self.view.backgroundColor = NAVIBAR_GREEN_COLOR;

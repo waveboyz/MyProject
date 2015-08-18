@@ -7,9 +7,7 @@
 //
 
 #import "ServiceController.h"
-#import "PersonalController.h"
 #import "VOSegmentedControl.h"
-#import "HYQLoginController.h"
 #import "ServiceViewCell.h"
 #import "ServiceDetailController.h"
 
@@ -61,36 +59,6 @@
     _segment.selectedIndicatorColor = NAVIBAR_GREEN_COLOR;
     [self.view addSubview:_segment];
     [_segment addTarget:self action:@selector(swipSegmentWithIndexPath:) forControlEvents:UIControlEventValueChanged];
-    
-    UISwipeGestureRecognizer *rightGes = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipSegmentToRightGesture)];
-    rightGes.direction = UISwipeGestureRecognizerDirectionLeft;
-    
-    UISwipeGestureRecognizer *leftGes = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipSegmentToLeftGesture)];
-    
-    [self.tableView addGestureRecognizer:leftGes];
-    [self.tableView addGestureRecognizer:rightGes];
-}
-
-- (void)swipSegmentToLeftGesture
-{
-    if (_segment.selectedSegmentIndex == 0) {
-    }else{
-        _segment.selectedSegmentIndex --;
-        
-        [self.tableView.header beginRefreshing];
-        [self loadNewData];
-    }
-}
-
-- (void)swipSegmentToRightGesture
-{
-    if (_segment.selectedSegmentIndex == self.maxSegCnt - 1) {
-    }else{
-        _segment.selectedSegmentIndex ++;
-        
-        [self.tableView.header beginRefreshing];
-        [self loadNewData];
-    }
 }
 
 - (void)swipSegmentWithIndexPath:(NSUInteger)indexpath
@@ -101,13 +69,6 @@
     else{
         [_segment setSegment:nil atIndex:(_segment.selectedSegmentIndex +1)];
     }
-}
-
-- (void)showPersonalBtnPressed
-{
-    HYQLoginController *loginVC = [[HYQLoginController alloc] init];
-    loginVC.modalPresentationStyle = UIModalPresentationCustom;
-    [self.navigationController presentViewController:loginVC animated:YES completion:^(void){}];
 }
 
 #pragma mark UITableViewDataSource
