@@ -42,7 +42,6 @@
     _tableview.dataSource = self;
     _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableview.showsVerticalScrollIndicator = NO;
-    
     [self.view addSubview:_tableview];
     
     UIView *toolView = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 49, kScreenWidth, 49)];
@@ -54,14 +53,13 @@
     purchaseBtn.frame = CGRectMake(kScreenWidth - 120, 0, 120, 49);
     [purchaseBtn setTitle:@"立即购买" forState:UIControlStateNormal];
     [purchaseBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    
     [toolView addSubview:purchaseBtn];
     
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    backBtn.backgroundColor = [UIColor blackColor];
-    backBtn.frame = CGRectMake(0, 0, 60, 49);
+    [backBtn setImage:[UIImage imageNamed:@"backIcon"] forState:UIControlStateNormal];
+    backBtn.imageView.contentMode = UIViewContentModeCenter;
+    backBtn.frame = CGRectMake(0, 0, 49, 49);
     [backBtn addTarget:self action:@selector(dismissBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-    
     [toolView addSubview:backBtn];
 }
 
@@ -103,6 +101,22 @@
     return cell;
 }
 
+#pragma mark UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat sectionHeaderHeight = 30;
+    
+    if (scrollView.contentOffset.y<=sectionHeaderHeight&&scrollView.contentOffset.y>=0) {
+        
+        scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
+        
+    } else if (scrollView.contentOffset.y>=sectionHeaderHeight) {
+        
+        scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
+        
+    }
+}
+
 #pragma mark UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -113,21 +127,31 @@
 {
     if (indexPath.section == 0) {
         return 375;
+    }else if (indexPath.section == 1){
+        return 110.5f;
     }
     
-    return 100;
+    return 230;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    if (section == 0) {
+        return nil;
+    }
+    
     UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 30)];
     footer.backgroundColor = GRAY_COLOR;
 
     return footer;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    if (section == 0) {
+        return 0;
+    }
+    
     return 30.0f;
 }
 

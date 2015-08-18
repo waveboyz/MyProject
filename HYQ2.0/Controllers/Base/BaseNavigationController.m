@@ -7,7 +7,6 @@
 //
 
 #import "BaseNavigationController.h"
-#import "UIViewController+REFrostedViewController.h"
 #import "BaseTabbarController.h"
 
 @interface BaseNavigationController ()

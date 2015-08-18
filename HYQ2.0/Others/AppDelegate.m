@@ -8,13 +8,9 @@
 
 #import "AppDelegate.h"
 #import "BaseTabbarController.h"
-#import "REFrostedViewController.h"
 #import "PersonalController.h"
 
 @interface AppDelegate ()
-<
-REFrostedViewControllerDelegate
->
 
 @property (nonatomic, strong)   BaseTabbarController *tabBarVC;
 

@@ -73,7 +73,7 @@
         _firstIcon.frame = CGRectMake(20, 165, IconWidth, IconWidth);
         [_firstIcon addTarget:self action:@selector(iconBtnPressedWithTag:) forControlEvents:UIControlEventTouchUpInside];
         _firstIcon.tag = 0;
-        
+        _firstIcon.backgroundColor = ORANGE_COLOR;
         [self.contentView addSubview:_firstIcon];
     }
     
@@ -83,7 +83,7 @@
         _secondIcon.frame = CGRectMake(spaceWidth + IconWidth + 20, 165, IconWidth, IconWidth);
         [_secondIcon addTarget:self action:@selector(iconBtnPressedWithTag:) forControlEvents:UIControlEventTouchUpInside];
         _secondIcon.tag = 1;
-        
+        _secondIcon.backgroundColor = ORANGE_COLOR;
         [self.contentView addSubview:_secondIcon];
     }
     
@@ -93,7 +93,7 @@
         _thirdIcon.frame = CGRectMake((spaceWidth + IconWidth) * 2 + 20, 165, IconWidth, IconWidth);
         [_thirdIcon addTarget:self action:@selector(iconBtnPressedWithTag:) forControlEvents:UIControlEventTouchUpInside];
         _thirdIcon.tag = 2;
-        
+        _thirdIcon.backgroundColor = ORANGE_COLOR;
         [self.contentView addSubview:_thirdIcon];
     }
     
@@ -103,7 +103,7 @@
         _forthIcon.frame = CGRectMake((spaceWidth + IconWidth) * 3 + 20, 165, IconWidth, IconWidth);
         [_forthIcon addTarget:self action:@selector(iconBtnPressedWithTag:) forControlEvents:UIControlEventTouchUpInside];
         _forthIcon.tag = 3;
-        
+        _forthIcon.backgroundColor = ORANGE_COLOR;
         [self.contentView addSubview:_forthIcon];
     }
     

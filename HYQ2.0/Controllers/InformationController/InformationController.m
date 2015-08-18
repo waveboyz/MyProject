@@ -9,6 +9,7 @@
 #import "InformationController.h"
 #import "VOSegmentedControl.h"
 #import "ActivityCell.h"
+#import "BaseWebVIewController.h"
 
 @interface InformationController ()
 
@@ -89,6 +90,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    BaseWebVIewController *webVC = [[BaseWebVIewController alloc] initWithUrl:@"https://www.taobao.com" andTitle:nil];
+    
+    [self presentViewController:webVC animated:YES completion:^(void){}];
 }
 
 @end

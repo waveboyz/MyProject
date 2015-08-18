@@ -62,7 +62,7 @@
     }
     
     if (!_currentPriLbl) {
-        _currentPriLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 340, 0, 20)];
+        _currentPriLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 340, 120, 20)];
         _currentPriLbl.textColor = [UIColor redColor];
         _currentPriLbl.font = [UIFont systemFontOfSize:17.0f];
         _currentPriLbl.text = @"￥260.00";
@@ -70,26 +70,30 @@
         NSAttributedString *attStr = [[NSAttributedString alloc] initWithString:_currentPriLbl.text];
         NSRange range = NSMakeRange(0, attStr.length);
         NSDictionary *dic = [attStr attributesAtIndex:0 effectiveRange:&range];
-        CGSize size = [_currentPriLbl.text boundingRectWithSize:CGSizeMake(kScreenWidth * 0.5, 20) options:NSStringDrawingTruncatesLastVisibleLine attributes:dic context:nil].size;
+        CGSize size = [_currentPriLbl.text boundingRectWithSize:CGSizeMake(120 , 20)
+                                                        options:NSStringDrawingUsesLineFragmentOrigin
+                                                     attributes:dic
+                                                        context:nil].size;
         _currentPriLbl.frame = CGRectMake(10, 340, size.width, 20);
         
         [self.contentView addSubview:_currentPriLbl];
     }
     
     if (!_oldPriceLbl) {
-        _oldPriceLbl = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_oldPriceLbl.frame) + 5, CGRectGetMaxY(_oldPriceLbl.frame) - 15, 120, 15)];
-        _oldPriceLbl.font = [UIFont systemFontOfSize:130.f];
-        _oldPriceLbl.textColor = GRAY_COLOR;
+        _oldPriceLbl = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_currentPriLbl.frame) + 5, CGRectGetMaxY(_currentPriLbl.frame) - 15, 120, 15)];
+        _oldPriceLbl.font = [UIFont systemFontOfSize:13.0f];
+        _oldPriceLbl.textColor = [UIColor grayColor];
         NSString *str = @"原价：￥350";
-        
         NSUInteger length = [str length];
+        //添加删除线
         NSMutableAttributedString *attri = [[NSMutableAttributedString alloc] initWithString:str];
         [attri addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlinePatternSolid | NSUnderlineStyleSingle) range:NSMakeRange(2, length - 2)];
-        [attri addAttribute:NSStrikethroughColorAttributeName value:GRAY_COLOR range:NSMakeRange(0, length)];
+        //删除线颜色
+        [attri addAttribute:NSStrikethroughColorAttributeName value:[UIColor grayColor] range:NSMakeRange(0, length)];
         [_oldPriceLbl setAttributedText:attri];
-        
+
         [self.contentView addSubview:_oldPriceLbl];
     }
-
 }
+
 @end

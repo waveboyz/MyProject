@@ -29,15 +29,15 @@
     return self;
 }
 
-//- (void)viewWillAppear:(BOOL)animated
-//{
-//    self.navigationController.toolbarHidden = NO;
-//}
-//
-//- (void)viewWillDisappear:(BOOL)animated
-//{
-//    self.navigationController.toolbarHidden = YES;
-//}
+- (BOOL)hidesBottomBarWhenPushed
+{
+    return YES;
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -60,6 +60,18 @@
     _webview.delegate = self;
     [self.view addSubview:_webview];
     [self showWebView];
+    
+    UIView *toolview = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 49, kScreenWidth, 49)];
+    toolview.backgroundColor = ORANGE_COLOR;
+    
+    [self.view addSubview:toolview];
+    
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backBtn.frame = CGRectMake(0, 0, 49, 49);
+    [backBtn setImage:[UIImage imageNamed:@"backIcon"] forState:UIControlStateNormal];
+    [backBtn addTarget:self action:@selector(dismissBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    
+    [toolview addSubview:backBtn];
 }
 
 - (void)showWebView
@@ -69,20 +81,26 @@
     [_webview loadRequest:req];
 }
 
-- (void)webViewBack
+- (void)dismissBtnPressed
 {
-    [_webview goBack];
+    [self dismissViewControllerAnimated:YES completion:^(void){}];
 }
 
-- (void)webViewForward
-{
-    [_webview goForward];
-}
-
-- (void)webViewRefresh
-{
-    [_webview reload];
-}
+//
+//- (void)webViewBack
+//{
+//    [_webview goBack];
+//}
+//
+//- (void)webViewForward
+//{
+//    [_webview goForward];
+//}
+//
+//- (void)webViewRefresh
+//{
+//    [_webview reload];
+//}
 
 #pragma mark UIWebViewDelegate
 - (void)webViewDidStartLoad:(UIWebView *)webView

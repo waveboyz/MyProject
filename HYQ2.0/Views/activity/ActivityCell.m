@@ -23,7 +23,7 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self setViews];
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.selectionStyle = UITableViewCellSelectionStyleDefault;
     }
     
     return self;
@@ -32,10 +32,12 @@
 - (void)setViews
 {
     if (!_titleLbl) {
-        _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, kScreenWidth - 130, 30)];
+        _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, kScreenWidth - 135, 50)];
         _titleLbl.textColor = USERNAME_COLOR;
         _titleLbl.font = [UIFont systemFontOfSize:15.0f];
         _titleLbl.text = @"标题要长标题要长标题要长标题要长标题要长标题要长";
+        _titleLbl.lineBreakMode = NSLineBreakByCharWrapping;
+        _titleLbl.numberOfLines = 2;
         [self.contentView addSubview:self.titleLbl];
     }
 

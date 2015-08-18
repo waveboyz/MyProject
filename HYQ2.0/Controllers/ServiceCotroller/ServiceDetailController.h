@@ -11,7 +11,8 @@
 @interface ServiceDetailController : BaseViewController
 <
     UITableViewDataSource,
-    UITableViewDelegate
+    UITableViewDelegate,
+    UIScrollViewDelegate
 >
 
 @end

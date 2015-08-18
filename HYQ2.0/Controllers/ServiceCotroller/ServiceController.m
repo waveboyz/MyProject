@@ -31,12 +31,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"tabbar_icon_person"]
-                                                                style:UIBarButtonItemStyleDone
-                                                               target:self
-                                                               action:@selector(showPersonalBtnPressed)];
-    [self.navigationItem setLeftBarButtonItem:leftBtn animated:YES];
-
     self.title = @"产品服务";
     [self createUI];
 }

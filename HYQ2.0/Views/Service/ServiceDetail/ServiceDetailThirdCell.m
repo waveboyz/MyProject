@@ -8,6 +8,13 @@
 
 #import "ServiceDetailThirdCell.h"
 
+@interface ServiceDetailThirdCell ()
+
+@property (nonatomic, strong) UILabel *titleLbl;
+@property (nonatomic, strong) UILabel *lineLbl;
+
+@end
+
 @implementation ServiceDetailThirdCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -22,7 +29,21 @@
 
 - (void)setViews
 {
-
+    if (!_titleLbl) {
+        _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, kScreenWidth - 10, 20)];
+        _titleLbl.font = [UIFont systemFontOfSize:15.0f];
+        _titleLbl.textColor = [UIColor blackColor];
+        _titleLbl.text = @"产品详情";
+        
+        [self.contentView addSubview:_titleLbl];
+    }
+    
+    if (!_lineLbl) {
+        _lineLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 40, kScreenWidth - 20, 0.5)];
+        _lineLbl.backgroundColor = GRAY_COLOR;
+        
+        [self.contentView addSubview:_lineLbl];
+    }
 }
 
 @end

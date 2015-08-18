@@ -10,7 +10,8 @@
 
 @interface ExcellentPlanController : BaseViewController
 <
-UITableViewDataSource,
-UITableViewDelegate
+    UITableViewDataSource,
+    UITableViewDelegate,
+    UIScrollViewDelegate
 >
 @end

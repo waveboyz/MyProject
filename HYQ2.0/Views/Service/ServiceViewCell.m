@@ -57,12 +57,12 @@
     }
     
     if (!_collectView) {
-        _collectView = [[UIImageView alloc] initWithFrame:CGRectMake(130, 80, 20, 20)];
+        _collectView = [[UIImageView alloc] initWithFrame:CGRectMake(130, 105, 20, 15)];
         [self.contentView addSubview:_collectView];
     }
     
     if (!_collectCntLbl) {
-        _collectCntLbl = [[UILabel alloc] initWithFrame:CGRectMake(150, 80, (kScreenWidth - 155)*0.5, 20)];
+        _collectCntLbl = [[UILabel alloc] initWithFrame:CGRectMake(150, 105, (kScreenWidth - 155)*0.5, 15)];
         _collectCntLbl.text = @"10人收藏";
         _collectCntLbl.textColor = [UIColor grayColor];
         _collectCntLbl.font = [UIFont systemFontOfSize:13.0f];
@@ -70,7 +70,7 @@
     }
     
     if (!_purchaseCntLbl) {
-        _purchaseCntLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 + 77.5, 80, (kScreenWidth - 155)*0.5, 20)];
+        _purchaseCntLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 + 77.5, 105, (kScreenWidth - 155)*0.5, 15)];
         _purchaseCntLbl.text = @"2人购买";
         _purchaseCntLbl.textColor = [UIColor grayColor];
         _purchaseCntLbl.font = [UIFont systemFontOfSize:13.0f];

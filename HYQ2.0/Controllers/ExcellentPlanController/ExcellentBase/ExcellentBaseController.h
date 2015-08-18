@@ -11,7 +11,8 @@
 @interface ExcellentBaseController : BaseViewController
 <
     UITableViewDataSource,
-    UITableViewDelegate
+    UITableViewDelegate,
+    UIScrollViewDelegate
 >
 
 @end

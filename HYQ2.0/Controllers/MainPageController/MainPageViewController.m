@@ -68,18 +68,19 @@
 
 - (void)createUI
 {
-    UIButton *imgBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 8, 8)];
-    imgBtn.contentMode = UIViewContentModeScaleAspectFit;
-    imgBtn.layer.cornerRadius = CGRectGetWidth(imgBtn.frame)/2;
+    UIButton *imgBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 0, 38)];
+    imgBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    imgBtn.layer.cornerRadius = CGRectGetWidth(imgBtn.frame)/4;
     [imgBtn addTarget:self action:@selector(avatarImgPressed) forControlEvents:UIControlEventTouchUpInside];
     [imgBtn sd_setImageWithURL:nil forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"avatar_placeholder"]];
     [self.navigationItem setTitleView:imgBtn];
+    self.navigationItem.titleView.contentMode = UIViewContentModeScaleAspectFill;
     
-    self.tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, -64, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
+    self.tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, -64, kScreenWidth, kScreenHeight + 64) style:UITableViewStylePlain];
     self.tableview.backgroundColor = GRAY_COLOR;
     self.tableview.dataSource = self;
     self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
+    self.tableview.showsVerticalScrollIndicator = NO;
     [self.view addSubview:self.tableview];
 }
 
