@@ -9,5 +9,9 @@
 #import "BaseViewController.h"
 
 @interface MyPaymentWithdrawController : BaseViewController
+<
+    UITableViewDataSource,
+    UITableViewDelegate
+>
 
 @end

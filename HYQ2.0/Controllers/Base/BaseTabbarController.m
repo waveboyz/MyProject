@@ -49,36 +49,35 @@
 {
     MainPageController *firstVC = [[MainPageController alloc] init];
     _firstItem = [[UITabBarItem alloc] initWithTitle:@"首页"
-                                               image:[UIImage imageNamed:@"tabbar_icon_home"]
-                                       selectedImage:[UIImage imageNamed:@"tabbar_icon_home_selected"]];
+                                               image:[UIImage imageNamed:@"home_tab"]
+                                       selectedImage:[UIImage imageNamed:@"home_tab"]];
     _firstNav = [[BaseNavigationController alloc] initWithRootViewController:firstVC];
     _firstNav.tabBarItem = _firstItem;
     
     InformationController *infoVC = [[InformationController alloc] init];
     _secondItem = [[UITabBarItem alloc] initWithTitle:@"资讯活动"
-                                                image:[UIImage imageNamed:@"tabbar_icon_timeline"]
-                                        selectedImage:[UIImage imageNamed:@"tabbar_icon_timeline_selected"]];
+                                                image:[UIImage imageNamed:@"information_tab"]
+                                        selectedImage:[UIImage imageNamed:@"information_tab"]];
     _secNav = [[BaseNavigationController alloc] initWithRootViewController:infoVC];
     _secNav.tabBarItem = _secondItem;
     
     ServiceController *serVC = [[ServiceController alloc] init];
     _thirdItem = [[UITabBarItem alloc] initWithTitle:@"产品服务"
-                                               image:[UIImage imageNamed:@"tabbar_icon_discovery"]
-                                       selectedImage:[UIImage imageNamed:@"tabbar_icon_discovery_selected"]];
+                                               image:[UIImage imageNamed:@"service_tab"]
+                                       selectedImage:[UIImage imageNamed:@"service_tab"]];
     _thirdNav = [[BaseNavigationController alloc] initWithRootViewController:serVC];
     _thirdNav.tabBarItem = _thirdItem;
     
     ExcellentPlanController *planVC = [[ExcellentPlanController alloc] init];
     _forthItem = [[UITabBarItem alloc] initWithTitle:@"优创计划"
-                                               image:[UIImage imageNamed:@"tabbar_icon_message"]
-                                       selectedImage:[UIImage imageNamed:@"tabbar_icon_message_selected"]];
+                                               image:[UIImage imageNamed:@"plan_tab"]
+                                       selectedImage:[UIImage imageNamed:@"plan_tab"]];
     _forthNav = [[BaseNavigationController alloc] initWithRootViewController:planVC];
     _forthNav.tabBarItem = _forthItem;
     
     self.viewControllers = [NSArray arrayWithObjects:_firstNav,_secNav,_thirdNav,_forthNav ,nil];
-    self.tabBar.barTintColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.1];
     self.selectedIndex = 0;
-    self.tabBar.tintColor = ORANGE_COLOR;
+    self.tabBar.tintColor = NAVIBAR_GREEN_COLOR;
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated

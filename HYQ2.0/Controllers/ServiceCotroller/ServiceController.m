@@ -19,15 +19,6 @@
 
 @implementation ServiceController
 
-- (id)init
-{
-    if (self = [super init]) {
-        self.maxSegCnt = 5;
-    }
-    
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -57,12 +48,7 @@
 
 - (void)swipSegmentWithIndexPath:(NSUInteger)indexpath
 {
-    if (_segment.selectedSegmentIndex == self.maxSegCnt - 1){
-        return;
-    }
-    else{
-        [_segment setSegment:nil atIndex:(_segment.selectedSegmentIndex +1)];
-    }
+    [self.tableView.header beginRefreshing];
 }
 
 #pragma mark UITableViewDataSource

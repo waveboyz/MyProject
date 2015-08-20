@@ -82,7 +82,7 @@
     _bgView.backgroundColor = NAVIBAR_GREEN_COLOR;
     [self.view addSubview:_bgView];
     
-    UIImageView *btnImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backIcon"]];
+    UIImageView *btnImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_back"]];
     btnImg.frame = CGRectMake(15, 29.5, 18, 18);
     [self.view addSubview:btnImg];
     

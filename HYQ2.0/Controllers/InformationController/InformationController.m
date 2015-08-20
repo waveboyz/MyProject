@@ -53,12 +53,13 @@
 
 - (void)swipSegmentWithIndexPath:(NSUInteger)indexpath
 {
-    if (_segment.selectedSegmentIndex == self.maxSegCnt - 1){
-        return;
-    }
-    else{
-        [_segment setSegment:nil atIndex:(_segment.selectedSegmentIndex +1)];
-    }
+//    if (_segment.selectedSegmentIndex == self.maxSegCnt - 1){
+//        return;
+//    }
+//    else{
+//        [_segment setSegment:nil atIndex:(_segment.selectedSegmentIndex +1)];
+//    }
+    [self.tableView.header beginRefreshing];
 }
 
 

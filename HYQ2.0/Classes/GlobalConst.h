@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+
+#define UME_APPKEY              @"5d5405f67e58e6ed1001dbe"
 //------------------界面常量--------------------
 
 #define kScreenWidth    [UIScreen mainScreen].bounds.size.width

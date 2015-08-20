@@ -23,6 +23,7 @@
     if (self) {
         self.navigationBar.tintColor = [UIColor whiteColor];
         self.navigationBar.barTintColor                 = NAVIBAR_GREEN_COLOR;
+        self.navigationBar.alpha = 1.0;
         self.navigationBar.titleTextAttributes          = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil];
         self.interactivePopGestureRecognizer.enabled    = YES;
     }

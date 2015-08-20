@@ -62,16 +62,36 @@
     [self showWebView];
     
     UIView *toolview = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 49, kScreenWidth, 49)];
-    toolview.backgroundColor = ORANGE_COLOR;
-    
+    toolview.backgroundColor = [UIColor colorWithRed:0.925 green:0.925 blue:0.925 alpha:0.5];
     [self.view addSubview:toolview];
     
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     backBtn.frame = CGRectMake(0, 0, 49, 49);
     [backBtn setImage:[UIImage imageNamed:@"backIcon"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(dismissBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-    
     [toolview addSubview:backBtn];
+    
+    UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    shareBtn.frame = CGRectMake(kScreenWidth - 150, 0, 29, 49);
+    [shareBtn setImage:[UIImage imageNamed:@"share"] forState:UIControlStateNormal];
+    [toolview addSubview:shareBtn];
+    
+    UILabel *shareLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth - 115, 0, 30, 49)];
+    shareLbl.font = [UIFont systemFontOfSize:13.0f];
+    shareLbl.textColor = [UIColor blackColor];
+    shareLbl.text = @"分享";
+    [toolview addSubview:shareLbl];
+    
+    UIButton *commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    commentBtn.frame = CGRectMake(kScreenWidth - 75, 1, 29, 48);
+    [commentBtn setImage:[UIImage imageNamed:@"comment"] forState:UIControlStateNormal];
+    [toolview addSubview:commentBtn];
+    
+    UILabel *countLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth - 40, 0, 30, 49)];
+    countLbl.font = [UIFont systemFontOfSize:13.0f];
+    countLbl.textColor = [UIColor blackColor];
+    countLbl.text = @"20";
+    [toolview addSubview:countLbl];
 }
 
 - (void)showWebView

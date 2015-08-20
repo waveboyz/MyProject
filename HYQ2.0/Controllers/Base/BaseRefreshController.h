@@ -26,8 +26,7 @@ typedef NS_ENUM(NSInteger, TableviewState){
 >
 
 @property (nonatomic, retain)MBProgressHUD *stateHud;
-@property (nonatomic, assign) NSUInteger    maxSegCnt;
-@property (nonatomic, strong) NSMutableArray *dataArr;
+@property (nonatomic, strong) NSMutableArray *currentDataArr;
 @property (nonatomic, strong) UITableView   *tableView;
 @property (nonatomic)       TableviewState state;
 @property (nonatomic, strong) UIView    *loadingView;

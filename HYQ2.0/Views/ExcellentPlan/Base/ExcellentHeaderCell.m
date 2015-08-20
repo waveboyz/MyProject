@@ -7,7 +7,6 @@
 //
 
 #import "ExcellentHeaderCell.h"
-#import "UIImageView+WebCache.h"
 #import "UIButton+WebCache.h"
 
 @interface ExcellentHeaderCell ()
@@ -44,7 +43,7 @@
     CGFloat spaceWidth = 40.0f;
     if (!_headerView) {
         _headerView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 150)];
-        [_headerView sd_setImageWithURL:[NSURL URLWithString:@"http://f8.topit.me/8/ed/67/110248312730a67ed8o.jpg"]placeholderImage:[UIImage imageNamed:@"notice_place_holder"]];
+        _headerView.image = [UIImage imageNamed:@"excellent_plan"];
         [self.contentView addSubview:_headerView];
     }
 
@@ -69,41 +68,37 @@
     
     if (!_firstIcon) {
         _firstIcon = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_firstIcon setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        [_firstIcon setImage:[UIImage imageNamed:@"plan_icon1"] forState:UIControlStateNormal];
         _firstIcon.frame = CGRectMake(20, 165, IconWidth, IconWidth);
         [_firstIcon addTarget:self action:@selector(iconBtnPressedWithTag:) forControlEvents:UIControlEventTouchUpInside];
         _firstIcon.tag = 0;
-        _firstIcon.backgroundColor = ORANGE_COLOR;
         [self.contentView addSubview:_firstIcon];
     }
     
     if (!_secondIcon) {
         _secondIcon = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_secondIcon setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        [_secondIcon setImage:[UIImage imageNamed:@"plan_icon2"] forState:UIControlStateNormal];
         _secondIcon.frame = CGRectMake(spaceWidth + IconWidth + 20, 165, IconWidth, IconWidth);
         [_secondIcon addTarget:self action:@selector(iconBtnPressedWithTag:) forControlEvents:UIControlEventTouchUpInside];
         _secondIcon.tag = 1;
-        _secondIcon.backgroundColor = ORANGE_COLOR;
         [self.contentView addSubview:_secondIcon];
     }
     
     if (!_thirdIcon) {
         _thirdIcon = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_thirdIcon setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        [_thirdIcon setImage:[UIImage imageNamed:@"plan_icon3"] forState:UIControlStateNormal];
         _thirdIcon.frame = CGRectMake((spaceWidth + IconWidth) * 2 + 20, 165, IconWidth, IconWidth);
         [_thirdIcon addTarget:self action:@selector(iconBtnPressedWithTag:) forControlEvents:UIControlEventTouchUpInside];
         _thirdIcon.tag = 2;
-        _thirdIcon.backgroundColor = ORANGE_COLOR;
         [self.contentView addSubview:_thirdIcon];
     }
     
     if (!_forthIcon) {
         _forthIcon = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_forthIcon setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        [_forthIcon setImage:[UIImage imageNamed:@"plan_icon4"] forState:UIControlStateNormal];
         _forthIcon.frame = CGRectMake((spaceWidth + IconWidth) * 3 + 20, 165, IconWidth, IconWidth);
         [_forthIcon addTarget:self action:@selector(iconBtnPressedWithTag:) forControlEvents:UIControlEventTouchUpInside];
         _forthIcon.tag = 3;
-        _forthIcon.backgroundColor = ORANGE_COLOR;
         [self.contentView addSubview:_forthIcon];
     }
     

@@ -36,8 +36,7 @@
 {
     if (!_imageview) {
         _imageview = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 120, 120)];
-        _imageview.image = [UIImage imageNamed:@""];
-        _imageview.backgroundColor = ORANGE_COLOR;
+        _imageview.image = [UIImage imageNamed:@"product_placeholder"];
         [self.contentView addSubview:_imageview];
     }
     
@@ -57,7 +56,8 @@
     }
     
     if (!_collectView) {
-        _collectView = [[UIImageView alloc] initWithFrame:CGRectMake(130, 105, 20, 15)];
+        _collectView = [[UIImageView alloc] initWithFrame:CGRectMake(130, 105, 15, 15)];
+        _collectView.image = [UIImage imageNamed:@"heart_collect"];
         [self.contentView addSubview:_collectView];
     }
     

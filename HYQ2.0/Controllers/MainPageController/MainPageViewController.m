@@ -16,10 +16,12 @@
 #import "MainLogOutHeaderCell.h"
 #import "MainLogInHeaderCell.h"
 #import "MainServiceCell.h"
+#import "MainScrollinfoCell.h"
 #import "ExcellentBaseController.h"
 #import "ExcellentCampController.h"
 #import "ExcellentFinantialController.h"
 #import "ExcellentOpenDayController.h"
+
 
 #define NAVBAR_CHANGE_POINT 50
 
@@ -59,7 +61,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIBarButtonItem *rightBtn1 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"scanIcon"]
+    UIBarButtonItem *rightBtn1 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"scan_icon"]
                                                                   style:UIBarButtonItemStyleDone
                                                                  target:self
                                                                  action:@selector(showScanPressed)];
@@ -118,6 +120,7 @@
     static NSString *HEADER_CELL = @"header_cell";
     static NSString *SECOND_CELL = @"second_cell";
     static NSString *SERVICE_CELL = @"service_cell";
+    static NSString *SCROLL_CELL = @"scroll_cell";
     static NSString *THIRD_CELL = @"third_cell";
     
     UITableViewCell *cell;
@@ -144,7 +147,12 @@
             cell = [[MainServiceCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SERVICE_CELL];
             [(MainServiceCell *)cell setDelegate:self];
         }
-    }else{
+    }else if (indexPath.row == 3){
+        cell = [tableView dequeueReusableCellWithIdentifier:SCROLL_CELL];
+        if (!cell) {
+            cell = [[MainScrollinfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SCROLL_CELL];
+        }
+    } else {
         cell = [tableView dequeueReusableCellWithIdentifier:THIRD_CELL];
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:THIRD_CELL];
@@ -160,9 +168,11 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return 240;
+        return 240.0f;
     }else if (indexPath.row == 1){
-        return 160;
+        return 160.0f;
+    }else if (indexPath.row == 3){
+        return 40.0f;
     }
     
     return 100;

@@ -33,7 +33,7 @@
 {
     if (!_headerView) {
         _headerView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 150)];
-        [_headerView sd_setImageWithURL:[NSURL URLWithString:@"http://f8.topit.me/8/ed/67/110248312730a67ed8o.jpg"]placeholderImage:[UIImage imageNamed:@"notice_place_holder"]];
+        _headerView.image = [UIImage imageNamed:@"excellent_plan"];
         [self.contentView addSubview:_headerView];
     }
     

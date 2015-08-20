@@ -45,7 +45,7 @@
     [self.view addSubview:_tableview];
     
     UIView *toolView = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 49, kScreenWidth, 49)];
-    toolView.backgroundColor = ORANGE_COLOR;
+    toolView.backgroundColor = [UIColor colorWithRed:0.925 green:0.925 blue:0.925 alpha:0.5];
     [self.view addSubview:toolView];
     
     UIButton *purchaseBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -61,6 +61,29 @@
     backBtn.frame = CGRectMake(0, 0, 49, 49);
     [backBtn addTarget:self action:@selector(dismissBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [toolView addSubview:backBtn];
+    
+    UIButton *collectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    collectBtn.frame = CGRectMake(kScreenWidth * 0.5 - 85, 0, 29, 49);
+    [collectBtn setImage:[UIImage imageNamed:@"collect_icon"] forState:UIControlStateNormal];
+    [toolView addSubview:collectBtn];
+    
+    
+    UILabel *collectLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 - 60, 0, 30, 49)];
+    collectLbl.font = [UIFont systemFontOfSize:13.0f];
+    collectLbl.text = @"收藏";
+    collectLbl.textColor = [UIColor blackColor];
+    [toolView addSubview:collectLbl];
+    
+    UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    shareBtn.frame = CGRectMake(kScreenWidth * 0.5 - 20, 0, 29, 49);
+    [shareBtn setImage:[UIImage imageNamed:@"share"] forState:UIControlStateNormal];
+    [toolView addSubview:shareBtn];
+    
+    UILabel *shareLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 + 10, 0, 30, 49)];
+    shareLbl.font = [UIFont systemFontOfSize:13.0f];
+    shareLbl.text = @"分享";
+    shareLbl.textColor = [UIColor blackColor];
+    [toolView addSubview:shareLbl];
 }
 
 - (void)dismissBtnPressed

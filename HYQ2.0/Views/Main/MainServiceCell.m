@@ -28,6 +28,7 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self setViews];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.backgroundColor = GRAY_COLOR;
     }
 
     return self;
@@ -40,11 +41,10 @@
     
     if (!_firstIcon) {
         _firstIcon = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_firstIcon setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        [_firstIcon setImage:[UIImage imageNamed:@"main_icon1"] forState:UIControlStateNormal];
         _firstIcon.frame = CGRectMake(20, 10, IconWidth, IconWidth);
         [_firstIcon addTarget:self action:@selector(iconBtnPressedWithTag:) forControlEvents:UIControlEventTouchUpInside];
         _firstIcon.tag = 0;
-        _firstIcon.backgroundColor = ORANGE_COLOR;
         _firstIcon.layer.cornerRadius = CGRectGetWidth(_firstIcon.frame) / 2;
         
         [self.contentView addSubview:_firstIcon];
@@ -52,11 +52,10 @@
     
     if (!_secondIcon) {
         _secondIcon = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_secondIcon setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        [_secondIcon setImage:[UIImage imageNamed:@"main_icon2"] forState:UIControlStateNormal];
         _secondIcon.frame = CGRectMake(spaceWidth + IconWidth + 20, 10, IconWidth, IconWidth);
         [_secondIcon addTarget:self action:@selector(iconBtnPressedWithTag:) forControlEvents:UIControlEventTouchUpInside];
         _secondIcon.tag = 1;
-        _secondIcon.backgroundColor = ORANGE_COLOR;
         _secondIcon.layer.cornerRadius = CGRectGetWidth(_secondIcon.frame) / 2;
         
         [self.contentView addSubview:_secondIcon];
@@ -64,11 +63,10 @@
     
     if (!_thirdIcon) {
         _thirdIcon = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_thirdIcon setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        [_thirdIcon setImage:[UIImage imageNamed:@"main_icon3"] forState:UIControlStateNormal];
         _thirdIcon.frame = CGRectMake((spaceWidth + IconWidth) * 2 + 20, 10, IconWidth, IconWidth);
         [_thirdIcon addTarget:self action:@selector(iconBtnPressedWithTag:) forControlEvents:UIControlEventTouchUpInside];
         _thirdIcon.tag = 2;
-        _thirdIcon.backgroundColor = ORANGE_COLOR;
         _thirdIcon.layer.cornerRadius = CGRectGetWidth(_thirdIcon.frame) / 2;
         
         [self.contentView addSubview:_thirdIcon];
@@ -76,11 +74,10 @@
     
     if (!_forthIcon) {
         _forthIcon = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_forthIcon setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        [_forthIcon setImage:[UIImage imageNamed:@"main_icon4"] forState:UIControlStateNormal];
         _forthIcon.frame = CGRectMake((spaceWidth + IconWidth) * 3 + 20, 10, IconWidth, IconWidth);
         [_forthIcon addTarget:self action:@selector(iconBtnPressedWithTag:) forControlEvents:UIControlEventTouchUpInside];
         _forthIcon.tag = 3;
-        _forthIcon.backgroundColor = ORANGE_COLOR;
         _forthIcon.layer.cornerRadius = CGRectGetWidth(_forthIcon.frame) / 2;
         
         [self.contentView addSubview:_forthIcon];

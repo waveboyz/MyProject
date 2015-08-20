@@ -7,6 +7,7 @@
 //
 
 #import "ActivityCell.h"
+#import "UIImageView+WebCache.h"
 
 @interface ActivityCell ()
 
@@ -43,7 +44,7 @@
 
     if (!_imgPicture) {
         _imgPicture = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 125, 5, 120, 80)];
-        _imgPicture.backgroundColor = ORANGE_COLOR;
+        [_imgPicture sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"product_placeholder"]];
         [self.contentView addSubview:_imgPicture];
     }
     
