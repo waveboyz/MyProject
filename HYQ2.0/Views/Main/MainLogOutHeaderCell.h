@@ -9,15 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "GlobalConst.h"
 
-@protocol MainHeaderViewCellDelegate <NSObject>
+@protocol MainLogOutHeaderCellDelegate <NSObject>
 
 - (void)avatarImgPressed;
 - (void)loginBtnPressed;
 
 @end
 
-@interface MainHeaderViewCell : UITableViewCell
+@interface MainLogOutHeaderCell : UITableViewCell
 
-@property (nonatomic, assign) id<MainHeaderViewCellDelegate> delegate;
+@property (nonatomic, assign) id<MainLogOutHeaderCellDelegate> delegate;
 
 @end

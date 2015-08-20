@@ -289,19 +289,6 @@
     [self.stateHud hide:YES afterDelay:0.2];
 }
 
-- (void)registerSuccessWithUID:(NSString *)uid
-{
-//    NSDictionary *userDict = [[NSDictionary alloc] initWithObjectsAndKeys:uid, @"uid",
-//                              _pswMD5, @"pwd", _userName, @"username", @"", @"avatar", nil];
-//    
-//    [[hcb_UserManager sharedUserManager] updateUserInfo:userDict];
-//    
-//    NSDictionary *userInfo = @{@"didLogin" : @"didLogin"};
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"didLogin" object:nil userInfo:userInfo];
-//    
-//    [self performSelector:@selector(cancelBtnPressed) withObject:nil afterDelay:0.5];
-}
-
 - (void)sendVerCodeButtonPressed
 {
     NSString *mobileRegex = @"[1][34578][0-9]{9}";

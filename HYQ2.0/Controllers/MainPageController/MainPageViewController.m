@@ -13,13 +13,21 @@
 #import "scanCameraController.h"
 #import "HYQResponse.h"
 #import "UINavigationBar+Awesome.h"
-#import "MainHeaderViewCell.h"
+#import "MainLogOutHeaderCell.h"
+#import "MainLogInHeaderCell.h"
+#import "MainServiceCell.h"
+#import "ExcellentBaseController.h"
+#import "ExcellentCampController.h"
+#import "ExcellentFinantialController.h"
+#import "ExcellentOpenDayController.h"
 
 #define NAVBAR_CHANGE_POINT 50
 
 @interface MainPageController ()
 <
-    MainHeaderViewCellDelegate
+    MainLogOutHeaderCellDelegate,
+    MainLogInHeaderCellDelegate,
+    MainServiceCellDelegate
 >
 
 @property (nonatomic, retain) UIScrollView *scrollBGView;
@@ -109,14 +117,15 @@
 {
     static NSString *HEADER_CELL = @"header_cell";
     static NSString *SECOND_CELL = @"second_cell";
+    static NSString *SERVICE_CELL = @"service_cell";
     static NSString *THIRD_CELL = @"third_cell";
     
     UITableViewCell *cell;
     if (indexPath.row == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:HEADER_CELL];
         if (!cell) {
-            cell = [[MainHeaderViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:HEADER_CELL];
-            [(MainHeaderViewCell *)cell setDelegate:self];
+            cell = [[MainLogOutHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:HEADER_CELL];
+            [(MainLogOutHeaderCell *)cell setDelegate:self];
         }
     }else if (indexPath.row == 1){
         cell = [tableView dequeueReusableCellWithIdentifier:SECOND_CELL];
@@ -128,6 +137,12 @@
             cycleView.pageControlStyle = SDCycleScrollViewPageContolStyleClassic;
             
             [cell.contentView addSubview:cycleView];
+        }
+    }else if (indexPath.row == 2){
+        cell = [tableView dequeueReusableCellWithIdentifier:SERVICE_CELL];
+        if (!cell) {
+            cell = [[MainServiceCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SERVICE_CELL];
+            [(MainServiceCell *)cell setDelegate:self];
         }
     }else{
         cell = [tableView dequeueReusableCellWithIdentifier:THIRD_CELL];
@@ -179,6 +194,39 @@
     } else {
         [self.navigationController.navigationBar lt_setBackgroundColor:[NAVIBAR_GREEN_COLOR colorWithAlphaComponent:0]];
         self.navigationItem.titleView.hidden = YES;
+    }
+}
+
+#pragma mark MainServiceDelegate
+- (void)iconBtnTouchWithTag:(NSInteger)tag
+{
+    switch (tag){
+            case 0:{
+                ExcellentFinantialController *finanVC = [[ExcellentFinantialController alloc] init];
+                [self.navigationController pushViewController:finanVC animated:YES];
+            }
+                break;
+
+            case 1:{
+                ExcellentBaseController *baseVC = [[ExcellentBaseController alloc] init];
+                [self.navigationController pushViewController:baseVC animated:YES];
+            }
+                break;
+                
+            case 2:{
+                ExcellentCampController *campVC = [[ExcellentCampController alloc] init];
+                [self.navigationController pushViewController:campVC animated:YES];
+            }
+                break;
+                
+            case 3:{
+                ExcellentOpenDayController *openVC = [[ExcellentOpenDayController alloc] init];
+                [self.navigationController pushViewController:openVC animated:YES];
+            }
+                break;
+                
+            default:
+                break;
     }
 }
 

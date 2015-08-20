@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UIImageView   *headerView;
 @property (nonatomic, strong) UILabel       *titleLbl;
 @property (nonatomic, strong) UIView        *grayview;
+@property (nonatomic, strong) UIView        *blankView;
 
 @end
 
@@ -53,6 +54,13 @@
         _titleLbl.text = @"优创训练营季节各路行业大咖、创业导师，为创业创新公司提供创业“36计”、“18般武艺”培训，其中包括商业模式设计、技术支持方案、营销运营、融资技巧、商务洽谈，让创业者在创业中少走弯路，以最快的速度成功创业";
         
         [self.contentView addSubview:_titleLbl];
+    }
+    
+    if (!_blankView) {
+        _blankView = [[UIView alloc] initWithFrame:CGRectMake(0, 150, kScreenWidth, 30)];
+        _blankView.backgroundColor = GRAY_COLOR;
+        
+        [self.contentView addSubview:_blankView];
     }
 }
 

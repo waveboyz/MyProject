@@ -9,5 +9,9 @@
 #import "BaseViewController.h"
 
 @interface ServicePurchaseController : BaseViewController
+<
+    UITableViewDataSource,
+    UITableViewDelegate
+>
 
 @end

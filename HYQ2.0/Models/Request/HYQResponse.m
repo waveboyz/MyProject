@@ -14,15 +14,39 @@
 - (void)getresponseOperation
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager POST:@"http://192.168.0.65:90/weixinServlet"
-       parameters:@{@"A":@"1",@"B":@"2",@"C":@"3"}
+    [manager POST:[self methodPath]
+       parameters:_params
           success:^(AFHTTPRequestOperation *operation, id responseObject){
-              NSLog(@"%@",responseObject);
+              [self performSelectorOnMainThread:@selector(decodeJsonOperationWithObject:) withObject:responseObject waitUntilDone:YES];
     }
           failure:^(AFHTTPRequestOperation *operation, NSError *error){
               NSLog(@"请求失败");
               NSLog(@"%@",[error localizedDescription]);
           }];
+}
+
+- (NSMutableDictionary *)params
+{
+    if (nil == _params) {
+        _params = [NSMutableDictionary dictionaryWithCapacity:10];
+    }
+    
+    return _params;
+}
+
+- (NSString *)methodPath
+{
+    return nil;
+}
+
+- (void)setUploadDictionary:(NSMutableDictionary *)dictionary
+{
+
+}
+
+- (void)decodeJsonOperationWithObject:(id)responseObject
+{
+
 }
 
 @end

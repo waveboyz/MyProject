@@ -58,12 +58,12 @@
 		823FF5B51B70BFDF008C4310 /* MyPaymentHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 823FF5B41B70BFDF008C4310 /* MyPaymentHeader.m */; };
 		8286B3C41B72F95300897A4D /* QRView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8286B3C31B72F95300897A4D /* QRView.m */; };
 		8286B3C61B72FC1A00897A4D /* qr_scan_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8286B3C51B72FC1A00897A4D /* qr_scan_line@2x.png */; };
+		8291801C1B834E1100F86000 /* MainLogInHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8291801B1B834E1100F86000 /* MainLogInHeaderCell.m */; };
 		8291CDB11B7C47C700656300 /* MyOrderFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8291CDB01B7C47C700656300 /* MyOrderFormCell.m */; };
 		8291CDB51B7C6CA500656300 /* MyCollectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8291CDB41B7C6CA500656300 /* MyCollectCell.m */; };
 		8291CDB91B7C708600656300 /* MyAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8291CDB81B7C708600656300 /* MyAddressCell.m */; };
 		8291CDBC1B7C929D00656300 /* MyPaymentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8291CDBB1B7C929D00656300 /* MyPaymentCell.m */; };
 		8291CDC01B7C9A8B00656300 /* MyDiscountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8291CDBF1B7C9A8B00656300 /* MyDiscountCell.m */; };
-		82B57CF71B74880200F659CD /* HYQResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B57CF61B74880200F659CD /* HYQResponse.m */; };
 		82B769531B798CDB0099EBD3 /* ExcellentBaseThirdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B769521B798CDB0099EBD3 /* ExcellentBaseThirdCell.m */; };
 		82B769561B798CFB0099EBD3 /* ExcellentBaseForthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B769551B798CFB0099EBD3 /* ExcellentBaseForthCell.m */; };
 		82B769591B799FDF0099EBD3 /* ExcellentFinantialFirstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B769581B799FDF0099EBD3 /* ExcellentFinantialFirstCell.m */; };
@@ -79,7 +79,7 @@
 		82B769771B79CC280099EBD3 /* ExcellentOpenThirdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B769761B79CC280099EBD3 /* ExcellentOpenThirdCell.m */; };
 		82B7697A1B79CC360099EBD3 /* ExcellentOpenForthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B769791B79CC360099EBD3 /* ExcellentOpenForthCell.m */; };
 		82D2B1961B81AE770005948E /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D2B1951B81AE770005948E /* UINavigationBar+Awesome.m */; };
-		82D2B1991B81B1D90005948E /* MainHeaderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D2B1981B81B1D90005948E /* MainHeaderViewCell.m */; };
+		82D2B1991B81B1D90005948E /* MainLogOutHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D2B1981B81B1D90005948E /* MainLogOutHeaderCell.m */; };
 		82D4D55E1B70FFF4008BECC7 /* MYDiscountController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D4D55D1B70FFF4008BECC7 /* MYDiscountController.m */; };
 		82D4D5621B7104D0008BECC7 /* MyorderFormController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D4D5611B7104D0008BECC7 /* MyorderFormController.m */; };
 		82D4D5661B710726008BECC7 /* MyCollectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D4D5651B710726008BECC7 /* MyCollectController.m */; };
@@ -156,7 +156,6 @@
 		82D6BCDB1B65FC8400B1B54B /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D6BCAD1B65FC8400B1B54B /* BaseViewController.m */; };
 		82D6BCDC1B65FC8400B1B54B /* BaseWebVIewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D6BCAF1B65FC8400B1B54B /* BaseWebVIewController.m */; };
 		82D6BCF11B65FCA300B1B54B /* ActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D6BCED1B65FCA300B1B54B /* ActivityModel.m */; };
-		82D6BCF21B65FCA300B1B54B /* HYQBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D6BCF01B65FCA300B1B54B /* HYQBaseRequest.m */; };
 		82D6BD391B65FCBD00B1B54B /* edit_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D6BCF51B65FCBD00B1B54B /* edit_icon.png */; };
 		82D6BD3A1B65FCBD00B1B54B /* phone_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D6BCF61B65FCBD00B1B54B /* phone_icon.png */; };
 		82D6BD3C1B65FCBD00B1B54B /* bgPic.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D6BCF91B65FCBD00B1B54B /* bgPic.png */; };
@@ -221,6 +220,14 @@
 		82D6BD7F1B65FCD500B1B54B /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D6BD791B65FCD500B1B54B /* ActivityCell.m */; };
 		82D6BD851B66076500B1B54B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D6BD841B66076500B1B54B /* AppDelegate.m */; };
 		82E0D4161B7AF706007D436E /* UploadPlanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E0D4151B7AF706007D436E /* UploadPlanController.m */; };
+		82FEADD11B8416FC007A13E9 /* PurchaseHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82FEADD01B8416FC007A13E9 /* PurchaseHeaderCell.m */; };
+		82FEADD41B84177F007A13E9 /* PurchaseSecondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82FEADD31B84177F007A13E9 /* PurchaseSecondCell.m */; };
+		82FEADD71B842E2A007A13E9 /* HYQResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 82FEADD61B842E2A007A13E9 /* HYQResponse.m */; };
+		82FEADDB1B843082007A13E9 /* HYQUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82FEADDA1B843082007A13E9 /* HYQUserManager.m */; };
+		82FEADDF1B843533007A13E9 /* HYQLoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 82FEADDE1B843533007A13E9 /* HYQLoginResponse.m */; };
+		82FEADE21B843543007A13E9 /* HYQSendVerCodeResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 82FEADE11B843543007A13E9 /* HYQSendVerCodeResponse.m */; };
+		82FEADE51B843554007A13E9 /* HYQRegistResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 82FEADE41B843554007A13E9 /* HYQRegistResponse.m */; };
+		82FEADE81B844A35007A13E9 /* MainServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82FEADE71B844A35007A13E9 /* MainServiceCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -325,6 +332,8 @@
 		8286B3C21B72F95300897A4D /* QRView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRView.h; sourceTree = "<group>"; };
 		8286B3C31B72F95300897A4D /* QRView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRView.m; sourceTree = "<group>"; };
 		8286B3C51B72FC1A00897A4D /* qr_scan_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr_scan_line@2x.png"; sourceTree = "<group>"; };
+		8291801A1B834E1100F86000 /* MainLogInHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainLogInHeaderCell.h; sourceTree = "<group>"; };
+		8291801B1B834E1100F86000 /* MainLogInHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainLogInHeaderCell.m; sourceTree = "<group>"; };
 		8291CDAD1B7C474100656300 /* BasePersonHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasePersonHeadCell.h; sourceTree = "<group>"; };
 		8291CDAF1B7C47C700656300 /* MyOrderFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderFormCell.h; sourceTree = "<group>"; };
 		8291CDB01B7C47C700656300 /* MyOrderFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderFormCell.m; sourceTree = "<group>"; };
@@ -336,8 +345,6 @@
 		8291CDBB1B7C929D00656300 /* MyPaymentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPaymentCell.m; sourceTree = "<group>"; };
 		8291CDBE1B7C9A8B00656300 /* MyDiscountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDiscountCell.h; sourceTree = "<group>"; };
 		8291CDBF1B7C9A8B00656300 /* MyDiscountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDiscountCell.m; sourceTree = "<group>"; };
-		82B57CF51B74880200F659CD /* HYQResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYQResponse.h; sourceTree = "<group>"; };
-		82B57CF61B74880200F659CD /* HYQResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYQResponse.m; sourceTree = "<group>"; };
 		82B769511B798CDB0099EBD3 /* ExcellentBaseThirdCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentBaseThirdCell.h; sourceTree = "<group>"; };
 		82B769521B798CDB0099EBD3 /* ExcellentBaseThirdCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentBaseThirdCell.m; sourceTree = "<group>"; };
 		82B769541B798CFB0099EBD3 /* ExcellentBaseForthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentBaseForthCell.h; sourceTree = "<group>"; };
@@ -368,8 +375,8 @@
 		82B769791B79CC360099EBD3 /* ExcellentOpenForthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentOpenForthCell.m; sourceTree = "<group>"; };
 		82D2B1941B81AE770005948E /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
 		82D2B1951B81AE770005948E /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
-		82D2B1971B81B1D90005948E /* MainHeaderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainHeaderViewCell.h; sourceTree = "<group>"; };
-		82D2B1981B81B1D90005948E /* MainHeaderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainHeaderViewCell.m; sourceTree = "<group>"; };
+		82D2B1971B81B1D90005948E /* MainLogOutHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainLogOutHeaderCell.h; sourceTree = "<group>"; };
+		82D2B1981B81B1D90005948E /* MainLogOutHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainLogOutHeaderCell.m; sourceTree = "<group>"; };
 		82D4D55C1B70FFF4008BECC7 /* MYDiscountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYDiscountController.h; sourceTree = "<group>"; };
 		82D4D55D1B70FFF4008BECC7 /* MYDiscountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYDiscountController.m; sourceTree = "<group>"; };
 		82D4D5601B7104D0008BECC7 /* MyorderFormController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyorderFormController.h; sourceTree = "<group>"; };
@@ -527,8 +534,6 @@
 		82D6BCAF1B65FC8400B1B54B /* BaseWebVIewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseWebVIewController.m; sourceTree = "<group>"; };
 		82D6BCEC1B65FCA300B1B54B /* ActivityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityModel.h; sourceTree = "<group>"; };
 		82D6BCED1B65FCA300B1B54B /* ActivityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityModel.m; sourceTree = "<group>"; };
-		82D6BCEF1B65FCA300B1B54B /* HYQBaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYQBaseRequest.h; sourceTree = "<group>"; };
-		82D6BCF01B65FCA300B1B54B /* HYQBaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYQBaseRequest.m; sourceTree = "<group>"; };
 		82D6BCF51B65FCBD00B1B54B /* edit_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit_icon.png; sourceTree = "<group>"; };
 		82D6BCF61B65FCBD00B1B54B /* phone_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone_icon.png; sourceTree = "<group>"; };
 		82D6BCF91B65FCBD00B1B54B /* bgPic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgPic.png; sourceTree = "<group>"; };
@@ -596,6 +601,22 @@
 		82D6BD841B66076500B1B54B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		82E0D4141B7AF706007D436E /* UploadPlanController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadPlanController.h; sourceTree = "<group>"; };
 		82E0D4151B7AF706007D436E /* UploadPlanController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadPlanController.m; sourceTree = "<group>"; };
+		82FEADCF1B8416FC007A13E9 /* PurchaseHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseHeaderCell.h; sourceTree = "<group>"; };
+		82FEADD01B8416FC007A13E9 /* PurchaseHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseHeaderCell.m; sourceTree = "<group>"; };
+		82FEADD21B84177F007A13E9 /* PurchaseSecondCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseSecondCell.h; sourceTree = "<group>"; };
+		82FEADD31B84177F007A13E9 /* PurchaseSecondCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseSecondCell.m; sourceTree = "<group>"; };
+		82FEADD51B842E2A007A13E9 /* HYQResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYQResponse.h; sourceTree = "<group>"; };
+		82FEADD61B842E2A007A13E9 /* HYQResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYQResponse.m; sourceTree = "<group>"; };
+		82FEADD91B843082007A13E9 /* HYQUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYQUserManager.h; sourceTree = "<group>"; };
+		82FEADDA1B843082007A13E9 /* HYQUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYQUserManager.m; sourceTree = "<group>"; };
+		82FEADDD1B843533007A13E9 /* HYQLoginResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYQLoginResponse.h; sourceTree = "<group>"; };
+		82FEADDE1B843533007A13E9 /* HYQLoginResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYQLoginResponse.m; sourceTree = "<group>"; };
+		82FEADE01B843543007A13E9 /* HYQSendVerCodeResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYQSendVerCodeResponse.h; sourceTree = "<group>"; };
+		82FEADE11B843543007A13E9 /* HYQSendVerCodeResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYQSendVerCodeResponse.m; sourceTree = "<group>"; };
+		82FEADE31B843554007A13E9 /* HYQRegistResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYQRegistResponse.h; sourceTree = "<group>"; };
+		82FEADE41B843554007A13E9 /* HYQRegistResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYQRegistResponse.m; sourceTree = "<group>"; };
+		82FEADE61B844A35007A13E9 /* MainServiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainServiceCell.h; sourceTree = "<group>"; };
+		82FEADE71B844A35007A13E9 /* MainServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainServiceCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -653,8 +674,12 @@
 			isa = PBXGroup;
 			children = (
 				82067C001B7218A400B803A9 /* QRView */,
-				82D2B1971B81B1D90005948E /* MainHeaderViewCell.h */,
-				82D2B1981B81B1D90005948E /* MainHeaderViewCell.m */,
+				82D2B1971B81B1D90005948E /* MainLogOutHeaderCell.h */,
+				82D2B1981B81B1D90005948E /* MainLogOutHeaderCell.m */,
+				8291801A1B834E1100F86000 /* MainLogInHeaderCell.h */,
+				8291801B1B834E1100F86000 /* MainLogInHeaderCell.m */,
+				82FEADE61B844A35007A13E9 /* MainServiceCell.h */,
+				82FEADE71B844A35007A13E9 /* MainServiceCell.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -918,6 +943,7 @@
 		823FF5A01B709EE4008C4310 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				82FEADCE1B8416E0007A13E9 /* ServicePurchase */,
 				822B699A1B7D88F200CB0C13 /* ServiceDetail */,
 				823FF5A11B709F19008C4310 /* ServiceViewCell.h */,
 				823FF5A21B709F19008C4310 /* ServiceViewCell.m */,
@@ -1118,14 +1144,13 @@
 		82D6BBBE1B65FB9900B1B54B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				82FEADD81B843063007A13E9 /* user */,
 				82D2B1941B81AE770005948E /* UINavigationBar+Awesome.h */,
 				82D2B1951B81AE770005948E /* UINavigationBar+Awesome.m */,
 				82D6BC9F1B65FC6E00B1B54B /* GlobalConst.h */,
 				82D6BCA01B65FC6E00B1B54B /* GlobalConst.m */,
 				82D6BCA11B65FC6E00B1B54B /* NSString+HCBStringHelper.h */,
 				82D6BCA21B65FC6E00B1B54B /* NSString+HCBStringHelper.m */,
-				82B57CF51B74880200F659CD /* HYQResponse.h */,
-				82B57CF61B74880200F659CD /* HYQResponse.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1442,8 +1467,9 @@
 		82D6BCEE1B65FCA300B1B54B /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				82D6BCEF1B65FCA300B1B54B /* HYQBaseRequest.h */,
-				82D6BCF01B65FCA300B1B54B /* HYQBaseRequest.m */,
+				82FEADDC1B843515007A13E9 /* User */,
+				82FEADD51B842E2A007A13E9 /* HYQResponse.h */,
+				82FEADD61B842E2A007A13E9 /* HYQResponse.m */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1574,6 +1600,39 @@
 				82D6BD791B65FCD500B1B54B /* ActivityCell.m */,
 			);
 			path = activity;
+			sourceTree = "<group>";
+		};
+		82FEADCE1B8416E0007A13E9 /* ServicePurchase */ = {
+			isa = PBXGroup;
+			children = (
+				82FEADCF1B8416FC007A13E9 /* PurchaseHeaderCell.h */,
+				82FEADD01B8416FC007A13E9 /* PurchaseHeaderCell.m */,
+				82FEADD21B84177F007A13E9 /* PurchaseSecondCell.h */,
+				82FEADD31B84177F007A13E9 /* PurchaseSecondCell.m */,
+			);
+			path = ServicePurchase;
+			sourceTree = "<group>";
+		};
+		82FEADD81B843063007A13E9 /* user */ = {
+			isa = PBXGroup;
+			children = (
+				82FEADD91B843082007A13E9 /* HYQUserManager.h */,
+				82FEADDA1B843082007A13E9 /* HYQUserManager.m */,
+			);
+			path = user;
+			sourceTree = "<group>";
+		};
+		82FEADDC1B843515007A13E9 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				82FEADDD1B843533007A13E9 /* HYQLoginResponse.h */,
+				82FEADDE1B843533007A13E9 /* HYQLoginResponse.m */,
+				82FEADE01B843543007A13E9 /* HYQSendVerCodeResponse.h */,
+				82FEADE11B843543007A13E9 /* HYQSendVerCodeResponse.m */,
+				82FEADE31B843554007A13E9 /* HYQRegistResponse.h */,
+				82FEADE41B843554007A13E9 /* HYQRegistResponse.m */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1754,6 +1813,7 @@
 				82D6BC671B65FC3C00B1B54B /* TAAnimatedDotView.m in Sources */,
 				821CFCCC1B78878800A71BDA /* ExcellentFinantialController.m in Sources */,
 				82B7695C1B799FFE0099EBD3 /* ExcellentFinantialSecondCell.m in Sources */,
+				82FEADD71B842E2A007A13E9 /* HYQResponse.m in Sources */,
 				82D6BC661B65FC3C00B1B54B /* TAAbstractDotView.m in Sources */,
 				821CFCE11B78A7E800A71BDA /* ExcellentHeaderCell.m in Sources */,
 				82D6BC901B65FC4200B1B54B /* NSData+ImageContentType.m in Sources */,
@@ -1766,7 +1826,7 @@
 				822B69AB1B7DD5E500CB0C13 /* ServicePurchaseController.m in Sources */,
 				82D6BBDE1B65FBF200B1B54B /* AFURLRequestSerialization.m in Sources */,
 				8291CDB91B7C708600656300 /* MyAddressCell.m in Sources */,
-				82D2B1991B81B1D90005948E /* MainHeaderViewCell.m in Sources */,
+				82D2B1991B81B1D90005948E /* MainLogOutHeaderCell.m in Sources */,
 				82D6BBF91B65FC0200B1B54B /* MJFoundation.m in Sources */,
 				82D6BBDD1B65FBF200B1B54B /* AFURLConnectionOperation.m in Sources */,
 				82D6BBFD1B65FC0200B1B54B /* NSObject+MJKeyValue.m in Sources */,
@@ -1779,11 +1839,14 @@
 				822B69B11B7DD65600CB0C13 /* PurchaseSuccessController.m in Sources */,
 				82D6BC681B65FC3C00B1B54B /* TADotView.m in Sources */,
 				821CFCE31B78A7E800A71BDA /* ExcellentThirdCell.m in Sources */,
+				82FEADDB1B843082007A13E9 /* HYQUserManager.m in Sources */,
 				821CFCE61B78B7DB00A71BDA /* ExcellentBaseSecondCell.m in Sources */,
 				82D6BC2F1B65FC2D00B1B54B /* MJRefreshComponent.m in Sources */,
 				82B769771B79CC280099EBD3 /* ExcellentOpenThirdCell.m in Sources */,
 				82D6BC6B1B65FC3C00B1B54B /* SDCycleScrollView.m in Sources */,
+				82FEADE81B844A35007A13E9 /* MainServiceCell.m in Sources */,
 				82D4D56A1B710AF9008BECC7 /* MyAddressController.m in Sources */,
+				82FEADDF1B843533007A13E9 /* HYQLoginResponse.m in Sources */,
 				82D4D5661B710726008BECC7 /* MyCollectController.m in Sources */,
 				82D6BBE01B65FBF200B1B54B /* AFURLSessionManager.m in Sources */,
 				82D6BCA31B65FC6E00B1B54B /* GlobalConst.m in Sources */,
@@ -1797,6 +1860,7 @@
 				82D6BC9D1B65FC4200B1B54B /* UIImageView+WebCache.m in Sources */,
 				82D4D55E1B70FFF4008BECC7 /* MYDiscountController.m in Sources */,
 				823FF5AF1B70BF3C008C4310 /* BasePersonHeadCell.m in Sources */,
+				82FEADE51B843554007A13E9 /* HYQRegistResponse.m in Sources */,
 				82B769621B79A0220099EBD3 /* ExcellentFinantialForthCell.m in Sources */,
 				823FF5A91B70BF05008C4310 /* MyPaymentController.m in Sources */,
 				823FF58F1B706836008C4310 /* ExcellentPlanController.m in Sources */,
@@ -1820,6 +1884,7 @@
 				82D6BC361B65FC2D00B1B54B /* MJRefreshBackNormalFooter.m in Sources */,
 				822B69991B7D80C900CB0C13 /* ServiceDetailController.m in Sources */,
 				82B7696B1B79CB770099EBD3 /* ExcellentCampThirdCell.m in Sources */,
+				82FEADD11B8416FC007A13E9 /* PurchaseHeaderCell.m in Sources */,
 				822B69B71B7DD95200CB0C13 /* MyPaymentWithdrawController.m in Sources */,
 				82D6BC931B65FC4200B1B54B /* SDWebImageDecoder.m in Sources */,
 				82D6BCDA1B65FC8400B1B54B /* BaseTabbarController.m in Sources */,
@@ -1850,19 +1915,19 @@
 				82D6BC301B65FC2D00B1B54B /* MJRefreshFooter.m in Sources */,
 				82D6BD7F1B65FCD500B1B54B /* ActivityCell.m in Sources */,
 				8291CDB11B7C47C700656300 /* MyOrderFormCell.m in Sources */,
+				82FEADD41B84177F007A13E9 /* PurchaseSecondCell.m in Sources */,
 				823FF5891B70681F008C4310 /* HYQLoginController.m in Sources */,
 				822B69B41B7DD82400CB0C13 /* MyAddressEditController.m in Sources */,
 				82D6BBFE1B65FC0200B1B54B /* NSObject+MJProperty.m in Sources */,
 				82D6BC371B65FC2D00B1B54B /* MJRefreshBackStateFooter.m in Sources */,
 				82D6BCD81B65FC8400B1B54B /* BaseNavigationController.m in Sources */,
 				82D6BBDB1B65FBF200B1B54B /* AFNetworkReachabilityManager.m in Sources */,
-				82D6BCF21B65FCA300B1B54B /* HYQBaseRequest.m in Sources */,
+				82FEADE21B843543007A13E9 /* HYQSendVerCodeResponse.m in Sources */,
 				82D6BC941B65FC4200B1B54B /* SDWebImageDownloader.m in Sources */,
 				822B69BD1B7DD9D900CB0C13 /* MyOrderEvaluateController.m in Sources */,
 				823FF59E1B708EE7008C4310 /* VOSegment.m in Sources */,
 				82D6BC6A1B65FC3C00B1B54B /* SDCollectionViewCell.m in Sources */,
 				82D6BD851B66076500B1B54B /* AppDelegate.m in Sources */,
-				82B57CF71B74880200F659CD /* HYQResponse.m in Sources */,
 				82067BFE1B720BC100B803A9 /* ScanCameraController.m in Sources */,
 				820CAAF61B82FE6400A59A0B /* CWStarRateView.m in Sources */,
 				821CFCC91B78876500A71BDA /* ExcellentCampController.m in Sources */,
@@ -1887,6 +1952,7 @@
 				82D6BBF81B65FC0200B1B54B /* MJConst.m in Sources */,
 				82D6BC971B65FC4200B1B54B /* SDWebImagePrefetcher.m in Sources */,
 				82B769651B79CB570099EBD3 /* ExcellentCampFirstCell.m in Sources */,
+				8291801C1B834E1100F86000 /* MainLogInHeaderCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

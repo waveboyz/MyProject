@@ -18,6 +18,7 @@
 @property (nonatomic, strong) UIImageView *imgView1;
 @property (nonatomic, strong) UIImageView *imgView2;
 @property (nonatomic, strong) UIImageView *imgView3;
+@property (nonatomic, strong) UIView  *blankView;
 
 @end
 
@@ -98,6 +99,13 @@
         _desLbl3.font = [UIFont systemFontOfSize:14.0f];
         
         [self.contentView addSubview:_desLbl3];
+    }
+    
+    if (!_blankView) {
+        _blankView = [[UIView alloc] initWithFrame:CGRectMake(0, 740, kScreenWidth, 30)];
+        _blankView.backgroundColor = GRAY_COLOR;
+        
+        [self.contentView addSubview:_blankView];
     }
 }
 

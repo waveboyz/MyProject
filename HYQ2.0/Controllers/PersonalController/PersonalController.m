@@ -142,6 +142,9 @@
         logoutLbl.font = [UIFont systemFontOfSize:15.0f];
         logoutLbl.text = @"安全退出账号";
         logoutLbl.textAlignment = NSTextAlignmentCenter;
+        if (IS_IHPONE4) {
+            logoutLbl.frame = CGRectMake(kScreenWidth * 0.5 - 60, 5, 120, 20);
+        }
         [cell.contentView addSubview:logoutLbl];
     }
     

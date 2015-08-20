@@ -52,6 +52,7 @@
     self.stateHud.mode = MBProgressHUDModeIndeterminate;
     self.stateHud.opacity = 0.6;
     [self.stateHud show:YES];
+    [self.stateHud hide:YES afterDelay:0.8];
 }
 
 @end

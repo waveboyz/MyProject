@@ -117,32 +117,12 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0 || indexPath.section == 1) {
-        return 150.0f;
+        return 180;
     }else if (indexPath.section == 2){
-        return 740.0f;
+        return 770;
     }
     
     return 275.0f;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    if (section == 0) {
-        return nil;
-    }
-    UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 30)];
-    footer.backgroundColor = BG_GRAY_COLOR;
-    
-    return footer;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    if (section == 0) {
-        return 0;
-    }
-    
-    return 30;
 }
 
 @end

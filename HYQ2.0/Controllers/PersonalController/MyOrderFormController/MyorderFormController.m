@@ -9,6 +9,7 @@
 #import "MyorderFormController.h"
 #import "VOSegmentedControl.h"
 #import "MyOrderFormCell.h"
+#import "MyOrderEvaluateController.h"
 
 @interface MyorderFormController ()
 
@@ -69,25 +70,14 @@
 #pragma UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 114.5f;
+    return 134.5f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 20)];
-    footer.backgroundColor = GRAY_COLOR;
-    
-    return footer;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 20.0f;
+    MyOrderEvaluateController *evaluateVC = [[MyOrderEvaluateController alloc] init];
+    [self.navigationController pushViewController:evaluateVC animated:YES];
 }
 
 @end

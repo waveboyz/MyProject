@@ -13,7 +13,8 @@
 @interface PersonalController : BaseViewController
 <
     UITableViewDataSource,
-    UITableViewDelegate
+    UITableViewDelegate,
+    UIScrollViewDelegate
 >
 
 @end

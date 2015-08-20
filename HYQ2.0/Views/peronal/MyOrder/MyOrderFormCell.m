@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UILabel     *cntLbl;
 @property (nonatomic, strong) UILabel     *lineLbl;
 @property (nonatomic, strong) UIButton    *confirmBtn;
+@property (nonatomic, strong) UIView      *blankView;
 
 @end
 
@@ -93,6 +94,13 @@
         _confirmBtn.layer.borderWidth = 0.5f;
         
         [self.contentView addSubview:_confirmBtn];
+    }
+    
+    if (!_blankView) {
+        _blankView = [[UIView alloc] initWithFrame:CGRectMake(0, 114.5, kScreenWidth, 20)];
+        _blankView.backgroundColor = GRAY_COLOR;
+        
+        [self.contentView addSubview:_blankView];
     }
 }
 

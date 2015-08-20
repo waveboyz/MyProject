@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UIImageView   *headerView;
 @property (nonatomic, strong) UILabel       *titleLbl;
 @property (nonatomic, strong) UIView        *grayview;
+@property (nonatomic, strong) UIView        *blankView;
 
 @end
 
@@ -54,6 +55,13 @@
         _titleLbl.text = @"不仅是物理办公空调，更是一站式获取创业服务的家园。全杭州布局拎包入驻\\专属行政秘书";
         
         [self.contentView addSubview:_titleLbl];
+    }
+    
+    if (!_blankView) {
+        _blankView = [[UIView alloc] initWithFrame:CGRectMake(0, 150, kScreenWidth, 30)];
+        _blankView.backgroundColor = GRAY_COLOR;
+        
+        [self.contentView addSubview:_blankView];
     }
 }
 

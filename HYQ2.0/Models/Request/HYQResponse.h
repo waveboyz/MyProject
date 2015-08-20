@@ -10,6 +10,15 @@
 
 @interface HYQResponse : NSObject
 
+@property (nonatomic, strong) NSMutableDictionary *params;
+
 - (void)getresponseOperation;
+
+//接口路径
+- (NSString *)methodPath;
+
+- (void)decodeJsonOperationWithObject:(id)responseObject;
+
+- (void)setUploadDictionary:(NSMutableDictionary *)dictionary;
 
 @end

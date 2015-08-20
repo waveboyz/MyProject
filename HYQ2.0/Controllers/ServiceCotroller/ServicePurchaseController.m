@@ -7,8 +7,12 @@
 //
 
 #import "ServicePurchaseController.h"
+#import "PurchaseHeaderCell.h"
+#import "PurchaseSecondCell.h"
 
 @interface ServicePurchaseController ()
+
+@property (nonatomic, strong) UITableView *tableview;
 
 @end
 
@@ -16,22 +20,45 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self createUI];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)createUI
+{
+    _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 49) style:UITableViewStylePlain];
+    _tableview.delegate = self;
+    _tableview.dataSource = self;
+    _tableview.backgroundColor = GRAY_COLOR;
+    
+    [self.view addSubview:_tableview];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark UITableViewDelegate
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 2;
 }
-*/
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *PURCHASE_HEADER = @"purchase_header";
+    static NSString *PURCHASE_SECOND = @"purchase_second";
+    UITableViewCell *cell;
+    
+    if (indexPath.row == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:PURCHASE_HEADER];
+        if (!cell) {
+            cell = [[PurchaseHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:PURCHASE_HEADER];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
+    }else{
+        cell = [tableView dequeueReusableCellWithIdentifier:PURCHASE_SECOND];
+        if (!cell) {
+            cell = [[PurchaseSecondCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:PURCHASE_SECOND];
+        }
+    }
+    
+    return cell;
+}
 
 @end

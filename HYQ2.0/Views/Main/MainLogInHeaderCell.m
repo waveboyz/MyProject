@@ -1,23 +1,24 @@
 //
-//  MainHeaderViewCell.m
+//  MainLogInHeaderCell.m
 //  HYQ2.0
 //
-//  Created by waveboyz on 15/8/17.
+//  Created by waveboyz on 15/8/18.
 //  Copyright (c) 2015年 HZHaoYuanQu. All rights reserved.
 //
 
-#import "MainHeaderViewCell.h"
+#import "MainLogInHeaderCell.h"
 #import "UIButton+WebCache.h"
 
-@interface MainHeaderViewCell ()
+@interface MainLogInHeaderCell ()
 
 @property (nonatomic, strong) UIButton *avatarImg;
+@property (nonatomic, strong) UILabel  *nameLbl;
 @property (nonatomic, strong) UILabel  *desLbl;
-@property (nonatomic, strong) UIButton *loginBtn;
+@property (nonatomic, strong) UILabel  *propertyLbl;
 
 @end
 
-@implementation MainHeaderViewCell
+@implementation MainLogInHeaderCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -30,8 +31,10 @@
     return self;
 }
 
+
 - (void)setViews
 {
+
     if (!_avatarImg) {
         _avatarImg = [UIButton buttonWithType:UIButtonTypeCustom];
         _avatarImg.frame = CGRectMake(kScreenWidth * 0.5 - 40, 55, 80, 80);
@@ -42,27 +45,37 @@
         [self.contentView addSubview:_avatarImg];
     }
     
-    if(!_desLbl){
-        _desLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 -100, 155, 200, 20)];
+    if (!_nameLbl) {
+        _nameLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 - 50, 145, 50, 15)];
+        _nameLbl.font = [UIFont systemFontOfSize:13.0f];
+        _nameLbl.textColor = [UIColor whiteColor];
+        _nameLbl.textAlignment = NSTextAlignmentCenter;
+        _nameLbl.text = @"习大大";
+        
+        [self.contentView addSubview:_nameLbl];
+    }
+    
+    if (!_desLbl) {
+        _desLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 - 40, 170, 80, 15)];
         _desLbl.font = [UIFont systemFontOfSize:13.0f];
         _desLbl.textColor = [UIColor whiteColor];
-        _desLbl.text = @"登录签到领取积分可抵现金哦";
         _desLbl.textAlignment = NSTextAlignmentCenter;
+        _desLbl.text = @"余额（元）";
         
         [self.contentView addSubview:_desLbl];
     }
     
-    if (!_loginBtn) {
-        _loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _loginBtn.frame = CGRectMake(kScreenWidth*0.5 - 60, 190, 120, 30);
-        [_loginBtn setBackgroundImage:[UIImage imageNamed:@"codeGetIcon"] forState:UIControlStateNormal];
-        [_loginBtn setTitle:@"登录/注册" forState:UIControlStateNormal];
-        [_loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_loginBtn addTarget:self action:@selector(loginBtnTouched) forControlEvents:UIControlEventTouchUpInside];
+    if (!_propertyLbl) {
+        _propertyLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 - 80, 195, 160, 30)];
+        _propertyLbl.font = [UIFont systemFontOfSize:20.0];
+        _propertyLbl.textAlignment = NSTextAlignmentCenter;
+        _propertyLbl.textColor = [UIColor whiteColor];
+        _propertyLbl.text = @"20.00";
         
-        [self.contentView addSubview:_loginBtn];
+        [self.contentView addSubview:_propertyLbl];
     }
 }
+
 
 - (void)avatarImgTouched
 {
@@ -71,10 +84,4 @@
     }
 }
 
-- (void)loginBtnTouched
-{
-    if (self.delegate && [self.delegate respondsToSelector:@selector(loginBtnPressed)]) {
-        [self.delegate loginBtnPressed];
-    }
-}
 @end

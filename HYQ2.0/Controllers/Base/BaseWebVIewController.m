@@ -78,12 +78,13 @@
 {
     NSURL *url = [NSURL URLWithString:_urlStr];
     NSURLRequest *req = [[NSURLRequest alloc] initWithURL:url];
+    [self showNoTextStateHud];
     [_webview loadRequest:req];
 }
 
 - (void)dismissBtnPressed
 {
-    [self dismissViewControllerAnimated:YES completion:^(void){}];
+    [self dismissOperationExecute];
 }
 
 //
@@ -116,6 +117,11 @@
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     [self showStateHudWithText:@"网页加载失败~"];
+    [self performSelector:@selector(dismissOperationExecute) withObject:nil afterDelay:1];
+}
+
+- (void)dismissOperationExecute
+{
     [self dismissViewControllerAnimated:YES completion:^(void){}];
 }
 

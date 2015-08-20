@@ -13,6 +13,7 @@
 @property (nonatomic, strong)UILabel *titleLbl;
 @property (nonatomic, strong)UILabel *lineLbl;
 @property (nonatomic, strong)UILabel *desLbl;
+@property (nonatomic, strong)UIView  *blankView;
 
 @end
 
@@ -54,6 +55,13 @@
         _desLbl.numberOfLines = 15;
         
         [self.contentView addSubview:_desLbl];
+    }
+    
+    if (!_blankView) {
+        _blankView = [[UIView alloc] initWithFrame:CGRectMake(0, 150, kScreenWidth, 30)];
+        _blankView.backgroundColor = GRAY_COLOR;
+        
+        [self.contentView addSubview:_blankView];
     }
 }
 
