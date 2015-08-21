@@ -40,7 +40,7 @@
 
 - (void)editBtnPressed
 {
-
+    [_tableview setEditing:YES animated:YES];
 }
 
 #pragma mark UITableViewDataSource

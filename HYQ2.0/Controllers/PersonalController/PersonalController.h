@@ -14,7 +14,10 @@
 <
     UITableViewDataSource,
     UITableViewDelegate,
-    UIScrollViewDelegate
+    UIScrollViewDelegate,
+    UIActionSheetDelegate,
+    UIImagePickerControllerDelegate,
+    UINavigationControllerDelegate
 >
 
 @end

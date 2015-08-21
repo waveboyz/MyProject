@@ -46,7 +46,7 @@
     }
     
     if (!_nameLbl) {
-        _nameLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 - 50, 145, 50, 15)];
+        _nameLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 - 50, 145, 100, 15)];
         _nameLbl.font = [UIFont systemFontOfSize:13.0f];
         _nameLbl.textColor = [UIColor whiteColor];
         _nameLbl.textAlignment = NSTextAlignmentCenter;

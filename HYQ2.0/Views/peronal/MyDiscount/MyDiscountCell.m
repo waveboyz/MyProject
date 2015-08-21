@@ -31,7 +31,7 @@
 {
     if (!_imgPic) {
         _imgPic = [[UIImageView alloc] initWithFrame:CGRectMake(10, 20, kScreenWidth -20, 100)];
-        _imgPic.backgroundColor = ORANGE_COLOR;
+        _imgPic.image = [UIImage imageNamed:@"enable_ticket"];
         
         [self.contentView addSubview:_imgPic];
     }

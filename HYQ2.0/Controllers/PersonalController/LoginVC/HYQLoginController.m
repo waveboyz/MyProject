@@ -10,6 +10,7 @@
 #import "HYQRegisterController.h"
 #import "AppDelegate.h"
 #import "NSString+HCBStringHelper.h"
+#import "HYQLoginResponse.h"
 
 @interface HYQLoginController ()
 {
@@ -273,6 +274,8 @@
 - (void)startLoginRequestOperation
 {
     [self showStateHudWithText:@"正在登录..."];
+    HYQLoginResponse *response = [[HYQLoginResponse alloc] initWithPhoneNumber:_phoneTxt.text andWithPassWord:_codeTxt.text.md5];
+    [response getresponseOperation];
 }
 
 #pragma mark - UIAlertView Delegation
@@ -289,18 +292,6 @@
     } else if (alertView.tag == 1000) {
         
     }
-}
-
-#pragma mark CYBLoginDelegate
-- (void)UIDAlreadyLogin
-{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"账号已登录"
-                                                    message:@"您的账号已在其它设备登录，请通过手机验证码在当前设备登录"
-                                                   delegate:self
-                                          cancelButtonTitle:@"取消"
-                                          otherButtonTitles:@"确定", nil];
-    alert.tag = 1000;
-    [alert show];
 }
 
 - (void)loginWithWrongPsw
@@ -323,20 +314,11 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"didLogin" object:nil userInfo:userInfo];
     
     [self dismissViewControllerAnimated:YES completion:^{}];
-    
-    userInfo = @{@"showMore" : @"showMore"};
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"didShowMoreVC" object:nil userInfo:userInfo];
 }
 
 - (void)hideHUDView
 {
     [self.stateHud hide:YES afterDelay:0.2];
-}
-
-- (void)pushRegiterViewController
-{
-    HYQRegisterController *regisVC = [[HYQRegisterController alloc] init];
-    [self presentViewController:regisVC animated:YES completion:^(void){}];
 }
 
 - (BOOL)prefersStatusBarHidden

@@ -9,10 +9,16 @@
 #import "AppDelegate.h"
 #import "BaseTabbarController.h"
 #import "PersonalController.h"
+#import "HYQIntroView.h"
 
 @interface AppDelegate ()
+<
+    HYQIntroViewDelegate
+>
 
 @property (nonatomic, strong)   BaseTabbarController *tabBarVC;
+@property (nonatomic, strong)   HYQIntroView         *introView;
+@property (nonatomic, assign)   BOOL                 isLogin;
 
 @end
 
@@ -23,10 +29,30 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     _tabBarVC = [[BaseTabbarController alloc] init];
-    
+    _isLogin = YES;
     [self.window setRootViewController:_tabBarVC];
     [self.window makeKeyAndVisible];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        if (![defaults objectForKey:@"intro_screen_viewed"]) {
+            self.introView = [[HYQIntroView alloc] initWithFrame:self.window.frame];
+            self.introView.delegate = self;
+            self.introView.backgroundColor = [UIColor greenColor];
+            [self.window addSubview:self.introView];
+        }
+    
     return YES;
+}
+
+-(void)onDoneButtonPressed
+{
+    [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.introView.alpha = 0;
+    } completion:^(BOOL finished) {
+        [self.introView removeFromSuperview];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:@"viewed" forKey:@"intro_screen_viewed"];
+    }];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

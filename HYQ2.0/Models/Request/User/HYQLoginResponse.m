@@ -32,11 +32,12 @@
 - (void)setUploadDictionary:(NSMutableDictionary *)dictionary
 {
     [self.params setObject:dictionary forKey:@"body"];
+    NSLog(@"%@",self.params);
 }
 
 - (NSString *)methodPath
 {
-    return nil;
+    return LOGIN_INTERFACE;
 }
 
 - (void)decodeJsonOperationWithObject:(id)responseObject
@@ -45,7 +46,9 @@
         NSData *respData = [responseObject dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
         NSDictionary *respDict = [NSJSONSerialization JSONObjectWithData:respData options:NSJSONReadingMutableLeaves error:nil];
 
-        
+        if (self.delegate && [self.delegate respondsToSelector:@selector(getResponseDictionary:)]) {
+            [self.delegate getResponseDictionary:respDict];
+        }
     }
 }
 

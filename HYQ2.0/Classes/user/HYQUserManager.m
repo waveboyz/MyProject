@@ -10,7 +10,7 @@
 
 #define ENCODE_KEY          @"HAOYUANQU"
 
-static HYQUserManager *__sharedUserManager;
+static HYQUserManager *_sharedUserManager;
 static NSString *const __kUserInfoFileName = @"B911B8BD1CCD76D0";
 static NSString *const __kPasswordInfoFileName = @"C2BC1692D60AAC29";
 
@@ -27,11 +27,11 @@ static NSString *const __kPasswordInfoFileName = @"C2BC1692D60AAC29";
 
 + (HYQUserManager *)sharedUserManager
 {
-    if (!__sharedUserManager) {
-        __sharedUserManager = [[HYQUserManager alloc] init];
+    if (!_sharedUserManager) {
+        _sharedUserManager = [[HYQUserManager alloc] init];
     }
     
-    return __sharedUserManager;
+    return _sharedUserManager;
 }
 
 - (BOOL)isLogin

@@ -60,7 +60,6 @@
 		822B69BA1B7DD9A000CB0C13 /* PersonalQRView.m in Sources */ = {isa = PBXBuildFile; fileRef = 822B69B91B7DD9A000CB0C13 /* PersonalQRView.m */; };
 		822B69BD1B7DD9D900CB0C13 /* MyOrderEvaluateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822B69BC1B7DD9D900CB0C13 /* MyOrderEvaluateController.m */; };
 		823FF5861B70681F008C4310 /* MainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 823FF5741B70681F008C4310 /* MainPageViewController.m */; };
-		823FF5871B70681F008C4310 /* EditPersonFileControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 823FF5771B70681F008C4310 /* EditPersonFileControllerViewController.m */; };
 		823FF5881B70681F008C4310 /* HYQForgetPSWController.m in Sources */ = {isa = PBXBuildFile; fileRef = 823FF57A1B70681F008C4310 /* HYQForgetPSWController.m */; };
 		823FF5891B70681F008C4310 /* HYQLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 823FF57D1B70681F008C4310 /* HYQLoginController.m */; };
 		823FF58A1B70681F008C4310 /* PersonalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 823FF57F1B70681F008C4310 /* PersonalController.m */; };
@@ -110,6 +109,16 @@
 		82B769741B79CC1A0099EBD3 /* ExcellentOpenSecondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B769731B79CC1A0099EBD3 /* ExcellentOpenSecondCell.m */; };
 		82B769771B79CC280099EBD3 /* ExcellentOpenThirdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B769761B79CC280099EBD3 /* ExcellentOpenThirdCell.m */; };
 		82B7697A1B79CC360099EBD3 /* ExcellentOpenForthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B769791B79CC360099EBD3 /* ExcellentOpenForthCell.m */; };
+		82C4CDD91B86C77600CCCFD8 /* HYQInterfaceMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C4CDD81B86C77600CCCFD8 /* HYQInterfaceMethod.m */; };
+		82C4CDDB1B86CD0100CCCFD8 /* mainPage.png in Resources */ = {isa = PBXBuildFile; fileRef = 82C4CDDA1B86CD0100CCCFD8 /* mainPage.png */; };
+		82C4CDF71B86F90C00CCCFD8 /* 引导页-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 82C4CDF31B86F90C00CCCFD8 /* 引导页-01.png */; };
+		82C4CDF81B86F90C00CCCFD8 /* 引导页-02.png in Resources */ = {isa = PBXBuildFile; fileRef = 82C4CDF41B86F90C00CCCFD8 /* 引导页-02.png */; };
+		82C4CDF91B86F90C00CCCFD8 /* 引导页-03.png in Resources */ = {isa = PBXBuildFile; fileRef = 82C4CDF51B86F90C00CCCFD8 /* 引导页-03.png */; };
+		82C4CDFA1B86F90C00CCCFD8 /* skip_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82C4CDF61B86F90C00CCCFD8 /* skip_icon.png */; };
+		82C4CDFE1B86FE6700CCCFD8 /* HYQIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C4CDFD1B86FE6700CCCFD8 /* HYQIntroView.m */; };
+		82C4CE061B870A7300CCCFD8 /* DownSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C4CE011B870A7300CCCFD8 /* DownSheet.m */; };
+		82C4CE071B870A7300CCCFD8 /* DownSheetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C4CE031B870A7300CCCFD8 /* DownSheetCell.m */; };
+		82C4CE081B870A7300CCCFD8 /* DownSheetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C4CE051B870A7300CCCFD8 /* DownSheetModel.m */; };
 		82D2B1961B81AE770005948E /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D2B1951B81AE770005948E /* UINavigationBar+Awesome.m */; };
 		82D2B1991B81B1D90005948E /* MainLogOutHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D2B1981B81B1D90005948E /* MainLogOutHeaderCell.m */; };
 		82D4D55E1B70FFF4008BECC7 /* MYDiscountController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D4D55D1B70FFF4008BECC7 /* MYDiscountController.m */; };
@@ -299,8 +308,6 @@
 		822B69BC1B7DD9D900CB0C13 /* MyOrderEvaluateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderEvaluateController.m; sourceTree = "<group>"; };
 		823FF5731B70681F008C4310 /* MainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageViewController.h; sourceTree = "<group>"; };
 		823FF5741B70681F008C4310 /* MainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageViewController.m; sourceTree = "<group>"; };
-		823FF5761B70681F008C4310 /* EditPersonFileControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditPersonFileControllerViewController.h; sourceTree = "<group>"; };
-		823FF5771B70681F008C4310 /* EditPersonFileControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditPersonFileControllerViewController.m; sourceTree = "<group>"; };
 		823FF5791B70681F008C4310 /* HYQForgetPSWController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYQForgetPSWController.h; sourceTree = "<group>"; };
 		823FF57A1B70681F008C4310 /* HYQForgetPSWController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYQForgetPSWController.m; sourceTree = "<group>"; };
 		823FF57C1B70681F008C4310 /* HYQLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYQLoginController.h; sourceTree = "<group>"; };
@@ -399,6 +406,21 @@
 		82B769761B79CC280099EBD3 /* ExcellentOpenThirdCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentOpenThirdCell.m; sourceTree = "<group>"; };
 		82B769781B79CC360099EBD3 /* ExcellentOpenForthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentOpenForthCell.h; sourceTree = "<group>"; };
 		82B769791B79CC360099EBD3 /* ExcellentOpenForthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentOpenForthCell.m; sourceTree = "<group>"; };
+		82C4CDD71B86C77600CCCFD8 /* HYQInterfaceMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYQInterfaceMethod.h; sourceTree = "<group>"; };
+		82C4CDD81B86C77600CCCFD8 /* HYQInterfaceMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYQInterfaceMethod.m; sourceTree = "<group>"; };
+		82C4CDDA1B86CD0100CCCFD8 /* mainPage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainPage.png; sourceTree = "<group>"; };
+		82C4CDF31B86F90C00CCCFD8 /* 引导页-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "引导页-01.png"; sourceTree = "<group>"; };
+		82C4CDF41B86F90C00CCCFD8 /* 引导页-02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "引导页-02.png"; sourceTree = "<group>"; };
+		82C4CDF51B86F90C00CCCFD8 /* 引导页-03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "引导页-03.png"; sourceTree = "<group>"; };
+		82C4CDF61B86F90C00CCCFD8 /* skip_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skip_icon.png; sourceTree = "<group>"; };
+		82C4CDFC1B86FE6700CCCFD8 /* HYQIntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYQIntroView.h; sourceTree = "<group>"; };
+		82C4CDFD1B86FE6700CCCFD8 /* HYQIntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYQIntroView.m; sourceTree = "<group>"; };
+		82C4CE001B870A7300CCCFD8 /* DownSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownSheet.h; sourceTree = "<group>"; };
+		82C4CE011B870A7300CCCFD8 /* DownSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownSheet.m; sourceTree = "<group>"; };
+		82C4CE021B870A7300CCCFD8 /* DownSheetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownSheetCell.h; sourceTree = "<group>"; };
+		82C4CE031B870A7300CCCFD8 /* DownSheetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownSheetCell.m; sourceTree = "<group>"; };
+		82C4CE041B870A7300CCCFD8 /* DownSheetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownSheetModel.h; sourceTree = "<group>"; };
+		82C4CE051B870A7300CCCFD8 /* DownSheetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownSheetModel.m; sourceTree = "<group>"; };
 		82D2B1941B81AE770005948E /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
 		82D2B1951B81AE770005948E /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		82D2B1971B81B1D90005948E /* MainLogOutHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainLogOutHeaderCell.h; sourceTree = "<group>"; };
@@ -628,6 +650,7 @@
 		82067BEA1B71F71A00B803A9 /* main */ = {
 			isa = PBXGroup;
 			children = (
+				82C4CDDA1B86CD0100CCCFD8 /* mainPage.png */,
 				821FE71B1B85BE93003CA890 /* scan_icon@2x.png */,
 				821FE7051B85AE40003CA890 /* info_scroll@2x.png */,
 				821FE7001B85ABD4003CA890 /* avatar_placeholder@2x.png */,
@@ -881,8 +904,6 @@
 				823FF5801B70681F008C4310 /* RegisterVC */,
 				823FF57B1B70681F008C4310 /* LoginVC */,
 				823FF5781B70681F008C4310 /* ForgotPwdVC */,
-				823FF5761B70681F008C4310 /* EditPersonFileControllerViewController.h */,
-				823FF5771B70681F008C4310 /* EditPersonFileControllerViewController.m */,
 				823FF57E1B70681F008C4310 /* PersonalController.h */,
 				823FF57F1B70681F008C4310 /* PersonalController.m */,
 			);
@@ -1087,6 +1108,39 @@
 			path = SocialSDKXib;
 			sourceTree = "<group>";
 		};
+		82C4CDF21B86F90C00CCCFD8 /* introviews */ = {
+			isa = PBXGroup;
+			children = (
+				82C4CDF31B86F90C00CCCFD8 /* 引导页-01.png */,
+				82C4CDF41B86F90C00CCCFD8 /* 引导页-02.png */,
+				82C4CDF51B86F90C00CCCFD8 /* 引导页-03.png */,
+				82C4CDF61B86F90C00CCCFD8 /* skip_icon.png */,
+			);
+			path = introviews;
+			sourceTree = "<group>";
+		};
+		82C4CDFB1B86FE3F00CCCFD8 /* IntroView */ = {
+			isa = PBXGroup;
+			children = (
+				82C4CDFC1B86FE6700CCCFD8 /* HYQIntroView.h */,
+				82C4CDFD1B86FE6700CCCFD8 /* HYQIntroView.m */,
+			);
+			path = IntroView;
+			sourceTree = "<group>";
+		};
+		82C4CDFF1B870A7300CCCFD8 /* downSheet */ = {
+			isa = PBXGroup;
+			children = (
+				82C4CE001B870A7300CCCFD8 /* DownSheet.h */,
+				82C4CE011B870A7300CCCFD8 /* DownSheet.m */,
+				82C4CE021B870A7300CCCFD8 /* DownSheetCell.h */,
+				82C4CE031B870A7300CCCFD8 /* DownSheetCell.m */,
+				82C4CE041B870A7300CCCFD8 /* DownSheetModel.h */,
+				82C4CE051B870A7300CCCFD8 /* DownSheetModel.m */,
+			);
+			path = downSheet;
+			sourceTree = "<group>";
+		};
 		82D4D55F1B7104B0008BECC7 /* MyOrderFormController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1181,6 +1235,7 @@
 		82D6BBBD1B65FB9900B1B54B /* 3rdLibs */ = {
 			isa = PBXGroup;
 			children = (
+				82C4CDFF1B870A7300CCCFD8 /* downSheet */,
 				8293B78F1B8589B900638C79 /* UMSocial_Sdk_4.2.3 */,
 				823FF5931B708EE7008C4310 /* VOSegmentedControl */,
 				82D6BC6D1B65FC4200B1B54B /* SDWebImage */,
@@ -1203,6 +1258,8 @@
 				82D6BCA01B65FC6E00B1B54B /* GlobalConst.m */,
 				82D6BCA11B65FC6E00B1B54B /* NSString+HCBStringHelper.h */,
 				82D6BCA21B65FC6E00B1B54B /* NSString+HCBStringHelper.m */,
+				82C4CDD71B86C77600CCCFD8 /* HYQInterfaceMethod.h */,
+				82C4CDD81B86C77600CCCFD8 /* HYQInterfaceMethod.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1232,6 +1289,7 @@
 		82D6BBC11B65FB9900B1B54B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				82C4CDF21B86F90C00CCCFD8 /* introviews */,
 				821FE7141B85B8B6003CA890 /* information */,
 				821FE7071B85B193003CA890 /* excellentplan */,
 				822B69A41B7DB90700CB0C13 /* service */,
@@ -1249,6 +1307,7 @@
 		82D6BBC21B65FB9900B1B54B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				82C4CDFB1B86FE3F00CCCFD8 /* IntroView */,
 				82067BFF1B72188800B803A9 /* Main */,
 				82067BD31B71BBED00B803A9 /* ExcellentPlan */,
 				823FF5AA1B70BF3C008C4310 /* Peronal */,
@@ -1721,6 +1780,7 @@
 				8293B7B41B8589B900638C79 /* UMSocialSDKResourcesNew.bundle in Resources */,
 				821FE7181B85B8BF003CA890 /* share@2x.png in Resources */,
 				821FE7061B85AE40003CA890 /* info_scroll@2x.png in Resources */,
+				82C4CDF71B86F90C00CCCFD8 /* 引导页-01.png in Resources */,
 				82D6BD5F1B65FCBD00B1B54B /* notice_place_holder.png in Resources */,
 				821FE71C1B85BE93003CA890 /* scan_icon@2x.png in Resources */,
 				821FE7201B85BF47003CA890 /* enable_ticket.png in Resources */,
@@ -1731,6 +1791,7 @@
 				8293B7B31B8589B900638C79 /* UMSShareListController.xib in Resources */,
 				821FE7221B85C21A003CA890 /* collect_icon@2x.png in Resources */,
 				8293B7B11B8589B900638C79 /* UMSLoginViewController.xib in Resources */,
+				82C4CDFA1B86F90C00CCCFD8 /* skip_icon.png in Resources */,
 				821FE70F1B85B458003CA890 /* plan_icon1@2x.png in Resources */,
 				8293B7AA1B8589B900638C79 /* UMSocialLocalizable.strings in Resources */,
 				821FE71F1B85BF47003CA890 /* unused_ticket.png in Resources */,
@@ -1747,6 +1808,7 @@
 				8293B7AF1B8589B900638C79 /* UMShareEditViewController.xib in Resources */,
 				821FE6F51B85A6FB003CA890 /* information_tab@2x.png in Resources */,
 				821FE7191B85B8BF003CA890 /* comment@2x.png in Resources */,
+				82C4CDF91B86F90C00CCCFD8 /* 引导页-03.png in Resources */,
 				8293B7AC1B8589B900638C79 /* UMSCommentDetailController.xib in Resources */,
 				8293B7B01B8589B900638C79 /* UMShareEditViewControlleriPad.xib in Resources */,
 				821FE6FD1B85A970003CA890 /* main_icon2@2x.png in Resources */,
@@ -1758,10 +1820,12 @@
 				8293B7B21B8589B900638C79 /* UMSnsAccountViewController.xib in Resources */,
 				82D6BD431B65FCBD00B1B54B /* edit@2x.png in Resources */,
 				82D6BD3D1B65FCBD00B1B54B /* codeGetIcon.png in Resources */,
+				82C4CDF81B86F90C00CCCFD8 /* 引导页-02.png in Resources */,
 				821FE7251B85C5F8003CA890 /* star_click@2x.png in Resources */,
 				821FE7011B85ABD4003CA890 /* avatar_placeholder@2x.png in Resources */,
 				821FE6FE1B85A970003CA890 /* main_icon3@2x.png in Resources */,
 				821FE72E1B85CAE9003CA890 /* login_back@2x.png in Resources */,
+				82C4CDDB1B86CD0100CCCFD8 /* mainPage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1813,6 +1877,7 @@
 				82D6BC681B65FC3C00B1B54B /* TADotView.m in Sources */,
 				821CFCE31B78A7E800A71BDA /* ExcellentThirdCell.m in Sources */,
 				82FEADDB1B843082007A13E9 /* HYQUserManager.m in Sources */,
+				82C4CDD91B86C77600CCCFD8 /* HYQInterfaceMethod.m in Sources */,
 				821CFCE61B78B7DB00A71BDA /* ExcellentBaseSecondCell.m in Sources */,
 				82D6BC2F1B65FC2D00B1B54B /* MJRefreshComponent.m in Sources */,
 				82B769771B79CC280099EBD3 /* ExcellentOpenThirdCell.m in Sources */,
@@ -1838,7 +1903,6 @@
 				823FF5A91B70BF05008C4310 /* MyPaymentController.m in Sources */,
 				823FF58F1B706836008C4310 /* ExcellentPlanController.m in Sources */,
 				8291CDBC1B7C929D00656300 /* MyPaymentCell.m in Sources */,
-				823FF5871B70681F008C4310 /* EditPersonFileControllerViewController.m in Sources */,
 				822B69A01B7D899300CB0C13 /* ServiceDetailSecondCell.m in Sources */,
 				82D6BC8F1B65FC4200B1B54B /* MKAnnotationView+WebCache.m in Sources */,
 				821CFCE21B78A7E800A71BDA /* ExcellentSecondCell.m in Sources */,
@@ -1860,6 +1924,7 @@
 				82B7696B1B79CB770099EBD3 /* ExcellentCampThirdCell.m in Sources */,
 				82FEADD11B8416FC007A13E9 /* PurchaseHeaderCell.m in Sources */,
 				822B69B71B7DD95200CB0C13 /* MyPaymentWithdrawController.m in Sources */,
+				82C4CDFE1B86FE6700CCCFD8 /* HYQIntroView.m in Sources */,
 				82D6BC931B65FC4200B1B54B /* SDWebImageDecoder.m in Sources */,
 				82D6BCDA1B65FC8400B1B54B /* BaseTabbarController.m in Sources */,
 				82D6BCD91B65FC8400B1B54B /* BaseRefreshController.m in Sources */,
@@ -1900,6 +1965,7 @@
 				82D6BC941B65FC4200B1B54B /* SDWebImageDownloader.m in Sources */,
 				822B69BD1B7DD9D900CB0C13 /* MyOrderEvaluateController.m in Sources */,
 				823FF59E1B708EE7008C4310 /* VOSegment.m in Sources */,
+				82C4CE071B870A7300CCCFD8 /* DownSheetCell.m in Sources */,
 				82D6BC6A1B65FC3C00B1B54B /* SDCollectionViewCell.m in Sources */,
 				82D6BD851B66076500B1B54B /* AppDelegate.m in Sources */,
 				82067BFE1B720BC100B803A9 /* ScanCameraController.m in Sources */,
@@ -1915,8 +1981,10 @@
 				823FF59D1B708EE7008C4310 /* VOIndicatorAnimation.m in Sources */,
 				82D6BBFB1B65FC0200B1B54B /* MJType.m in Sources */,
 				82D6BB9A1B65C3EE00B1B54B /* main.m in Sources */,
+				82C4CE061B870A7300CCCFD8 /* DownSheet.m in Sources */,
 				823FF59C1B708EE7008C4310 /* VOContentLayer.m in Sources */,
 				82D6BCDB1B65FC8400B1B54B /* BaseViewController.m in Sources */,
+				82C4CE081B870A7300CCCFD8 /* DownSheetModel.m in Sources */,
 				823FF5B51B70BFDF008C4310 /* MyPaymentHeader.m in Sources */,
 				82D6BCDC1B65FC8400B1B54B /* BaseWebVIewController.m in Sources */,
 				821CFCE01B78A7E800A71BDA /* ExcellentForthCell.m in Sources */,
@@ -2055,6 +2123,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/HYQ2.0/3rdLibs/UMSocial_Sdk_4.2.3",
 				);
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2071,6 +2140,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/HYQ2.0/3rdLibs/UMSocial_Sdk_4.2.3",
 				);
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

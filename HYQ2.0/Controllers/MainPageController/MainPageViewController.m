@@ -7,21 +7,23 @@
 //
 
 #import "MainPageViewController.h"
-#import "HYQLoginController.h"
-#import "PersonalController.h"
+#import "HYQUserManager.h"
 #import "SDCycleScrollView.h"
-#import "scanCameraController.h"
 #import "HYQResponse.h"
 #import "UINavigationBar+Awesome.h"
+//------------------------------
 #import "MainLogOutHeaderCell.h"
 #import "MainLogInHeaderCell.h"
 #import "MainServiceCell.h"
 #import "MainScrollinfoCell.h"
+//----------------------------
 #import "ExcellentBaseController.h"
 #import "ExcellentCampController.h"
 #import "ExcellentFinantialController.h"
 #import "ExcellentOpenDayController.h"
-
+#import "scanCameraController.h"
+#import "HYQLoginController.h"
+#import "PersonalController.h"
 
 #define NAVBAR_CHANGE_POINT 50
 
@@ -100,6 +102,7 @@
     self.tableview.delegate = self;
     [self scrollViewDidScroll:self.tableview];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:@"didLogin" object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -107,6 +110,12 @@
     [super viewWillDisappear:animated];
     self.tableview.delegate = nil;
     [self.navigationController.navigationBar lt_reset];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didLogin" object:nil];
+}
+
+- (void)userDidLogin
+{
+    [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark UITableViewDatasource
@@ -127,8 +136,13 @@
     if (indexPath.row == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:HEADER_CELL];
         if (!cell) {
+//            if ([[HYQUserManager sharedUserManager] isLogin]) {
+//                cell = [[MainLogInHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:HEADER_CELL];
+//                [(MainLogInHeaderCell *)cell setDelegate:self];
+//            }else{
             cell = [[MainLogOutHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:HEADER_CELL];
-            [(MainLogOutHeaderCell *)cell setDelegate:self];
+                [(MainLogOutHeaderCell *)cell setDelegate:self];
+//            }
         }
     }else if (indexPath.row == 1){
         cell = [tableView dequeueReusableCellWithIdentifier:SECOND_CELL];
@@ -156,7 +170,9 @@
         cell = [tableView dequeueReusableCellWithIdentifier:THIRD_CELL];
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:THIRD_CELL];
-            cell.backgroundColor = ORANGE_COLOR;
+            UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 150)];
+            imgView.image = [UIImage imageNamed:@"mainPage"];
+            [cell.contentView addSubview:imgView];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
     }
@@ -171,11 +187,15 @@
         return 240.0f;
     }else if (indexPath.row == 1){
         return 160.0f;
-    }else if (indexPath.row == 3){
+    }else if (indexPath.row == 2){
+        CGFloat IconWidth = (kScreenWidth - 160) / 4;
+        return IconWidth + 40;
+    }
+    else if (indexPath.row == 3){
         return 40.0f;
     }
     
-    return 100;
+    return 150;
 }
 
 #pragma mark MainHeaderViewCellDelegate

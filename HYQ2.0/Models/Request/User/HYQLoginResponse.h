@@ -8,7 +8,15 @@
 
 #import "HYQResponse.h"
 
+@protocol HYQLoginResponseDelegate <NSObject>
+
+- (void)getResponseDictionary:(NSDictionary *)dictionary;
+
+@end
+
 @interface HYQLoginResponse : HYQResponse
+
+@property (nonatomic, assign) id<HYQLoginResponseDelegate> delegate;
 
 - (id)initWithPhoneNumber:(NSString *)phone andWithPassWord:(NSString *)password;
 

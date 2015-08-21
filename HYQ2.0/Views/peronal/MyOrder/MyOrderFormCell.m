@@ -37,7 +37,7 @@
 {
     if (!_imgPic) {
         _imgPic = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 64, 64)];
-        _imgPic.backgroundColor = ORANGE_COLOR;
+        _imgPic.image = [UIImage imageNamed:@"product_placeholder"];
         
         [self.contentView addSubview:_imgPic];
     }
