@@ -10,6 +10,7 @@
 #import "ServiceDetailHeadCell.h"
 #import "ServiceDetailSecondCell.h"
 #import "ServiceDetailThirdCell.h"
+#import "ServiceModel.h"
 
 @interface ServiceDetailController ()
 

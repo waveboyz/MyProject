@@ -153,11 +153,10 @@
     [self.view addGestureRecognizer:tapGes];
 }
 
-- (void)hideLoginBoard
+- (void)pushRegiterViewController
 {
-    [[[(AppDelegate *)[[UIApplication sharedApplication] delegate] window] rootViewController] dismissViewControllerAnimated:YES completion:^{
-        
-    }];
+    HYQRegisterController *regisVC = [[HYQRegisterController alloc] init];
+    [self presentViewController:regisVC animated:YES completion:^(void){}];
 }
 
 - (void)updateUserInformation:(NSDictionary *)userData

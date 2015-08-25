@@ -31,7 +31,7 @@
 
 - (void)setUploadDictionary:(NSMutableDictionary *)dictionary
 {
-    [self.params setObject:dictionary forKey:@"body"];
+    self.params = dictionary;
     NSLog(@"%@",self.params);
 }
 
@@ -42,12 +42,25 @@
 
 - (void)decodeJsonOperationWithObject:(id)responseObject
 {
-    if (responseObject && [responseObject isKindOfClass:[NSString class]]) {
-        NSData *respData = [responseObject dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
-        NSDictionary *respDict = [NSJSONSerialization JSONObjectWithData:respData options:NSJSONReadingMutableLeaves error:nil];
+    NSLog(@"%@",responseObject);
+//    
+//        NSData *respData = [responseObject dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
+//        NSDictionary *respDict = [NSJSONSerialization JSONObjectWithData:respData options:NSJSONReadingMutableLeaves error:nil];
 
-        if (self.delegate && [self.delegate respondsToSelector:@selector(getResponseDictionary:)]) {
-            [self.delegate getResponseDictionary:respDict];
+//        if (self.delegate && [self.delegate respondsToSelector:@selector(getResponseDictionary:)]) {
+//            [self.delegate getResponseDictionary:respDict];
+//        }
+    
+    if (responseObject) {
+        if ([responseObject objectForKey:@"userInfo"]) {
+            NSDictionary *userInfo = [responseObject objectForKey:@"userInfo"];
+            
+            if (userInfo && [[userInfo objectForKey:@"account" ] isKindOfClass:[NSNumber class]]) {
+                NSNumber *property = [userInfo objectForKey:@"account"];
+                
+                NSLog(@"%@",property);
+                
+            }
         }
     }
 }

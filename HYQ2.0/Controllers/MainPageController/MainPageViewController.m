@@ -24,6 +24,9 @@
 #import "scanCameraController.h"
 #import "HYQLoginController.h"
 #import "PersonalController.h"
+//----------------------------
+#import "ServiceModel.h"
+#import "ActivityModel.h"
 
 #define NAVBAR_CHANGE_POINT 50
 

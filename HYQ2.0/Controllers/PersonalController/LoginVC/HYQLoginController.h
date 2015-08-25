@@ -26,7 +26,6 @@ UIAlertViewDelegate
 
 @property (nonatomic,assign) id<LoginDelegate>loginDelegate;
 - (void)startToLogin;
-- (void)hideLoginBoard;
 - (void)updateUserInformation:(NSDictionary *)userData;
 - (void)didRegister:(NSNotification *)notification;
 

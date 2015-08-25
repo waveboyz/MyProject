@@ -7,16 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseModel.h"
 
-@interface ActivityModel : NSObject
+@interface ActivityModel : BaseModel
 
-- (instancetype)initWithDictionary:(NSDictionary *)dic;
-+ (instancetype)activityWithDictionary:(NSDictionary *)dic;
+@property (nonatomic, copy) NSString *Title;
+@property (nonatomic, copy) NSString *Up_time;
+@property (nonatomic, copy) NSString *WebUrl;
+@property (nonatomic, copy) NSString *ImgUrl;
+@property (nonatomic, strong) NSNumber *CmtCount;
 
-@property (nonatomic, retain) NSString *title;
-@property (nonatomic, retain) NSString *begin_time;
-@property (nonatomic, retain) NSString *end_time;
-@property (nonatomic, retain) NSString *location;
-@property (nonatomic, assign) BOOL      is_end;
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+
++(instancetype)activityWithDictionary:(NSDictionary *)dictionary;
 
 @end

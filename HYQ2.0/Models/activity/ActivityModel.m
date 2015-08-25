@@ -10,25 +10,20 @@
 
 @implementation ActivityModel
 
-- (instancetype)initWithDictionary:(NSDictionary *)dic
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
     self = [super init];
     if (self) {
-//        self.TITLE = [dic objectForKey:@"title"];
-//        self.END_TIME = [dic objectForKey:@"end_time"];
-//        self.BEGIN_TIME = [dic objectForKey:@"begin_time"];
-//        self.LOCATION = [dic objectForKey:@"location"];
-//        self.IS_END = [dic objectForKey:@"is_end"];
         
-        [self setValuesForKeysWithDictionary:dic];
+        [self setValuesForKeysWithDictionary:dictionary];
     }
 
     return self;
 }
 
-+ (instancetype)activityWithDictionary:(NSDictionary *)dic
++(instancetype)activityWithDictionary:(NSDictionary *)dictionary
 {
-    return [[ActivityModel alloc] initWithDictionary:dic];
+    return [[ActivityModel alloc] initWithDictionary:dictionary];
 }
 
 @end

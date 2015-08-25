@@ -10,6 +10,7 @@
 #import "VOSegmentedControl.h"
 #import "ActivityCell.h"
 #import "BaseWebVIewController.h"
+#import "ActivityModel.h"
 
 @interface InformationController ()
 

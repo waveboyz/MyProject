@@ -10,6 +10,7 @@
 #import "VOSegmentedControl.h"
 #import "ServiceViewCell.h"
 #import "ServiceDetailController.h"
+#import "ServiceModel.h"
 
 @interface ServiceController ()
 
