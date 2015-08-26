@@ -7,6 +7,7 @@
 //
 
 #import "HYQLoginResponse.h"
+#import "GlobalConst.h"
 
 @interface HYQLoginResponse ()
 
@@ -60,7 +61,8 @@
                 [userDic setObject:[responseObject objectForKey:@"userId"] forKey:@"uid"];
                 [userDic setObject:[responseObject objectForKey:@"userName"] forKey:@"username"];
                 [userDic setObject:[responseObject objectForKey:@"account"] forKey:@"property"];
-                [userDic setObject:[responseObject objectForKey:@"imagery"] forKey:@"avatarUrl"];
+                NSString *str = [NSString stringWithFormat:@"%@%@",LOCAL_HOST,[responseObject objectForKey:@"imagery"]];
+                [userDic setObject:str forKey:@"avatarUrl"];
                 [userDic setObject:_psw forKey:@"psw"];
                 
                 if (self.delegate && [self.delegate respondsToSelector:@selector(getResponseDictionary:)]) {

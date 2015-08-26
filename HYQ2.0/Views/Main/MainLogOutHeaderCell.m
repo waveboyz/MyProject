@@ -36,7 +36,7 @@
         _avatarImg = [UIButton buttonWithType:UIButtonTypeCustom];
         _avatarImg.frame = CGRectMake(kScreenWidth * 0.5 - 40, 55, 80, 80);
         _avatarImg.layer.cornerRadius = CGRectGetWidth(_avatarImg.frame)/2;
-        [_avatarImg sd_setImageWithURL:nil forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"avatar_placeholder"]];
+        [_avatarImg setImage:[UIImage imageNamed:@"avatar_placeholder"] forState:UIControlStateNormal];
         [_avatarImg addTarget:self action:@selector(avatarImgTouched) forControlEvents:UIControlEventTouchUpInside];
         
         [self.contentView addSubview:_avatarImg];

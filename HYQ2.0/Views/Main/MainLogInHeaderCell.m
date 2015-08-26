@@ -39,8 +39,9 @@
     if (!_avatarImg) {
         _avatarImg = [UIButton buttonWithType:UIButtonTypeCustom];
         _avatarImg.frame = CGRectMake(kScreenWidth * 0.5 - 40, 55, 80, 80);
+        _avatarImg.clipsToBounds = YES;
         _avatarImg.layer.cornerRadius = CGRectGetWidth(_avatarImg.frame)/2;
-        [_avatarImg sd_setImageWithURL:[NSURL URLWithString:nil] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"avatar_placeholder"]];
+        [_avatarImg sd_setImageWithURL:[NSURL URLWithString:[[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"avatarUrl"]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"avatar_placeholder"]];
         [_avatarImg addTarget:self action:@selector(avatarImgTouched) forControlEvents:UIControlEventTouchUpInside];
         
         [self.contentView addSubview:_avatarImg];

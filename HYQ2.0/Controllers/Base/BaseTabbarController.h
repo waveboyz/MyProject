@@ -10,7 +10,7 @@
 #import "GlobalConst.h"
 @interface BaseTabbarController : UITabBarController
 <
-UITabBarControllerDelegate
+    UITabBarControllerDelegate
 >
 
 @end

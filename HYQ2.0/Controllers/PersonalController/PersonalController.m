@@ -245,8 +245,8 @@
     }
     
     if (indexPath.section == 3) {
-        [self showNoTextStateHud];
-        [self performSelector:@selector(deleteUserDefaults) onThread:[NSThread mainThread] withObject:nil waitUntilDone:YES];
+        [self performSelector:@selector(showNoTextStateHud) onThread:[NSThread currentThread] withObject:nil waitUntilDone:YES];
+        [self performSelector:@selector(deleteUserDefaults) onThread:[NSThread currentThread] withObject:nil waitUntilDone:YES];
         
         [self.navigationController popViewControllerAnimated:YES];
     }

@@ -103,6 +103,8 @@
 		829ACB6B1B8AF73600C99EC7 /* DiscountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 829ACB6A1B8AF73600C99EC7 /* DiscountModel.m */; };
 		829ACB6E1B8B0CF700C99EC7 /* AddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 829ACB6D1B8B0CF700C99EC7 /* AddressModel.m */; };
 		82AA80F21B8CAB5500EE08B7 /* ScrollDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AA80F11B8CAB5500EE08B7 /* ScrollDetailCell.m */; };
+		82AEE62C1B8D63E4004D800C /* MainBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AEE62B1B8D63E4004D800C /* MainBannerCell.m */; };
+		82AEE6321B8D66AC004D800C /* MainProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AEE6311B8D66AC004D800C /* MainProductCell.m */; };
 		82B3BA571B8C4EE900A50728 /* HYQActivityResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B3BA561B8C4EE900A50728 /* HYQActivityResponse.m */; };
 		82B3BA5A1B8C500200A50728 /* HYQActivityDetailResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B3BA591B8C500200A50728 /* HYQActivityDetailResponse.m */; };
 		82B769531B798CDB0099EBD3 /* ExcellentBaseThirdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B769521B798CDB0099EBD3 /* ExcellentBaseThirdCell.m */; };
@@ -404,6 +406,10 @@
 		829ACB6D1B8B0CF700C99EC7 /* AddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressModel.m; sourceTree = "<group>"; };
 		82AA80F01B8CAB5500EE08B7 /* ScrollDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollDetailCell.h; sourceTree = "<group>"; };
 		82AA80F11B8CAB5500EE08B7 /* ScrollDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollDetailCell.m; sourceTree = "<group>"; };
+		82AEE62A1B8D63E4004D800C /* MainBannerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainBannerCell.h; sourceTree = "<group>"; };
+		82AEE62B1B8D63E4004D800C /* MainBannerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainBannerCell.m; sourceTree = "<group>"; };
+		82AEE6301B8D66AC004D800C /* MainProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainProductCell.h; sourceTree = "<group>"; };
+		82AEE6311B8D66AC004D800C /* MainProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainProductCell.m; sourceTree = "<group>"; };
 		82B3BA551B8C4EE900A50728 /* HYQActivityResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYQActivityResponse.h; sourceTree = "<group>"; };
 		82B3BA561B8C4EE900A50728 /* HYQActivityResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYQActivityResponse.m; sourceTree = "<group>"; };
 		82B3BA581B8C500200A50728 /* HYQActivityDetailResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYQActivityDetailResponse.h; sourceTree = "<group>"; };
@@ -718,6 +724,10 @@
 				821FE7031B85AC82003CA890 /* MainScrollinfoCell.m */,
 				82AA80F01B8CAB5500EE08B7 /* ScrollDetailCell.h */,
 				82AA80F11B8CAB5500EE08B7 /* ScrollDetailCell.m */,
+				82AEE62A1B8D63E4004D800C /* MainBannerCell.h */,
+				82AEE62B1B8D63E4004D800C /* MainBannerCell.m */,
+				82AEE6301B8D66AC004D800C /* MainProductCell.h */,
+				82AEE6311B8D66AC004D800C /* MainProductCell.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1983,6 +1993,7 @@
 				82D6BCA31B65FC6E00B1B54B /* GlobalConst.m in Sources */,
 				8286B3C41B72F95300897A4D /* QRView.m in Sources */,
 				82D6BC351B65FC2D00B1B54B /* MJRefreshBackGifFooter.m in Sources */,
+				82AEE6321B8D66AC004D800C /* MainProductCell.m in Sources */,
 				821CFCD61B78966500A71BDA /* ExcellentBaseFirstCell.m in Sources */,
 				82D6BBFF1B65FC0200B1B54B /* NSString+MJExtension.m in Sources */,
 				82D6BBDF1B65FBF200B1B54B /* AFURLResponseSerialization.m in Sources */,
@@ -2018,6 +2029,7 @@
 				82FEADD11B8416FC007A13E9 /* PurchaseHeaderCell.m in Sources */,
 				822B69B71B7DD95200CB0C13 /* MyPaymentWithdrawController.m in Sources */,
 				82C4CDFE1B86FE6700CCCFD8 /* HYQIntroView.m in Sources */,
+				82AEE62C1B8D63E4004D800C /* MainBannerCell.m in Sources */,
 				82D6BC931B65FC4200B1B54B /* SDWebImageDecoder.m in Sources */,
 				82D6BCDA1B65FC8400B1B54B /* BaseTabbarController.m in Sources */,
 				82D6BCD91B65FC8400B1B54B /* BaseRefreshController.m in Sources */,

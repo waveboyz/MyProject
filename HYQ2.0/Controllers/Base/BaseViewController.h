@@ -10,6 +10,7 @@
 #import "GlobalConst.h"
 #import "MBProgressHUD.h"
 #import "UIButton+WebCache.h"
+#import "UIImageView+WebCache.h"
 
 @interface BaseViewController : UIViewController
 <

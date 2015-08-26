@@ -10,7 +10,7 @@
 
 @protocol HYQRegistResponseDelegate <NSObject>
 
-- (void)sendVerCodeSucceed;
+- (void)registSucceed;
 
 @optional
 
@@ -19,5 +19,9 @@
 @end
 
 @interface HYQRegistResponse : HYQResponse
+
+@property (nonatomic, assign) id<HYQRegistResponseDelegate> delegate;
+
+- (id)initWithPhone:(NSString *)phone andWithCode:(NSString *)code andWithVerCode:(NSString *)vercode andWithSPhone:(NSString *)sphone;
 
 @end

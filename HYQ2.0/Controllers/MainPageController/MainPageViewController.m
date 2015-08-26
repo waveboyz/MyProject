@@ -16,6 +16,8 @@
 #import "MainLogInHeaderCell.h"
 #import "MainServiceCell.h"
 #import "MainScrollinfoCell.h"
+#import "MainBannerCell.h"
+#import "MainProductCell.h"
 //----------------------------
 #import "ExcellentBaseController.h"
 #import "ExcellentCampController.h"
@@ -38,30 +40,13 @@
 >
 
 @property (nonatomic, retain) UIScrollView *scrollBGView;
-@property (nonatomic, assign) NSMutableArray *imgArr;
 @property (nonatomic, strong) UITableView *tableview;
+@property (nonatomic, strong) UIButton *imgBtn;
+@property (nonatomic, strong) UIImageView *buttonImg;
 
 @end
 
 @implementation MainPageController
-
-- (id)init
-{
-    if (self = [super init]) {
-
-    }
-    return self;
-}
-
-- (NSMutableArray *)imgArr
-{
-    NSString *stringPath = [[NSBundle mainBundle] pathForResource:@"URLS.plist" ofType:nil];
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithContentsOfFile:stringPath];
-    NSArray *dicArr = [dic objectForKey:@"urls"];
-    NSMutableArray *listArr = [NSMutableArray arrayWithArray:dicArr];
-    
-    return listArr;
-}
 
 - (void)viewDidLoad
 {
@@ -83,13 +68,15 @@
 
 - (void)createUI
 {
-    UIButton *imgBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 0, 38)];
-    imgBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    imgBtn.layer.cornerRadius = CGRectGetWidth(imgBtn.frame)/4;
-    [imgBtn addTarget:self action:@selector(avatarImgPressed) forControlEvents:UIControlEventTouchUpInside];
-    [imgBtn sd_setImageWithURL:nil forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"avatar_placeholder"]];
-    [self.navigationItem setTitleView:imgBtn];
-    self.navigationItem.titleView.contentMode = UIViewContentModeScaleAspectFill;
+    _imgBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 0, 38)];
+   _buttonImg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 38, 38)];
+    _buttonImg.layer.cornerRadius = CGRectGetWidth(_buttonImg.frame) / 2;
+    _buttonImg.clipsToBounds = YES;
+    [_imgBtn addSubview:_buttonImg];
+//    _imgBtn.layer.cornerRadius = CGRectGetWidth(_imgBtn.frame)/4;
+    [_imgBtn addTarget:self action:@selector(titleViewPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self.navigationItem setTitleView:_imgBtn];
+    [self setButton];
     
     self.tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, -64, kScreenWidth, kScreenHeight + 64) style:UITableViewStylePlain];
     self.tableview.backgroundColor = GRAY_COLOR;
@@ -105,6 +92,7 @@
     self.tableview.delegate = self;
     [self scrollViewDidScroll:self.tableview];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:@"didLogin" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:@"didLogout" object:nil];
 
@@ -119,9 +107,18 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:@"didLogout" object:nil];
 }
 
+- (void)setButton
+{
+    if ([[HYQUserManager sharedUserManager] isLogin]) {
+        [_buttonImg sd_setImageWithURL:[NSURL URLWithString:[[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"avatarUrl"]] placeholderImage:[UIImage imageNamed:@"avatar_placeholder"]];
+    }else{
+        _buttonImg.image = [UIImage imageNamed:@"avatar_placeholder"];
+    }
+}
+
 - (void)userDidLogin
 {
-//    [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self setButton];
     [self.tableview reloadData];
 }
 
@@ -140,9 +137,9 @@
     static NSString *THIRD_CELL = @"third_cell";
     
     UITableViewCell *cell;
+    
     if (indexPath.row == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:HEADER_CELL];
-        if (!cell) {
             if ([[HYQUserManager sharedUserManager] isLogin]) {
                 cell = [[MainLogInHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:HEADER_CELL];
                 [(MainLogInHeaderCell *)cell setDelegate:self];
@@ -150,18 +147,11 @@
             cell = [[MainLogOutHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:HEADER_CELL];
                 [(MainLogOutHeaderCell *)cell setDelegate:self];
             }
-        }
     }else if (indexPath.row == 1){
         cell = [tableView dequeueReusableCellWithIdentifier:SECOND_CELL];
         if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SECOND_CELL];
+            cell = [[MainBannerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SECOND_CELL];
         }
-        SDCycleScrollView *cycleView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, kScreenWidth, 160) imageURLStringsGroup:self.imgArr];
-        cycleView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
-        cycleView.placeholderImage = [UIImage imageNamed:@"notice_place_holder"];
-        cycleView.pageControlStyle = SDCycleScrollViewPageContolStyleClassic;
-        
-        [cell.contentView addSubview:cycleView];
     }else if (indexPath.row == 2){
         cell = [tableView dequeueReusableCellWithIdentifier:SERVICE_CELL];
         if (!cell) {
@@ -176,12 +166,8 @@
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:THIRD_CELL];
         if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:THIRD_CELL];
+            cell = [[MainProductCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:THIRD_CELL];
         }
-        UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 150)];
-        imgView.image = [UIImage imageNamed:@"mainPage"];
-        [cell.contentView addSubview:imgView];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     return cell;
@@ -203,6 +189,15 @@
     }
     
     return 150;
+}
+
+- (void)titleViewPressed
+{
+    if ([[HYQUserManager sharedUserManager] isLogin]) {
+        [self avatarImgPressed];
+    }else{
+        [self loginBtnPressed];
+    }
 }
 
 #pragma mark MainHeaderViewCellDelegate

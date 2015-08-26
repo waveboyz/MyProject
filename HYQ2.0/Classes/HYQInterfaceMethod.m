@@ -9,10 +9,13 @@
 #import "HYQInterfaceMethod.h"
 
 @implementation HYQInterfaceMethod
-
+// * 本地 *
+NSString *const LOCAL_HOST              =           @"http://192.168.1.93:90/";
 // * 登录 *
 NSString *const LOGIN_INTERFACE         =           @"http://192.168.1.93:90/app/appInterface!Login.action";
-// * 验证码   *
-NSString *const SEND_VER_INTERFACE         =           @"http://192.168.1.93:90/app/appInterface!yzm.action";
+// * 验证码 *
+NSString *const SEND_VER_INTERFACE      =           @"http://192.168.1.93:90/app/appInterface!yzm.action";
+// * 注册 *
+NSString *const REGIST_INTERFACE        =           @"http://192.168.1.93:90/app/appInterface!register.action";
 
 @end

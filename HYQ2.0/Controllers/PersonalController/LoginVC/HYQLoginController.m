@@ -312,8 +312,7 @@ HYQLoginResponseDelegate
 
 - (void)loginSuccess
 {
-    NSDictionary *userInfo = @{@"didLogin" : @"didLogin"};
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"didLogin" object:nil userInfo:userInfo];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"didLogin" object:nil];
     
     [self dismissLoginController];
 }

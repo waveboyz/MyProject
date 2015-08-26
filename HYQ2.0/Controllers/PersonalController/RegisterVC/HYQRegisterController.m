@@ -11,25 +11,29 @@
 #import "AppDelegate.h"
 #import "NSString+HCBStringHelper.h"
 #import "HYQSendVerCodeResponse.h"
+#import "HYQRegistResponse.h"
 
 #define MOBILENUMBER                    @"0123456789"
 
 @interface HYQRegisterController()
 <
-    HYQSendVerCodeResponseDelegate
+    HYQSendVerCodeResponseDelegate,
+    HYQRegistResponseDelegate
 >
-{
-    UITextField     *_phoneTxt;
-    UITextField     *_codeTxt;
-    UITextField     *_resendTxt;
-    UIButton        *_getResendBtn;
-    UIScrollView    *_bgView;
-    NSTimer         *_captchaTimer;
-    NSInteger       _reSendTime;
-    NSString        *_userName;
-    NSString        *_pswMD5;
-    NSString        *_uid;
-}
+@property (nonatomic, strong)    UITextField     *phoneTxt;
+@property (nonatomic, strong)    UITextField     *codeTxt;
+@property (nonatomic, strong)    UITextField     *resendTxt;
+@property (nonatomic, strong)    UITextField     *suggestTxt;
+@property (nonatomic, strong)    UIButton        *getResendBtn;
+@property (nonatomic, strong)    UIScrollView    *bgView;
+@property (nonatomic, strong)    NSTimer         *captchaTimer;
+@property (nonatomic, assign)    NSInteger       reSendTime;
+@property (nonatomic, copy)      NSString        *phone;
+@property (nonatomic, copy)      NSString        *pswMD5;
+@property (nonatomic, copy)      NSString        *verCode;
+@property (nonatomic, copy)      NSString        *uid;
+@property (nonatomic, copy)      NSString        *sugPhone;
+
 @end
 
 @implementation HYQRegisterController
@@ -58,12 +62,30 @@
     UIImageView *btnImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_back"]];
     btnImg.frame = CGRectMake(15, 29.5, 18, 18);
     [self.view addSubview:btnImg];
-    
+
     UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     cancelBtn.frame = CGRectMake(0, 0, 57, 57);
     [cancelBtn addTarget:self action:@selector(dismissRegisterController) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:cancelBtn];
+//----------------------------------------------
+    UILabel *sugLbl = [[UILabel alloc] initWithFrame:CGRectMake(20, 114, 50, 30)];
+    sugLbl.textColor = [UIColor whiteColor];
+    sugLbl.font = [UIFont systemFontOfSize:13.0f];
+    sugLbl.text = @"推荐人";
+    [_bgView addSubview:sugLbl];
     
+    _suggestTxt = [[UITextField alloc] initWithFrame:CGRectMake(60, 114, kScreenWidth - 80, 30)];
+    _suggestTxt.placeholder = @"请输入手机号(选填)";
+    _suggestTxt.textColor = [UIColor whiteColor];
+    _suggestTxt.font = [UIFont systemFontOfSize:13.0f];
+    _suggestTxt.keyboardType = UIKeyboardTypePhonePad;
+    _suggestTxt.delegate = self;
+    [_bgView addSubview:_suggestTxt];
+    
+    UILabel *sepLbl = [[UILabel alloc] initWithFrame:CGRectMake(15, 154, kScreenWidth - 30, 1)];
+    sepLbl.backgroundColor = [UIColor whiteColor];
+    [_bgView addSubview:sepLbl];
+//----------------------------------------------
     UILabel *phoneLbl = [[UILabel alloc] initWithFrame:CGRectMake(20, 170, 50, 30)];
     phoneLbl.textColor = [UIColor whiteColor];
     phoneLbl.font = [UIFont systemFontOfSize:13.0f];
@@ -80,7 +102,7 @@
     UILabel *lineLbl = [[UILabel alloc] initWithFrame:CGRectMake(15, 210, kScreenWidth - 30, 1)];
     lineLbl.backgroundColor = [UIColor whiteColor];
     [_bgView addSubview:lineLbl];
-    
+//----------------------------------------------
     UILabel *newCode = [[UILabel alloc] initWithFrame:CGRectMake(20, 226, 50, 30)];
     newCode.textColor = [UIColor whiteColor];
     newCode.font = [UIFont systemFontOfSize:13.0f];
@@ -98,8 +120,7 @@
     UILabel *lineLbl2 = [[UILabel alloc] initWithFrame:CGRectMake(15, 266, kScreenWidth - 30, 1)];
     lineLbl2.backgroundColor=[UIColor whiteColor];
     [_bgView addSubview:lineLbl2];
-    
-    
+//----------------------------------------------
     UILabel *reSendLbl = [[UILabel alloc]initWithFrame:CGRectMake(20, 286, 70, 30)];
     reSendLbl.textColor = [UIColor whiteColor];
     reSendLbl.font = [UIFont systemFontOfSize:13.0f];
@@ -127,7 +148,7 @@
     [_getResendBtn setBackgroundImage:[UIImage imageNamed:@"loginIcon"] forState:UIControlStateNormal];
     [_getResendBtn addTarget:self action:@selector(sendVerCodeButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [_bgView addSubview:_getResendBtn];
-    
+//----------------------------------------------
     UIButton *confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     confirmBtn.frame = CGRectMake(15, 357, kScreenWidth - 30, 45);
     confirmBtn.titleLabel.font = [UIFont systemFontOfSize:14.0f];
@@ -228,7 +249,7 @@
             
             return;
             
-        } else {
+        }else {
             
             [self resignFirstResponder];
             
@@ -270,8 +291,7 @@
         if (*p) {
             p++;
             strlength++;
-        }
-        else {
+        } else {
             p++;
         }
     }
@@ -281,10 +301,17 @@
 #pragma mark - registerRequest
 - (void)registerOperation
 {
-    _userName = _phoneTxt.text;
+    _phone = _phoneTxt.text;
     _pswMD5   = _codeTxt.text.md5;
+    _verCode  = _resendTxt.text;
+    _sugPhone = _suggestTxt.text;
+    
+    HYQRegistResponse *response = [[HYQRegistResponse alloc] initWithPhone:_phone andWithCode:_pswMD5 andWithVerCode:_verCode andWithSPhone:_sugPhone];
+    response.delegate = self;
+    [response getresponseOperation];
 }
 
+#pragma mark - sendVerCodeOperation
 - (void)sendVerCodeButtonPressed
 {
     NSString *mobileRegex = @"[1][34578][0-9]{9}";
@@ -312,7 +339,6 @@
     [response getresponseOperation];
     
     _getResendBtn.backgroundColor = [UIColor colorWithWhite:0.6 alpha:1.0];
-    [_getResendBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_getResendBtn setTitle:@"60s 重新获取" forState:UIControlStateNormal];
     _getResendBtn.enabled = NO;
     _reSendTime = 60;
@@ -331,14 +357,26 @@
     if (_reSendTime >= 0) {
         [_getResendBtn setTitle:[NSString stringWithFormat:@"%lds 重新获取", _reSendTime] forState:UIControlStateNormal];
     } else {
+        _getResendBtn.alpha = 0.8;
         [_getResendBtn setBackgroundColor:BLUE_COLOR];
         [_getResendBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
         [_getResendBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_getResendBtn setTitleColor:[UIColor colorWithWhite:1.0 alpha:0.6] forState:UIControlStateHighlighted];
+        [_getResendBtn setBackgroundImage:[UIImage imageNamed:@"loginIcon"] forState:UIControlStateNormal];
         
         _getResendBtn.enabled = YES;
         _captchaTimer = nil;
     }
+}
+
+#pragma mark RegistResponse Delegate
+- (void)registSucceed
+{
+    [self showStateHudWithText:@"注册成功！"];
+    
+    dispatch_time_t time=dispatch_time(DISPATCH_TIME_NOW, 1*NSEC_PER_SEC);
+    dispatch_after(dispatch_time(time, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self dismissViewControllerAnimated:YES completion:^(void){}];
+    });
 }
 
 #pragma mark - sendVerCode Delegate
@@ -368,6 +406,7 @@
         [textField resignFirstResponder];
         [self submitReg];
     }
+    
     return YES;
 }
 
@@ -390,21 +429,10 @@
         
         [_resendTxt becomeFirstResponder];
         
+    } else if (alertView.tag == 205){
+        [_suggestTxt becomeFirstResponder];
     }
 }
 
-- (void)phoneNumberAlreadyRegistered
-{
-    _phoneTxt.textColor = [UIColor redColor];
-    
-    [_phoneTxt becomeFirstResponder];
-}
-
-- (void)verCodeMisTyped
-{
-    _resendTxt.textColor = [UIColor redColor];
-    
-    [_resendTxt becomeFirstResponder];
-}
 
 @end

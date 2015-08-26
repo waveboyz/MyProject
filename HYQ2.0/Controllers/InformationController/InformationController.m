@@ -28,9 +28,9 @@
 
 - (void)createUI
 {
-    _segment = [[VOSegmentedControl alloc] initWithSegments:@[@{VOSegmentText: @"资讯"},
-                                                              @{VOSegmentText: @"活动"},
-                                                              @{VOSegmentText: @"政策"}]];
+    _segment = [[VOSegmentedControl alloc] initWithSegments:@[@{VOSegmentText: @"原创"},
+                                                              @{VOSegmentText: @"创业资讯"},
+                                                              @{VOSegmentText: @"资讯"}]];
     _segment.frame = CGRectMake(0, 64, kScreenWidth, 40);
     _segment.contentStyle = VOContentStyleTextAlone;
     _segment.indicatorStyle = VOSegCtrlIndicatorStyleBottomLine;

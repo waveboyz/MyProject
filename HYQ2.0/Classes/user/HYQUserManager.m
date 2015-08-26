@@ -48,11 +48,6 @@ static NSString *const __kPasswordInfoFileName = @"C2BC1692D60AAC29";
 - (BOOL)logout
 {
     NSMutableDictionary *userDict = [[NSMutableDictionary alloc] initWithDictionary:[self userInfo]];
-    
-//    [userDict removeObjectForKey:@"username"];
-//    [userDict removeObjectForKey:@"uid"];
-//    [userDict removeObjectForKey:@"pwd"];
-//    [userDict removeObjectForKey:@"property"];
     [userDict removeAllObjects];
     
     [self updateUserInfo:userDict];
