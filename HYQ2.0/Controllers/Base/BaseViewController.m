@@ -39,7 +39,8 @@
     self.stateHud.labelText = text;
     self.stateHud.labelFont = [UIFont systemFontOfSize:12.0f];
     [self.stateHud show:YES];
-    [self.stateHud hide:YES afterDelay:0.8];
+    [self.stateHud hide:YES afterDelay:1.2];
+    self.stateHud = nil;
 }
 
 - (void)showNoTextStateHud
@@ -49,10 +50,16 @@
         self.stateHud.delegate = self;
         [self.view addSubview:self.stateHud];
     }
+    
     self.stateHud.mode = MBProgressHUDModeIndeterminate;
     self.stateHud.opacity = 0.6;
     [self.stateHud show:YES];
-    [self.stateHud hide:YES afterDelay:0.8];
+}
+
+- (void)stopStateHud
+{
+    [self.stateHud hide:YES afterDelay:0.5];
+    self.stateHud = nil;
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import "MainLogInHeaderCell.h"
 #import "UIButton+WebCache.h"
+#import "HYQUserManager.h"
 
 @interface MainLogInHeaderCell ()
 
@@ -39,7 +40,7 @@
         _avatarImg = [UIButton buttonWithType:UIButtonTypeCustom];
         _avatarImg.frame = CGRectMake(kScreenWidth * 0.5 - 40, 55, 80, 80);
         _avatarImg.layer.cornerRadius = CGRectGetWidth(_avatarImg.frame)/2;
-        [_avatarImg sd_setImageWithURL:nil forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"avatar_placeholder"]];
+        [_avatarImg sd_setImageWithURL:[NSURL URLWithString:nil] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"avatar_placeholder"]];
         [_avatarImg addTarget:self action:@selector(avatarImgTouched) forControlEvents:UIControlEventTouchUpInside];
         
         [self.contentView addSubview:_avatarImg];
@@ -50,7 +51,7 @@
         _nameLbl.font = [UIFont systemFontOfSize:13.0f];
         _nameLbl.textColor = [UIColor whiteColor];
         _nameLbl.textAlignment = NSTextAlignmentCenter;
-        _nameLbl.text = @"习大大";
+        _nameLbl.text = [[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"username"];
         
         [self.contentView addSubview:_nameLbl];
     }
@@ -70,7 +71,11 @@
         _propertyLbl.font = [UIFont systemFontOfSize:20.0];
         _propertyLbl.textAlignment = NSTextAlignmentCenter;
         _propertyLbl.textColor = [UIColor whiteColor];
-        _propertyLbl.text = @"20.00";
+        if ([[[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"property"] isKindOfClass:[NSNumber class]]) {
+            NSUInteger property = [[[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"property"] intValue];
+        _propertyLbl.text = [NSString stringWithFormat:@"%ld",property];
+        }
+
         
         [self.contentView addSubview:_propertyLbl];
     }

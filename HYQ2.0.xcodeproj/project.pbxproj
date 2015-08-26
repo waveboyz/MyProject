@@ -102,6 +102,9 @@
 		829ACB681B8AF39300C99EC7 /* CollectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 829ACB671B8AF39300C99EC7 /* CollectModel.m */; };
 		829ACB6B1B8AF73600C99EC7 /* DiscountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 829ACB6A1B8AF73600C99EC7 /* DiscountModel.m */; };
 		829ACB6E1B8B0CF700C99EC7 /* AddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 829ACB6D1B8B0CF700C99EC7 /* AddressModel.m */; };
+		82AA80F21B8CAB5500EE08B7 /* ScrollDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AA80F11B8CAB5500EE08B7 /* ScrollDetailCell.m */; };
+		82B3BA571B8C4EE900A50728 /* HYQActivityResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B3BA561B8C4EE900A50728 /* HYQActivityResponse.m */; };
+		82B3BA5A1B8C500200A50728 /* HYQActivityDetailResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B3BA591B8C500200A50728 /* HYQActivityDetailResponse.m */; };
 		82B769531B798CDB0099EBD3 /* ExcellentBaseThirdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B769521B798CDB0099EBD3 /* ExcellentBaseThirdCell.m */; };
 		82B769561B798CFB0099EBD3 /* ExcellentBaseForthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B769551B798CFB0099EBD3 /* ExcellentBaseForthCell.m */; };
 		82B769591B799FDF0099EBD3 /* ExcellentFinantialFirstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B769581B799FDF0099EBD3 /* ExcellentFinantialFirstCell.m */; };
@@ -341,7 +344,7 @@
 		823FF5A21B709F19008C4310 /* ServiceViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceViewCell.m; sourceTree = "<group>"; };
 		823FF5A71B70BF05008C4310 /* MyPaymentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPaymentController.h; sourceTree = "<group>"; };
 		823FF5A81B70BF05008C4310 /* MyPaymentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPaymentController.m; sourceTree = "<group>"; };
-		823FF5AC1B70BF3C008C4310 /* BasePersonHeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasePersonHeadCell.m; sourceTree = "<group>"; };
+		823FF5AC1B70BF3C008C4310 /* BasePersonHeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasePersonHeadCell.m; path = ../BasePersonHeadCell.m; sourceTree = "<group>"; };
 		823FF5AD1B70BF3C008C4310 /* EditHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditHeaderCell.h; sourceTree = "<group>"; };
 		823FF5AE1B70BF3C008C4310 /* EditHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditHeaderCell.m; sourceTree = "<group>"; };
 		823FF5B31B70BFDF008C4310 /* MyPaymentHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPaymentHeader.h; sourceTree = "<group>"; };
@@ -351,7 +354,7 @@
 		8286B3C51B72FC1A00897A4D /* qr_scan_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr_scan_line@2x.png"; sourceTree = "<group>"; };
 		8291801A1B834E1100F86000 /* MainLogInHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainLogInHeaderCell.h; sourceTree = "<group>"; };
 		8291801B1B834E1100F86000 /* MainLogInHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainLogInHeaderCell.m; sourceTree = "<group>"; };
-		8291CDAD1B7C474100656300 /* BasePersonHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasePersonHeadCell.h; sourceTree = "<group>"; };
+		8291CDAD1B7C474100656300 /* BasePersonHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasePersonHeadCell.h; path = ../BasePersonHeadCell.h; sourceTree = "<group>"; };
 		8291CDAF1B7C47C700656300 /* MyOrderFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderFormCell.h; sourceTree = "<group>"; };
 		8291CDB01B7C47C700656300 /* MyOrderFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderFormCell.m; sourceTree = "<group>"; };
 		8291CDB31B7C6CA500656300 /* MyCollectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectCell.h; sourceTree = "<group>"; };
@@ -399,6 +402,12 @@
 		829ACB6A1B8AF73600C99EC7 /* DiscountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscountModel.m; sourceTree = "<group>"; };
 		829ACB6C1B8B0CF700C99EC7 /* AddressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressModel.h; sourceTree = "<group>"; };
 		829ACB6D1B8B0CF700C99EC7 /* AddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressModel.m; sourceTree = "<group>"; };
+		82AA80F01B8CAB5500EE08B7 /* ScrollDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollDetailCell.h; sourceTree = "<group>"; };
+		82AA80F11B8CAB5500EE08B7 /* ScrollDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollDetailCell.m; sourceTree = "<group>"; };
+		82B3BA551B8C4EE900A50728 /* HYQActivityResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYQActivityResponse.h; sourceTree = "<group>"; };
+		82B3BA561B8C4EE900A50728 /* HYQActivityResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYQActivityResponse.m; sourceTree = "<group>"; };
+		82B3BA581B8C500200A50728 /* HYQActivityDetailResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYQActivityDetailResponse.h; sourceTree = "<group>"; };
+		82B3BA591B8C500200A50728 /* HYQActivityDetailResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYQActivityDetailResponse.m; sourceTree = "<group>"; };
 		82B769511B798CDB0099EBD3 /* ExcellentBaseThirdCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentBaseThirdCell.h; sourceTree = "<group>"; };
 		82B769521B798CDB0099EBD3 /* ExcellentBaseThirdCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcellentBaseThirdCell.m; sourceTree = "<group>"; };
 		82B769541B798CFB0099EBD3 /* ExcellentBaseForthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcellentBaseForthCell.h; sourceTree = "<group>"; };
@@ -707,6 +716,8 @@
 				82FEADE71B844A35007A13E9 /* MainServiceCell.m */,
 				821FE7021B85AC82003CA890 /* MainScrollinfoCell.h */,
 				821FE7031B85AC82003CA890 /* MainScrollinfoCell.m */,
+				82AA80F01B8CAB5500EE08B7 /* ScrollDetailCell.h */,
+				82AA80F11B8CAB5500EE08B7 /* ScrollDetailCell.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1018,8 +1029,6 @@
 				8291CDB21B7C6C8F00656300 /* MyCollect */,
 				8291CDAE1B7C475800656300 /* MyOrder */,
 				823FF5B21B70BF6A008C4310 /* MyPayment */,
-				823FF5AC1B70BF3C008C4310 /* BasePersonHeadCell.m */,
-				8291CDAD1B7C474100656300 /* BasePersonHeadCell.h */,
 				823FF5AD1B70BF3C008C4310 /* EditHeaderCell.h */,
 				823FF5AE1B70BF3C008C4310 /* EditHeaderCell.m */,
 				822B69B81B7DD9A000CB0C13 /* PersonalQRView.h */,
@@ -1031,6 +1040,8 @@
 		823FF5B21B70BF6A008C4310 /* MyPayment */ = {
 			isa = PBXGroup;
 			children = (
+				8291CDAD1B7C474100656300 /* BasePersonHeadCell.h */,
+				823FF5AC1B70BF3C008C4310 /* BasePersonHeadCell.m */,
 				823FF5B31B70BFDF008C4310 /* MyPaymentHeader.h */,
 				823FF5B41B70BFDF008C4310 /* MyPaymentHeader.m */,
 				8291CDBA1B7C929D00656300 /* MyPaymentCell.h */,
@@ -1153,6 +1164,31 @@
 				829ACB6D1B8B0CF700C99EC7 /* AddressModel.m */,
 			);
 			path = personal;
+			sourceTree = "<group>";
+		};
+		82B3BA521B8C4E3500A50728 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				82B3BA551B8C4EE900A50728 /* HYQActivityResponse.h */,
+				82B3BA561B8C4EE900A50728 /* HYQActivityResponse.m */,
+				82B3BA581B8C500200A50728 /* HYQActivityDetailResponse.h */,
+				82B3BA591B8C500200A50728 /* HYQActivityDetailResponse.m */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		82B3BA531B8C4E3500A50728 /* ExcellentPlan */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ExcellentPlan;
+			sourceTree = "<group>";
+		};
+		82B3BA541B8C4E3500A50728 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		82C4CDF21B86F90C00CCCFD8 /* introviews */ = {
@@ -1630,6 +1666,9 @@
 		82D6BCEE1B65FCA300B1B54B /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				82B3BA521B8C4E3500A50728 /* Activity */,
+				82B3BA531B8C4E3500A50728 /* ExcellentPlan */,
+				82B3BA541B8C4E3500A50728 /* Service */,
 				82FEADDC1B843515007A13E9 /* User */,
 				82FEADD51B842E2A007A13E9 /* HYQResponse.h */,
 				82FEADD61B842E2A007A13E9 /* HYQResponse.m */,
@@ -1983,6 +2022,7 @@
 				82D6BCDA1B65FC8400B1B54B /* BaseTabbarController.m in Sources */,
 				82D6BCD91B65FC8400B1B54B /* BaseRefreshController.m in Sources */,
 				82D6BC3E1B65FC2D00B1B54B /* UIScrollView+MJRefresh.m in Sources */,
+				82AA80F21B8CAB5500EE08B7 /* ScrollDetailCell.m in Sources */,
 				82D6BC331B65FC2D00B1B54B /* MJRefreshAutoNormalFooter.m in Sources */,
 				82D6BC921B65FC4200B1B54B /* SDWebImageCompat.m in Sources */,
 				82D6BCF11B65FCA300B1B54B /* ActivityModel.m in Sources */,
@@ -2020,6 +2060,7 @@
 				82D6BC941B65FC4200B1B54B /* SDWebImageDownloader.m in Sources */,
 				822B69BD1B7DD9D900CB0C13 /* MyOrderEvaluateController.m in Sources */,
 				823FF59E1B708EE7008C4310 /* VOSegment.m in Sources */,
+				82B3BA571B8C4EE900A50728 /* HYQActivityResponse.m in Sources */,
 				82C4CE071B870A7300CCCFD8 /* DownSheetCell.m in Sources */,
 				82D6BC6A1B65FC3C00B1B54B /* SDCollectionViewCell.m in Sources */,
 				82D6BD851B66076500B1B54B /* AppDelegate.m in Sources */,
@@ -2040,6 +2081,7 @@
 				829ACB5E1B8AC1B500C99EC7 /* ServiceModel.m in Sources */,
 				82C4CE061B870A7300CCCFD8 /* DownSheet.m in Sources */,
 				823FF59C1B708EE7008C4310 /* VOContentLayer.m in Sources */,
+				82B3BA5A1B8C500200A50728 /* HYQActivityDetailResponse.m in Sources */,
 				82D6BCDB1B65FC8400B1B54B /* BaseViewController.m in Sources */,
 				82C4CE081B870A7300CCCFD8 /* DownSheetModel.m in Sources */,
 				823FF5B51B70BFDF008C4310 /* MyPaymentHeader.m in Sources */,

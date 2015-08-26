@@ -22,4 +22,6 @@
 
 - (void)setUploadDictionary:(NSMutableDictionary *)dictionary;
 
+- (void)badNetWork;
+
 @end

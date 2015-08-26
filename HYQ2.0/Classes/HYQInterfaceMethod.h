@@ -10,8 +10,9 @@
 
 @interface HYQInterfaceMethod : NSObject
 
-// * 发布动态信息 *
+// * 登录 *
 extern NSString *const LOGIN_INTERFACE;
-
+// * 验证码 *
+extern NSString *const SEND_VER_INTERFACE;
 
 @end

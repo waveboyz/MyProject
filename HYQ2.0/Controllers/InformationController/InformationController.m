@@ -20,14 +20,6 @@
 
 @implementation InformationController
 
-- (id) init
-{
-    if (self = [super init]) {
-
-    }
-    
-    return self;
-}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"资讯活动";
@@ -54,12 +46,6 @@
 
 - (void)swipSegmentWithIndexPath:(NSUInteger)indexpath
 {
-//    if (_segment.selectedSegmentIndex == self.maxSegCnt - 1){
-//        return;
-//    }
-//    else{
-//        [_segment setSegment:nil atIndex:(_segment.selectedSegmentIndex +1)];
-//    }
     [self.tableView.header beginRefreshing];
 }
 
@@ -92,7 +78,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    BaseWebVIewController *webVC = [[BaseWebVIewController alloc] initWithUrl:@"https://www.taobao.com" andTitle:nil];
+    NSString *str = [[NSString alloc] initWithFormat:@"%@%ld",ACTIVITY_BASE_URL,indexPath.row];
+    BaseWebVIewController *webVC = [[BaseWebVIewController alloc] initWithUrl:str andTitle:nil];
     
     [self presentViewController:webVC animated:YES completion:^(void){}];
 }

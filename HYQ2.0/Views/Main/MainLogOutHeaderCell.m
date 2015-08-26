@@ -66,8 +66,8 @@
 
 - (void)avatarImgTouched
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(avatarImgPressed)]) {
-        [self.delegate avatarImgPressed];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(logoutAvatarImgPressed)]) {
+        [self.delegate logoutAvatarImgPressed];
     }
 }
 

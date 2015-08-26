@@ -7,7 +7,20 @@
 //
 
 #import "HYQResponse.h"
+@protocol HYQSendVerCodeResponseDelegate <NSObject>
+
+- (void)sendVerCodeSucceed;
+
+@optional
+
+- (void)wrongOperationWithText:(NSString *)text;
+
+@end
 
 @interface HYQSendVerCodeResponse : HYQResponse
+
+@property (nonatomic, assign) id<HYQSendVerCodeResponseDelegate> delegate;
+
+- (id)initWithPhoneNumber:(NSString *)phone;
 
 @end

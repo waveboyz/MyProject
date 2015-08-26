@@ -24,6 +24,9 @@ MBProgressHUDDelegate
 //时间等待菊花
 - (void)showNoTextStateHud;
 
+//关闭等待菊花
+- (void)stopStateHud;
+
 //自定义构建UI
 - (void)createUI;
 

@@ -67,14 +67,12 @@
         _currentPriLbl.font = [UIFont systemFontOfSize:17.0f];
         _currentPriLbl.text = @"￥260.00";
         
-        NSAttributedString *attStr = [[NSAttributedString alloc] initWithString:_currentPriLbl.text];
+        NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:_currentPriLbl.text];
         NSRange range = NSMakeRange(0, attStr.length);
-        NSDictionary *dic = [attStr attributesAtIndex:0 effectiveRange:&range];
-        CGSize size = [_currentPriLbl.text boundingRectWithSize:CGSizeMake(120 , 20)
-                                                        options:NSStringDrawingUsesLineFragmentOrigin
-                                                     attributes:dic
-                                                        context:nil].size;
-        _currentPriLbl.frame = CGRectMake(10, 340, size.width, 20);
+        [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:17.0f] range:range];
+        CGRect rect = [attStr boundingRectWithSize:CGSizeMake(120, 20) options:NSStringDrawingUsesFontLeading context:nil];
+
+        _currentPriLbl.frame = CGRectMake(10, 340, rect.size.width, 20);
         
         [self.contentView addSubview:_currentPriLbl];
     }

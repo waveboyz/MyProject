@@ -10,5 +10,9 @@
 #import "GlobalConst.h"
 
 @interface MainScrollinfoCell : UITableViewCell
+<
+    UITableViewDataSource,
+    UITableViewDelegate
+>
 
 @end

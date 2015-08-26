@@ -14,6 +14,7 @@
 #import "MyCollectController.h"
 #import "MyAddressController.h"
 #import "DownSheet.h"
+#import "HYQUserManager.h"
 
 @interface PersonalController ()
 <
@@ -34,7 +35,7 @@
 - (id)init
 {
     if (self = [super init]) {
-        _titleArr = @[@"我的提成",@"我的优惠券"];
+        _titleArr = @[@"提现到银行卡",@"我的提成",@"我的积分",@"我的优惠券"];
         _title2Arr = @[@"我的订单",@"我的收藏夹",@"地址管理"];
     }
     
@@ -94,7 +95,7 @@
     if (section == 0) {
         return 1;
     }else if (section == 1) {
-        return 2;
+        return 4;
     }else if (section == 2)
     {
         return 3;
@@ -218,11 +219,11 @@
     }
     
     if (indexPath.section == 1) {
-        if (indexPath.row == 0) {
+        if (indexPath.row == 1) {
             MyPaymentController *paymentVC = [[MyPaymentController alloc] init];
             [self.navigationController pushViewController:paymentVC animated:YES];
         }
-        if (indexPath.row == 1) {
+        if (indexPath.row == 3) {
             MYDiscountController *discountVC = [[MYDiscountController alloc] init];
             [self.navigationController pushViewController:discountVC animated:YES];
         }
@@ -244,19 +245,28 @@
     }
     
     if (indexPath.section == 3) {
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults removeObjectForKey:@"intro_screen_viewed"];
+        [self showNoTextStateHud];
+        [self performSelector:@selector(deleteUserDefaults) onThread:[NSThread mainThread] withObject:nil waitUntilDone:YES];
+        
         [self.navigationController popViewControllerAnimated:YES];
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (void)deleteUserDefaults
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:@"intro_screen_viewed"];
+    [[HYQUserManager sharedUserManager] logout];
+    
+    if ([[HYQUserManager sharedUserManager] logout]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"didLogout" object:nil];
+    }
+}
+
 - (void)avatarBtnPressed
 {
-//    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"选择图片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"相机", @"照片库",nil];
-//    
-//    [sheet showInView:self.view];
     DownSheet *sheet = [[DownSheet alloc]initWithlist:self.sheetArr height:0];
     sheet.delegate = self;
     [sheet showInView:nil];

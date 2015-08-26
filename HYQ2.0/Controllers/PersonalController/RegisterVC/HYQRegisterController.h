@@ -1,16 +1,16 @@
 //
-//  CYBRegisterController.h
-//  cyb
+//  HYQRegisterController.h
+//  HYQ
 //
-//  Created by JamHonyZ on 15/6/3.
-//  Copyright (c) 2015年 huancheba. All rights reserved.
+//  Created by 周翔 on 15/6/15.
+//  Copyright (c) 2015年 haoyuanqu. All rights reserved.
 //
 
 #import "BaseViewController.h"
 
 @interface HYQRegisterController : BaseViewController
 <
-UITextFieldDelegate
+    UITextFieldDelegate
 >
 
 - (void)hideRegisterBoard;

@@ -22,6 +22,7 @@
           failure:^(AFHTTPRequestOperation *operation, NSError *error){
               NSLog(@"请求失败");
               NSLog(@"%@",[error localizedDescription]);
+              [self badNetWork];
           }];
 }
 
@@ -45,6 +46,11 @@
 }
 
 - (void)decodeJsonOperationWithObject:(id)responseObject
+{
+
+}
+
+- (void)badNetWork
 {
 
 }

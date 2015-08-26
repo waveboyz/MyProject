@@ -11,8 +11,12 @@
 #import "AppDelegate.h"
 #import "NSString+HCBStringHelper.h"
 #import "HYQLoginResponse.h"
+#import "HYQUserManager.h"
 
 @interface HYQLoginController ()
+<
+HYQLoginResponseDelegate
+>
 {
     UITextField     *_phoneTxt;
     UITextField     *_codeTxt;
@@ -153,20 +157,27 @@
     [self.view addGestureRecognizer:tapGes];
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
+- (void)dismissLoginController
+{
+    [self dismissViewControllerAnimated:YES completion:^(void){}];
+}
+
+- (void)hideKeyboard
+{
+    [self.view endEditing:YES];
+}
+
 - (void)pushRegiterViewController
 {
     HYQRegisterController *regisVC = [[HYQRegisterController alloc] init];
     [self presentViewController:regisVC animated:YES completion:^(void){}];
 }
 
-- (void)updateUserInformation:(NSDictionary *)userData
-{
-//    [[hcb_UserManager sharedUserManager] updateUserInfo:userData];
-//    
-//    if (self.loginDelegate && [self.loginDelegate respondsToSelector:@selector(didLogin)]) {
-//        [[self loginDelegate] didLogin];
-//    }
-}
 
 - (void)didRegister:(NSNotification *)notification
 {
@@ -272,39 +283,31 @@
 
 - (void)startLoginRequestOperation
 {
-    [self showStateHudWithText:@"正在登录..."];
+    [self showNoTextStateHud];
     HYQLoginResponse *response = [[HYQLoginResponse alloc] initWithPhoneNumber:_phoneTxt.text andWithPassWord:_codeTxt.text.md5];
+    response.delegate = self;
     [response getresponseOperation];
 }
 
-#pragma mark - UIAlertView Delegation
-- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
+- (void)updateUserInformation:(NSDictionary *)userData
 {
-    if (alertView.tag == 201) {
-        
-        [_phoneTxt becomeFirstResponder];
-        
-    } else if (alertView.tag == 202) {
-        
-        [_codeTxt becomeFirstResponder];
-        
-    } else if (alertView.tag == 1000) {
-        
-    }
+    [[HYQUserManager sharedUserManager] updateUserInfo:userData];
 }
 
-- (void)loginWithWrongPsw
+#pragma mark HYQLoginReponseDelegate
+- (void)getResponseDictionary:(NSDictionary *)dictionary
 {
-    [self performSelectorOnMainThread:@selector(hideHUDView) withObject:nil waitUntilDone:YES];
-//    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"密码错误", @"title", nil, @"message", nil];
-//    [self performSelectorOnMainThread:@selector(stateAlertTitle:) withObject:dict waitUntilDone:YES];
-}
-
-- (void)loginWithUserDict:(NSDictionary *)userDict;
-{
+    [self stopStateHud];
     [self showStateHudWithText:@"登录成功"];
-    [self updateUserInformation:userDict];
+//    [self updateUserInformation:dictionary];
+    [self performSelector:@selector(updateUserInformation:) onThread:[NSThread mainThread] withObject:dictionary waitUntilDone:YES];
     [self performSelector:@selector(loginSuccess) withObject:nil afterDelay:0.5];
+}
+
+- (void)wrongOperationWithText:(NSString *)text
+{
+    [self stopStateHud];
+    [self showStateHudWithText:text];
 }
 
 - (void)loginSuccess
@@ -312,27 +315,7 @@
     NSDictionary *userInfo = @{@"didLogin" : @"didLogin"};
     [[NSNotificationCenter defaultCenter] postNotificationName:@"didLogin" object:nil userInfo:userInfo];
     
-    [self dismissViewControllerAnimated:YES completion:^{}];
-}
-
-- (void)hideHUDView
-{
-    [self.stateHud hide:YES afterDelay:0.2];
-}
-
-- (BOOL)prefersStatusBarHidden
-{
-    return YES;
-}
-
-- (void)dismissLoginController
-{
-    [self dismissViewControllerAnimated:YES completion:^(void){}];
-}
-
-- (void)hideKeyboard
-{
-    [self.view endEditing:YES];
+    [self dismissLoginController];
 }
 
 #pragma mark UITextFieldDelegate
@@ -352,10 +335,20 @@
     }];
 }
 
-#pragma mark CYBForgetPSWControllerDelegate
-- (void)resetPasswordSuccess
+#pragma mark - UIAlertView Delegate
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    [_phoneTxt becomeFirstResponder];
+    if (alertView.tag == 201) {
+        
+        [_phoneTxt becomeFirstResponder];
+        
+    } else if (alertView.tag == 202) {
+        
+        [_codeTxt becomeFirstResponder];
+        
+    } else if (alertView.tag == 1000) {
+        
+    }
 }
 
 @end

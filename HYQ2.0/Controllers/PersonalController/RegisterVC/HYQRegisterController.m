@@ -1,19 +1,23 @@
 //
-//  CYBRegisterController.m
-//  cyb
+//  HYQRegisterController.m
+//  HYQ
 //
-//  Created by JamHonyZ on 15/6/3.
-//  Copyright (c) 2015年 huancheba. All rights reserved.
+//  Created by 周翔 on 15/6/15.
+//  Copyright (c) 2015年 haoyuanqu. All rights reserved.
 //
 
 #import "HYQRegisterController.h"
 #import "HYQLoginController.h"
 #import "AppDelegate.h"
 #import "NSString+HCBStringHelper.h"
+#import "HYQSendVerCodeResponse.h"
 
 #define MOBILENUMBER                    @"0123456789"
 
 @interface HYQRegisterController()
+<
+    HYQSendVerCodeResponseDelegate
+>
 {
     UITextField     *_phoneTxt;
     UITextField     *_codeTxt;
@@ -166,7 +170,9 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    [UIView animateWithDuration:0.2 animations:^(void){    _bgView.contentOffset = CGPointMake(0, 0);}];
+    [UIView animateWithDuration:0.2 animations:^(void){
+        _bgView.contentOffset = CGPointMake(0, 0);
+    }];
 }
 
 - (void)submitReg
@@ -177,11 +183,6 @@
     
     if (passwordValue && passwordValue.length > 0 && phoneNumValue && phoneNumValue.length > 0 && verifyCodeValue && verifyCodeValue.length > 0)
     {
-        
-//        //  账号正则检测：账号在2-14个字符之间
-//        NSString *usernameRegex = @"^.{2,14}$";
-//        NSPredicate *usernamePredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", usernameRegex];
-        
         //  密码正则检测：密码不得少于六个字符
         NSString *pwdRegex = @"^.{6,20}$";
         NSPredicate *pwdPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pwdRegex];
@@ -284,11 +285,6 @@
     _pswMD5   = _codeTxt.text.md5;
 }
 
-- (void)hideHUDView
-{
-    [self.stateHud hide:YES afterDelay:0.2];
-}
-
 - (void)sendVerCodeButtonPressed
 {
     NSString *mobileRegex = @"[1][34578][0-9]{9}";
@@ -311,6 +307,10 @@
 
 - (void)sendVerCodeRequestOperation
 {
+    HYQSendVerCodeResponse *response = [[HYQSendVerCodeResponse alloc] initWithPhoneNumber:_phoneTxt.text];
+    response.delegate = self;
+    [response getresponseOperation];
+    
     _getResendBtn.backgroundColor = [UIColor colorWithWhite:0.6 alpha:1.0];
     [_getResendBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_getResendBtn setTitle:@"60s 重新获取" forState:UIControlStateNormal];
@@ -342,12 +342,14 @@
 }
 
 #pragma mark - sendVerCode Delegate
-- (void)sendVerCodeFailed
+- (void)sendVerCodeSucceed
 {
-    [self performSelectorOnMainThread:@selector(hideHUDView) withObject:nil waitUntilDone:YES];
-    
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"提示", @"title", @"网络错误", @"message", nil];
-//    [self performSelectorOnMainThread:@selector(stateAlertTitle:) withObject:dict waitUntilDone:YES];
+
+}
+
+- (void)wrongOperationWithText:(NSString *)text
+{
+    [self showStateHudWithText:text];
 }
 
 #pragma mark - UITextField Input Delegate

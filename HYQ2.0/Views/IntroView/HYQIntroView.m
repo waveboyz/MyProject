@@ -108,7 +108,7 @@
     if (!_pageControl) {
         _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, kScreenHeight - 20, kScreenWidth, 10)];
         [_pageControl setCurrentPageIndicatorTintColor:[UIColor blackColor]];
-        
+        [_pageControl setPageIndicatorTintColor:[UIColor grayColor]];
         [_pageControl setNumberOfPages:3];
     }
     

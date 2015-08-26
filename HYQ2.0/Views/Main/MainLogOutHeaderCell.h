@@ -11,7 +11,7 @@
 
 @protocol MainLogOutHeaderCellDelegate <NSObject>
 
-- (void)avatarImgPressed;
+- (void)logoutAvatarImgPressed;
 - (void)loginBtnPressed;
 
 @end

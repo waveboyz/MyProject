@@ -74,6 +74,14 @@
         _purchaseCntLbl.text = @"2人购买";
         _purchaseCntLbl.textColor = [UIColor grayColor];
         _purchaseCntLbl.font = [UIFont systemFontOfSize:13.0f];
+        _purchaseCntLbl.textAlignment = NSTextAlignmentRight;
+        
+        NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:_purchaseCntLbl.text];
+        NSRange range = NSMakeRange(0, attStr.length);
+        [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13.0f] range:range];
+        CGRect rect = [attStr boundingRectWithSize:CGSizeMake((kScreenWidth - 155)*0.5, 15) options:NSStringDrawingUsesFontLeading context:nil];
+        _purchaseCntLbl.frame = CGRectMake(kScreenWidth - rect.size.width - 10, 105, rect.size.width, 15);
+
         [self.contentView addSubview:_purchaseCntLbl];
     }
     

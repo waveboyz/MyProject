@@ -106,6 +106,8 @@
     [self scrollViewDidScroll:self.tableview];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:@"didLogin" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:@"didLogout" object:nil];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -114,11 +116,13 @@
     self.tableview.delegate = nil;
     [self.navigationController.navigationBar lt_reset];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didLogin" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:@"didLogout" object:nil];
 }
 
 - (void)userDidLogin
 {
-    [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+//    [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableview reloadData];
 }
 
 #pragma mark UITableViewDatasource
@@ -139,25 +143,25 @@
     if (indexPath.row == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:HEADER_CELL];
         if (!cell) {
-//            if ([[HYQUserManager sharedUserManager] isLogin]) {
-//                cell = [[MainLogInHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:HEADER_CELL];
-//                [(MainLogInHeaderCell *)cell setDelegate:self];
-//            }else{
+            if ([[HYQUserManager sharedUserManager] isLogin]) {
+                cell = [[MainLogInHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:HEADER_CELL];
+                [(MainLogInHeaderCell *)cell setDelegate:self];
+            }else{
             cell = [[MainLogOutHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:HEADER_CELL];
                 [(MainLogOutHeaderCell *)cell setDelegate:self];
-//            }
+            }
         }
     }else if (indexPath.row == 1){
         cell = [tableView dequeueReusableCellWithIdentifier:SECOND_CELL];
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SECOND_CELL];
-            SDCycleScrollView *cycleView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, kScreenWidth, 160) imageURLStringsGroup:self.imgArr];
-            cycleView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
-            cycleView.placeholderImage = [UIImage imageNamed:@"notice_place_holder"];
-            cycleView.pageControlStyle = SDCycleScrollViewPageContolStyleClassic;
-            
-            [cell.contentView addSubview:cycleView];
         }
+        SDCycleScrollView *cycleView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, kScreenWidth, 160) imageURLStringsGroup:self.imgArr];
+        cycleView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
+        cycleView.placeholderImage = [UIImage imageNamed:@"notice_place_holder"];
+        cycleView.pageControlStyle = SDCycleScrollViewPageContolStyleClassic;
+        
+        [cell.contentView addSubview:cycleView];
     }else if (indexPath.row == 2){
         cell = [tableView dequeueReusableCellWithIdentifier:SERVICE_CELL];
         if (!cell) {
@@ -173,11 +177,11 @@
         cell = [tableView dequeueReusableCellWithIdentifier:THIRD_CELL];
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:THIRD_CELL];
-            UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 150)];
-            imgView.image = [UIImage imageNamed:@"mainPage"];
-            [cell.contentView addSubview:imgView];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
+        UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 150)];
+        imgView.image = [UIImage imageNamed:@"mainPage"];
+        [cell.contentView addSubview:imgView];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     return cell;
@@ -209,6 +213,13 @@
 }
 
 - (void)loginBtnPressed
+{
+    HYQLoginController *loginVC = [[HYQLoginController alloc] init];
+    loginVC.modalPresentationStyle = UIModalPresentationCustom;
+    [self.navigationController presentViewController:loginVC animated:YES completion:^(void){}];
+}
+
+- (void)logoutAvatarImgPressed
 {
     HYQLoginController *loginVC = [[HYQLoginController alloc] init];
     loginVC.modalPresentationStyle = UIModalPresentationCustom;

@@ -8,6 +8,16 @@
 
 #import "HYQResponse.h"
 
+@protocol HYQRegistResponseDelegate <NSObject>
+
+- (void)sendVerCodeSucceed;
+
+@optional
+
+- (void)wrongOperationWithText:(NSString *)text;
+
+@end
+
 @interface HYQRegistResponse : HYQResponse
 
 @end

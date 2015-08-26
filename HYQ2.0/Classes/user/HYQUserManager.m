@@ -38,7 +38,7 @@ static NSString *const __kPasswordInfoFileName = @"C2BC1692D60AAC29";
 {
     NSDictionary *info = [self userInfo];
     
-    if ([info objectForKey:@"uid"] && [info objectForKey:@"pwd"]) {
+    if ([info objectForKey:@"uid"] && [info objectForKey:@"psw"]) {
         return YES;
     }
     
@@ -49,9 +49,11 @@ static NSString *const __kPasswordInfoFileName = @"C2BC1692D60AAC29";
 {
     NSMutableDictionary *userDict = [[NSMutableDictionary alloc] initWithDictionary:[self userInfo]];
     
-    [userDict removeObjectForKey:@"username"];
-    [userDict removeObjectForKey:@"uid"];
-    [userDict removeObjectForKey:@"pwd"];
+//    [userDict removeObjectForKey:@"username"];
+//    [userDict removeObjectForKey:@"uid"];
+//    [userDict removeObjectForKey:@"pwd"];
+//    [userDict removeObjectForKey:@"property"];
+    [userDict removeAllObjects];
     
     [self updateUserInfo:userDict];
     

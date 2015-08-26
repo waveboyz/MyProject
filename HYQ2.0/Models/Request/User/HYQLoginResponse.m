@@ -8,6 +8,12 @@
 
 #import "HYQLoginResponse.h"
 
+@interface HYQLoginResponse ()
+
+@property (nonatomic, copy) NSString *psw;
+
+@end
+
 @implementation HYQLoginResponse
 
 - (id)initWithPhoneNumber:(NSString *)phone andWithPassWord:(NSString *)password
@@ -20,6 +26,7 @@
         }
         
         if (password) {
+            _psw = password;
             [dic setObject:password forKey:@"psw"];
         }
         
@@ -43,25 +50,37 @@
 - (void)decodeJsonOperationWithObject:(id)responseObject
 {
     NSLog(@"%@",responseObject);
-//    
-//        NSData *respData = [responseObject dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
-//        NSDictionary *respDict = [NSJSONSerialization JSONObjectWithData:respData options:NSJSONReadingMutableLeaves error:nil];
-
-//        if (self.delegate && [self.delegate respondsToSelector:@selector(getResponseDictionary:)]) {
-//            [self.delegate getResponseDictionary:respDict];
-//        }
     
     if (responseObject) {
-        if ([responseObject objectForKey:@"userInfo"]) {
-            NSDictionary *userInfo = [responseObject objectForKey:@"userInfo"];
-            
-            if (userInfo && [[userInfo objectForKey:@"account" ] isKindOfClass:[NSNumber class]]) {
-                NSNumber *property = [userInfo objectForKey:@"account"];
+        if ([responseObject objectForKey:@"code"]) {
+            NSNumber *code = [responseObject objectForKey:@"code"];
+
+            if ([code integerValue] == 1) {
+                NSMutableDictionary *userDic = [[NSMutableDictionary alloc] initWithCapacity:3];
+                [userDic setObject:[responseObject objectForKey:@"userId"] forKey:@"uid"];
+                [userDic setObject:[responseObject objectForKey:@"userName"] forKey:@"username"];
+                [userDic setObject:[responseObject objectForKey:@"account"] forKey:@"property"];
+                [userDic setObject:[responseObject objectForKey:@"imagery"] forKey:@"avatarUrl"];
+                [userDic setObject:_psw forKey:@"psw"];
                 
-                NSLog(@"%@",property);
-                
+                if (self.delegate && [self.delegate respondsToSelector:@selector(getResponseDictionary:)]) {
+                    [self.delegate getResponseDictionary:userDic];
+                }
+            }else{
+                if (self.delegate && [self.delegate respondsToSelector:@selector(wrongOperationWithText:)]) {
+                    [self.delegate wrongOperationWithText:[responseObject objectForKey:@"msg"]];
+                }
             }
         }
+    }else{
+    
+    }
+}
+
+- (void)badNetWork
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(wrongOperationWithText:)]) {
+        [self.delegate wrongOperationWithText:@"网络不给力哦~"];
     }
 }
 
