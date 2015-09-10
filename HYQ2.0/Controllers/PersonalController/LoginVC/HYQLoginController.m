@@ -52,14 +52,11 @@ HYQLoginResponseDelegate
         lineLblframe.origin.x -= kScreenWidth - 15;
         CGRect lineLbl2frame = _lineLbl2.frame;
         lineLbl2frame.origin.x -= kScreenWidth - 15;
-        CGRect registframe = _registLbl.frame;
-        registframe.origin.y -= kScreenHeight - 358;
         
         [_nameLbl setFrame:nameframe];
         [_codeLbl setFrame:codeframe];
         [_lineLbl setFrame:lineLblframe];
         [_lineLbl2 setFrame:lineLbl2frame];
-        [_registLbl setFrame:registframe];
     }];
     
     [UIView animateWithDuration:0.5 delay:0.2 usingSpringWithDamping:0.3 initialSpringVelocity:0.0 options:UIViewAnimationOptionAllowUserInteraction animations:^(void){
@@ -77,7 +74,6 @@ HYQLoginResponseDelegate
     [_lineLbl setFrame:CGRectMake(kScreenWidth, 206, kScreenWidth - 30, 1)];
     [_lineLbl2 setFrame:CGRectMake(kScreenWidth, 272, kScreenWidth - 30, 1)];
     [_loginBtn setFrame:CGRectMake(15, kScreenHeight, kScreenWidth - 30, 45)];
-    [_registLbl setFrame:CGRectMake(kScreenWidth * 0.5 - 75, kScreenHeight + 20, 150, 20)];
 }
 
 - (void)creatUI
@@ -93,7 +89,7 @@ HYQLoginResponseDelegate
     
     UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     cancelBtn.frame = CGRectMake(0, 0, 57, 57);
-    [cancelBtn addTarget:self action:@selector(dismissLoginController) forControlEvents:UIControlEventTouchUpInside];
+    [cancelBtn addTarget:self action:@selector(dissmissLoginController) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:cancelBtn];
     
     _nameLbl = [[UILabel alloc] initWithFrame:CGRectMake(-50, 166, 50, 30)];
@@ -142,10 +138,10 @@ HYQLoginResponseDelegate
     [_loginBtn addTarget:self action:@selector(startToLogin) forControlEvents:UIControlEventTouchUpInside];
     [_bgView addSubview:_loginBtn];
     
-    _registLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 - 75, kScreenHeight + 20, 150, 20)];
+    _registLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 - 75, 30, 150, 20)];
     _registLbl.textAlignment = NSTextAlignmentCenter;
-    _registLbl.font = [UIFont systemFontOfSize:12.0f];
-    _registLbl.text = @"去注册账号";
+    _registLbl.font = [UIFont systemFontOfSize:15.0f];
+    _registLbl.text = @"没有账号？点这";
     _registLbl.textColor = [UIColor whiteColor];
     [_bgView addSubview:_registLbl];
     _registLbl.userInteractionEnabled = YES;
@@ -162,7 +158,7 @@ HYQLoginResponseDelegate
     return YES;
 }
 
-- (void)dismissLoginController
+- (void)dissmissLoginController
 {
     [self dismissViewControllerAnimated:YES completion:^(void){}];
 }
@@ -172,17 +168,11 @@ HYQLoginResponseDelegate
     [self.view endEditing:YES];
 }
 
+//注册入口
 - (void)pushRegiterViewController
 {
     HYQRegisterController *regisVC = [[HYQRegisterController alloc] init];
     [self presentViewController:regisVC animated:YES completion:^(void){}];
-}
-
-
-- (void)didRegister:(NSNotification *)notification
-{
-    _phoneTxt.text = [[notification userInfo] objectForKey:@"username"];
-    _codeTxt.text = [[notification userInfo] objectForKey:@"password"];
 }
 
 #pragma mark - UITextField Input Delegate
@@ -281,14 +271,16 @@ HYQLoginResponseDelegate
     return strlength;
 }
 
+//登陆请求
 - (void)startLoginRequestOperation
 {
     [self showNoTextStateHud];
     HYQLoginResponse *response = [[HYQLoginResponse alloc] initWithPhoneNumber:_phoneTxt.text andWithPassWord:_codeTxt.text.md5];
     response.delegate = self;
-    [response getresponseOperation];
+    [response start];
 }
 
+//更新本地用户信息
 - (void)updateUserInformation:(NSDictionary *)userData
 {
     [[HYQUserManager sharedUserManager] updateUserInfo:userData];
@@ -299,8 +291,7 @@ HYQLoginResponseDelegate
 {
     [self stopStateHud];
     [self showStateHudWithText:@"登录成功"];
-//    [self updateUserInformation:dictionary];
-    [self performSelector:@selector(updateUserInformation:) onThread:[NSThread mainThread] withObject:dictionary waitUntilDone:YES];
+    [self performSelectorOnMainThread:@selector(updateUserInformation:) withObject:dictionary waitUntilDone:YES];
     [self performSelector:@selector(loginSuccess) withObject:nil afterDelay:0.5];
 }
 
@@ -314,7 +305,7 @@ HYQLoginResponseDelegate
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"didLogin" object:nil];
     
-    [self dismissLoginController];
+    [self dissmissLoginController];
 }
 
 #pragma mark UITextFieldDelegate

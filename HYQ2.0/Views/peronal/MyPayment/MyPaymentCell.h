@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "GlobalConst.h"
+#import "PaymentModel.h"
 
 @interface MyPaymentCell : UITableViewCell
+
+@property (nonatomic, assign) PaymentModel *payment;
 
 @end

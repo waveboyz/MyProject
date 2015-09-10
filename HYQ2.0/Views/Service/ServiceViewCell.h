@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "GlobalConst.h"
+#import "ServiceModel.h"
 
 @interface ServiceViewCell : UITableViewCell
+
+@property (nonatomic, assign) ServiceModel *service;
 
 @end

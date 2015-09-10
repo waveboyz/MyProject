@@ -7,7 +7,9 @@
 //
 
 #import "BaseViewController.h"
-
+/*
+    提现到银行卡
+ */
 @interface MyPaymentWithdrawController : BaseViewController
 <
     UITableViewDataSource,

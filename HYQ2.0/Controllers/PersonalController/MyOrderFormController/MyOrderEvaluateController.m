@@ -7,12 +7,18 @@
 //
 
 #import "MyOrderEvaluateController.h"
+#import "MyOrderEvaluateResponse.h"
 #import "CWStarRateView.h"
 
 #define NAVIBARHEIGHT       64.0f
 
 @interface MyOrderEvaluateController ()
+<
+    CWStarRateViewDelegate,
+    MyOrderEvaluateResponseDelegate
+>
 
+@property (nonatomic, strong) NSNumber          *oid;
 @property (nonatomic, strong) CWStarRateView    *starview1;
 @property (nonatomic, strong) CWStarRateView    *starview2;
 @property (nonatomic, strong) CWStarRateView    *starview3;
@@ -21,6 +27,15 @@
 @end
 
 @implementation MyOrderEvaluateController
+
+- (id)initWithOid:(NSNumber *)oid
+{
+    if (self = [super init]) {
+        _oid = oid;
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -44,6 +59,7 @@
     [self.view addSubview:desLbl1];
     
     _starview1 = [[CWStarRateView alloc]initWithFrame:CGRectMake(kScreenWidth * 0.5 - 10, 50 + NAVIBARHEIGHT, kScreenWidth * 0.5, 30) numberOfStars:5];
+    _starview1.delegate = self;
     _starview1.hasAnimation = YES;
     [self.view addSubview:_starview1];
     
@@ -54,6 +70,7 @@
     [self.view addSubview:desLbl2];
 
     _starview2 = [[CWStarRateView alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 - 10, 90 + NAVIBARHEIGHT, kScreenWidth * 0.5, 30) numberOfStars:5];
+    _starview2.delegate = self;
     _starview2.hasAnimation = YES;
     [self.view addSubview:_starview2];
     
@@ -64,6 +81,7 @@
     [self.view addSubview:desLbl3];
 
     _starview3 = [[CWStarRateView alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 - 10, 130 + NAVIBARHEIGHT, kScreenWidth * 0.5, 30) numberOfStars:5];
+    _starview3.delegate = self;
     _starview3.hasAnimation = YES;
     [self.view addSubview:_starview3];
     
@@ -74,6 +92,7 @@
     [self.view addSubview:desLbl4];
 
     _starview4 = [[CWStarRateView alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 - 10, 170 + NAVIBARHEIGHT, kScreenWidth * 0.5, 30) numberOfStars:5];
+    _starview4.delegate = self;
     _starview4.hasAnimation = YES;
     [self.view addSubview:_starview4];
     
@@ -82,7 +101,30 @@
     [commitBtn setBackgroundColor:NAVIBAR_GREEN_COLOR];
     [commitBtn setTitle:@"提交评价" forState:UIControlStateNormal];
     [commitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [commitBtn addTarget:self action:@selector(evaluateOperation) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:commitBtn];
+}
+
+- (void)evaluateOperation
+{
+    MyOrderEvaluateResponse *response = [[MyOrderEvaluateResponse alloc] initWithOid:_oid];
+}
+
+#pragma mark CWStarRateViewDelegate
+- (void)starRateView:(CWStarRateView *)starRateView scroePercentDidChange:(CGFloat)newScorePercent
+{
+
+}
+
+#pragma mark MyOrderEvaluateResponseDelegate
+- (void)evaluateSucceed
+{
+
+}
+
+- (void)wrongOperationWithText:(NSString *)text
+{
+    [self showStateHudWithText:text];
 }
 
 @end

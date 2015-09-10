@@ -10,18 +10,4 @@
 
 @implementation DiscountModel
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary
-{
-    if (self = [super init]) {
-        
-    }
-    
-    return self;
-}
-
-+ (instancetype)discountWithDictionary:(NSDictionary *)dictionary
-{
-    return [[self alloc] initWithDictionary:dictionary];
-}
-
 @end

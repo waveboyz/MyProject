@@ -10,16 +10,13 @@
 
 @interface ServiceModel : BaseModel
 
-@property (nonatomic, copy) NSString *Title;
-@property (nonatomic, copy) NSString *ImgUrl;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *photo;
 @property (nonatomic, copy) NSString *DesStr;
+@property (nonatomic, strong) NSNumber *pid;
 @property (nonatomic, strong) NSNumber *OldPrice;
 @property (nonatomic, strong) NSNumber *price;
-@property (nonatomic, strong) NSNumber *PurchaseCnt;
-@property (nonatomic, strong) NSNumber *CollectCnt;
-
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
-
-+ (instancetype)serviceWithDictionary:(NSDictionary *)dictionary;
+@property (nonatomic, strong) NSNumber *payCount;
+@property (nonatomic, strong) NSNumber *colCount;
 
 @end

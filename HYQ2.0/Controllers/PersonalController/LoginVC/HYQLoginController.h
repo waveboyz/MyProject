@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "GlobalConst.h"
+/*
+ 注册
+ */
 
 @protocol LoginDelegate <NSObject>
 
@@ -27,6 +30,5 @@ UIAlertViewDelegate
 @property (nonatomic,assign) id<LoginDelegate>loginDelegate;
 - (void)startToLogin;
 - (void)updateUserInformation:(NSDictionary *)userData;
-- (void)didRegister:(NSNotification *)notification;
 
 @end

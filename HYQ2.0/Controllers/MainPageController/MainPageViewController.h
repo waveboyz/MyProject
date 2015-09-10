@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
-
+/*
+ 首页
+ */
 @interface MainPageController : BaseViewController
 <
     UIScrollViewDelegate,

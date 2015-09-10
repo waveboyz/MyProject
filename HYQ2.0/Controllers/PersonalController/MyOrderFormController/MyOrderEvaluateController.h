@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
-
+/*
+ 评价订单
+ */
 @interface MyOrderEvaluateController : BaseViewController
+
+- (id)initWithOid:(NSNumber *)oid;
 
 @end

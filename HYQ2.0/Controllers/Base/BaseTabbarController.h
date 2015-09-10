@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "GlobalConst.h"
+/*
+    基础底部选项栏
+ */
 @interface BaseTabbarController : UITabBarController
 <
     UITabBarControllerDelegate

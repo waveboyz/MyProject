@@ -7,6 +7,7 @@
 //
 
 #import "MyPaymentCell.h"
+#import "PaymentModel.h"
 
 @interface MyPaymentCell ()
 
@@ -32,9 +33,8 @@
 - (void)setViews
 {
     if (!_titleLbl) {
-        _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, kScreenWidth * 0.5 - 40, 20)];
+        _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, kScreenWidth * 0.5, 20)];
         _titleLbl.textColor = [UIColor blackColor];
-        _titleLbl.text = @"这是一个标题要长要长要长";
         _titleLbl.font = [UIFont systemFontOfSize:15.0f];
         
         [self.contentView addSubview:_titleLbl];
@@ -44,7 +44,6 @@
         _dateLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 35, kScreenWidth * 0.5 - 40 , 15)];
         _dateLbl.textColor = [UIColor grayColor];
         _dateLbl.font = [UIFont systemFontOfSize:13.0f];
-        _dateLbl.text = @"2105/08/25  09:00:00";
         [self.contentView addSubview:_dateLbl];
     }
     
@@ -52,7 +51,6 @@
         _priceLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth - 130, 10, 120, 20)];
         _priceLbl.font = [UIFont systemFontOfSize:15.0f];
         _priceLbl.textColor = [UIColor redColor];
-        _priceLbl.text = @"+1.00";
         _priceLbl.textAlignment = NSTextAlignmentRight;
         
         [self.contentView addSubview:_priceLbl];
@@ -63,6 +61,20 @@
         _lineLbl.backgroundColor = GRAY_COLOR;
         
         [self.contentView addSubview:_lineLbl];
+    }
+}
+
+- (void)setPayment:(PaymentModel *)payment
+{
+    _payment = payment;
+    _titleLbl.text = _payment.title;
+    _dateLbl.text = _payment.time;
+    if ([_payment.title isEqualToString:@"提成"] || [_payment.title isEqualToString:@"充值"]) {
+        _priceLbl.text = [NSString stringWithFormat:@"+%@",[_payment.money stringValue]];
+        _priceLbl.textColor = [UIColor redColor];
+    }else if ([_payment.title isEqualToString:@"购买产品"] || [_payment.title isEqualToString:@"提现"]){
+        _priceLbl.text = [NSString stringWithFormat:@"-%@",[_payment.money stringValue]];
+        _priceLbl.textColor = [UIColor blueColor];
     }
 }
 

@@ -10,12 +10,15 @@
 
 @interface AddressModel : BaseModel
 
-@property (nonatomic, copy) NSString *Name;
-@property (nonatomic, copy) NSString *Phone;
-@property (nonatomic, copy) NSString *Address;
-
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
-
-+ (instancetype)addressWithDictionary:(NSDictionary *)dictionary;
+@property (nonatomic, copy) NSString *linkman;
+@property (nonatomic, copy) NSString *address;
+@property (nonatomic, copy) NSString *province;
+@property (nonatomic, copy) NSString *provinceCode;
+@property (nonatomic, copy) NSString *city;
+@property (nonatomic, copy) NSString *cityCode;
+@property (nonatomic, copy) NSString *district; //区
+@property (nonatomic, copy) NSString *companyName;
+@property (nonatomic, assign) NSNumber *linkPhone;
+@property (nonatomic, assign) NSNumber *tacitiy;
 
 @end

@@ -36,11 +36,6 @@
     
     return self;
 }
-- (void)setUploadDictionary:(NSMutableDictionary *)dictionary
-{
-    self.params = dictionary;
-    NSLog(@"%@",self.params);
-}
 
 - (NSString *)methodPath
 {

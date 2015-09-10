@@ -10,18 +10,4 @@
 
 @implementation AddressModel
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary
-{
-    if (self = [super init]) {
-        
-    }
-    
-    return self;
-}
-
-+ (instancetype)addressWithDictionary:(NSDictionary *)dictionary
-{
-    return [[self alloc] initWithDictionary:dictionary];
-}
-
 @end

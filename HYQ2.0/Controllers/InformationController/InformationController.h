@@ -7,7 +7,9 @@
 //
 
 #import "BaseRefreshController.h"
-
+/*
+    咨询活动
+ */
 @interface InformationController : BaseRefreshController
 
 @end

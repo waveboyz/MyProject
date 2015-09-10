@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "GlobalConst.h"
+#import "CollectModel.h"
 
 @interface MyCollectCell : UITableViewCell
+
+@property (nonatomic, assign) CollectModel *collect;
 
 @end

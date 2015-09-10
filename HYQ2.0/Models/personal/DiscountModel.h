@@ -13,15 +13,10 @@
 
 @interface DiscountModel : BaseModel
 
-@property (nonatomic, copy) NSString *Title;
-@property (nonatomic, copy) NSString *DesStr;
-@property (nonatomic, copy) NSString *BeginTime;
-@property (nonatomic, copy) NSString *EndTime;
-@property (nonatomic, strong) NSNumber *Price;
-@property (nonatomic, strong) NSNumber *Did;
-
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
-
-+ (instancetype)discountWithDictionary:(NSDictionary *)dictionary;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *lastTime;
+@property (nonatomic, copy) NSString *startTime;
+@property (nonatomic, strong) NSNumber *money;
+@property (nonatomic, strong) NSNumber *cid;
 
 @end

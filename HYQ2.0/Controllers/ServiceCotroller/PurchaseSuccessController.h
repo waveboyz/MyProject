@@ -7,7 +7,9 @@
 //
 
 #import "BaseViewController.h"
-
+/*
+    产品购买成功
+ */
 @interface PurchaseSuccessController : BaseViewController
 
 @end

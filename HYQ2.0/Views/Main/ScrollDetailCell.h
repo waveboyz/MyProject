@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "GlobalConst.h"
+#import "ActivityModel.h"
 
 @interface ScrollDetailCell : UITableViewCell
 
-@property (nonatomic, assign) NSInteger titleInt;
+@property (nonatomic, strong) ActivityModel *activity;
 
 @end

@@ -7,7 +7,9 @@
 //
 
 #import "BaseRefreshController.h"
-
+/*
+ 我的提成
+ */
 @interface MyPaymentController : BaseRefreshController
 
 @end

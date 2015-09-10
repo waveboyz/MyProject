@@ -8,7 +8,24 @@
 
 #import <UIKit/UIKit.h>
 #import "GlobalConst.h"
+#import "ServiceModel.h"
+
+@protocol PurchaseSecondCellDelegate <NSObject>
+
+- (void)mathBtnPressedWithCount:(NSUInteger)count;
+
+@optional
+- (void)elevatorScreen;
+
+@end
 
 @interface PurchaseSecondCell : UITableViewCell
+<
+    UITextViewDelegate
+>
+
+@property (nonatomic, assign) ServiceModel *service;
+@property (nonatomic, assign) NSUInteger    serviceCnt;
+@property (nonatomic, assign) id<PurchaseSecondCellDelegate> delegate;
 
 @end

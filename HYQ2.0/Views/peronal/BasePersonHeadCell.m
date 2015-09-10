@@ -9,6 +9,7 @@
 #import "BasePersonHeadCell.h"
 #import "GlobalConst.h"
 #import "UIImageView+WebCache.h"
+#import "HYQUserManager.h"
 
 @interface BasePersonHeadCell ()
 
@@ -39,14 +40,14 @@
         _avatarImg.contentMode = UIViewContentModeScaleAspectFill;
         [self.contentView addSubview:_avatarImg];
     }
-    [_avatarImg sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"avatar_placeholder"]];
+    [_avatarImg sd_setImageWithURL:[NSURL URLWithString:[[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"avatarUrl"]] placeholderImage:[UIImage imageNamed:@"avatar_placeholder"]];
     
     if (!_nameLbl) {
         _nameLbl = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_avatarImg.frame) + 10, CGRectGetMidY(_avatarImg.frame) - 10, 120, 20)];
         _nameLbl.font = [UIFont systemFontOfSize:15.0];
         [self.contentView addSubview:_nameLbl];
     }
-    _nameLbl.text = @"测试用户1";
+    _nameLbl.text = [[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"username"];
  
     if (!_lineLbl) {
         _lineLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 80, kScreenWidth, 0.5)];

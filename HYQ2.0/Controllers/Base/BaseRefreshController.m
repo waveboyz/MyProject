@@ -8,37 +8,48 @@
 
 #import "BaseRefreshController.h"
 
-static const CGFloat MJDuration = 1.0;
-
 @interface BaseRefreshController ()
 
 @end
 
 @implementation BaseRefreshController
 
+- (id)init
+{
+    if (self = [super init]) {
+//        _refershState = RefreshNew;
+        _currentPage = 1;
+        _totalPage = 0;
+        _dataArr = [NSMutableArray new];
+        _titleArr = [NSArray new];
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-//    __weak __typeof(self) weakSelf = self;
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, kScreenWidth, kScreenHeight - 40) style:UITableViewStylePlain];
+}
+
+- (void)createUI
+{
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 104, kScreenWidth, kScreenHeight - 152) style:UITableViewStylePlain];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.showsVerticalScrollIndicator = NO;
     
     MJRefreshNormalHeader *headerView = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
-    [headerView setTitle:@"我将带头冲锋~" forState:MJRefreshStateIdle];
-    [headerView setTitle:@"放下无尽让我们好好说话" forState:MJRefreshStatePulling];
-    [headerView setTitle:@"新姿势解锁中..." forState:MJRefreshStateRefreshing];
+    [headerView setTitle:@"下拉刷新~" forState:MJRefreshStateIdle];
+    [headerView setTitle:@"松开刷新~" forState:MJRefreshStatePulling];
+    [headerView setTitle:@"正在刷新..." forState:MJRefreshStateRefreshing];
     _tableView.header = headerView;
     
-    [_tableView.header beginRefreshing];
-    
     MJRefreshBackNormalFooter *footerView = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
-    [footerView setTitle:@"想要解锁更多吗？" forState:MJRefreshStateIdle];
-    [footerView setTitle:@"少侠还不松手？" forState:MJRefreshStatePulling];
-    [footerView setTitle:@"感觉真是日了狗" forState:MJRefreshStateRefreshing];
+    [footerView setTitle:@"上拉获取更多~" forState:MJRefreshStateIdle];
+    [footerView setTitle:@"松开刷新~" forState:MJRefreshStatePulling];
+    [footerView setTitle:@"正在刷新..." forState:MJRefreshStateRefreshing];
     _tableView.footer = footerView;
     
     [self.view addSubview:_tableView];
@@ -47,25 +58,26 @@ static const CGFloat MJDuration = 1.0;
 //下拉刷新获取最新数据
 - (void)loadNewData
 {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(MJDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.tableView reloadData];
-        
-        // 拿到当前的下拉刷新控件，结束刷新状态
-        [self.tableView.header endRefreshing];
-        [self showStateHudWithText:@"下拉刷新成功"];
-    });
+    _currentPage = 1;
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(MJDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        _currentPage = 1;
+//        // 拿到当前的下拉刷新控件，结束刷新状态
+//        [self.tableView.header endRefreshing];
+//        [self showStateHudWithText:@"下拉刷新成功"];
+//    });
 }
 
 //上拉刷新获取更多数据
 - (void)loadMoreData
 {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(MJDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.tableView reloadData];
-        
-        // 拿到当前的下拉刷新控件，结束刷新状态
-        [self.tableView.footer endRefreshing];
-        [self showStateHudWithText:@"上拉刷新成功！"];
-    });
+    _currentPage += 1;
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(MJDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//
+//        
+//        // 拿到当前的下拉刷新控件，结束刷新状态
+//        [self.tableView.footer endRefreshing];
+//        [self showStateHudWithText:@"上拉刷新成功！"];
+//    });
 }
 
 - (void)showStateHudWithText:(NSString *)text
@@ -80,7 +92,8 @@ static const CGFloat MJDuration = 1.0;
     self.stateHud.labelText = text;
     self.stateHud.labelFont = [UIFont systemFontOfSize:12.0f];
     [self.stateHud show:YES];
-    [self.stateHud hide:YES afterDelay:0.8];
+    [self.stateHud hide:YES afterDelay:1.2];
+    self.stateHud = nil;
 }
 
 - (void)showNoTextStateHud
@@ -95,6 +108,12 @@ static const CGFloat MJDuration = 1.0;
     [self.stateHud show:YES];
 }
 
+- (void)stopStateHud
+{
+    [self.stateHud hide:YES afterDelay:0.5];
+    self.stateHud = nil;
+}
+
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -103,7 +122,7 @@ static const CGFloat MJDuration = 1.0;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return _dataArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

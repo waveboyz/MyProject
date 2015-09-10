@@ -8,11 +8,12 @@
 
 #import "MainBannerCell.h"
 #import "SDCycleScrollView.h"
+#import "HYQInterfaceMethod.h"
+#import "BannerModel.h"
 
 @interface MainBannerCell ()
 
 @property (nonatomic, strong) SDCycleScrollView *cycleView;
-@property (nonatomic, strong) NSMutableArray *imgArr;
 
 @end
 
@@ -28,29 +29,30 @@
     return self;
 }
 
-- (NSMutableArray *)imgArr
+- (void)setImgArr:(NSArray *)imgArr
 {
-    if (!_imgArr) {
-        NSString *stringPath = [[NSBundle mainBundle] pathForResource:@"URLS.plist" ofType:nil];
-        NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithContentsOfFile:stringPath];
-        NSArray *dicArr = [dic objectForKey:@"urls"];
-        _imgArr = [NSMutableArray arrayWithArray:dicArr];
+    _imgArr = imgArr;
+    NSMutableArray *arr = [NSMutableArray new];
+    
+    for (BannerModel *obj in _imgArr) {
+        NSString *str = [NSString stringWithFormat:@"%@%@",LOCAL_HOST,obj.path];
+        [arr addObject:str];
     }
     
-    return _imgArr;
+    _cycleView.imageURLStringsGroup = arr;
 }
 
 - (void)setViews
 {
     if (!_cycleView) {
-        _cycleView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, kScreenWidth, 160) imageURLStringsGroup:self.imgArr];
+        
+        _cycleView = [[SDCycleScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 205)];
         _cycleView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
-        _cycleView.placeholderImage = [UIImage imageNamed:@"notice_place_holder"];
+        _cycleView.placeholderImage = [UIImage imageNamed:@"banner_placeholder"];
         _cycleView.pageControlStyle = SDCycleScrollViewPageContolStyleClassic;
         
         [self.contentView addSubview:_cycleView];
     }
-
 }
 
 @end

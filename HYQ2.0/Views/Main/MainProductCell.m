@@ -7,6 +7,8 @@
 //
 
 #import "MainProductCell.h"
+#import "GlobalConst.h"
+#import "UIImageView+WebCache.h"
 
 @interface MainProductCell ()
 
@@ -21,6 +23,7 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self setViews];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.backgroundColor = GRAY_COLOR;
     }
     
     return self;
@@ -29,8 +32,7 @@
 - (void)setViews
 {
     if (!_productImg) {
-        _productImg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 150)];
-        _productImg.image = [UIImage imageNamed:@"mainPage"];
+        _productImg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 235)];
         [self.contentView addSubview:_productImg];
     }
 }

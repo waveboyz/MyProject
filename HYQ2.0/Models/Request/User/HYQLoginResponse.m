@@ -12,7 +12,7 @@
 @interface HYQLoginResponse ()
 
 @property (nonatomic, copy) NSString *psw;
-
+@property (nonatomic, copy) NSString *phone;
 @end
 
 @implementation HYQLoginResponse
@@ -23,6 +23,7 @@
         NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:2];
         
         if (phone) {
+            _phone = phone;
             [dic setObject:phone forKey:@"phone"];
         }
         
@@ -35,12 +36,6 @@
     }
 
     return self;
-}
-
-- (void)setUploadDictionary:(NSMutableDictionary *)dictionary
-{
-    self.params = dictionary;
-    NSLog(@"%@",self.params);
 }
 
 - (NSString *)methodPath
@@ -64,6 +59,7 @@
                 NSString *str = [NSString stringWithFormat:@"%@%@",LOCAL_HOST,[responseObject objectForKey:@"imagery"]];
                 [userDic setObject:str forKey:@"avatarUrl"];
                 [userDic setObject:_psw forKey:@"psw"];
+                [userDic setObject:_phone forKey:@"phone"];
                 
                 if (self.delegate && [self.delegate respondsToSelector:@selector(getResponseDictionary:)]) {
                     [self.delegate getResponseDictionary:userDic];

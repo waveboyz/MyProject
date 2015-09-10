@@ -7,10 +7,13 @@
 //
 
 #import "BaseViewController.h"
-
+/*
+    我的收藏夹
+ */
 @interface MyCollectController : BaseViewController
 <
     UITableViewDataSource,
     UITableViewDelegate
 >
+
 @end

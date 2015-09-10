@@ -9,10 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "GlobalConst.h"
 
+@protocol MainScrollinfoCellDelegate <NSObject>
+
+- (void)infoCellTouchedWithUrl:(NSString *)url;
+
+@end
+
 @interface MainScrollinfoCell : UITableViewCell
 <
     UITableViewDataSource,
     UITableViewDelegate
 >
+
+@property (nonatomic, assign) NSArray *titleArr;
+@property (nonatomic, assign) id<MainScrollinfoCellDelegate> delegate;
 
 @end

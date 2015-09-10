@@ -11,4 +11,6 @@
 
 @interface BaseModel : NSObject
 
+- (void)executeDictionary:(NSDictionary *)dictionary;
+
 @end

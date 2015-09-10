@@ -9,15 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "GlobalConst.h"
 #import "BaseViewController.h"
-
+/*
+ 个人中心
+ */
 @interface PersonalController : BaseViewController
 <
     UITableViewDataSource,
     UITableViewDelegate,
-    UIScrollViewDelegate,
-    UIActionSheetDelegate,
-    UIImagePickerControllerDelegate,
-    UINavigationControllerDelegate
+    UIScrollViewDelegate
 >
 
 @end

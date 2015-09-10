@@ -9,13 +9,83 @@
 #import <Foundation/Foundation.h>
 
 @interface HYQInterfaceMethod : NSObject
-// * 本地 *
-extern NSString *const LOCAL_HOST;
 // * 登录 *
 extern NSString *const LOGIN_INTERFACE;
 // * 验证码 *
 extern NSString *const SEND_VER_INTERFACE;
 // * 注册 *
 extern NSString *const REGIST_INTERFACE;
+// * 找回密码*
+extern NSString *const RESET_INTERFACE;
+// *修改密码*
+extern NSString *const REPLACE_PSW_INTERFACE;
+// *修改头像*
+extern NSString *const REPLACE_AVATAR_INTERFACE;
+// *修改头像后上传uid*
+extern NSString *const REPLACE_UID_INTERFACE;
+// *修改昵称*
+extern NSString *const REPLACE_NAME_INTERFACE;
+// *获取二维码图*
+extern NSString *const GET_QRURL_INTERFACE;
+//---------------------------------
+// * 首页 *
+extern NSString *const MAIN_INTERFACE;
+
+
+//---------------------------------
+// * 资讯类别*
+extern NSString *const INFORMATION_TITLE_INTERFACE;
+// * 咨询详情*
+extern NSString *const INFORMATION_DETAIL_INTERFACE;
+//产品服务类别
+extern NSString *const PRODUCT_TITLE_INTERFACE;
+//产品服务类别下的产品
+extern NSString *const PRODUCT_LIST_INTERFACE;
+//产品服务详情页
+extern NSString *const PRODUCT_DETAIL_INTERFACE;
+//产品信息详情页
+extern NSString *const SERVICE_INFO_INTERFACE;
+//是否收藏
+extern NSString *const COLLECT_OPERATION_INTERFACE;
+
+//-------------------------------------
+//我的订单
+extern NSString *const MY_ORDER_INTERFACE;
+//订单评价
+extern NSString *const ORDER_EVALUATE_INTERFACE;
+//订单删除
+extern NSString *const ORDER_DELETE_INTERFACE;
+//我的优惠券
+extern NSString *const MY_DISCOUNT_INTERFACE;
+//我的提成（收益记录 和 交易记录）
+extern NSString *const MY_TRADE_INTERFACE;
+//我的提成（我的推广）
+extern NSString *const MY_EXTEND_INTERFACE;
+//我的提成(转入余额)
+extern NSString *const MY_WITHDRAW_INTERFACE;
+//我的收藏
+extern NSString *const MY_COLLECT_INTERFACE;
+//我的收藏夹（删除）
+extern NSString *const MY_COLLECT_DELETE_INTERFACE;
+//--------------------------------------
+//地址管理
+extern NSString *const MY_ADDRESS_INTERFACE;
+//地址修改
+extern NSString *const ADDRESS_MODIFI_INTERFACE;
+//地址删除
+extern NSString *const ADDRESS_DELETE_INTERFACE;
+
+//------------------------------------
+//优创计划
+extern NSString *const EXCELLENT_PLAN_INTERFACE;
+//优创金融方案
+extern NSString *const EXCELLENT_FINANTIAL_INTERFACE;
+//优创基地
+extern NSString *const EXCELLENT_BASE_INTERFACE;
+//优创训练营
+extern NSString *const EXCELLENT_CAMP_INTERFACE;
+//优创开放日
+extern NSString *const EXCELLENT_OPEN_INTERFACE;
+
 
 @end

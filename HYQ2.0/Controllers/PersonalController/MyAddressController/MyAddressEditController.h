@@ -7,7 +7,11 @@
 //
 
 #import "BaseViewController.h"
-
+/*
+    地址修改
+ */
 @interface MyAddressEditController : BaseViewController
+
+- (id)initWithAid:(NSString *)aid;
 
 @end

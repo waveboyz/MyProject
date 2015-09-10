@@ -10,19 +10,4 @@
 
 @implementation ServiceModel
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary
-{
-    if (self = [super init]) {
-        
-    }
-    
-    return self;
-}
-
-+ (instancetype)serviceWithDictionary:(NSDictionary *)dictionary
-{
-
-    return [[self alloc] initWithDictionary:dictionary];
-}
-
 @end

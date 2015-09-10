@@ -7,7 +7,9 @@
 //
 
 #import "BaseRefreshController.h"
-
+/*
+    我的优惠券
+ */
 @interface MYDiscountController : BaseRefreshController
 
 @end

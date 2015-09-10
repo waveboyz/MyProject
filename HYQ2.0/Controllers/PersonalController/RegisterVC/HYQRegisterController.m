@@ -308,7 +308,7 @@
     
     HYQRegistResponse *response = [[HYQRegistResponse alloc] initWithPhone:_phone andWithCode:_pswMD5 andWithVerCode:_verCode andWithSPhone:_sugPhone];
     response.delegate = self;
-    [response getresponseOperation];
+    [response start];
 }
 
 #pragma mark - sendVerCodeOperation
@@ -336,7 +336,7 @@
 {
     HYQSendVerCodeResponse *response = [[HYQSendVerCodeResponse alloc] initWithPhoneNumber:_phoneTxt.text];
     response.delegate = self;
-    [response getresponseOperation];
+    [response start];
     
     _getResendBtn.backgroundColor = [UIColor colorWithWhite:0.6 alpha:1.0];
     [_getResendBtn setTitle:@"60s 重新获取" forState:UIControlStateNormal];

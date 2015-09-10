@@ -25,12 +25,6 @@
     return self;
 }
 
-- (void)setUploadDictionary:(NSMutableDictionary *)dictionary
-{
-    self.params = dictionary;
-    NSLog(@"%@",self.params);
-}
-
 - (NSString *)methodPath
 {
     return SEND_VER_INTERFACE;

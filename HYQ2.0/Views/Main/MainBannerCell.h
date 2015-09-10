@@ -11,4 +11,6 @@
 
 @interface MainBannerCell : UITableViewCell
 
+@property (nonatomic, assign) NSArray *imgArr;
+
 @end

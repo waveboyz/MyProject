@@ -7,7 +7,9 @@
 //
 
 #import "BaseViewController.h"
-
+/*
+    找回密码
+ */
 @protocol HYQForgetPSWControllerDelegate <NSObject>
 
 - (void)resetPasswordSuccess;

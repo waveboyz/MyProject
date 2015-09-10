@@ -8,7 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import "GlobalConst.h"
+#import "OrderModel.h"
+
+@protocol MyOrderFormCellDelegate <NSObject>
+
+- (void)payBtnPressedWithOid:(NSNumber *)oid;
+- (void)evaluateBtnPressedWithOid:(NSNumber *)oid;
+- (void)confirmBtnPressedWithOid:(NSNumber *)oid;
+
+@end
 
 @interface MyOrderFormCell : UITableViewCell
+
+@property (nonatomic, assign) OrderModel *order;
+@property (nonatomic, assign) id<MyOrderFormCellDelegate> delegate;
 
 @end

@@ -34,7 +34,7 @@
 {
     if (!_avatarImg) {
         _avatarImg = [UIButton buttonWithType:UIButtonTypeCustom];
-        _avatarImg.frame = CGRectMake(kScreenWidth * 0.5 - 40, 55, 80, 80);
+        _avatarImg.frame = CGRectMake(kScreenWidth * 0.5 - 44, 55, 88, 88);
         _avatarImg.layer.cornerRadius = CGRectGetWidth(_avatarImg.frame)/2;
         [_avatarImg setImage:[UIImage imageNamed:@"avatar_placeholder"] forState:UIControlStateNormal];
         [_avatarImg addTarget:self action:@selector(avatarImgTouched) forControlEvents:UIControlEventTouchUpInside];

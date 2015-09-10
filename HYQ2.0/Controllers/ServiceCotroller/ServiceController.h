@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseRefreshController.h"
-
+/*
+    产品服务列表
+ */
 @interface ServiceController : BaseRefreshController
 
 @end

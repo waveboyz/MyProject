@@ -19,13 +19,9 @@ typedef NS_ENUM(NSInteger, PaymentState)
 
 @interface PaymentModel : BaseModel
 
-@property (nonatomic, copy) NSString *Title;
-@property (nonatomic, copy) NSString *Time;
-@property (nonatomic, strong) NSNumber *Price;
-@property (nonatomic, assign) PaymentState payState;
-
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
-
-+ (instancetype)paymentWithDictionary:(NSDictionary *)dictionary;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *time;
+@property (nonatomic, strong) NSNumber *money;
+@property (nonatomic, strong) NSNumber *fid;
 
 @end

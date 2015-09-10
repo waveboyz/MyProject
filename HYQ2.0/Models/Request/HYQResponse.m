@@ -9,11 +9,13 @@
 #import "HYQResponse.h"
 #import "AFNetworking.h"
 
+#define TIMEOUT     30
 @implementation HYQResponse
 
-- (void)getresponseOperation
+- (void)start
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager.requestSerializer setTimeoutInterval:TIMEOUT];
     [manager POST:[self methodPath]
        parameters:_params
           success:^(AFHTTPRequestOperation *operation, id responseObject){
@@ -42,7 +44,8 @@
 
 - (void)setUploadDictionary:(NSMutableDictionary *)dictionary
 {
-
+    self.params = dictionary;
+    NSLog(@"%@",dictionary);
 }
 
 - (void)decodeJsonOperationWithObject:(id)responseObject

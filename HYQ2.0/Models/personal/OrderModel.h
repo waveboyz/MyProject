@@ -19,15 +19,12 @@ typedef NS_ENUM(NSInteger, OrderState){
 
 @interface OrderModel : BaseModel
 
-@property (nonatomic, copy) NSString *Title;
-@property (nonatomic, copy) NSString *ImgUrl;
-@property (nonatomic, strong) NSNumber *Oid;
-@property (nonatomic, strong) NSNumber *price;
-@property (nonatomic, strong) NSNumber *count;
-@property (nonatomic, assign) OrderState orderState;
-
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
-
-+ (instancetype)orderWithDictionary:(NSDictionary *)dictionary;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *photo;
+@property (nonatomic, copy) NSString *statusBtn;
+@property (nonatomic, copy) NSString *statusMsg;
+@property (nonatomic, strong) NSNumber *oid;
+@property (nonatomic, strong) NSNumber *money;
+@property (nonatomic, strong) NSNumber *num;
 
 @end

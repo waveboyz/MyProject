@@ -7,6 +7,7 @@
 //
 
 #import "MyPaymentHeader.h"
+#import "HYQUserManager.h"
 
 @interface MyPaymentHeader ()
 
@@ -42,7 +43,8 @@
     _propertyLbl.font = [UIFont systemFontOfSize:31.0f];
     _propertyLbl.textColor = [UIColor whiteColor];
     _propertyLbl.textAlignment = NSTextAlignmentCenter;
-    _propertyLbl.text = @"20.00";
+    NSNumber *property = [[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"property"];
+    _propertyLbl.text = [property stringValue];
     [self addSubview:_propertyLbl];
     
     _withdrawBtn = [UIButton buttonWithType:UIButtonTypeCustom];

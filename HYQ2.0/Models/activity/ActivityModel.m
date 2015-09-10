@@ -10,20 +10,4 @@
 
 @implementation ActivityModel
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary
-{
-    self = [super init];
-    if (self) {
-        
-        [self setValuesForKeysWithDictionary:dictionary];
-    }
-
-    return self;
-}
-
-+(instancetype)activityWithDictionary:(NSDictionary *)dictionary
-{
-    return [[ActivityModel alloc] initWithDictionary:dictionary];
-}
-
 @end

@@ -36,7 +36,7 @@
         _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, kScreenWidth - 135, 50)];
         _titleLbl.textColor = USERNAME_COLOR;
         _titleLbl.font = [UIFont systemFontOfSize:15.0f];
-        _titleLbl.text = @"标题要长标题要长标题要长标题要长标题要长标题要长";
+//        _titleLbl.text = @"标题要长标题要长标题要长标题要长标题要长标题要长";
         _titleLbl.lineBreakMode = NSLineBreakByCharWrapping;
         _titleLbl.numberOfLines = 2;
         [self.contentView addSubview:self.titleLbl];
@@ -44,7 +44,7 @@
 
     if (!_imgPicture) {
         _imgPicture = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 125, 5, 120, 80)];
-        [_imgPicture sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"product_placeholder"]];
+//        [_imgPicture sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"product_placeholder"]];
         [self.contentView addSubview:_imgPicture];
     }
     
@@ -52,7 +52,7 @@
         _desLbl = [[UILabel alloc] initWithFrame:CGRectMake(5, 65, kScreenWidth - 125, 15)];
         _desLbl.font = [UIFont systemFontOfSize:11.0f];
         _desLbl.textColor = [UIColor grayColor];
-        _desLbl.text = @"发布者|2015.8.12";
+//        _desLbl.text = @"发布者|2015.8.12";
         [self.contentView addSubview:_desLbl];
     }
     
@@ -64,5 +64,12 @@
     }
 }
 
+- (void)setActivity:(ActivityModel *)activity
+{
+    _titleLbl.text = activity.title;
+    _desLbl.text = [NSString stringWithFormat:@"%@|null",activity.editor];
+    NSString *str = [NSString stringWithFormat:@"%@%@",LOCAL_HOST,activity.photo];
+    [_imgPicture sd_setImageWithURL:[NSURL URLWithString:str] placeholderImage:[UIImage imageNamed:@"product_placeholder"]];
+}
 
 @end

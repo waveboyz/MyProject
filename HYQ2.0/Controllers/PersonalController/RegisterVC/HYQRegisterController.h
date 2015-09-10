@@ -7,7 +7,9 @@
 //
 
 #import "BaseViewController.h"
-
+/*
+    注册
+ */
 @interface HYQRegisterController : BaseViewController
 <
     UITextFieldDelegate

@@ -13,13 +13,9 @@
 
 @interface CollectModel : BaseModel
 
-@property (nonatomic, copy) NSString *Title;
-@property (nonatomic, copy) NSString *ImgUrl;
-@property (nonatomic, strong) NSNumber *Sid;
-@property (nonatomic, strong) NSNumber *Price;
-
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
-
-+ (instancetype)collectWithDictionary:(NSDictionary *)dictionary;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *photo;
+@property (nonatomic, strong) NSNumber *fid;
+@property (nonatomic, strong) NSNumber *price;
 
 @end

@@ -11,14 +11,10 @@
 
 @interface ActivityModel : BaseModel
 
-@property (nonatomic, copy) NSString *Title;
-@property (nonatomic, copy) NSString *Up_time;
-@property (nonatomic, copy) NSString *WebUrl;
-@property (nonatomic, copy) NSString *ImgUrl;
-@property (nonatomic, strong) NSNumber *CmtCount;
-
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
-
-+(instancetype)activityWithDictionary:(NSDictionary *)dictionary;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *editor;
+@property (nonatomic, copy) NSString *photo;
+@property (nonatomic, strong) NSNumber *hits;
+@property (nonatomic, strong) NSNumber *aid;
 
 @end

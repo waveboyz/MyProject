@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "GlobalConst.h"
+#import "DiscountModel.h"
 
 @interface MyDiscountCell : UITableViewCell
+
+@property (nonatomic, assign) DiscountModel *discount;
 
 @end

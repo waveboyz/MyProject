@@ -13,20 +13,14 @@
 #import "MyorderFormController.h"
 #import "MyCollectController.h"
 #import "MyAddressController.h"
-#import "DownSheet.h"
+#import "HYQEditController.h"
 #import "HYQUserManager.h"
 
 @interface PersonalController ()
-<
-    DownSheetDelegate
->
 
 @property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, retain) NSArray     *titleArr;
 @property (nonatomic, retain) NSArray     *title2Arr;
-@property (nonatomic, retain) NSArray     *sheetArr;
-@property (nonatomic, retain) UIImagePickerController *pickerVC;
-@property (nonatomic, retain) UIImagePickerController *cameraVC;
 
 @end
 
@@ -45,6 +39,20 @@
 - (BOOL)hidesBottomBarWhenPushed
 {
     return YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(replaceAvatar) name:@"replaceAvatar" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(replaceAvatar) name:@"replaceNickName" object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"replaceAvatar" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"replaceNickName" object:nil];
 }
 
 - (void)viewDidLoad {
@@ -66,22 +74,11 @@
     [self.view addSubview:self.tableView];
 }
 
-- (NSArray *)sheetArr
+- (void)replaceAvatar
 {
-    if (!_sheetArr) {
-        DownSheetModel *Model_1 = [[DownSheetModel alloc]init];
-        Model_1.title = @"拍照";
-        
-        DownSheetModel *Model_2 = [[DownSheetModel alloc]init];
-        Model_2.title = @"从手机相册中选择";
-        
-        DownSheetModel *Model_3 = [[DownSheetModel alloc]init];
-        Model_3.title = @"取消";
-        
-        _sheetArr = [NSArray arrayWithObjects:Model_1,Model_2,Model_3, nil];
-    }
-    
-    return _sheetArr;
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:0 inSection:0], nil] withRowAnimation:UITableViewRowAnimationAutomatic];
+    });
 }
 
 #pragma mark UITableViewDataSource
@@ -267,84 +264,8 @@
 
 - (void)avatarBtnPressed
 {
-    DownSheet *sheet = [[DownSheet alloc]initWithlist:self.sheetArr height:0];
-    sheet.delegate = self;
-    [sheet showInView:nil];
-}
-
-#pragma mark DownSheetDelegate
--(void)didSelectIndex:(NSInteger)index
-{
-    if (index == 0) {
-        [self.navigationController presentViewController:self.cameraVC animated:YES completion:^(void){}];
-    }
-    
-    if (index == 1) {
-        [self.navigationController presentViewController:self.pickerVC animated:YES completion:^(void){}];
-    }
-}
-
-#pragma mark UIActionSheetDelegate
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 0) {
-        [self.navigationController presentViewController:self.cameraVC animated:YES completion:^(void){}];
-    }
-    
-    if (buttonIndex == 1) {
-        [self.navigationController presentViewController:self.pickerVC animated:YES completion:^(void){}];
-    }
-}
-
-- (UIImagePickerController *)pickerVC
-{
-    if (!_pickerVC) {
-        _pickerVC = [[UIImagePickerController alloc]init];
-        _pickerVC.view.backgroundColor = [UIColor orangeColor];
-        _pickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        _pickerVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-        _pickerVC.delegate = self;
-    }
-    
-    return _pickerVC;
-}
-
-- (UIImagePickerController *)cameraVC
-{
-    if (!_cameraVC) {
-        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-            _cameraVC = [[UIImagePickerController alloc]init];
-            _cameraVC.view.backgroundColor = [UIColor orangeColor];
-            _cameraVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-            _cameraVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-            _cameraVC.delegate = self;
-        }
-    }
-    
-    return _cameraVC;
-}
-
-#pragma mark UIImagePickerControllerDelegate
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    if (picker == self.pickerVC) {
-        [self.pickerVC dismissViewControllerAnimated:YES completion:^(void){}];
-    }
-    
-    if (picker == self.cameraVC) {
-        [self.cameraVC dismissViewControllerAnimated:YES completion:^(void){}];
-    }
-}
-
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    if (picker == self.pickerVC) {
-        [self.pickerVC dismissViewControllerAnimated:YES completion:^(void){}];
-    }
-    
-    if (picker == self.cameraVC) {
-        [self.cameraVC dismissViewControllerAnimated:YES completion:^(void){}];
-    }
+    HYQEditController *editVC = [[HYQEditController alloc] init];
+    [self.navigationController pushViewController:editVC animated:YES];
 }
 
 @end

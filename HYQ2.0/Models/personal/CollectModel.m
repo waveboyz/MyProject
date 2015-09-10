@@ -10,18 +10,4 @@
 
 @implementation CollectModel
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary
-{
-    if (self = [super init]) {
-        
-    }
-    
-    return self;
-}
-
-+ (instancetype)collectWithDictionary:(NSDictionary *)dictionary
-{
-    return [[self alloc] initWithDictionary:dictionary];
-}
-
 @end

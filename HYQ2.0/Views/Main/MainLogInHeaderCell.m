@@ -38,7 +38,7 @@
 
     if (!_avatarImg) {
         _avatarImg = [UIButton buttonWithType:UIButtonTypeCustom];
-        _avatarImg.frame = CGRectMake(kScreenWidth * 0.5 - 40, 55, 80, 80);
+        _avatarImg.frame = CGRectMake(kScreenWidth * 0.5 - 44, 55, 88, 88);
         _avatarImg.clipsToBounds = YES;
         _avatarImg.layer.cornerRadius = CGRectGetWidth(_avatarImg.frame)/2;
         [_avatarImg sd_setImageWithURL:[NSURL URLWithString:[[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"avatarUrl"]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"avatar_placeholder"]];
@@ -68,15 +68,14 @@
     }
     
     if (!_propertyLbl) {
-        _propertyLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 - 80, 195, 160, 30)];
-        _propertyLbl.font = [UIFont systemFontOfSize:20.0];
+        _propertyLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 - 80, 190, 160, 35)];
+        _propertyLbl.font = [UIFont systemFontOfSize:43.0];
         _propertyLbl.textAlignment = NSTextAlignmentCenter;
         _propertyLbl.textColor = [UIColor whiteColor];
         if ([[[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"property"] isKindOfClass:[NSNumber class]]) {
             NSUInteger property = [[[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"property"] intValue];
         _propertyLbl.text = [NSString stringWithFormat:@"%ld",property];
         }
-
         
         [self.contentView addSubview:_propertyLbl];
     }

@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "GlobalConst.h"
+#import "AddressModel.h"
 
 @interface MyAddressCell : UITableViewCell
+
+@property (nonatomic, assign) AddressModel *address;
 
 @end

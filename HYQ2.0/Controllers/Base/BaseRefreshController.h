@@ -10,14 +10,10 @@
 #import "GlobalConst.h"
 #import "MJRefresh.h"
 #import "MBProgressHUD.h"
-
-typedef NS_ENUM(NSInteger, TableviewState){
-    TableviewStateNone,
-    TableviewStateNetDrop,
-    TableviewStateLoading,
-    TableviewStateDone
-};
-
+/*
+    刷新页
+ */
+static const CGFloat MJDuration = 1.0;
 @interface BaseRefreshController : UIViewController
 <
     MBProgressHUDDelegate,
@@ -26,12 +22,14 @@ typedef NS_ENUM(NSInteger, TableviewState){
 >
 
 @property (nonatomic, retain)MBProgressHUD *stateHud;
-@property (nonatomic, strong) NSMutableArray *currentDataArr;
 @property (nonatomic, strong) UITableView   *tableView;
-@property (nonatomic)       TableviewState state;
 @property (nonatomic, strong) UIView    *loadingView;
-@property (nonatomic, strong) UIView    *emptyView;
 @property (nonatomic, strong) UIView    *netDropView;
+// 当前页
+@property (nonatomic, assign) NSUInteger currentPage;
+@property (nonatomic, assign) NSUInteger totalPage;
+@property (nonatomic, retain) NSMutableArray *dataArr;
+@property (nonatomic, retain) NSArray    *titleArr;
 
 //下拉刷新
 - (void)loadNewData;
@@ -45,4 +43,8 @@ typedef NS_ENUM(NSInteger, TableviewState){
 //时间等待菊花
 - (void)showNoTextStateHud;
 
+//关闭等待菊花
+- (void)stopStateHud;
+
+- (void)createUI;
 @end

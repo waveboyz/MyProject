@@ -22,7 +22,7 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self setViews];
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
+//        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     return self;
@@ -31,18 +31,14 @@
 - (void)setViews
 {
     if (!_nameLbl) {
-        _nameLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 120, 15)];
+        _nameLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 120, 15)];
         _nameLbl.font = [UIFont systemFontOfSize:15.0f];
-        _nameLbl.text = @"习大大";
-        
         [self.contentView addSubview:_nameLbl];
     }
     
     if (!_phoneLbl) {
-        _phoneLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth - 150, 10, 120, 15)];
+        _phoneLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth - 150, 20, 120, 15)];
         _phoneLbl.font = [UIFont systemFontOfSize:15.0f];
-        _phoneLbl.text = @"15558170028";
-        
         [self.contentView addSubview:_phoneLbl];
     }
     
@@ -50,7 +46,6 @@
         _addressLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 30, kScreenWidth - 60, 40)];
         _addressLbl.font = [UIFont systemFontOfSize:13.0f];
         _addressLbl.textColor = [UIColor grayColor];
-        _addressLbl.text = @"浙江省 杭州市 西湖区 翠园街道黄姑山路20号颐高创业大厦1210";
         _addressLbl.numberOfLines = 2;
         [self.contentView addSubview:_addressLbl];
     }
@@ -58,9 +53,15 @@
     if (!_lineLbl) {
         _lineLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 80, kScreenWidth, 0.5)];
         _lineLbl.backgroundColor = GRAY_COLOR;
-        
         [self.contentView addSubview:_lineLbl];
     }
 }
 
+- (void)setAddress:(AddressModel *)address
+{
+    _address = address;
+    _nameLbl.text = _address.linkman;
+    _phoneLbl.text = [_address.linkPhone stringValue];
+    _addressLbl.text = [NSString stringWithFormat:@"%@ %@ %@ %@",_address.province,_address.city,_address.district,_address.address];
+}
 @end

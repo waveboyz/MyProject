@@ -7,11 +7,18 @@
 //
 
 #import "BaseViewController.h"
-
+#import "ServiceModel.h"
+/*
+    产品购买页
+ */
 @interface ServicePurchaseController : BaseViewController
 <
     UITableViewDataSource,
     UITableViewDelegate
 >
+
+- (id)initWithService:(ServiceModel *)service;
+
+@property (nonatomic, assign) ServiceModel *service;
 
 @end

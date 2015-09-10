@@ -13,6 +13,7 @@
 @property (nonatomic, strong) UILabel *nameLbl;
 @property (nonatomic, strong) UILabel *phoneLbl;
 @property (nonatomic, strong) UILabel *addLbl;
+@property (nonatomic, strong) UILabel *lineLbl;
 
 @end
 
@@ -30,28 +31,53 @@
 - (void)setViews
 {
     if (!_nameLbl) {
-        _nameLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 120, 20)];
+        _nameLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 120, 20)];
         _nameLbl.font = [UIFont systemFontOfSize:15.0f];
-        _nameLbl.text = @"收货人：习大大";
         _nameLbl.textColor = [UIColor blackColor];
-        NSAttributedString *attStr = [[NSAttributedString alloc] initWithString:_nameLbl.text];
-        NSRange range = NSMakeRange(0, attStr.length);
-        NSDictionary *dic = [attStr attributesAtIndex:0 effectiveRange:&range];
-        CGSize size = [_nameLbl.text boundingRectWithSize:CGSizeMake(120 , 20)
-                                                        options:NSStringDrawingUsesLineFragmentOrigin
-                                                     attributes:dic
-                                                        context:nil].size;
-        _nameLbl.frame = CGRectMake(10, 10, size.width, 20);
         [self.contentView addSubview:_nameLbl];
     }
     
     if (!_phoneLbl) {
-        _phoneLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth - 50, 10, 120, 20)];
+        _phoneLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth - 180, 10, 120, 20)];
         _phoneLbl.textColor = [UIColor blackColor];
         _phoneLbl.font = [UIFont systemFontOfSize:15.0f];
-        
         [self.contentView addSubview:_phoneLbl];
     }
+    
+    if (!_addLbl) {
+        _addLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 50, kScreenWidth - 30, 40)];
+        _addLbl.font = [UIFont systemFontOfSize:15.0f];
+        _addLbl.textColor = [UIColor blackColor];
+        [self.contentView addSubview:_addLbl];
+    }
+    
+    if (!_lineLbl) {
+        _lineLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 90, kScreenWidth, 0.5)];
+        _lineLbl.backgroundColor = [UIColor grayColor];
+        [self.contentView addSubview:_lineLbl];
+    }
+}
+
+- (void)setAddress:(AddressModel *)address
+{
+    _address = address;
+    
+    _nameLbl.text = _address.linkman;
+    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:_nameLbl.text];
+    NSRange range = NSMakeRange(0, attStr.length);
+    [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15.0f] range:range];
+    CGRect rect = [attStr boundingRectWithSize:CGSizeMake(120, 20) options:NSStringDrawingUsesFontLeading context:nil];
+    _nameLbl.frame = CGRectMake(10, 10, rect.size.width, 20);
+    
+    _phoneLbl.text = [_address.linkPhone stringValue];
+    NSMutableAttributedString *phoneAtt = [[NSMutableAttributedString alloc] initWithString:_phoneLbl.text];
+    NSRange phoneRange = NSMakeRange(0, phoneAtt.length);
+    [phoneAtt addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15.0f] range:phoneRange];
+    CGRect phoneRect = [phoneAtt boundingRectWithSize:CGSizeMake(120, 20) options:NSStringDrawingUsesFontLeading context:nil];
+    _phoneLbl.frame = CGRectMake(kScreenWidth - phoneRect.size.width - 40, 10, phoneRect.size.width, 20);
+    
+    
+    _addLbl.text = [NSString stringWithFormat:@"%@  %@  %@  %@",_address.province,_address.city,_address.district,_address.address];
 }
 
 @end

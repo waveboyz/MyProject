@@ -7,7 +7,7 @@
 //
 
 #import "ScanCameraController.h"
-#import "BaseWebVIewController.h"
+#import "HYQBaseWebController.h"
 #import "QRView.h"
 
 @interface ScanCameraController ()

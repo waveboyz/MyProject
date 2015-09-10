@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "GlobalConst.h"
+#import "ServiceModel.h"
+#import "HYQInterfaceMethod.h"
 
 @interface MainProductCell : UITableViewCell
+
+@property (nonatomic, strong) ServiceModel *service;
 
 @end

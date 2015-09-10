@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "GlobalConst.h"
-
+/*
+    导航条页
+ */
 @interface BaseNavigationController : UINavigationController
 <
 UIGestureRecognizerDelegate

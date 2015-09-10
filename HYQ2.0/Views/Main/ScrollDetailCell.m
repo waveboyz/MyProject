@@ -11,6 +11,7 @@
 @interface ScrollDetailCell ()
 
 @property (nonatomic, strong) UILabel *titleLbl;
+@property (nonatomic, strong) UIImageView *rcmImg;
 
 @end
 
@@ -30,18 +31,27 @@
 {
     CGFloat IconWidth = (kScreenWidth - 160) / 4;
     if (!_titleLbl) {
-        _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0,kScreenWidth - IconWidth - 40, 40)];
+        _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(30, 0,kScreenWidth - IconWidth - 70, 40)];
         _titleLbl.font = [UIFont systemFontOfSize:12.0f];
         _titleLbl.textColor = [UIColor grayColor];
         
         [self.contentView addSubview:_titleLbl];
     }
+    
+    if (!_rcmImg) {
+        _rcmImg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 40)];
+        _rcmImg.image = [UIImage imageNamed:@"recommend"];
+        _rcmImg.contentMode = UIViewContentModeScaleAspectFit;
+        [self.contentView addSubview:_rcmImg];
+    }
 }
 
-- (void)setTitleInt:(NSInteger)titleInt
+- (void)setActivity:(ActivityModel *)activity
 {
+    _activity = activity;
+    
     if (_titleLbl) {
-        _titleLbl.text = [NSString stringWithFormat:@"这是滚动视图的第%ld行",titleInt];
+        _titleLbl.text = [NSString stringWithFormat:@"%@",_activity.title];
     }
 }
 

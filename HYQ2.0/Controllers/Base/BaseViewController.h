@@ -11,7 +11,10 @@
 #import "MBProgressHUD.h"
 #import "UIButton+WebCache.h"
 #import "UIImageView+WebCache.h"
-
+#import "HYQInterfaceMethod.h"
+/*
+    基础controller
+ */
 @interface BaseViewController : UIViewController
 <
 MBProgressHUDDelegate

@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "HYQInterfaceMethod.h"
+#import "MJExtension.h"
+#import "HYQUserManager.h"
 
 @interface HYQResponse : NSObject
 
 @property (nonatomic, strong) NSMutableDictionary *params;
 
-- (void)getresponseOperation;
+- (void)start;
 
 //接口路径
 - (NSString *)methodPath;

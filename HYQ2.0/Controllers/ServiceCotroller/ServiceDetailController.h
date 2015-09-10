@@ -7,12 +7,15 @@
 //
 
 #import "BaseViewController.h"
-
+#import "ServiceModel.h"
+/*
+    产品详情页
+ */
 @interface ServiceDetailController : BaseViewController
 <
-    UITableViewDataSource,
-    UITableViewDelegate,
-    UIScrollViewDelegate
+    UIAlertViewDelegate
 >
+
+- (id)initWithServiceModel:(ServiceModel *)service;
 
 @end

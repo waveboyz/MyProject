@@ -10,4 +10,9 @@
 
 @implementation BaseModel
 
+- (void)executeDictionary:(NSDictionary *)dictionary
+{
+
+}
+
 @end

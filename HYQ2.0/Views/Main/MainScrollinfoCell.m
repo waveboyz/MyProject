@@ -8,6 +8,8 @@
 
 #import "MainScrollinfoCell.h"
 #import "ScrollDetailCell.h"
+#import "HYQInterfaceMethod.h"
+#import "ActivityModel.h"
 
 @interface MainScrollinfoCell ()
 
@@ -23,7 +25,6 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self setViews];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.backgroundColor = [UIColor whiteColor];
         self.timeTerval = 0;
@@ -32,8 +33,9 @@
     return self;
 }
 
-- (void)setViews
+- (void)setTitleArr:(NSArray *)titleArr
 {
+    _titleArr = titleArr;
     CGFloat IconWidth = (kScreenWidth - 160) / 4;
     
     if (!_titleImg) {
@@ -55,7 +57,7 @@
         _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableview.delegate = self;
         _tableview.dataSource = self;
-        _tableview.userInteractionEnabled = NO;
+        _tableview.scrollEnabled = NO;
         
         [self.contentView addSubview:_tableview];
     }
@@ -76,7 +78,7 @@
 
 - (void)automaticScroll
 {
-    if (_timeTerval < 10) {
+    if (_timeTerval < 9) {
         [_tableview scrollToRowAtIndexPath:[NSIndexPath indexPathForItem:_timeTerval inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
         _timeTerval += 1;
     }else{
@@ -100,7 +102,7 @@
     if (!cell) {
         cell = [[ScrollDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SCROLL_CELL];
     }
-        [(ScrollDetailCell *)cell setTitleInt:indexPath.row];
+        [(ScrollDetailCell *)cell setActivity:_titleArr[indexPath.row]];
     
     return cell;
 }
@@ -109,6 +111,14 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 40.0f;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(infoCellTouchedWithUrl:)]) {
+        ActivityModel *model = _titleArr[indexPath.row];
+        [self.delegate infoCellTouchedWithUrl:[NSString stringWithFormat:@"%@%@",LOCAL_HOST,model.aid]];
+    }
 }
 
 @end
