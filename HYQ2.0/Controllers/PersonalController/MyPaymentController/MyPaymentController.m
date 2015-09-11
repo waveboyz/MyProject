@@ -143,6 +143,7 @@
 
 - (void)swipSegmentWithIndexPath:(NSUInteger)indexpath
 {
+    [self.dataArr removeAllObjects];
     [self.tableView.header beginRefreshing];
 }
 
@@ -161,9 +162,11 @@
         if (self.currentPage == 1) {
             [self.tableView.header endRefreshing];
             [self.tableView reloadData];
+            [self.view insertSubview:self.tableView aboveSubview:self.emptyView];
         }else{
             [self.tableView.footer endRefreshing];
             [self.tableView reloadData];
+            [self.view insertSubview:self.tableView aboveSubview:self.emptyView];
         }
     });
 }

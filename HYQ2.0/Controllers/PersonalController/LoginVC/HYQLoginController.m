@@ -17,18 +17,19 @@
 <
 HYQLoginResponseDelegate
 >
-{
-    UITextField     *_phoneTxt;
-    UITextField     *_codeTxt;
-    UILabel         *_nameLbl;
-    UILabel         *_codeLbl;
-    UILabel         *_lineLbl;
-    UILabel         *_lineLbl2;
-    UILabel         *_registLbl;
-    UIScrollView    *_bgView;
-    UIButton        *_loginBtn;
-    NSString        *_phoneNumber;
-}
+
+@property (nonatomic, strong)    UITextField     *phoneTxt;
+@property (nonatomic, strong)    UITextField     *codeTxt;
+@property (nonatomic, strong)    UILabel         *nameLbl;
+@property (nonatomic, strong)    UILabel         *codeLbl;
+@property (nonatomic, strong)    UILabel         *lineLbl;
+@property (nonatomic, strong)    UILabel         *lineLbl2;
+@property (nonatomic, strong)    UIButton        *registLbl;
+@property (nonatomic, strong)    UILabel         *resetPWDLbl;
+@property (nonatomic, strong)    UIScrollView    *bgView;
+@property (nonatomic, strong)    UIButton        *loginBtn;
+@property (nonatomic, copy)      NSString        *phoneNumber;
+
 @end
 
 @implementation HYQLoginController
@@ -83,38 +84,39 @@ HYQLoginResponseDelegate
     _bgView.backgroundColor = NAVIBAR_GREEN_COLOR;
     [self.view addSubview:_bgView];
     
+    //返回图像
     UIImageView *btnImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_back"]];
     btnImg.frame = CGRectMake(15, 29.5, 18, 18);
     [self.view addSubview:btnImg];
-    
+    //返回按钮，用于增大触发面积
     UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     cancelBtn.frame = CGRectMake(0, 0, 57, 57);
     [cancelBtn addTarget:self action:@selector(dissmissLoginController) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:cancelBtn];
-    
+    //登录名描述
     _nameLbl = [[UILabel alloc] initWithFrame:CGRectMake(-50, 166, 50, 30)];
     _nameLbl.textColor = [UIColor whiteColor];
     _nameLbl.font = [UIFont systemFontOfSize:13.0f];
     _nameLbl.text = @"手机号";
     [_bgView addSubview:_nameLbl];
-    
+    //登录名输入
     _phoneTxt = [[UITextField alloc] initWithFrame:CGRectMake(60, 166, kScreenWidth - 80, 30)];
     _phoneTxt.textColor = [UIColor whiteColor];
     _phoneTxt.font = [UIFont systemFontOfSize:13.0f];
     _phoneTxt.keyboardType = UIKeyboardTypePhonePad;
     _phoneTxt.delegate = self;
     [_bgView addSubview:_phoneTxt];
-    
+    //------
     _lineLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth, 206, kScreenWidth - 30, 1)];
     _lineLbl.backgroundColor = [UIColor whiteColor];
     [_bgView addSubview:_lineLbl];
-    
+    //密码描述
     _codeLbl = [[UILabel alloc] initWithFrame:CGRectMake(-50, 232, 50, 30)];
     _codeLbl.textColor = [UIColor whiteColor];
     _codeLbl.font = [UIFont systemFontOfSize:13.0f];
     _codeLbl.text = @"密码";
     [_bgView addSubview:_codeLbl];
-    
+    //密码输入
     _codeTxt = [[UITextField alloc] initWithFrame:CGRectMake(60, 232, kScreenWidth - 80, 30)];
     _codeTxt.textColor = [UIColor whiteColor];
     _codeTxt.font = [UIFont systemFontOfSize:13.0f];
@@ -122,33 +124,43 @@ HYQLoginResponseDelegate
     _codeTxt.delegate = self;
     _codeTxt.returnKeyType = UIReturnKeyGo;
     [_bgView addSubview:_codeTxt];
-    
+    //---------
     _lineLbl2 = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth, 272, kScreenWidth - 30, 1)];
     _lineLbl2.backgroundColor = [UIColor whiteColor];
     [_bgView addSubview:_lineLbl2];
-    
+    //登陆按钮
     _loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _loginBtn.frame = CGRectMake(15, kScreenHeight, kScreenWidth - 30, 45);
     _loginBtn.titleLabel.font = [UIFont systemFontOfSize:17.0f];
     _loginBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
     _loginBtn.alpha = 0.8;
+    _loginBtn.layer.cornerRadius = CGRectGetWidth(_loginBtn.frame)/16;
     [_loginBtn setTitle:@"登录" forState:UIControlStateNormal];
-    [_loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_loginBtn setTitleColor:NAVIBAR_GREEN_COLOR forState:UIControlStateNormal];
     [_loginBtn setBackgroundColor:GRAY_COLOR];
     [_loginBtn addTarget:self action:@selector(startToLogin) forControlEvents:UIControlEventTouchUpInside];
     [_bgView addSubview:_loginBtn];
-    
-    _registLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 - 75, 30, 150, 20)];
-    _registLbl.textAlignment = NSTextAlignmentCenter;
-    _registLbl.font = [UIFont systemFontOfSize:15.0f];
-    _registLbl.text = @"没有账号？点这";
-    _registLbl.textColor = [UIColor whiteColor];
+    //注册按钮
+    _registLbl = [UIButton buttonWithType:UIButtonTypeCustom];
+    _registLbl.frame = CGRectMake(kScreenWidth * 0.5 - 75, 30, 150, 20);
+    _registLbl.titleLabel.textAlignment = NSTextAlignmentCenter;
+    _registLbl.titleLabel.font = [UIFont systemFontOfSize:15.0f];
+    [_registLbl setTitle:@"没有账号？点这" forState:UIControlStateNormal];
+    [_registLbl setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_registLbl addTarget:self action:@selector(pushRegiterViewController) forControlEvents:UIControlEventTouchUpInside];
     [_bgView addSubview:_registLbl];
-    _registLbl.userInteractionEnabled = YES;
+
     
-    UITapGestureRecognizer *regisTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushRegiterViewController)];
-    [_registLbl addGestureRecognizer:regisTap];
+    _resetPWDLbl = [[UILabel alloc] initWithFrame:CGRectMake(15, kScreenHeight + 15, 120, 20)];
+    _resetPWDLbl.textColor = [UIColor blueColor];
+    _resetPWDLbl.font = [UIFont systemFontOfSize:15.0f];
+    [_bgView addSubview:_resetPWDLbl];
     
+//    //注册手势
+//    UITapGestureRecognizer *regisTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushRegiterViewController)];
+//    [_registLbl addGestureRecognizer:regisTap];
+    
+    //隐藏键盘手势
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [self.view addGestureRecognizer:tapGes];
 }
@@ -191,6 +203,7 @@ HYQLoginResponseDelegate
     return YES;
 }
 
+//验证登陆
 - (void)startToLogin
 {
     NSString *usernameValue = _phoneTxt.text;

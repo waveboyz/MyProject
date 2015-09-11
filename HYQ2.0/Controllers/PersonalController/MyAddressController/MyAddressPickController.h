@@ -9,7 +9,7 @@
 #import "BaseViewController.h"
 #import "DistrictModel.h"
 /*
-    选取地址
+    区选择
  */
 @protocol MyAddressPickControllerDelegate <NSObject>
 
@@ -20,7 +20,8 @@
 @interface MyAddressPickController : BaseViewController
 <
     UITableViewDataSource,
-    UITableViewDelegate
+    UITableViewDelegate,
+    UIAlertViewDelegate
 >
 
 @property (nonatomic, assign) id<MyAddressPickControllerDelegate> delegate;

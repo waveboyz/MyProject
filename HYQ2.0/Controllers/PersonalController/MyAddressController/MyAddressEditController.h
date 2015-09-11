@@ -7,11 +7,27 @@
 //
 
 #import "BaseViewController.h"
+#import "AddressModel.h"
 /*
-    地址修改
+    修改地址
  */
-@interface MyAddressEditController : BaseViewController
+@protocol MyAddressEditControllerDelegate <NSObject>
 
-- (id)initWithAid:(NSString *)aid;
+//返回修改地址对象
+- (void)correctAddressSucceedWith:(AddressModel *)address;
+
+@optional
+- (void)deleteAddressSucceed;
+
+@end
+
+@interface MyAddressEditController : BaseViewController
+<
+UITableViewDataSource,
+UITableViewDelegate
+>
+
+- (id)initWithAddressModel:(AddressModel *)address;
+@property (nonatomic, assign) id<MyAddressEditControllerDelegate> delegate;
 
 @end

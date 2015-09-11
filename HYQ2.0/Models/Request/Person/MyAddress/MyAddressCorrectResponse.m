@@ -59,7 +59,7 @@
         }
         
         if (aid) {
-            [dic setObject:[NSNumber numberWithInteger:aid] forKey:@"aid"];
+            [dic setObject:[NSNumber numberWithInteger:[aid integerValue]] forKey:@"aid"];
         }
         
         [self setUploadDictionary:dic];
@@ -72,11 +72,13 @@
 {
     NSLog(@"%@",responseObject);
     if ([[responseObject objectForKey:@"code"] integerValue] == 1) {
-        if ([responseObject objectForKey:@"products"]) {
-
+        if (self.delegate && [self.delegate respondsToSelector:@selector(correctSucceedWith:)]) {
+            [self.delegate correctSucceedWith:[responseObject objectForKey:@"aid"]];
         }
-    }else if([[responseObject objectForKey:@"code"] integerValue] == 2){
-
+    }else if([[responseObject objectForKey:@"code"] integerValue] == 0){
+        if (self.delegate && [self.delegate respondsToSelector:@selector(wrongOperationWithText:)]) {
+            [self.delegate wrongOperationWithText:[responseObject objectForKey:@"msg"]];
+        }
     }
 }
 

@@ -44,9 +44,9 @@
                     [self.delegate getInfoWith:titleArr];
                 }
             }
-        }else{
-            if (self.delegate && [self.delegate respondsToSelector:@selector(wrongOperationWithText:)]) {
-                [self.delegate wrongOperationWithText:[responseObject objectForKey:@"msg"]];
+        }else if([[responseObject objectForKey:@"code"] integerValue] == 2){
+            if (self.delegate && [self.delegate respondsToSelector:@selector(noDataArr)]) {
+                [self.delegate noDataArr];
             }
         }
     }else{

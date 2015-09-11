@@ -91,7 +91,7 @@
         [_confirmBtn setTitleColor:NAVIBAR_GREEN_COLOR forState:UIControlStateNormal];
         _confirmBtn.layer.borderColor = NAVIBAR_GREEN_COLOR.CGColor;
         _confirmBtn.layer.borderWidth = 0.5f;
-        
+        [_confirmBtn addTarget:self action:@selector(confirmBtnPressed) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_confirmBtn];
     }
     
@@ -102,7 +102,7 @@
         [_evalueBtn setTitleColor:NAVIBAR_GREEN_COLOR forState:UIControlStateNormal];
         _evalueBtn.layer.borderColor = NAVIBAR_GREEN_COLOR.CGColor;
         _evalueBtn.layer.borderWidth = 0.5f;
-        
+        [_evalueBtn addTarget:self action:@selector(evaluateBtnPressed) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_evalueBtn];
     }
     
@@ -113,7 +113,7 @@
         [_payBtn setTitleColor:NAVIBAR_GREEN_COLOR forState:UIControlStateNormal];
         _payBtn.layer.borderColor = NAVIBAR_GREEN_COLOR.CGColor;
         _payBtn.layer.borderWidth = 0.5f;
-        
+        [_payBtn addTarget:self action:@selector(payBtnPressed) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_payBtn];
     }
     
@@ -151,6 +151,32 @@
         _payBtn.hidden = YES;
         _evalueBtn.hidden = YES;
         _confirmBtn.frame = CGRectMake(kScreenWidth - 55, 79.5, 50, 30);
+    }
+}
+
+- (void)setIndexPath:(NSIndexPath *)indexPath
+{
+    _indexPath = indexPath;
+}
+
+- (void)confirmBtnPressed
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(confirmBtnPressedWithOid:andWithIndexPath:)]) {
+        [self.delegate confirmBtnPressedWithOid:_order.oid andWithIndexPath:_indexPath];
+    }
+}
+
+- (void)evaluateBtnPressed
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(evaluateBtnPressedWithOid:andWithIndexPath:)]) {
+        [self.delegate evaluateBtnPressedWithOid:_order.oid andWithIndexPath:_indexPath];
+    }
+}
+
+- (void)payBtnPressed
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(payBtnPressedWithOid:andWithIndexPath:)]) {
+        [self.delegate payBtnPressedWithOid:_order.oid andWithIndexPath:_indexPath];
     }
 }
 

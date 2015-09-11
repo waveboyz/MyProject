@@ -22,6 +22,11 @@
 
 @property (nonatomic, assign) id<MyOrderEvaluateResponseDelegate> delegate;
 
-- (id)initWithOid:(NSUInteger)oid;
+- (id)initWithOid:(NSUInteger)oid
+     andWithPayID:(NSString *)payID
+    andWithValue1:(NSUInteger)value1
+    andWithValue2:(NSUInteger)value2
+    andWithValue3:(NSUInteger)value3
+    andWithValue4:(NSUInteger)value4;
 
 @end

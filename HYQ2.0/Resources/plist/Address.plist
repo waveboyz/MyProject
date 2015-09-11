@@ -8,79 +8,79 @@
 			<key>location</key>
 			<string>上城区</string>
 			<key>locationID</key>
-			<string>3135</string>
+			<integer>3135</integer>
 		</dict>
 		<dict>
 			<key>location</key>
 			<string>下城区</string>
 			<key>locationID</key>
-			<string>3136</string>
+			<integer>3136</integer>
 		</dict>
 		<dict>
 			<key>location</key>
 			<string>江干区</string>
 			<key>locationID</key>
-			<string>3137</string>
+			<integer>3137</integer>
 		</dict>
 		<dict>
 			<key>location</key>
 			<string>拱墅区</string>
 			<key>locationID</key>
-			<string>3138</string>
+			<integer>3138</integer>
 		</dict>
 		<dict>
 			<key>location</key>
 			<string>西湖区</string>
 			<key>locationID</key>
-			<string>3139</string>
+			<integer>3139</integer>
 		</dict>
 		<dict>
 			<key>location</key>
 			<string>滨江区</string>
 			<key>locationID</key>
-			<string>3140</string>
+			<integer>3140</integer>
 		</dict>
 		<dict>
 			<key>location</key>
 			<string>萧山区</string>
 			<key>locationID</key>
-			<string>3141</string>
+			<integer>3141</integer>
 		</dict>
 		<dict>
 			<key>location</key>
 			<string>余杭区</string>
 			<key>locationID</key>
-			<string>3142</string>
+			<integer>3142</integer>
 		</dict>
 		<dict>
 			<key>location</key>
 			<string>桐庐县</string>
 			<key>locationID</key>
-			<string>3143</string>
+			<integer>3143</integer>
 		</dict>
 		<dict>
 			<key>location</key>
 			<string>淳安县</string>
 			<key>locationID</key>
-			<string>3144</string>
+			<integer>3144</integer>
 		</dict>
 		<dict>
 			<key>location</key>
 			<string>建德市</string>
 			<key>locationID</key>
-			<string>3145</string>
+			<integer>3145</integer>
 		</dict>
 		<dict>
 			<key>location</key>
 			<string>富阳市</string>
 			<key>locationID</key>
-			<string>3146</string>
+			<integer>3146</integer>
 		</dict>
 		<dict>
 			<key>location</key>
 			<string>临安市</string>
 			<key>locationID</key>
-			<string>3147</string>
+			<integer>3147</integer>
 		</dict>
 	</array>
 </dict>

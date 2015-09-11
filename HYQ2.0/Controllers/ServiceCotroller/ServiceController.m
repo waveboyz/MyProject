@@ -15,7 +15,6 @@
 #import "HYQServiceTitleResponse.h"
 #import "HYQServiceListResponse.h"
 #import "ServiceTitleModel.h"
-#import "ServiceModel.h"
 
 @interface ServiceController ()
 <

@@ -33,11 +33,13 @@
 {
     NSLog(@"%@",responseObject);
     if ([[responseObject objectForKey:@"code"] integerValue] == 1) {
-        if ([responseObject objectForKey:@"products"]) {
-
+        if (self.delegate && [self.delegate respondsToSelector:@selector(deleteSucceed)]) {
+            [self.delegate deleteSucceed];
         }
-    }else if([[responseObject objectForKey:@"code"] integerValue] == 2){
-
+    }else if([[responseObject objectForKey:@"code"] integerValue] == 0){
+        if (self.delegate && [self.delegate respondsToSelector:@selector(wrongOperationWithText:)]) {
+            [self.delegate wrongOperationWithText:[responseObject objectForKey:@"msg"]];
+        }
     }
 }
 

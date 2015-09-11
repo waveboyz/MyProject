@@ -7,7 +7,22 @@
 //
 
 #import "HYQResponse.h"
+/*
+    获取头像地址成功后返回uid
+ */
+@protocol ReplaceUidResponseDelegate <NSObject>
+
+- (void)replaceImageSucceed;
+
+@optional
+
+- (void)wrongOperationWithText:(NSString *)text;
+
+@end
 
 @interface ReplaceUidResponse : HYQResponse
+
+- (id)initWithUrl:(NSString *)imageUrl;
+@property (nonatomic, assign) id<ReplaceUidResponseDelegate> delegate;
 
 @end

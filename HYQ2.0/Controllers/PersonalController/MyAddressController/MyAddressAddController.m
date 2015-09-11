@@ -25,6 +25,7 @@
 @property (nonatomic, strong) UITextField *detailField;     //详细地址
 @property (nonatomic, strong) UILabel     *locationLbl;     //地址
 @property (nonatomic, copy)   NSString     *location;       //区
+@property (nonatomic, copy)   NSString     *distritCode;
 @property (nonatomic, assign) DistrictModel *district;      //区模型
 
 @end
@@ -94,7 +95,7 @@
                                                                                andWithAddress:_detailField.text
                                                                               andWithProvince:@"浙江"
                                                                                       andCity:@"杭州"
-                                                                                     andState:_location
+                                                                                     andState:_distritCode
                                                                                     andTacity:1
                                                                                       andWithAid:nil];
     response.delegate = self;
@@ -169,6 +170,7 @@
                     _phoneField = [[UITextField alloc] initWithFrame:CGRectMake(20, 0, kScreenWidth - 40, 60)];
                     _phoneField.font = [UIFont systemFontOfSize:13.0f];
                     _phoneField.textColor = [UIColor blackColor];
+                    _phoneField.placeholder = @"输入联系电话";
                     _phoneField.text = [[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"phone"];
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     [cell.contentView addSubview:_phoneField];
@@ -271,16 +273,24 @@
 - (void)finishPickAddressWith:(DistrictModel *)model
 {
     _location = model.location;
-    
+    _distritCode = [model.locationID stringValue];
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:3 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark MyAddressCorrectResponseDelegate
-- (void)correctSucceed
+- (void)correctSucceedWith:(NSNumber *)aid
 {
     [self performSelectorOnMainThread:@selector(showStateHudWithText:) withObject:@"添加地址成功！" waitUntilDone:YES];
     if (self.delegate && [self.delegate respondsToSelector:@selector(addAddressSucceedWithAddress:)]) {
         AddressModel *model = [[AddressModel alloc] init];
+        model.district = _location;
+        model.linkman = _nameField.text;
+        model.linkPhone = [NSNumber numberWithInteger:[_phoneField.text integerValue]];
+        model.address = _detailField.text;
+        model.province = @"浙江";
+        model.city = @"杭州";
+        model.districtCode = _distritCode;
+        model.aid = aid;
         [self.delegate addAddressSucceedWithAddress:model];
         [self dissmisssSelf];
     }

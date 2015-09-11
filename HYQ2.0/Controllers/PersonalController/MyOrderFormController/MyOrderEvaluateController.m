@@ -55,10 +55,10 @@
     UILabel *desLbl1 = [[UILabel alloc] initWithFrame:CGRectMake(10, 50 + NAVIBARHEIGHT, 100, 30)];
     desLbl1.font = [UIFont systemFontOfSize:15.0f];
     desLbl1.textColor = [UIColor blackColor];
-    desLbl1.text = @"产品服务";
+    desLbl1.text = @"整体满意度";
     [self.view addSubview:desLbl1];
     
-    _starview1 = [[CWStarRateView alloc]initWithFrame:CGRectMake(kScreenWidth * 0.5 - 10, 50 + NAVIBARHEIGHT, kScreenWidth * 0.5, 30) numberOfStars:5];
+    _starview1 = [[CWStarRateView alloc]initWithFrame:CGRectMake(kScreenWidth * 0.5 - 30, CGRectGetMidY(desLbl1.frame) - 10, kScreenWidth * 0.5 - 50, 20) numberOfStars:5];
     _starview1.delegate = self;
     _starview1.hasAnimation = YES;
     [self.view addSubview:_starview1];
@@ -66,10 +66,10 @@
     UILabel *desLbl2 = [[UILabel alloc] initWithFrame:CGRectMake(10, 90 + NAVIBARHEIGHT, 100, 30)];
     desLbl2.font = [UIFont systemFontOfSize:15.0f];
     desLbl2.textColor = [UIColor blackColor];
-    desLbl2.text = @"产品服务";
+    desLbl2.text = @"反应速度";
     [self.view addSubview:desLbl2];
 
-    _starview2 = [[CWStarRateView alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 - 10, 90 + NAVIBARHEIGHT, kScreenWidth * 0.5, 30) numberOfStars:5];
+    _starview2 = [[CWStarRateView alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 - 30, CGRectGetMidY(desLbl2.frame) - 10, kScreenWidth * 0.5 - 50, 20) numberOfStars:5];
     _starview2.delegate = self;
     _starview2.hasAnimation = YES;
     [self.view addSubview:_starview2];
@@ -77,10 +77,10 @@
     UILabel *desLbl3 = [[UILabel alloc] initWithFrame:CGRectMake(10, 130 + NAVIBARHEIGHT, 100, 30)];
     desLbl3.font = [UIFont systemFontOfSize:15.0f];
     desLbl3.textColor = [UIColor blackColor];
-    desLbl3.text = @"产品服务";
+    desLbl3.text = @"服务态度";
     [self.view addSubview:desLbl3];
 
-    _starview3 = [[CWStarRateView alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 - 10, 130 + NAVIBARHEIGHT, kScreenWidth * 0.5, 30) numberOfStars:5];
+    _starview3 = [[CWStarRateView alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 - 30, CGRectGetMidY(desLbl3.frame) - 10, kScreenWidth * 0.5 - 50, 20) numberOfStars:5];
     _starview3.delegate = self;
     _starview3.hasAnimation = YES;
     [self.view addSubview:_starview3];
@@ -88,10 +88,10 @@
     UILabel *desLbl4 = [[UILabel alloc] initWithFrame:CGRectMake(10, 170 + NAVIBARHEIGHT, 100, 30)];
     desLbl4.font = [UIFont systemFontOfSize:15.0f];
     desLbl4.textColor = [UIColor blackColor];
-    desLbl4.text = @"产品服务";
+    desLbl4.text = @"性价比";
     [self.view addSubview:desLbl4];
 
-    _starview4 = [[CWStarRateView alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 - 10, 170 + NAVIBARHEIGHT, kScreenWidth * 0.5, 30) numberOfStars:5];
+    _starview4 = [[CWStarRateView alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 - 30, CGRectGetMidY(desLbl4.frame) - 10, kScreenWidth * 0.5 - 50, 20) numberOfStars:5];
     _starview4.delegate = self;
     _starview4.hasAnimation = YES;
     [self.view addSubview:_starview4];
@@ -107,14 +107,15 @@
 
 - (void)evaluateOperation
 {
-    MyOrderEvaluateResponse *response = [[MyOrderEvaluateResponse alloc] initWithOid:_oid];
+    NSUInteger value1 = _starview1.scorePercent * 5;
+    NSUInteger value2 = _starview2.scorePercent * 5;
+    NSUInteger value3 = _starview3.scorePercent * 5;
+    NSUInteger value4 = _starview4.scorePercent * 5;
+    MyOrderEvaluateResponse *response = [[MyOrderEvaluateResponse alloc] initWithOid:[_oid integerValue] andWithPayID:nil andWithValue1:value1 andWithValue2:value2 andWithValue3:value3 andWithValue4:value4];
+    response.delegate = self;
+    [response start];
 }
 
-#pragma mark CWStarRateViewDelegate
-- (void)starRateView:(CWStarRateView *)starRateView scroePercentDidChange:(CGFloat)newScorePercent
-{
-
-}
 
 #pragma mark MyOrderEvaluateResponseDelegate
 - (void)evaluateSucceed

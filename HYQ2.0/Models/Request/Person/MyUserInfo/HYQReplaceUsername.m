@@ -17,7 +17,7 @@
         NSDictionary *userInfo = [[HYQUserManager sharedUserManager] userInfo];
         
         [dic setValue:[userInfo objectForKey:@"uid"] forKey:@"uid"];
-        [dic setValue:userInfo forKey:@"realName"];
+        [dic setValue:[userInfo objectForKey:@"username"] forKey:@"realName"];
         [self setUploadDictionary:dic];
     }
     

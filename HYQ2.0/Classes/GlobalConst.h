@@ -37,3 +37,8 @@
 #define ACTIVITY_BASE_URL           @"http://m.haoyuanqu.com/web/weixinpay2/news!details.action?id="
 #define LOCAL_HOST                  @"http://192.168.1.93:90/"
 #define IMAGE_HOST                  @"http://192.168.1.93:90/resources/iosimg/"
+
+//-----------------支付宝商户信息------------------------
+#define PARTNER                         @"2088021185544262";        //商户
+#define SELLER                          @"lili@souqian.com";        //商户支付宝账号
+#define PRIVATEKEY                      @"MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAN3n9xaQvfFQK4o3VjQwSA/PSb2SNV7NHa89Q+4JX/CSRd9NeMv5c3g3cjBaeH+YcCnHxiWO5wbXl9AyTu3wI8+omlEQ/IGOKivzkr7QUTqJ8ZxxQz+JPTSo40Sh6uEZKuIvTJPBevnDEGIkyc1WkLsmmkKDq/ejl3/Vjfr8m40NAgMBAAECgYEAxm5jeX49G8jA5nvNTiXOirSmECrqJrfsz4NNd1JSxGFIsgIo/t018E5EghCkqBS8V+AYxAUhefDYBIi4I/UVTzVKWR22/cLXmCgfAWLem8ynzCEn07uuLm7hd7GjOFVJHd2xib18F1RrOLxGMBfyq5shbslOOv4bHmOfP0WiXgECQQD8tUtX9gRFbBQBJpG7Zdka3aA39NtHdnaceL2LcPNh3E+WdfY/BRZfLaOCtYHkJtliEPj69Dkt/DkXB8aBo1utAkEA4Mv0i9tMQ4eU3TsxLgLRZ8si0WkjpKYcVE0k23lX5gYh5meO2pZeDMVHoBMWY5EX/yeEKYTuOszLEwj2PKci4QJAU71r0yEV9z9CPcNfJV8xm0J3tjMwerTZxy4HeW6baAFOakh6qhVwfWetOEIXYdgxztpa9yX40LE05dnQwOK2HQJAI1cND/ue5rLm7UzD84bP4vBlfeR4jQbsRziFhddywR/ProgzRhwDlyBgnULC7049JojQ1zIlvaq6djifdXOVIQJAYAsov3YNgQ7w6fOYMede9m8IGPx7+QBKUML+7fvcQArb6MWtax08gWBcAi6BocDSFxEkKlHr2d1J1clQlXJuQg==";

@@ -7,16 +7,17 @@
 //
 
 #import "ReplaceUidResponse.h"
-
+#import "HYQUserManager.h"
 @implementation ReplaceUidResponse
 
-- (id)init
+- (id)initWithUrl:(NSString *)imageUrl
 {
     if (self = [super init]) {
-        NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithCapacity:10];
-        NSNumber *uid = [[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"uid"];
-        [dic setObject:uid forKey:@"uid"];
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithCapacity:2];
+        NSDictionary *userInfo = [[HYQUserManager sharedUserManager] userInfo];
         
+        [dic setValue:[userInfo objectForKey:@"uid"] forKey:@"uid"];
+        [dic setValue:imageUrl forKey:@"pathImg"];
         [self setUploadDictionary:dic];
     }
     
@@ -27,11 +28,13 @@
 {
     NSLog(@"%@",responseObject);
     if ([[responseObject objectForKey:@"code"] integerValue] == 1) {
-        if ([responseObject objectForKey:@"products"]) {
-            
+        if (self.delegate && [self.delegate respondsToSelector:@selector(replaceImageSucceed)]) {
+            [self.delegate replaceImageSucceed];
         }
-    }else if([[responseObject objectForKey:@"code"] integerValue] == 2){
-        
+    }else{
+        if (self.delegate && [self.delegate respondsToSelector:@selector(wrongOperationWithText:)]) {
+            [self.delegate wrongOperationWithText:[responseObject objectForKey:@"msg"]];
+        }
     }
 }
 
@@ -42,7 +45,9 @@
 
 - (void)badNetWork
 {
-
+    if (self.delegate && [self.delegate respondsToSelector:@selector(wrongOperationWithText:)]) {
+        [self.delegate wrongOperationWithText:@"网络不给力哦~"];
+    }
 }
 
 @end

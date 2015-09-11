@@ -92,6 +92,7 @@
 
 - (void)swipSegmentWithIndexPath:(NSIndexPath *)indexpath
 {
+    [self.dataArr removeAllObjects];
     [self.tableView.header beginRefreshing];
 }
 

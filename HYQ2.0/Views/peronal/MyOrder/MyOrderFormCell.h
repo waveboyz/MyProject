@@ -12,9 +12,9 @@
 
 @protocol MyOrderFormCellDelegate <NSObject>
 
-- (void)payBtnPressedWithOid:(NSNumber *)oid;
-- (void)evaluateBtnPressedWithOid:(NSNumber *)oid;
-- (void)confirmBtnPressedWithOid:(NSNumber *)oid;
+- (void)payBtnPressedWithOid:(NSNumber *)oid andWithIndexPath:(NSIndexPath *)indexPath;
+- (void)evaluateBtnPressedWithOid:(NSNumber *)oid andWithIndexPath:(NSIndexPath *)indexPath;
+- (void)confirmBtnPressedWithOid:(NSNumber *)oid andWithIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
@@ -22,5 +22,6 @@
 
 @property (nonatomic, assign) OrderModel *order;
 @property (nonatomic, assign) id<MyOrderFormCellDelegate> delegate;
+@property (nonatomic, assign) NSIndexPath   *indexPath;
 
 @end

@@ -206,6 +206,7 @@
 - (void)wrongOperationWithText:(NSString *)text
 {
     [self stopStateHud];
+    [self showStateHudWithText:text];
     [self.view bringSubviewToFront:self.badNetView];
 }
 

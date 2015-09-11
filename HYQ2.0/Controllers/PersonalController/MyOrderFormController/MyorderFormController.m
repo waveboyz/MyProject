@@ -8,6 +8,7 @@
 
 #import "MyorderFormController.h"
 #import "MyOrderEvaluateController.h"
+#import "ServicePurchaseController.h"
 #import "VOSegmentedControl.h"
 #import "MyOrderFormCell.h"
 #import "MyOrderResponse.h"
@@ -212,6 +213,7 @@
     }
     [(MyOrderFormCell *)cell setOrder:self.dataArr[indexPath.row]];
     [(MyOrderFormCell *)cell setDelegate:self];
+    [(MyOrderFormCell *)cell setIndexPath:indexPath];
     
     return cell;
 }
@@ -225,22 +227,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    MyOrderEvaluateController *evaluateVC = [[MyOrderEvaluateController alloc] init];
-    [self.navigationController pushViewController:evaluateVC animated:YES];
 }
 
 #pragma mark MyOrderFormCellDelegate
-- (void)payBtnPressedWithOid:(NSNumber *)oid
+- (void)payBtnPressedWithOid:(NSNumber *)oid andWithIndexPath:(NSIndexPath *)indexPath
 {
 
 }
 
-- (void)evaluateBtnPressedWithOid:(NSNumber *)oid
+- (void)evaluateBtnPressedWithOid:(NSNumber *)oid andWithIndexPath:(NSIndexPath *)indexPath
 {
-    
+    OrderModel *model = self.dataArr[indexPath.row];
+    MyOrderEvaluateController *evaluateVC = [[MyOrderEvaluateController alloc] initWithOid:model.oid];
+    [self.navigationController pushViewController:evaluateVC animated:YES];
 }
 
-- (void)confirmBtnPressedWithOid:(NSNumber *)oid
+- (void)confirmBtnPressedWithOid:(NSNumber *)oid andWithIndexPath:(NSIndexPath *)indexPath
 {
 
 }

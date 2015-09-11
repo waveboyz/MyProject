@@ -12,12 +12,17 @@
 #import "PurchaseSecondCell.h"
 #import "MyAddressResponse.h"
 #import "AddressModel.h"
+#import "DownSheet.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import "Order.h"
+#import "DataSigner.h"
 
 @interface ServicePurchaseController ()
 <
     MyAddressResponseDelegate,
-    PurchaseSecondCellDelegate
+    PurchaseSecondCellDelegate,
+    ServiceAddressPickControllerDelegate,
+    DownSheetDelegate
 >
 
 @property (nonatomic, strong) UITableView *tableview;
@@ -26,6 +31,8 @@
 @property (nonatomic, strong) UILabel     *desLbl;          //价格描述
 @property (nonatomic, strong) UILabel     *priceLbl;        //工具条总价格label
 @property (nonatomic, assign) NSUInteger    price;          //产品单价
+@property (nonatomic, retain) NSArray       *sheetArr;      //支付方式数组
+@property (nonatomic, strong) AddressModel  *addModel;
 
 @end
 
@@ -80,6 +87,7 @@
     purchaseBtn.frame = CGRectMake(kScreenWidth - 120, 0, 120, 49);
     [purchaseBtn setTitle:@"立即购买" forState:UIControlStateNormal];
     [purchaseBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [purchaseBtn addTarget:self action:@selector(purchaseBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_toolView addSubview:purchaseBtn];
     
     _desLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 - 80, 0, 60, 49)];
@@ -96,10 +104,96 @@
     [_toolView addSubview:_priceLbl];
 }
 
+- (void)purchaseBtnPressed
+{
+    DownSheet *sheet = [[DownSheet alloc]initWithlist:self.sheetArr height:0];
+    sheet.delegate = self;
+    [sheet showInView:self];
+}
+
+- (void)payOperation
+{
+    
+    /*
+     *生成订单信息及签名
+     */
+    //将商品信息赋予AlixPayOrder的成员变量
+    Order *order = [[Order alloc] init];
+    order.partner = PARTNER;
+    order.seller = SELLER;
+    order.tradeNO = [self generateTradeNO]; //订单ID（由商家自行制定）
+    order.productName = _service.title; //商品标题
+    order.productDescription = _service.DesStr; //商品描述
+//    order.amount = [NSString stringWithFormat:@"%.2f",product.price]; //商品价格
+    order.amount = @"0.01";
+    order.notifyURL =  @"http://www.xxx.com"; //回调URL
+    
+    order.service = @"mobile.securitypay.pay";
+    order.paymentType = @"1";
+    order.inputCharset = @"utf-8";
+    order.itBPay = @"30m";
+    order.showUrl = @"m.alipay.com";
+    
+    //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
+    NSString *appScheme = @"HYQ2.0";
+    
+    //将商品信息拼接成字符串
+    NSString *orderSpec = [order description];
+    NSLog(@"orderSpec = %@",orderSpec);
+    
+    NSString *privateKey = PRIVATEKEY;
+    //获取私钥并将商户信息签名,外部商户可以根据情况存放私钥和签名,只需要遵循RSA签名规范,并将签名字符串base64编码和UrlEncode
+	id<DataSigner> signer = CreateRSADataSigner(privateKey);
+    NSString *signedString = [signer signString:orderSpec];
+    
+    //将签名成功字符串格式化为订单字符串,请严格按照该格式
+    NSString *orderString = nil;
+    if (signedString != nil) {
+        orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
+                       orderSpec, signedString, @"RSA"];
+        
+        [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+            NSLog(@"reslut = %@",resultDic);
+        }];
+    }
+}
+
+- (NSString *)generateTradeNO
+{
+    static int kNumber = 15;
+    
+    NSString *sourceStr = @"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    NSMutableString *resultStr = [[NSMutableString alloc] init];
+    srand(time(0));
+    for (int i = 0; i < kNumber; i++)
+    {
+        unsigned index = rand() % [sourceStr length];
+        NSString *oneStr = [sourceStr substringWithRange:NSMakeRange(index, 1)];
+        [resultStr appendString:oneStr];
+    }
+    return resultStr;
+}
+
+- (NSArray *)sheetArr
+{
+    if (!_sheetArr) {
+        DownSheetModel *Model_1 = [[DownSheetModel alloc]init];
+        Model_1.title = @"选择使用支付宝";
+        Model_1.icon = @"aliIcon";
+        DownSheetModel *Model_2 = [[DownSheetModel alloc]init];
+        Model_2.title = @"取消";
+        
+        _sheetArr = [NSArray arrayWithObjects:Model_1,Model_2, nil];
+    }
+    
+    return _sheetArr;
+}
+
 #pragma mark MyAddressResponseDelegate
 - (void)getAddressArrayWith:(NSMutableArray *)array
 {
     _addArr = array;
+    _addModel = _addArr[0];
     dispatch_async(dispatch_get_main_queue(), ^(void){
         [self stopStateHud];
         [self createUI];
@@ -108,12 +202,12 @@
 
 - (void)wrongOperationWithText:(NSString *)text
 {
-
+    [self showStateHudWithText:text];
 }
 
 - (void)noDataArr
 {
-    
+
 }
 
 #pragma mark PurchaseSecondCellDelegate
@@ -146,7 +240,7 @@
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
         
-        [(PurchaseHeaderCell *)cell setAddress:self.addArr[0]];
+        [(PurchaseHeaderCell *)cell setAddress:_addModel];
     }else{
         cell = [tableView dequeueReusableCellWithIdentifier:PURCHASE_SECOND];
         if (!cell) {
@@ -172,6 +266,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 0) {
+        ServiceAddressPickController *pickVC = [[ServiceAddressPickController alloc] initWithAddressArray:_addArr];
+        pickVC.delegate = self;
+        [self.navigationController pushViewController:pickVC animated:YES];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -193,6 +292,22 @@
     }
 
     return nil;
+}
+
+#pragma mark ServiceAddressPickControllerDelegate
+- (void)finishPickWithAddress:(AddressModel *)address
+{
+    _addModel = nil;
+    _addModel = address;
+    [self.tableview reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+#pragma mark DownSheetDelegate
+-(void)didSelectIndex:(NSInteger)index
+{
+    if (index == 0) {
+        [self payOperation];
+    }
 }
 
 @end

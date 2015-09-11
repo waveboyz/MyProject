@@ -7,6 +7,7 @@
 //
 
 #import "ServiceAddressPickController.h"
+#import "MyAddressCell.h"
 #import "AddressModel.h"
 
 @interface ServiceAddressPickController ()
@@ -38,11 +39,12 @@
 
 - (void)createUI
 {
-    _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+    _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
     _tableview.delegate = self;
     _tableview.dataSource = self;
-    
-    [self.tableview addSubview:_tableview];
+    _tableview.backgroundColor = BG_GRAY_COLOR;
+    _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.view addSubview:_tableview];
 }
 
 #pragma mark UITableViewDataSource
@@ -58,8 +60,9 @@
     cell = [tableView dequeueReusableCellWithIdentifier:ADDRESS_CELL];
     
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ADDRESS_CELL];
+        cell = [[MyAddressCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ADDRESS_CELL];
     }
+    [(MyAddressCell *)cell setAddress:_dataArr[indexPath.row]];
     
     return cell;
 }
@@ -68,8 +71,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableview deselectRowAtIndexPath:indexPath animated:YES];
-    ServiceAddressPickController *addVC = [[ServiceAddressPickController alloc] initWithAddressArray:_dataArr];
-    [self.navigationController pushViewController:addVC animated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(finishPickWithAddress:)]) {
+        [self.delegate finishPickWithAddress:_dataArr[indexPath.row]];
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80.5f;
 }
 
 @end

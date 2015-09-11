@@ -11,22 +11,25 @@
 #import "HYQUserManager.h"
 #import "DownSheet.h"
 #import "ReplaceAvartarResponse.h"
+#import "ReplaceUidResponse.h"
 #import "HYQReplaceNickController.h"
 #import "HYQReplaceCodeController.h"
 
 @interface HYQEditController ()
 <
     DownSheetDelegate,
-    ReplaceAvartarResponseDelegate
+    ReplaceAvartarResponseDelegate,
+    ReplaceUidResponseDelegate
 >
 
-@property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) UIView *emptyView;
-@property (nonatomic, strong) UIView *badNetView;
-@property (nonatomic, retain) NSArray     *sheetArr;
 @property (nonatomic, retain) UIImagePickerController *pickerVC;
 @property (nonatomic, retain) UIImagePickerController *cameraVC;
+@property (nonatomic, strong) UITableView   *tableView;
+@property (nonatomic, strong) UIView        *emptyView;
+@property (nonatomic, strong) UIView        *badNetView;
+@property (nonatomic, retain) NSArray       *sheetArr;
 @property (nonatomic, copy)   NSString      *useranme;
+@property (nonatomic, copy)   NSString      *avatarUrl;
 
 @end
 
@@ -272,17 +275,31 @@
 #pragma mark ReplaceAvartarResponseDelegate
 - (void)replaceAvatarSucceedWithUrl:(NSString *)url
 {
-   NSDictionary *dic = [[HYQUserManager sharedUserManager] userInfo];
+    _avatarUrl = url;
+    [self uploadUidAvatarOperation];
+}
+
+- (void)uploadUidAvatarOperation
+{
+    ReplaceUidResponse *response = [[ReplaceUidResponse alloc] initWithUrl:_avatarUrl];
+    response.delegate = self;
+    [response start];
+}
+
+#pragma mark ReplaceUidResponseDelegate
+- (void)replaceImageSucceed
+{
+    NSDictionary *dic = [[HYQUserManager sharedUserManager] userInfo];
     NSMutableDictionary *newDic = [[NSMutableDictionary alloc] initWithDictionary:dic];
     [newDic removeObjectForKey:@"avatarUrl"];
-    [newDic setObject:url forKey:@"avatarUrl"];
+    [newDic setObject:_avatarUrl forKey:@"avatarUrl"];
     [[HYQUserManager sharedUserManager] updateUserInfo:newDic];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"replaceAvatar" object:nil];
-
+    
     
     dispatch_async(dispatch_get_main_queue(), ^(void){
-    [self stopStateHud];
-    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self stopStateHud];
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
     });
 }
 
@@ -292,9 +309,10 @@
     [self performSelectorOnMainThread:@selector(showStateHudWithText:) withObject:@"上传失败" waitUntilDone:YES];
 }
 
-//-------------------
+//-------------------NOTIFICATION
 - (void)replaceNickNameSucceed
 {
+    [self stopStateHud];
     _useranme = [[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"username"];
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }

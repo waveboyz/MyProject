@@ -10,17 +10,17 @@
 #import "NSString+HCBStringHelper.h"
 
 @interface HYQForgetPSWController ()
-{
-    UITextField     *_phoneTxt;
-    UITextField     *_codeTxt;
-    UITextField     *_resendTxt;
-    UIButton        *_getResendBtn;
-    UIScrollView    *_bgView;
-    NSString        *_phoneNum;
-    NSString        *_pswMD5;
-    NSTimer         *_captchaTimer;
-    NSInteger       _reSendTime;
-}
+
+@property (nonatomic, strong)       UITextField   *phoneTxt;
+@property (nonatomic, strong)       UITextField     *codeTxt;
+@property (nonatomic, strong)       UITextField     *resendTxt;
+@property (nonatomic, strong)       UIButton        *getResendBtn;
+@property (nonatomic, strong)       UIScrollView    *bgView;
+@property (nonatomic, copy)         NSString        *phoneNum;
+@property (nonatomic, copy)         NSString        *pswMD5;
+@property (nonatomic, strong)       NSTimer         *captchaTimer;
+@property (nonatomic, assign)       NSInteger       reSendTime;
+
 @end
 
 @implementation HYQForgetPSWController
@@ -36,12 +36,8 @@
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     self.view.backgroundColor = BG_GRAY_COLOR;
     _bgView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+    _bgView.backgroundColor = NAVIBAR_GREEN_COLOR;
     [self.view addSubview:_bgView];
-    
-    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bgPic"]];
-    [imgView setFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
-    [self.view addSubview:imgView];
-    [self.view bringSubviewToFront:_bgView];
     
     UIImageView *btnImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backIcon"]];
     btnImg.frame = CGRectMake(15, 29.5, 18, 18);
@@ -352,7 +348,7 @@
 - (void)sendVerCodeFailed
 {
     [self performSelectorOnMainThread:@selector(hideHUDView) withObject:nil waitUntilDone:YES];
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"提示", @"title", @"网络错误", @"message", nil];
+//    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"提示", @"title", @"网络错误", @"message", nil];
 //    [self performSelectorOnMainThread:@selector(stateAlertTitle:) withObject:dict waitUntilDone:YES];
 }
 

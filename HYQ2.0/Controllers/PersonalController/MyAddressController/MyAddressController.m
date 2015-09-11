@@ -8,18 +8,22 @@
 
 #import "MyAddressController.h"
 #import "MyAddressAddController.h"
+#import "MyAddressEditController.h"
 #import "MyAddressCell.h"
 #import "MyAddressResponse.h"
 
 @interface MyAddressController ()
 <
-    MyAddressResponseDelegate
+    MyAddressResponseDelegate,
+    MyAddressAddControllerDelegate,
+    MyAddressEditControllerDelegate
 >
 
 @property (nonatomic, strong) UITableView *tableview;
 @property (nonatomic, strong) UIButton      *addBtn;
 @property (nonatomic, retain) NSMutableArray *dataArr;
 @property (nonatomic, assign) NSUInteger    currentPage;
+@property (nonatomic, assign) NSIndexPath   *correctIndex;
 
 @end
 
@@ -78,6 +82,7 @@
 - (void)addNewAddress
 {
     MyAddressAddController *addVC = [[MyAddressAddController alloc] init];
+    addVC.delegate = self;
     [self.navigationController pushViewController:addVC animated:YES];
 }
 
@@ -132,11 +137,42 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [_tableview deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (_correctIndex) {
+        _correctIndex = nil;
+    }
+    
+    _correctIndex = indexPath;
+    MyAddressEditController *editVC = [[MyAddressEditController alloc] initWithAddressModel:_dataArr[indexPath.row]];
+    editVC.delegate = self;
+    [self.navigationController pushViewController:editVC animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 80.5f;
+}
+
+#pragma mark MyAddressAddControllerDelegate
+- (void)addAddressSucceedWithAddress:(AddressModel *)address
+{
+    [self.dataArr addObject:address];
+    [self.tableview reloadData];
+}
+
+#pragma  mark MyAddressEditControllerDelegate
+- (void)correctAddressSucceedWith:(AddressModel *)address
+{
+    [_dataArr removeObjectAtIndex:_correctIndex.row];
+    [_dataArr insertObject:address atIndex:_correctIndex.row];
+    
+    [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObjects:_correctIndex, nil] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)deleteAddressSucceed
+{
+    [_dataArr removeObjectAtIndex:_correctIndex.row];
+    [self.tableview deleteRowsAtIndexPaths:[NSArray arrayWithObjects:_correctIndex, nil] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end

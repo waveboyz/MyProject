@@ -10,26 +10,27 @@
 
 @implementation HYQInterfaceMethod
 // * 登录 *
-NSString *const LOGIN_INTERFACE         =           @"http://192.168.1.93:90/app/appInterface!Login.action";
+NSString *const LOGIN_INTERFACE             =           @"http://192.168.1.93:90/app/appInterface!Login.action";
+//NSString *const LOGIN_INTERFACE         =           @"http://www.haoyuanqu.com/app/appInterface!Login.action";
 // * 验证码 *
-NSString *const SEND_VER_INTERFACE      =           @"http://192.168.1.93:90/app/appInterface!yzm.action";
+NSString *const SEND_VER_INTERFACE          =           @"http://192.168.1.93:90/app/appInterface!yzm.action";
 // * 注册 *
-NSString *const REGIST_INTERFACE        =           @"http://192.168.1.93:90/app/appInterface!register.action";
+NSString *const REGIST_INTERFACE            =           @"http://192.168.1.93:90/app/appInterface!register.action";
 // * 找回密码 *
-NSString *const RESET_INTERFACE         =           @"http://192.168.1.93:90/app/appInterface!retrievePwd.action";
+NSString *const RESET_INTERFACE             =           @"http://192.168.1.93:90/app/appInterface!retrievePwd.action";
 // *修改密码*
-NSString *const REPLACE_PSW_INTERFACE   =           @"http://192.168.1.93:90/app/appInterface!updatePwd.action";
+NSString *const REPLACE_PSW_INTERFACE       =           @"http://192.168.1.93:90/app/appInterface!updatePwd.action";
 // *修改头像*
-NSString *const REPLACE_AVATAR_INTERFACE  =         @"http://192.168.1.93:90/WebUploader.html";
+NSString *const REPLACE_AVATAR_INTERFACE    =         @"http://192.168.1.93:90/WebUploader.html";
 // *修改头像后上传uid*
-NSString *const REPLACE_UID_INTERFACE =      @"http://192.168.1.93:90/app/appInterface!upload.action";
+NSString *const REPLACE_UID_INTERFACE       =      @"http://192.168.1.93:90/app/appInterface!upload.action";
 // *修改昵称*
 NSString *const REPLACE_NAME_INTERFACE      =       @"http://192.168.1.93:90/app/appInterface!updateName.action";
 // *获取二维码图*
 NSString *const GET_QRURL_INTERFACE         =       @"http://www.souqian.com/SuccessServlet?mobile=""+";
 //--------------------
 // * 首页 *
-NSString *const MAIN_INTERFACE          =           @"http://192.168.1.93:90/app/appInterface!index.action";
+NSString *const MAIN_INTERFACE              =           @"http://192.168.1.93:90/app/appInterface!index.action";
 //--------------------
 // * 资讯类别*
 NSString *const INFORMATION_TITLE_INTERFACE     =           @"http://192.168.1.93:90/app/appInterface!newType.action";

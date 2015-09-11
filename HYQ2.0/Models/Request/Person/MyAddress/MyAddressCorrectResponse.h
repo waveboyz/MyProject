@@ -12,7 +12,7 @@
  */
 @protocol MyAddressCorrectResponseDelegate <NSObject>
 
-- (void)correctSucceed;
+- (void)correctSucceedWith:(NSNumber *)aid;
 
 @optional
 - (void)wrongOperationWithText:(NSString *)text;

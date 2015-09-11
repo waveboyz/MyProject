@@ -33,7 +33,7 @@
     _isLogin = YES;
     [self.window setRootViewController:_tabBarVC];
     [self.window makeKeyAndVisible];
-    
+    [NSThread sleepForTimeInterval:1.5];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         if (![defaults objectForKey:@"intro_screen_viewed"]) {
             self.introView = [[HYQIntroView alloc] initWithFrame:self.window.frame];

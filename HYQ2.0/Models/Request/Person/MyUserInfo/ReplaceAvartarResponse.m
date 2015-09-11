@@ -56,9 +56,10 @@
 {
     NSLog(@"%@",responseObject);
     if ([[responseObject objectForKey:@"code"] integerValue] == 0) {
-        if ([responseObject objectForKey:@"path"]) {
-            NSString *str = [responseObject objectForKey:@"path"];
-            NSString *UrlStr = [NSString stringWithFormat:@"%@%@",IMAGE_HOST,str];
+        if ([responseObject objectForKey:@"imagery"]) {
+//            NSString *str = [responseObject objectForKey:@"path"];
+//            NSString *UrlStr = [NSString stringWithFormat:@"%@%@",IMAGE_HOST,str];
+            NSString *UrlStr = [responseObject objectForKey:@"imagery"];
             if (self.delegate && [self.delegate respondsToSelector:@selector(replaceAvatarSucceedWithUrl:)]) {
                 [self.delegate replaceAvatarSucceedWithUrl:UrlStr];
             }
