@@ -25,7 +25,7 @@
     self = [super initWithFrame:frame];
     if(self){
         UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:self.frame];
-        backgroundImageView.image = [UIImage imageNamed:@"Intro_Screen_Background"];
+        backgroundImageView.backgroundColor = NAVIBAR_GREEN_COLOR;
         
         [self addSubview:backgroundImageView];
         [self addSubview:self.scrollView];
@@ -54,8 +54,8 @@
     if (!_viewOne) {
         _viewOne = [[UIView alloc] initWithFrame:self.frame];
         UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
-        imageview.contentMode = UIViewContentModeScaleAspectFit;
-        imageview.image = [UIImage imageNamed:@"引导页-01"];
+        imageview.contentMode = UIViewContentModeScaleAspectFill;
+        imageview.image = [UIImage imageNamed:@"introview1"];
         [_viewOne addSubview:imageview];
     }
     
@@ -67,8 +67,8 @@
     if (!_viewTwo) {
         _viewTwo = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth, 0, kScreenWidth, kScreenHeight)];
         UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
-        imageview.contentMode = UIViewContentModeScaleAspectFit;
-        imageview.image = [UIImage imageNamed:@"引导页-02"];
+        imageview.contentMode = UIViewContentModeScaleAspectFill;
+        imageview.image = [UIImage imageNamed:@"introview2"];
         [_viewTwo addSubview:imageview];
     }
     
@@ -80,8 +80,8 @@
     if (!_viewThree) {
         _viewThree = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth*2, 0, kScreenWidth, kScreenHeight)];
         UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
-        imageview.contentMode = UIViewContentModeScaleAspectFit;
-        imageview.image = [UIImage imageNamed:@"引导页-03"];
+        imageview.contentMode = UIViewContentModeScaleAspectFill;
+        imageview.image = [UIImage imageNamed:@"introview3"];
         [_viewThree addSubview:imageview];
     }
     

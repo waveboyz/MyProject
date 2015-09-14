@@ -35,7 +35,7 @@
     NSMutableArray *arr = [NSMutableArray new];
     
     for (BannerModel *obj in _imgArr) {
-        NSString *str = [NSString stringWithFormat:@"%@%@",LOCAL_HOST,obj.path];
+        NSString *str = obj.path;
         [arr addObject:str];
     }
     

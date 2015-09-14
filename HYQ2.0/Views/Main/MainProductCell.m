@@ -37,4 +37,10 @@
     }
 }
 
+- (void)setService:(ServiceModel *)service
+{
+    _service = service;
+    [_productImg sd_setImageWithURL:[NSURL URLWithString:_service.logoPath] placeholderImage:[UIImage imageNamed:@"excellent_plan"]];
+}
+
 @end

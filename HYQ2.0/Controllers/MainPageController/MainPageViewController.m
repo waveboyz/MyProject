@@ -166,16 +166,16 @@
 //显示个人二维码
 - (void)showQRcodePressed
 {
-    if ([[HYQUserManager sharedUserManager] isLogin]) {
-        [self getQRUrlOperation];
-    }else{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                    message:@"用户未登录~"
-                                                   delegate:self
-                                          cancelButtonTitle:@"确定"
-                                          otherButtonTitles:nil, nil];
-        [alert show];
-    }
+//    if ([[HYQUserManager sharedUserManager] isLogin]) {
+//        [self getQRUrlOperation];
+//    }else{
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+//                                                    message:@"用户未登录~"
+//                                                   delegate:self
+//                                          cancelButtonTitle:@"确定"
+//                                          otherButtonTitles:nil, nil];
+//        [alert show];
+//    }
 }
 
 //获取二维码图像请求
