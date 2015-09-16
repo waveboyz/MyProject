@@ -27,6 +27,7 @@
 #import "PersonalController.h"
 #import "HYQBaseWebController.h"
 #import "InfoWebViewController.h"
+#import "ServiceDetailController.h"
 //----------------------------
 #import "ServiceModel.h"
 #import "ActivityModel.h"
@@ -336,6 +337,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableview deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.row >= 4) {
+        ServiceDetailController *serVC = [[ServiceDetailController alloc] initWithServiceModel:_productArr[indexPath.row - 3]];
+        serVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        UINavigationController * jackNavigationController = [[UINavigationController alloc] initWithRootViewController:serVC];
+        [self presentViewController:jackNavigationController animated:YES completion:^(void){}];
+        
+
+    }
 }
 
 #pragma mark MainHeaderViewCellDelegate
@@ -386,32 +395,24 @@
 {
     switch (tag){
             case 0:{
-//                ExcellentFinantialController *finanVC = [[ExcellentFinantialController alloc] init];
-//                [self.navigationController pushViewController:finanVC animated:YES];
                 HYQBaseWebController *finanVC = [[HYQBaseWebController alloc] initWithUrl:EXCELLENT_FINANTIAL_INTERFACE andWithTitle:@"优创金融方案"];
                 [self.navigationController pushViewController:finanVC animated:YES];
             }
                 break;
 
             case 1:{
-//                ExcellentBaseController *baseVC = [[ExcellentBaseController alloc] init];
-//                [self.navigationController pushViewController:baseVC animated:YES];
                 HYQBaseWebController *baseVC = [[HYQBaseWebController alloc] initWithUrl:EXCELLENT_BASE_INTERFACE andWithTitle:@"优创基地"];
                 [self.navigationController pushViewController:baseVC animated:YES];
             }
                 break;
                 
             case 2:{
-//                ExcellentCampController *campVC = [[ExcellentCampController alloc] init];
-//                [self.navigationController pushViewController:campVC animated:YES];
                 HYQBaseWebController *campVC = [[HYQBaseWebController alloc] initWithUrl:EXCELLENT_CAMP_INTERFACE andWithTitle:@"优创基地"];
                 [self.navigationController pushViewController:campVC animated:YES];
             }
                 break;
                 
             case 3:{
-//                ExcellentOpenDayController *openVC = [[ExcellentOpenDayController alloc] init];
-//                [self.navigationController pushViewController:openVC animated:YES];
                 HYQBaseWebController *openVC = [[HYQBaseWebController alloc] initWithUrl:EXCELLENT_OPEN_INTERFACE andWithTitle:@"优创开放日"];
                 [self.navigationController pushViewController:openVC animated:YES];
             }

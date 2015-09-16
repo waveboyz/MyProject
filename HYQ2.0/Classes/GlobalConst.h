@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
+/*  
+    全局常量
+ */
 #define UME_APPKEY              @"5d5405f67e58e6ed1001dbe"
 //------------------界面常量--------------------
 
@@ -35,7 +37,7 @@
 #define IS_IHPONE4                  [[UIScreen mainScreen] bounds].size.height == 480.0f
 //-----------------资讯活动base------------------------
 #define ACTIVITY_BASE_URL           @"http://m.haoyuanqu.com/web/weixinpay2/news!details.action?id="
-#define LOCAL_HOST                  @"http://192.168.1.93:90/"
+#define LOCAL_HOST                  @"http://www.haoyuanqu.com/"
 #define IMAGE_HOST                  @"http://192.168.1.93:90/resources/iosimg/"
 
 //-----------------支付宝商户信息------------------------

@@ -7,7 +7,9 @@
 //
 
 #import "BaseModel.h"
-
+/*
+    产品模型
+ */
 @interface ServiceModel : BaseModel
 
 @property (nonatomic, copy) NSString *title;
@@ -16,7 +18,6 @@
 @property (nonatomic, copy) NSString *logoPath;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, strong) NSNumber *pid;
-@property (nonatomic, strong) NSNumber *OldPrice;
 @property (nonatomic, strong) NSNumber *price;
 @property (nonatomic, strong) NSNumber *payCount;
 @property (nonatomic, strong) NSNumber *colCount;

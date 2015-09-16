@@ -1,16 +1,16 @@
 //
-//  HYQRegistResponse.m
+//  HYQResetVerResponse.m
 //  HYQ2.0
 //
-//  Created by waveboyz on 15/8/19.
+//  Created by 周翔 on 15/9/15.
 //  Copyright (c) 2015年 HZHaoYuanQu. All rights reserved.
 //
 
-#import "HYQRegistResponse.h"
+#import "HYQResetVerResponse.h"
 
-@implementation HYQRegistResponse
+@implementation HYQResetVerResponse
 
-- (id)initWithPhone:(NSString *)phone andWithCode:(NSString *)code andWithVerCode:(NSString *)vercode andWithSPhone:(NSString *)sphone
+- (id)initWithPhone:(NSString *)phone
 {
     if (self = [super init]) {
         NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:2];
@@ -18,20 +18,6 @@
         if (phone) {
             [dic setObject:phone forKey:@"phone"];
         }
-        
-        if (code) {
-            [dic setObject:code forKey:@"psw"];
-        }
-        
-        if (vercode) {
-            [dic setObject:vercode forKey:@"yzm"];
-        }
-        
-        if (sphone) {
-            [dic setObject:sphone forKey:@"sphone"];
-        }
-        
-        [dic setObject:@"IOS端" forKey:@"biaoshi"];
         
         [self setUploadDictionary:dic];
     }
@@ -41,7 +27,7 @@
 
 - (NSString *)methodPath
 {
-    return REGIST_INTERFACE;
+    return REST_VER_INTERFACE;
 }
 
 - (void)decodeJsonOperationWithObject:(id)responseObject
@@ -53,8 +39,12 @@
             NSNumber *code = [responseObject objectForKey:@"code"];
             
             if ([code integerValue] == 1) {
-                if (self.delegate && [self.delegate respondsToSelector:@selector(registSucceed)]) {
-                    [self.delegate registSucceed];
+                if (self.delegate && [self.delegate respondsToSelector:@selector(sendVerCodeSucceed)]) {
+                    [self.delegate sendVerCodeSucceed];
+                }
+                
+                if (self.delegate && [self.delegate respondsToSelector:@selector(wrongOperationWithText:)]) {
+                    [self.delegate wrongOperationWithText:[responseObject objectForKey:@"msg"]];
                 }
             }else{
                 if (self.delegate && [self.delegate respondsToSelector:@selector(wrongOperationWithText:)]) {
@@ -73,5 +63,4 @@
         [self.delegate wrongOperationWithText:@"网络不给力哦~"];
     }
 }
-
 @end

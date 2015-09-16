@@ -7,7 +7,9 @@
 //
 
 #import "BaseViewController.h"
-
+/*
+    修改昵称
+ */
 @interface HYQReplaceNickController : BaseViewController
 <
     UITextFieldDelegate

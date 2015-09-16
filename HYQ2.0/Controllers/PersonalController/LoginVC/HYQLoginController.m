@@ -8,6 +8,7 @@
 
 #import "HYQLoginController.h"
 #import "HYQRegisterController.h"
+#import "HYQForgetPSWController.h"
 #import "AppDelegate.h"
 #import "NSString+HCBStringHelper.h"
 #import "HYQLoginResponse.h"
@@ -20,14 +21,14 @@ HYQLoginResponseDelegate
 
 @property (nonatomic, strong)    UITextField     *phoneTxt;
 @property (nonatomic, strong)    UITextField     *codeTxt;
+@property (nonatomic, strong)    UIScrollView    *bgView;
 @property (nonatomic, strong)    UILabel         *nameLbl;
 @property (nonatomic, strong)    UILabel         *codeLbl;
 @property (nonatomic, strong)    UILabel         *lineLbl;
 @property (nonatomic, strong)    UILabel         *lineLbl2;
-@property (nonatomic, strong)    UIButton        *registLbl;
-@property (nonatomic, strong)    UILabel         *resetPWDLbl;
-@property (nonatomic, strong)    UIScrollView    *bgView;
+@property (nonatomic, strong)    UIButton         *resetPWDLbl;
 @property (nonatomic, strong)    UIButton        *loginBtn;
+@property (nonatomic, strong)    UIButton        *registLbl;
 @property (nonatomic, copy)      NSString        *phoneNumber;
 
 @end
@@ -62,8 +63,11 @@ HYQLoginResponseDelegate
     
     [UIView animateWithDuration:0.5 delay:0.2 usingSpringWithDamping:0.3 initialSpringVelocity:0.0 options:UIViewAnimationOptionAllowUserInteraction animations:^(void){
         CGRect loginframe = _loginBtn.frame;
+        CGRect resetframe = _resetPWDLbl.frame;
         loginframe.origin.y -= kScreenHeight - 308;
+        resetframe.origin.y -= kScreenHeight - 308;
         [_loginBtn setFrame:loginframe];
+        [_resetPWDLbl setFrame:resetframe];
     } completion:^(BOOL finished){}];
 }
 
@@ -75,6 +79,7 @@ HYQLoginResponseDelegate
     [_lineLbl setFrame:CGRectMake(kScreenWidth, 206, kScreenWidth - 30, 1)];
     [_lineLbl2 setFrame:CGRectMake(kScreenWidth, 272, kScreenWidth - 30, 1)];
     [_loginBtn setFrame:CGRectMake(15, kScreenHeight, kScreenWidth - 30, 45)];
+    [_resetPWDLbl setFrame:CGRectMake(15, kScreenHeight + 60, 120, 20)];
 }
 
 - (void)creatUI
@@ -149,16 +154,15 @@ HYQLoginResponseDelegate
     [_registLbl setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_registLbl addTarget:self action:@selector(pushRegiterViewController) forControlEvents:UIControlEventTouchUpInside];
     [_bgView addSubview:_registLbl];
-
-    
-    _resetPWDLbl = [[UILabel alloc] initWithFrame:CGRectMake(15, kScreenHeight + 15, 120, 20)];
-    _resetPWDLbl.textColor = [UIColor blueColor];
-    _resetPWDLbl.font = [UIFont systemFontOfSize:15.0f];
+    //找回密码
+    _resetPWDLbl = [UIButton buttonWithType:UIButtonTypeCustom];
+    _resetPWDLbl.frame = CGRectMake(15, kScreenHeight + 60, 120, 20);
+    [_resetPWDLbl setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [_resetPWDLbl setTitle:@"忘记密码？" forState:UIControlStateNormal];
+    _resetPWDLbl.titleLabel.font = [UIFont systemFontOfSize:15.0f];
+    [_resetPWDLbl addTarget:self action:@selector(resetPWDPressed) forControlEvents:UIControlEventTouchUpInside];
+    _resetPWDLbl.titleLabel.textAlignment = NSTextAlignmentLeft;
     [_bgView addSubview:_resetPWDLbl];
-    
-//    //注册手势
-//    UITapGestureRecognizer *regisTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushRegiterViewController)];
-//    [_registLbl addGestureRecognizer:regisTap];
     
     //隐藏键盘手势
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
@@ -178,6 +182,13 @@ HYQLoginResponseDelegate
 - (void)hideKeyboard
 {
     [self.view endEditing:YES];
+}
+
+//找回密码入口
+- (void)resetPWDPressed
+{
+    HYQForgetPSWController *forgetVC = [[HYQForgetPSWController alloc] init];
+    [self presentViewController:forgetVC animated:YES completion:^(void){}];
 }
 
 //注册入口

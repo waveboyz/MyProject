@@ -21,7 +21,8 @@
 
 @implementation HYQIntroView
 
-- (instancetype)initWithFrame:(CGRect)frame{
+- (instancetype)initWithFrame:(CGRect)frame
+{
     self = [super initWithFrame:frame];
     if(self){
         UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:self.frame];
@@ -54,7 +55,7 @@
     if (!_viewOne) {
         _viewOne = [[UIView alloc] initWithFrame:self.frame];
         UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
-        imageview.contentMode = UIViewContentModeScaleAspectFill;
+        imageview.contentMode = UIViewContentModeScaleToFill;
         imageview.image = [UIImage imageNamed:@"introview1"];
         [_viewOne addSubview:imageview];
     }
@@ -67,7 +68,7 @@
     if (!_viewTwo) {
         _viewTwo = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth, 0, kScreenWidth, kScreenHeight)];
         UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
-        imageview.contentMode = UIViewContentModeScaleAspectFill;
+        imageview.contentMode = UIViewContentModeScaleToFill;
         imageview.image = [UIImage imageNamed:@"introview2"];
         [_viewTwo addSubview:imageview];
     }
@@ -80,7 +81,7 @@
     if (!_viewThree) {
         _viewThree = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth*2, 0, kScreenWidth, kScreenHeight)];
         UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
-        imageview.contentMode = UIViewContentModeScaleAspectFill;
+        imageview.contentMode = UIViewContentModeScaleToFill;
         imageview.image = [UIImage imageNamed:@"introview3"];
         [_viewThree addSubview:imageview];
     }

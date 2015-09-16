@@ -8,16 +8,21 @@
 
 #import "HYQForgetPSWController.h"
 #import "NSString+HCBStringHelper.h"
+#import "HYQResetVerResponse.h"
+#import "HYQResetResponse.h"
 
 @interface HYQForgetPSWController ()
+<
+    HYQResetVerResponseDelegate,
+    HYQResetResponseDelegate
+>
 
-@property (nonatomic, strong)       UITextField   *phoneTxt;
+@property (nonatomic, strong)       UITextField     *phoneTxt;
 @property (nonatomic, strong)       UITextField     *codeTxt;
 @property (nonatomic, strong)       UITextField     *resendTxt;
 @property (nonatomic, strong)       UIButton        *getResendBtn;
 @property (nonatomic, strong)       UIScrollView    *bgView;
 @property (nonatomic, copy)         NSString        *phoneNum;
-@property (nonatomic, copy)         NSString        *pswMD5;
 @property (nonatomic, strong)       NSTimer         *captchaTimer;
 @property (nonatomic, assign)       NSInteger       reSendTime;
 
@@ -39,7 +44,7 @@
     _bgView.backgroundColor = NAVIBAR_GREEN_COLOR;
     [self.view addSubview:_bgView];
     
-    UIImageView *btnImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backIcon"]];
+    UIImageView *btnImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_back"]];
     btnImg.frame = CGRectMake(15, 29.5, 18, 18);
     [self.view addSubview:btnImg];
     
@@ -154,7 +159,8 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    [UIView animateWithDuration:0.2 animations:^(void){    _bgView.contentOffset = CGPointMake(0, 0);}];
+    [UIView animateWithDuration:0.2 animations:^(void){
+        _bgView.contentOffset = CGPointMake(0, 0);}];
 }
 
 - (void)submitReg
@@ -260,33 +266,14 @@
 #pragma mark - resetPwdRequest
 - (void)resetPwdOperation
 {
-//    CYBResetPwd *resetPwd = [[CYBResetPwd alloc] init];
-//    resetPwd.resetPwdDelegate = self;
-//    
-//    [resetPwd resetPwdWithPhoneNum:_phoneTxt.text
-//                     andWithPswMD5:_codeTxt.text.md5
-//                       andWithCode:_resendTxt.text];
+    HYQResetResponse *response = [[HYQResetResponse alloc] initWithPhone:_phoneTxt.text
+                                                              andWithPsw:_codeTxt.text.md5
+                                                          andWithVerCode:_resendTxt.text];
+    response.delegate = self;
+    [response start];
 }
 
-#pragma mark CYBResetPwdDelegate
-- (void)resetSuccess
-{
-    [self performSelector:@selector(dismissForgetPSW) withObject:nil afterDelay:1];
-}
-
-- (void)dismissForgetPSW
-{
-    [self dismissViewControllerAnimated:YES completion:^(void){}];
-    if (self.delegate && [self.delegate respondsToSelector:@selector(resetPasswordSuccess)]) {
-        [self.delegate resetPasswordSuccess];
-    }
-}
-
-- (void)hideHUDView
-{
-    [self.stateHud hide:YES afterDelay:0.2];
-}
-
+//验证码发送
 - (void)sendVerCodeButtonPressed
 {
     NSString *mobileRegex = @"[1][34578][0-9]{9}";
@@ -310,22 +297,21 @@
 
 - (void)sendVerCodeRequestOperation
 {
-//    CYBSendVerCode *sendVerCode = [[CYBSendVerCode alloc] init];
-//    sendVerCode.sendVerCodeDelegate = self;
-//    
-//    [sendVerCode sendVerCodeWithPhoneNumber:_phoneTxt.text];
-//    
-//    _getResendBtn.backgroundColor = [UIColor colorWithWhite:0.6 alpha:1.0];
-//    [_getResendBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    [_getResendBtn setTitle:@"60s 重新获取" forState:UIControlStateNormal];
-//    _getResendBtn.enabled = NO;
-//    _reSendTime = 60;
-//    
-//    _captchaTimer = [NSTimer scheduledTimerWithTimeInterval:1
-//                                                     target:self
-//                                                   selector:@selector(updateReSendTime:)
-//                                                   userInfo:nil
-//                                                    repeats:YES];
+    HYQResetVerResponse *response = [[HYQResetVerResponse alloc] initWithPhone:_phoneTxt.text];
+    response.delegate = self;
+    [response start];
+
+    _getResendBtn.backgroundColor = [UIColor colorWithWhite:0.6 alpha:1.0];
+    [_getResendBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_getResendBtn setTitle:@"60s 重新获取" forState:UIControlStateNormal];
+    _getResendBtn.enabled = NO;
+    _reSendTime = 60;
+    
+    _captchaTimer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                     target:self
+                                                   selector:@selector(updateReSendTime:)
+                                                   userInfo:nil
+                                                    repeats:YES];
 }
 
 - (void)updateReSendTime:(NSTimer *)timer
@@ -345,11 +331,21 @@
     }
 }
 
-- (void)sendVerCodeFailed
+#pragma mark HYQResetVerResponseDelegate
+- (void)sendVerCodeSucceed
 {
-    [self performSelectorOnMainThread:@selector(hideHUDView) withObject:nil waitUntilDone:YES];
-//    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"提示", @"title", @"网络错误", @"message", nil];
-//    [self performSelectorOnMainThread:@selector(stateAlertTitle:) withObject:dict waitUntilDone:YES];
+    
+}
+
+- (void)wrongOperationWithText:(NSString *)text
+{
+    
+}
+
+#pragma mark HYQResetResponseDelegate
+- (void)resetPswSucceed
+{
+
 }
 
 #pragma mark - UIAlertView Delegation

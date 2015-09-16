@@ -54,9 +54,8 @@
             if ([code integerValue] == 1) {
                 NSMutableDictionary *userDic = [[NSMutableDictionary alloc] initWithCapacity:3];
                 [userDic setObject:[responseObject objectForKey:@"userId"] forKey:@"uid"];
-                [userDic setObject:[responseObject objectForKey:@"userName"] forKey:@"realName"];
+                [userDic setObject:[responseObject objectForKey:@"realName"] forKey:@"realName"];
                 [userDic setObject:[responseObject objectForKey:@"account"] forKey:@"property"];
-//                NSString *str = [NSString stringWithFormat:@"%@%@",LOCAL_HOST,[responseObject objectForKey:@"imagery"]];
                 NSString *str = [responseObject objectForKey:@"imagery"];
                 [userDic setObject:str forKey:@"avatarUrl"];
                 [userDic setObject:_psw forKey:@"psw"];

@@ -193,6 +193,7 @@
 {
     dispatch_async(dispatch_get_main_queue(), ^(void){
         [self stopStateHud];
+        [self showStateHudWithText:@"暂无更多数据~"];
         if (self.currentPage == 1) {
             [self.tableView.header endRefreshing];
             [self.view insertSubview:self.emptyView aboveSubview:self.tableView];

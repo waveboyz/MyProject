@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "GlobalConst.h"
 #import "BaseTabbarController.h"
 #import "PersonalController.h"
 #import "HYQIntroView.h"
@@ -36,7 +37,7 @@
     [NSThread sleepForTimeInterval:1.5];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         if (![defaults objectForKey:@"intro_screen_viewed"]) {
-            self.introView = [[HYQIntroView alloc] initWithFrame:self.window.frame];
+            self.introView = [[HYQIntroView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
             self.introView.delegate = self;
             self.introView.backgroundColor = [UIColor greenColor];
             [self.window addSubview:self.introView];

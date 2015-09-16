@@ -24,7 +24,10 @@
 - (id)init
 {
     if (self = [super init]) {
-        
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithCapacity:2];
+        [dic setObject:[NSNumber numberWithInteger:1] forKey:@"pageSize"];
+        [dic setObject:[NSNumber numberWithInteger:20] forKey:@"pageRow"];
+        [self setUploadDictionary:dic];
     }
     
     return self;

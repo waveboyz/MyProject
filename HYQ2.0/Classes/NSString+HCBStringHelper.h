@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
+/*
+    md5加密
+ */
 @interface NSString (HCBStringHelper)
 
 - (NSString *)md5;

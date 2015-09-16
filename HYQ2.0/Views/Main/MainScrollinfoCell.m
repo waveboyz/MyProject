@@ -117,7 +117,7 @@
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(infoCellTouchedWithUrl:)]) {
         ActivityModel *model = _titleArr[indexPath.row];
-        [self.delegate infoCellTouchedWithUrl:[NSString stringWithFormat:@"%@%@",LOCAL_HOST,model.aid]];
+        [self.delegate infoCellTouchedWithUrl:[NSString stringWithFormat:@"%@%@",ACTIVITY_BASE_URL,model.aid]];
     }
 }
 

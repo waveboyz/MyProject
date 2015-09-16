@@ -10,29 +10,37 @@
 #import "ServiceAddressPickController.h"
 #import "PurchaseHeaderCell.h"
 #import "PurchaseSecondCell.h"
-#import "MyAddressResponse.h"
 #import "AddressModel.h"
-#import "DownSheet.h"
-#import <AlipaySDK/AlipaySDK.h>
 #import "Order.h"
 #import "DataSigner.h"
+#import "DownSheet.h"
+#import <AlipaySDK/AlipaySDK.h>
+#import "ServicePayOrderResponse.h"
+#import "AliPayCallBackResponse.h"
+#import "MyAddressResponse.h"
 
 @interface ServicePurchaseController ()
 <
     MyAddressResponseDelegate,
     PurchaseSecondCellDelegate,
     ServiceAddressPickControllerDelegate,
-    DownSheetDelegate
+    DownSheetDelegate,
+    ServicePayOrderResponseDelegate,
+    AliPayCallBackResponseDelegate
 >
 
-@property (nonatomic, strong) UITableView *tableview;
-@property (nonatomic, strong) UIView      *toolView;        //工具条
-@property (nonatomic, retain) NSMutableArray *addArr;       //地址数组
-@property (nonatomic, strong) UILabel     *desLbl;          //价格描述
-@property (nonatomic, strong) UILabel     *priceLbl;        //工具条总价格label
-@property (nonatomic, assign) NSUInteger    price;          //产品单价
-@property (nonatomic, retain) NSArray       *sheetArr;      //支付方式数组
-@property (nonatomic, strong) AddressModel  *addModel;
+@property (nonatomic, strong) UITableView       *tableview;
+@property (nonatomic, retain) NSMutableArray    *addArr;       //地址数组
+@property (nonatomic, retain) NSArray           *sheetArr;      //支付方式数组
+@property (nonatomic, strong) UIView            *toolView;        //工具条
+@property (nonatomic, strong) UILabel           *desLbl;          //价格描述
+@property (nonatomic, strong) UILabel           *priceLbl;        //工具条总价格label
+@property (nonatomic, assign) NSUInteger        price;          //产品单价
+@property (nonatomic, assign) NSUInteger        totalPrice;     //总付款
+@property (nonatomic, assign) NSUInteger        paycount;
+@property (nonatomic, retain) NSNumber          *tradeNo;       //订单号
+@property (nonatomic, retain) NSNumber          *oid;
+@property (nonatomic, strong) AddressModel      *addModel;
 
 @end
 
@@ -42,13 +50,16 @@
 {
     if (self = [super init]) {
         _service = service;
+        _price = [_service.price unsignedLongValue];
+        _totalPrice = _price;
         _addArr = [NSMutableArray new];
     }
     
     return self;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     self.title = @"确认订单";
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
@@ -66,6 +77,22 @@
     MyAddressResponse *response = [[MyAddressResponse alloc] init];
     response.delegate = self;
     [response start];
+}
+
+//actionsheet列表
+- (NSArray *)sheetArr
+{
+    if (!_sheetArr) {
+        DownSheetModel *Model_1 = [[DownSheetModel alloc]init];
+        Model_1.title = @"选择使用支付宝";
+        Model_1.icon = @"aliIcon";
+        DownSheetModel *Model_2 = [[DownSheetModel alloc]init];
+        Model_2.title = @"取消";
+        
+        _sheetArr = [NSArray arrayWithObjects:Model_1,Model_2, nil];
+    }
+    
+    return _sheetArr;
 }
 
 - (void)createUI
@@ -99,7 +126,6 @@
     _priceLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 - 20, 0, 120, 49)];
     _priceLbl.font = [UIFont systemFontOfSize:18.0];
     _priceLbl.textColor = [UIColor redColor];
-    _price = [_service.price integerValue];
     _priceLbl.text = [NSString stringWithFormat:@"￥%ld",_price];
     [_toolView addSubview:_priceLbl];
 }
@@ -111,9 +137,9 @@
     [sheet showInView:self];
 }
 
+//付款请求
 - (void)payOperation
 {
-    
     /*
      *生成订单信息及签名
      */
@@ -121,10 +147,10 @@
     Order *order = [[Order alloc] init];
     order.partner = PARTNER;
     order.seller = SELLER;
-    order.tradeNO = [self generateTradeNO]; //订单ID（由商家自行制定）
+    order.tradeNO = [NSString stringWithFormat:@"%@",_tradeNo]; //订单ID（由商家自行制定）
     order.productName = _service.title; //商品标题
     order.productDescription = _service.DesStr; //商品描述
-//    order.amount = [NSString stringWithFormat:@"%.2f",product.price]; //商品价格
+//    order.amount = [NSString stringWithFormat:@"%ld",_totalPrice]; //商品价格
     order.amount = @"0.01";
     order.notifyURL =  @"http://www.xxx.com"; //回调URL
     
@@ -154,40 +180,48 @@
         
         [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
             NSLog(@"reslut = %@",resultDic);
+            [self payStatusWithDic:resultDic];
         }];
     }
 }
 
-- (NSString *)generateTradeNO
+//支付宝支付结果返回
+- (void)payStatusWithDic:(NSDictionary *)dic
 {
-    static int kNumber = 15;
-    
-    NSString *sourceStr = @"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    NSMutableString *resultStr = [[NSMutableString alloc] init];
-    srand(time(0));
-    for (int i = 0; i < kNumber; i++)
-    {
-        unsigned index = rand() % [sourceStr length];
-        NSString *oneStr = [sourceStr substringWithRange:NSMakeRange(index, 1)];
-        [resultStr appendString:oneStr];
-    }
-    return resultStr;
+    NSNumber *state = [dic objectForKey:@"resultStatus"];
+    AliPayCallBackResponse *response = [[AliPayCallBackResponse alloc] initWithTradeNO:_tradeNo andWithTradeStatus:state andWithResult:[dic objectForKey:@"result"]];
+    response.delegate = self;
+    [response start];
 }
 
-- (NSArray *)sheetArr
+//- (NSString *)generateTradeNO
+//{
+//    static int kNumber = 15;
+//    
+//    NSString *sourceStr = @"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//    NSMutableString *resultStr = [[NSMutableString alloc] init];
+//    srand(time(0));
+//    for (int i = 0; i < kNumber; i++)
+//    {
+//        unsigned index = rand() % [sourceStr length];
+//        NSString *oneStr = [sourceStr substringWithRange:NSMakeRange(index, 1)];
+//        [resultStr appendString:oneStr];
+//    }
+//    return resultStr;
+//}
+
+//获得订单号
+- (void)getPayOrderOperation
 {
-    if (!_sheetArr) {
-        DownSheetModel *Model_1 = [[DownSheetModel alloc]init];
-        Model_1.title = @"选择使用支付宝";
-        Model_1.icon = @"aliIcon";
-        DownSheetModel *Model_2 = [[DownSheetModel alloc]init];
-        Model_2.title = @"取消";
-        
-        _sheetArr = [NSArray arrayWithObjects:Model_1,Model_2, nil];
-    }
-    
-    return _sheetArr;
+    [self showNoTextStateHud];
+    ServicePayOrderResponse *response = [[ServicePayOrderResponse alloc] initWithPid:_service.pid
+                                                                          andWithAid:_addModel.aid
+                                                                         andWithOnum:[NSNumber numberWithInteger:_paycount]
+                                                                   andWithTotalPrice:[NSNumber numberWithInteger:_totalPrice] andWithMsg:nil];
+    response.delegate = self;
+    [response start];
 }
+
 
 #pragma mark MyAddressResponseDelegate
 - (void)getAddressArrayWith:(NSMutableArray *)array
@@ -207,13 +241,16 @@
 
 - (void)noDataArr
 {
-
+    [self stopStateHud];
+    [self createUI];
 }
 
 #pragma mark PurchaseSecondCellDelegate
 - (void)mathBtnPressedWithCount:(NSUInteger)count
 {
-    _priceLbl.text = [NSString stringWithFormat:@"￥%ld",_price * count];
+    _paycount = count;
+    _totalPrice = _price * _paycount;
+    _priceLbl.text = [NSString stringWithFormat:@"￥%ld",_totalPrice];
 }
 
 #pragma mark UITableViewDelegate
@@ -294,6 +331,14 @@
     return nil;
 }
 
+#pragma mark ServicePayOrderResponseDelegate
+- (void)getPayOrderSucceedWithPayOrder:(NSNumber *)payorder andOid:(NSNumber *)oid
+{
+    _tradeNo = payorder;
+    _oid = oid;
+    [self payOperation];
+}
+
 #pragma mark ServiceAddressPickControllerDelegate
 - (void)finishPickWithAddress:(AddressModel *)address
 {
@@ -302,11 +347,17 @@
     [self.tableview reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
+#pragma mark AliPayCallBackResponseDelegate
+- (void)getPayResult
+{
+
+}
+
 #pragma mark DownSheetDelegate
 -(void)didSelectIndex:(NSInteger)index
 {
     if (index == 0) {
-        [self payOperation];
+        [self getPayOrderOperation];
     }
 }
 

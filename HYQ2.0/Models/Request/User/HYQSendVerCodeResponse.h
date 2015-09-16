@@ -7,6 +7,9 @@
 //
 
 #import "HYQResponse.h"
+/*
+    注册验证码
+ */
 @protocol HYQSendVerCodeResponseDelegate <NSObject>
 
 - (void)sendVerCodeSucceed;

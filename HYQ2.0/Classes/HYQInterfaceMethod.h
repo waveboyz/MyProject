@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
+/*
+    接口路径
+ */
 @interface HYQInterfaceMethod : NSObject
 // * 登录 *
 extern NSString *const LOGIN_INTERFACE;
@@ -15,6 +17,8 @@ extern NSString *const LOGIN_INTERFACE;
 extern NSString *const SEND_VER_INTERFACE;
 // * 注册 *
 extern NSString *const REGIST_INTERFACE;
+// * 找回密码验证码*
+extern NSString *const REST_VER_INTERFACE;
 // * 找回密码*
 extern NSString *const RESET_INTERFACE;
 // *修改密码*
@@ -87,5 +91,10 @@ extern NSString *const EXCELLENT_CAMP_INTERFACE;
 //优创开放日
 extern NSString *const EXCELLENT_OPEN_INTERFACE;
 
+//------------------------------------
+//立即购买
+extern NSString *const GET_PAYORDER_INTERFACE;
+//支付宝回调
+extern NSString *const ALIPAY_CALLBACK_INTERFACE;
 
 @end

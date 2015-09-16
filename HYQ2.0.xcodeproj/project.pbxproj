@@ -8,9 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		82D6BBB41B65C3EE00B1B54B /* HYQ2_0Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D6BBB31B65C3EE00B1B54B /* HYQ2_0Tests.m */; };
-		C45856D61BA3F7120036D71C /* introview3.png in Resources */ = {isa = PBXBuildFile; fileRef = C45856D31BA3F7120036D71C /* introview3.png */; };
-		C45856D71BA3F7120036D71C /* introview2.png in Resources */ = {isa = PBXBuildFile; fileRef = C45856D41BA3F7120036D71C /* introview2.png */; };
-		C45856D81BA3F7120036D71C /* introview1.png in Resources */ = {isa = PBXBuildFile; fileRef = C45856D51BA3F7120036D71C /* introview1.png */; };
+		C46A0EAD1BA6A65A00EFFD76 /* introview1@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C46A0EAA1BA6A65A00EFFD76 /* introview1@3x.jpg */; };
+		C46A0EAE1BA6A65A00EFFD76 /* introview2@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C46A0EAB1BA6A65A00EFFD76 /* introview2@3x.jpg */; };
+		C46A0EAF1BA6A65A00EFFD76 /* introview3@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C46A0EAC1BA6A65A00EFFD76 /* introview3@3x.jpg */; };
+		C46D5CF31BA81D270052F083 /* HYQResetVerResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C46D5CF21BA81D270052F083 /* HYQResetVerResponse.m */; };
+		C47CDBB01BA7ACFE00214478 /* ServicePayOrderResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C47CDBAF1BA7ACFE00214478 /* ServicePayOrderResponse.m */; };
+		C47CDBB31BA7AEAF00214478 /* AliPayCallBackResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C47CDBB21BA7AEAF00214478 /* AliPayCallBackResponse.m */; };
 		C486B5441B9FC0210072A7F4 /* QRBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = C486B5431B9FC0210072A7F4 /* QRBlurView.m */; };
 		C486B5471B9FC9510072A7F4 /* QRUrlResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C486B5461B9FC9510072A7F4 /* QRUrlResponse.m */; };
 		C486B54A1BA0253A0072A7F4 /* ServiceAddressPickController.m in Sources */ = {isa = PBXBuildFile; fileRef = C486B5491BA0253A0072A7F4 /* ServiceAddressPickController.m */; };
@@ -190,7 +193,6 @@
 		C48B69BC1B9EAD5500AB0DA5 /* plan_icon2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C48B68671B9EAD5500AB0DA5 /* plan_icon2@2x.png */; };
 		C48B69BD1B9EAD5500AB0DA5 /* plan_icon3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C48B68681B9EAD5500AB0DA5 /* plan_icon3@2x.png */; };
 		C48B69BE1B9EAD5500AB0DA5 /* plan_icon4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C48B68691B9EAD5500AB0DA5 /* plan_icon4@2x.png */; };
-		C48B69BF1B9EAD5500AB0DA5 /* backIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C48B686B1B9EAD5500AB0DA5 /* backIcon@2x.png */; };
 		C48B69C01B9EAD5500AB0DA5 /* comment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C48B686C1B9EAD5500AB0DA5 /* comment@2x.png */; };
 		C48B69C11B9EAD5500AB0DA5 /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C48B686D1B9EAD5500AB0DA5 /* share@2x.png */; };
 		C48B69C21B9EAD5500AB0DA5 /* skip_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C48B686F1B9EAD5500AB0DA5 /* skip_icon.png */; };
@@ -308,9 +310,15 @@
 		82D6BBAD1B65C3EE00B1B54B /* HYQ2.0Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HYQ2.0Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D6BBB21B65C3EE00B1B54B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82D6BBB31B65C3EE00B1B54B /* HYQ2_0Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYQ2_0Tests.m; sourceTree = "<group>"; };
-		C45856D31BA3F7120036D71C /* introview3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = introview3.png; sourceTree = "<group>"; };
-		C45856D41BA3F7120036D71C /* introview2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = introview2.png; sourceTree = "<group>"; };
-		C45856D51BA3F7120036D71C /* introview1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = introview1.png; sourceTree = "<group>"; };
+		C46A0EAA1BA6A65A00EFFD76 /* introview1@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "introview1@3x.jpg"; sourceTree = "<group>"; };
+		C46A0EAB1BA6A65A00EFFD76 /* introview2@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "introview2@3x.jpg"; sourceTree = "<group>"; };
+		C46A0EAC1BA6A65A00EFFD76 /* introview3@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "introview3@3x.jpg"; sourceTree = "<group>"; };
+		C46D5CF11BA81D270052F083 /* HYQResetVerResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYQResetVerResponse.h; sourceTree = "<group>"; };
+		C46D5CF21BA81D270052F083 /* HYQResetVerResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYQResetVerResponse.m; sourceTree = "<group>"; };
+		C47CDBAE1BA7ACFE00214478 /* ServicePayOrderResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicePayOrderResponse.h; sourceTree = "<group>"; };
+		C47CDBAF1BA7ACFE00214478 /* ServicePayOrderResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicePayOrderResponse.m; sourceTree = "<group>"; };
+		C47CDBB11BA7AEAF00214478 /* AliPayCallBackResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliPayCallBackResponse.h; sourceTree = "<group>"; };
+		C47CDBB21BA7AEAF00214478 /* AliPayCallBackResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AliPayCallBackResponse.m; sourceTree = "<group>"; };
 		C486B5421B9FC0210072A7F4 /* QRBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRBlurView.h; sourceTree = "<group>"; };
 		C486B5431B9FC0210072A7F4 /* QRBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRBlurView.m; sourceTree = "<group>"; };
 		C486B5451B9FC9510072A7F4 /* QRUrlResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRUrlResponse.h; sourceTree = "<group>"; };
@@ -660,7 +668,6 @@
 		C48B68671B9EAD5500AB0DA5 /* plan_icon2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plan_icon2@2x.png"; sourceTree = "<group>"; };
 		C48B68681B9EAD5500AB0DA5 /* plan_icon3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plan_icon3@2x.png"; sourceTree = "<group>"; };
 		C48B68691B9EAD5500AB0DA5 /* plan_icon4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plan_icon4@2x.png"; sourceTree = "<group>"; };
-		C48B686B1B9EAD5500AB0DA5 /* backIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backIcon@2x.png"; sourceTree = "<group>"; };
 		C48B686C1B9EAD5500AB0DA5 /* comment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comment@2x.png"; sourceTree = "<group>"; };
 		C48B686D1B9EAD5500AB0DA5 /* share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share@2x.png"; sourceTree = "<group>"; };
 		C48B686F1B9EAD5500AB0DA5 /* skip_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skip_icon.png; sourceTree = "<group>"; };
@@ -1757,6 +1764,10 @@
 				C48B684B1B9EAD5500AB0DA5 /* HYQServiceTitleResponse.m */,
 				C48B684C1B9EAD5500AB0DA5 /* ServiceIsCollectResponse.h */,
 				C48B684D1B9EAD5500AB0DA5 /* ServiceIsCollectResponse.m */,
+				C47CDBAE1BA7ACFE00214478 /* ServicePayOrderResponse.h */,
+				C47CDBAF1BA7ACFE00214478 /* ServicePayOrderResponse.m */,
+				C47CDBB11BA7AEAF00214478 /* AliPayCallBackResponse.h */,
+				C47CDBB21BA7AEAF00214478 /* AliPayCallBackResponse.m */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1772,6 +1783,8 @@
 				C48B68541B9EAD5500AB0DA5 /* HYQResetResponse.m */,
 				C48B68551B9EAD5500AB0DA5 /* HYQSendVerCodeResponse.h */,
 				C48B68561B9EAD5500AB0DA5 /* HYQSendVerCodeResponse.m */,
+				C46D5CF11BA81D270052F083 /* HYQResetVerResponse.h */,
+				C46D5CF21BA81D270052F083 /* HYQResetVerResponse.m */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1843,7 +1856,6 @@
 		C48B686A1B9EAD5500AB0DA5 /* information */ = {
 			isa = PBXGroup;
 			children = (
-				C48B686B1B9EAD5500AB0DA5 /* backIcon@2x.png */,
 				C48B686C1B9EAD5500AB0DA5 /* comment@2x.png */,
 				C48B686D1B9EAD5500AB0DA5 /* share@2x.png */,
 			);
@@ -1853,9 +1865,9 @@
 		C48B686E1B9EAD5500AB0DA5 /* introviews */ = {
 			isa = PBXGroup;
 			children = (
-				C45856D31BA3F7120036D71C /* introview3.png */,
-				C45856D41BA3F7120036D71C /* introview2.png */,
-				C45856D51BA3F7120036D71C /* introview1.png */,
+				C46A0EAA1BA6A65A00EFFD76 /* introview1@3x.jpg */,
+				C46A0EAB1BA6A65A00EFFD76 /* introview2@3x.jpg */,
+				C46A0EAC1BA6A65A00EFFD76 /* introview3@3x.jpg */,
 				C4E7CB261BA1821400934244 /* welcome@2x.png */,
 				C4E7CB271BA1821400934244 /* welcome@3x.png */,
 				C4E7CB281BA1821400934244 /* welcome.png */,
@@ -2397,6 +2409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C48B69DA1B9EAD5500AB0DA5 /* unused_ticket.png in Resources */,
+				C46A0EAD1BA6A65A00EFFD76 /* introview1@3x.jpg in Resources */,
 				C48B69CB1B9EAD5500AB0DA5 /* main_icon1@2x.png in Resources */,
 				C48B69C61B9EAD5500AB0DA5 /* codeGetIcon.png in Resources */,
 				C48B698E1B9EAD5500AB0DA5 /* Info.plist in Resources */,
@@ -2408,12 +2421,13 @@
 				C48B69C81B9EAD5500AB0DA5 /* loginIcon.png in Resources */,
 				C48B695A1B9EAD5500AB0DA5 /* UMShareEditViewControlleriPad.xib in Resources */,
 				C48B69CC1B9EAD5500AB0DA5 /* main_icon2@2x.png in Resources */,
+				C46A0EAE1BA6A65A00EFFD76 /* introview2@3x.jpg in Resources */,
 				C48B69D81B9EAD5500AB0DA5 /* edit_presonProfile@2x.png in Resources */,
 				C48B69E01B9EAD5500AB0DA5 /* product_placeholder.png in Resources */,
 				C48B69BC1B9EAD5500AB0DA5 /* plan_icon2@2x.png in Resources */,
+				C46A0EAF1BA6A65A00EFFD76 /* introview3@3x.jpg in Resources */,
 				C4E7CB2A1BA1821400934244 /* welcome@3x.png in Resources */,
 				C48B695C1B9EAD5500AB0DA5 /* UMSnsAccountViewController.xib in Resources */,
-				C45856D71BA3F7120036D71C /* introview2.png in Resources */,
 				C48B69C01B9EAD5500AB0DA5 /* comment@2x.png in Resources */,
 				C48B69D91B9EAD5500AB0DA5 /* enable_ticket.png in Resources */,
 				C48B69571B9EAD5500AB0DA5 /* UMSCommentInputController.xib in Resources */,
@@ -2421,9 +2435,7 @@
 				C48B69C91B9EAD5500AB0DA5 /* avatar_placeholder@2x.png in Resources */,
 				C4E7CB2B1BA1821400934244 /* welcome.png in Resources */,
 				C48B69E61B9EAD5500AB0DA5 /* service_tab@2x.png in Resources */,
-				C45856D61BA3F7120036D71C /* introview3.png in Resources */,
 				C48B69DD1B9EAD5500AB0DA5 /* URLS.plist in Resources */,
-				C45856D81BA3F7120036D71C /* introview1.png in Resources */,
 				C48B69E11B9EAD5500AB0DA5 /* star_click@2x.png in Resources */,
 				C48B691C1B9EAD5500AB0DA5 /* Zan.png in Resources */,
 				C48B69C11B9EAD5500AB0DA5 /* share@2x.png in Resources */,
@@ -2460,7 +2472,6 @@
 				C48B69D11B9EAD5500AB0DA5 /* qr_scan_line@2x.png in Resources */,
 				C48B69D31B9EAD5500AB0DA5 /* recommend@2x.png in Resources */,
 				C48B69E31B9EAD5500AB0DA5 /* home_tab@2x.png in Resources */,
-				C48B69BF1B9EAD5500AB0DA5 /* backIcon@2x.png in Resources */,
 				C48B69CA1B9EAD5500AB0DA5 /* info_scroll@2x.png in Resources */,
 				C48B69CD1B9EAD5500AB0DA5 /* main_icon3@2x.png in Resources */,
 				C48B695B1B9EAD5500AB0DA5 /* UMSLoginViewController.xib in Resources */,
@@ -2588,6 +2599,7 @@
 				C48B69521B9EAD5500AB0DA5 /* UIImageView+WebCache.m in Sources */,
 				C48B69F31B9EAD5500AB0DA5 /* ExcellentCampThirdCell.m in Sources */,
 				C48B69A11B9EAD5500AB0DA5 /* CollectOperationResponse.m in Sources */,
+				C47CDBB31BA7AEAF00214478 /* AliPayCallBackResponse.m in Sources */,
 				C48B69111B9EAD5500AB0DA5 /* AFHTTPRequestOperationManager.m in Sources */,
 				C48B69FB1B9EAD5500AB0DA5 /* ExcellentOpenThirdCell.m in Sources */,
 				C48B69871B9EAD5500AB0DA5 /* PersonalController.m in Sources */,
@@ -2615,6 +2627,7 @@
 				C48B697C1B9EAD5500AB0DA5 /* HYQLoginController.m in Sources */,
 				C48B6A101B9EAD5500AB0DA5 /* ServiceDetailAdvanCell.m in Sources */,
 				C486B5441B9FC0210072A7F4 /* QRBlurView.m in Sources */,
+				C46D5CF31BA81D270052F083 /* HYQResetVerResponse.m in Sources */,
 				C48B69131B9EAD5500AB0DA5 /* AFNetworkReachabilityManager.m in Sources */,
 				C48B69151B9EAD5500AB0DA5 /* AFURLConnectionOperation.m in Sources */,
 				C48B697A1B9EAD5500AB0DA5 /* HYQReplaceNickController.m in Sources */,
@@ -2683,6 +2696,7 @@
 				C48B69661B9EAD5500AB0DA5 /* UINavigationBar+Awesome.m in Sources */,
 				C48B69531B9EAD5500AB0DA5 /* UIView+WebCacheOperation.m in Sources */,
 				C48B69F11B9EAD5500AB0DA5 /* ExcellentCampForthCell.m in Sources */,
+				C47CDBB01BA7ACFE00214478 /* ServicePayOrderResponse.m in Sources */,
 				C48B699A1B9EAD5500AB0DA5 /* HYQInforDetailResponse.m in Sources */,
 				C48B6A0D1B9EAD5500AB0DA5 /* MyPaymentHeader.m in Sources */,
 				C48B69F21B9EAD5500AB0DA5 /* ExcellentCampSecondCell.m in Sources */,
@@ -2743,8 +2757,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Hangzhou Souqian Financial Services Outsource Co. Ltd (MHVFZT74PD)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hangzhou Souqian Financial Services Outsource Co. Ltd (MHVFZT74PD)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Li Qun (G6U9FS29RR)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Li Qun (G6U9FS29RR)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2766,7 +2780,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "fb3524c6-1be1-47e1-9d57-5f9969253d11";
+				PROVISIONING_PROFILE = "7f463a51-5f9a-4453-a3f1-b890a1a8a985";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2789,8 +2803,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Hangzhou Souqian Financial Services Outsource Co. Ltd (MHVFZT74PD)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hangzhou Souqian Financial Services Outsource Co. Ltd (MHVFZT74PD)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Li Qun (G6U9FS29RR)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Li Qun (G6U9FS29RR)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -2805,7 +2819,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "fb3524c6-1be1-47e1-9d57-5f9969253d11";
+				PROVISIONING_PROFILE = "7f463a51-5f9a-4453-a3f1-b890a1a8a985";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -2817,8 +2831,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Hangzhou Souqian Financial Services Outsource Co. Ltd (MHVFZT74PD)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hangzhou Souqian Financial Services Outsource Co. Ltd (MHVFZT74PD)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Li Qun (G6U9FS29RR)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Li Qun (G6U9FS29RR)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HYQ2.0/Others",
@@ -2837,7 +2851,7 @@
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fb3524c6-1be1-47e1-9d57-5f9969253d11";
+				PROVISIONING_PROFILE = "7f463a51-5f9a-4453-a3f1-b890a1a8a985";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2847,8 +2861,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Hangzhou Souqian Financial Services Outsource Co. Ltd (MHVFZT74PD)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hangzhou Souqian Financial Services Outsource Co. Ltd (MHVFZT74PD)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Li Qun (G6U9FS29RR)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Li Qun (G6U9FS29RR)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HYQ2.0/Others",
@@ -2867,7 +2881,7 @@
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fb3524c6-1be1-47e1-9d57-5f9969253d11";
+				PROVISIONING_PROFILE = "7f463a51-5f9a-4453-a3f1-b890a1a8a985";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -2876,8 +2890,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Hangzhou Souqian Financial Services Outsource Co. Ltd (MHVFZT74PD)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hangzhou Souqian Financial Services Outsource Co. Ltd (MHVFZT74PD)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -2889,7 +2903,7 @@
 				INFOPLIST_FILE = HYQ2.0Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d99ccd2b-5a31-4117-9681-47922192048b";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HYQ2.0.app/HYQ2.0";
 			};
 			name = Debug;
@@ -2898,8 +2912,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Hangzhou Souqian Financial Services Outsource Co. Ltd (MHVFZT74PD)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hangzhou Souqian Financial Services Outsource Co. Ltd (MHVFZT74PD)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -2907,7 +2921,7 @@
 				INFOPLIST_FILE = HYQ2.0Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d99ccd2b-5a31-4117-9681-47922192048b";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HYQ2.0.app/HYQ2.0";
 			};
 			name = Release;

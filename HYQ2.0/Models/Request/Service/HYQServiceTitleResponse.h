@@ -8,7 +8,7 @@
 
 #import "HYQResponse.h"
 /*
- 产品页标题类别
+    产品页标题类别
  */
 @protocol  HYQServiceTitleResponseDelegate<NSObject>
 

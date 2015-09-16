@@ -7,7 +7,9 @@
 //
 
 #import "HYQResponse.h"
-
+/*
+    收藏请求
+ */
 @protocol ServiceIsCollectResponseDelegate <NSObject>
 
 - (void)getCollectSucceedWithIsCollected:(BOOL)isCollected;

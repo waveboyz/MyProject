@@ -140,7 +140,7 @@
         nameLbl.textAlignment = NSTextAlignmentRight;
         nameLbl.font = [UIFont systemFontOfSize:15.0f];
         nameLbl.textColor = [UIColor grayColor];
-        nameLbl.text = [[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"username"];
+        nameLbl.text = [[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"realName"];
         [cell.contentView addSubview:nameLbl];
         
         UILabel *lineLbl = [[UILabel alloc] initWithFrame:CGRectMake(20, 60, kScreenWidth - 40, 0.5)];

@@ -7,7 +7,9 @@
 //
 
 #import "BaseViewController.h"
-
+/*
+    修改密码
+ */
 @interface HYQReplaceCodeController : BaseViewController
 <
     UITextFieldDelegate

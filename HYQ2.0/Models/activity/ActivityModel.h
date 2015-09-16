@@ -14,6 +14,7 @@
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *editor;
 @property (nonatomic, copy) NSString *photo;
+@property (nonatomic, copy) NSString *time;
 @property (nonatomic, strong) NSNumber *hits;
 @property (nonatomic, strong) NSNumber *aid;
 

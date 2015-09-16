@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "GlobalConst.h"
 #import "ActivityModel.h"
-
+/*
+    信息滚动tableview子cell
+ */
 @interface ScrollDetailCell : UITableViewCell
 
 @property (nonatomic, strong) ActivityModel *activity;

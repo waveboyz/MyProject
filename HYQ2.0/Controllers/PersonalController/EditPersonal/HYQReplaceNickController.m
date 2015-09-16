@@ -38,7 +38,7 @@
     _nameField.font = [UIFont systemFontOfSize:15.0f];
     [backView addSubview:_nameField];
     NSDictionary *userInfo  =  [[HYQUserManager sharedUserManager] userInfo];
-    _nameField.text = [userInfo objectForKey:@"username"];
+    _nameField.text = [userInfo objectForKey:@"realName"];
     _nameField.textColor = [UIColor grayColor];
     _nameField.delegate = self;
     

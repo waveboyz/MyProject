@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 /*
-    找回密码
+    首页找回密码
  */
 @protocol HYQForgetPSWControllerDelegate <NSObject>
 
@@ -18,7 +18,7 @@
 
 @interface HYQForgetPSWController : BaseViewController
 <
-UITextFieldDelegate
+    UITextFieldDelegate
 >
 
 @property (nonatomic,assign) id<HYQForgetPSWControllerDelegate> delegate;

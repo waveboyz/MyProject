@@ -52,8 +52,7 @@
         _nameLbl.font = [UIFont systemFontOfSize:13.0f];
         _nameLbl.textColor = [UIColor whiteColor];
         _nameLbl.textAlignment = NSTextAlignmentCenter;
-        _nameLbl.text = [[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"username"];
-        
+        _nameLbl.text = [[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"realName"];
         [self.contentView addSubview:_nameLbl];
     }
     
@@ -63,7 +62,6 @@
         _desLbl.textColor = [UIColor whiteColor];
         _desLbl.textAlignment = NSTextAlignmentCenter;
         _desLbl.text = @"余额（元）";
-        
         [self.contentView addSubview:_desLbl];
     }
     
@@ -76,7 +74,6 @@
             NSUInteger property = [[[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"property"] intValue];
         _propertyLbl.text = [NSString stringWithFormat:@"%ld",property];
         }
-        
         [self.contentView addSubview:_propertyLbl];
     }
 }

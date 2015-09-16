@@ -51,7 +51,6 @@
         _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(100, 10, kScreenWidth - 130, 20)];
         _titleLbl.font = [UIFont systemFontOfSize:15.0f];
         _titleLbl.textColor = [UIColor blackColor];
-//        _titleLbl.text = @"财务软件记账宝正版代理记账软件";
         [self.contentView addSubview:_titleLbl];
     }
     
@@ -59,7 +58,6 @@
         _priceLbl = [[UILabel alloc] initWithFrame:CGRectMake(100, 50, kScreenWidth - 130, 30)];
         _priceLbl.textColor = [UIColor redColor];
         _priceLbl.font = [UIFont systemFontOfSize:18.0f];
-//        _priceLbl.text = @"￥260.00";
         [self.contentView addSubview:_priceLbl];
     }
     

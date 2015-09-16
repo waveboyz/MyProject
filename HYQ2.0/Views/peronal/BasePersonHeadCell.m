@@ -47,7 +47,7 @@
         _nameLbl.font = [UIFont systemFontOfSize:15.0];
         [self.contentView addSubview:_nameLbl];
     }
-    _nameLbl.text = [[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"username"];
+    _nameLbl.text = [[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"realName"];
  
     if (!_lineLbl) {
         _lineLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 80, kScreenWidth, 0.5)];
