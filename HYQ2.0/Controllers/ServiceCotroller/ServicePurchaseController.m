@@ -181,6 +181,7 @@
         [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
             NSLog(@"reslut = %@",resultDic);
             [self payStatusWithDic:resultDic];
+
         }];
     }
 }
@@ -193,22 +194,6 @@
     response.delegate = self;
     [response start];
 }
-
-//- (NSString *)generateTradeNO
-//{
-//    static int kNumber = 15;
-//    
-//    NSString *sourceStr = @"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-//    NSMutableString *resultStr = [[NSMutableString alloc] init];
-//    srand(time(0));
-//    for (int i = 0; i < kNumber; i++)
-//    {
-//        unsigned index = rand() % [sourceStr length];
-//        NSString *oneStr = [sourceStr substringWithRange:NSMakeRange(index, 1)];
-//        [resultStr appendString:oneStr];
-//    }
-//    return resultStr;
-//}
 
 //获得订单号
 - (void)getPayOrderOperation
@@ -350,7 +335,12 @@
 #pragma mark AliPayCallBackResponseDelegate
 - (void)getPayResult
 {
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        [self stopStateHud];
+        [self performSelectorOnMainThread:@selector(showStateHudWithText:) withObject:@"支付成功，请到我的订单查看！" waitUntilDone:YES];
 
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    });
 }
 
 #pragma mark DownSheetDelegate

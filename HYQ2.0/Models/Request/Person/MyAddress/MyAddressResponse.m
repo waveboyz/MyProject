@@ -51,7 +51,7 @@
 
 - (void)badNetWork
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(wrongOperationWithText:)]) {
+    if (![self.delegate isEqual:[NSNull null]] && [self.delegate respondsToSelector:@selector(wrongOperationWithText:)]) {
         [self.delegate wrongOperationWithText:@"网络不给力哦~"];
     }
 }

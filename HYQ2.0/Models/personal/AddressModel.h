@@ -20,7 +20,7 @@
 @property (nonatomic, copy) NSString *districtCode;
 @property (nonatomic, copy) NSString *companyName;
 @property (nonatomic, assign) NSNumber *linkPhone;
-@property (nonatomic, assign) NSNumber *tacitiy;
+@property (nonatomic, assign) BOOL      tacitiy;
 @property (nonatomic, assign) NSNumber *aid;
 
 @end

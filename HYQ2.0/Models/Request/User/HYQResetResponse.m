@@ -13,7 +13,21 @@
 - (id)initWithPhone:(NSString *)phone andWithPsw:(NSString *)password andWithVerCode:(NSString *)vercode
 {
     if (self = [super init]) {
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithCapacity:5];
         
+        if (phone) {
+            [dic setObject:phone forKey:@"phone"];
+        }
+        
+        if (password) {
+            [dic setObject:password forKey:@"newPwd"];
+        }
+        
+        if (vercode) {
+            [dic setObject:vercode forKey:@"yzm"];
+        }
+        
+        [self setUploadDictionary:dic];
     }
     
     return self;
@@ -26,7 +40,22 @@
 
 - (void)decodeJsonOperationWithObject:(id)responseObject
 {
-    NSLog(@"%@",responseObject);    
+    NSLog(@"%@",responseObject);
+    if (responseObject) {
+        if ([responseObject objectForKey:@"code"]) {
+            NSNumber *code = [responseObject objectForKey:@"code"];
+            if ([code integerValue] == 1) {
+                if (self.delegate && [self.delegate respondsToSelector:@selector(resetPswSucceed)]) {
+                    [self.delegate resetPswSucceed];
+                }
+            }else{
+                if (self.delegate && [self.delegate respondsToSelector:@selector(wrongOperationWithText:)]) {
+                    [self.delegate wrongOperationWithText:[responseObject objectForKey:@"msg"]];
+                }
+            }
+            
+        }
+    }
 }
 
 - (void)badNetWork

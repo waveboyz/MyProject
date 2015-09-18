@@ -17,4 +17,5 @@
 
 - (void)hideRegisterBoard;
 
+- (id)initWithSuggestNumber:(NSString *)suggestNum;
 @end

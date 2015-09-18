@@ -20,10 +20,10 @@
     HYQSendVerCodeResponseDelegate,
     HYQRegistResponseDelegate
 >
-@property (nonatomic, strong)    UITextField     *phoneTxt;
-@property (nonatomic, strong)    UITextField     *codeTxt;
-@property (nonatomic, strong)    UITextField     *resendTxt;
-@property (nonatomic, strong)    UITextField     *suggestTxt;
+@property (nonatomic, strong)    UITextField     *phoneTxt;         //注册手机
+@property (nonatomic, strong)    UITextField     *codeTxt;          //密码
+@property (nonatomic, strong)    UITextField     *resendTxt;        //验证码
+@property (nonatomic, strong)    UITextField     *suggestTxt;       //推荐人手机
 @property (nonatomic, strong)    UIButton        *getResendBtn;
 @property (nonatomic, strong)    UIScrollView    *bgView;
 @property (nonatomic, strong)    NSTimer         *captchaTimer;
@@ -33,16 +33,37 @@
 @property (nonatomic, copy)      NSString        *verCode;
 @property (nonatomic, copy)      NSString        *uid;
 @property (nonatomic, copy)      NSString        *sugPhone;
+@property (nonatomic, assign)    BOOL            IS_QRSCAN;
 
 @end
 
 @implementation HYQRegisterController
+
 
 - (void)hideRegisterBoard
 {
     [[[(AppDelegate *)[[UIApplication sharedApplication] delegate] window] rootViewController] dismissViewControllerAnimated:YES completion:^{
         
     }];
+}
+
+- (id)init
+{
+    if (self = [super init]) {
+        _IS_QRSCAN = NO;
+    }
+    
+    return self;
+}
+
+- (id)initWithSuggestNumber:(NSString *)suggestNum
+{
+    if (self = [super init]) {
+        _sugPhone = suggestNum;
+        _IS_QRSCAN = YES;
+    }
+    
+    return self;
 }
 
 - (void)viewDidLoad
@@ -72,6 +93,7 @@
     sugLbl.textColor = [UIColor whiteColor];
     sugLbl.font = [UIFont systemFontOfSize:13.0f];
     sugLbl.text = @"推荐人";
+    sugLbl.hidden = _IS_QRSCAN;
     [_bgView addSubview:sugLbl];
     
     _suggestTxt = [[UITextField alloc] initWithFrame:CGRectMake(60, 114, kScreenWidth - 80, 30)];
@@ -80,6 +102,7 @@
     _suggestTxt.font = [UIFont systemFontOfSize:13.0f];
     _suggestTxt.keyboardType = UIKeyboardTypePhonePad;
     _suggestTxt.delegate = self;
+    _suggestTxt.hidden = _IS_QRSCAN;
     [_bgView addSubview:_suggestTxt];
     
     UILabel *sepLbl = [[UILabel alloc] initWithFrame:CGRectMake(15, 154, kScreenWidth - 30, 1)];
@@ -201,8 +224,9 @@
     NSString *passwordValue = _codeTxt.text;
     NSString *phoneNumValue = _phoneTxt.text;
     NSString *verifyCodeValue = _resendTxt.text;
+    NSString *sugPhoneValue = _suggestTxt.text;
     
-    if (passwordValue && passwordValue.length > 0 && phoneNumValue && phoneNumValue.length > 0 && verifyCodeValue && verifyCodeValue.length > 0)
+    if (passwordValue && passwordValue.length > 0 && phoneNumValue && phoneNumValue.length > 0 && verifyCodeValue && verifyCodeValue.length > 0 )
     {
         //  密码正则检测：密码不得少于六个字符
         NSString *pwdRegex = @"^.{6,20}$";
@@ -238,7 +262,7 @@
             
             return;
             
-        } else if (![verCodePredicate evaluateWithObject:verifyCodeValue]) {
+        }else if (![verCodePredicate evaluateWithObject:verifyCodeValue]) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"验证码有误"
                                                             message:@"验证码为四位数字"
                                                            delegate:self
@@ -259,9 +283,7 @@
             
             [self registerOperation];
         }
-    }
-
-    else if (!passwordValue || passwordValue.length == 0) {
+    } else if (!passwordValue || passwordValue.length == 0) {
         
         [self showStateHudWithText:@"密码不能为空"];
         [_codeTxt becomeFirstResponder];
@@ -279,6 +301,21 @@
         [_resendTxt becomeFirstResponder];
         
         return;
+    }else if (sugPhoneValue && sugPhoneValue.length > 0){
+        //  手机号正则
+        NSString *mobileRegex = @"[1][34578][0-9]{9}";
+        NSPredicate *mobilePredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", mobileRegex];
+        if(![mobilePredicate evaluateWithObject:sugPhoneValue]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入正确的推荐人手机号码"
+                                                            message:@""
+                                                           delegate:self
+                                                  cancelButtonTitle:@"确定"
+                                                  otherButtonTitles:nil, nil];
+            alert.tag = 205;
+            [alert show];
+            
+            return;
+        }
     }
 }
 
@@ -304,8 +341,11 @@
     _phone = _phoneTxt.text;
     _pswMD5   = _codeTxt.text.md5;
     _verCode  = _resendTxt.text;
-    _sugPhone = _suggestTxt.text;
     
+    if (!_sugPhone) {
+        _sugPhone = _suggestTxt.text;
+    }
+
     HYQRegistResponse *response = [[HYQRegistResponse alloc] initWithPhone:_phone andWithCode:_pswMD5 andWithVerCode:_verCode andWithSPhone:_sugPhone];
     response.delegate = self;
     [response start];

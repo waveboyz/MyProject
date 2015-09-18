@@ -334,18 +334,22 @@
 #pragma mark HYQResetVerResponseDelegate
 - (void)sendVerCodeSucceed
 {
-    
+    [self stopStateHud];
+    [self showStateHudWithText:@"验证码发送成功"];
 }
 
 - (void)wrongOperationWithText:(NSString *)text
 {
-    
+    [self stopStateHud];
+    [self showStateHudWithText:text];
 }
 
 #pragma mark HYQResetResponseDelegate
 - (void)resetPswSucceed
 {
-
+    [self stopStateHud];
+    [self showStateHudWithText:@"密码重设成功！"];
+    [self performSelector:@selector(dismissSelf) withObject:nil afterDelay:1.5];
 }
 
 #pragma mark - UIAlertView Delegation
@@ -364,6 +368,11 @@
         [_resendTxt becomeFirstResponder];
         
     }
+}
+
+- (void)dismissSelf
+{
+    [self dismissViewControllerAnimated:YES completion:^(void){}];
 }
 
 @end

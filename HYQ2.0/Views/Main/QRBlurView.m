@@ -21,9 +21,11 @@
 
 @implementation QRBlurView
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithUrl:(NSString *)url andWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
+        self.frame = frame;
+        _QRUrl = url;
         [self createUI];
     }
     
@@ -32,20 +34,25 @@
 
 - (void)createUI
 {
+    NSLog(@"%@",_QRUrl);
+    self.backgroundColor = [UIColor whiteColor];
     NSDictionary *userInfo = [[HYQUserManager sharedUserManager] userInfo];
-    _avatarImg = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 -40, 20, 80, 80)];
+    _avatarImg = [[UIImageView alloc] initWithFrame:CGRectMake((kScreenWidth - 40)*0.5 - 40, 20, 80, 80)];
+    _avatarImg.layer.cornerRadius = CGRectGetWidth(_avatarImg.frame)/2;
     NSString *urlStr = [userInfo objectForKey:@"avatarUrl"];
     [_avatarImg sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:[UIImage imageNamed:@"avatar_placeholder"]];
     [self addSubview:_avatarImg];
 
-    _nameLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 -60, 120, 120, 30)];
+    _nameLbl = [[UILabel alloc] initWithFrame:CGRectMake((kScreenWidth - 40)* 0.5 -60, 120, 120, 30)];
     _nameLbl.font = [UIFont systemFontOfSize:17.0f];
     _nameLbl.textColor = [UIColor blackColor];
     _nameLbl.textAlignment = NSTextAlignmentCenter;
-    _nameLbl.text = [userInfo objectForKey:@"username"];
+    _nameLbl.text = [userInfo objectForKey:@"realName"];
     [self addSubview:_nameLbl];
     
-    _QRView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 -75, 180, 150, 150)];
+    _QRView = [[UIImageView alloc] initWithFrame:CGRectMake((kScreenWidth - 40)* 0.5 -75, 180, 150, 150)];
+    NSString *QRStr    = @"http://www.souqian.com/images/qrcode/zxing.png";
+    [_QRView sd_setImageWithURL:[NSURL URLWithString:QRStr] placeholderImage:nil];
     [self addSubview:_QRView];
 }
 

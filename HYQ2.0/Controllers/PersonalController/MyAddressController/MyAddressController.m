@@ -19,11 +19,12 @@
     MyAddressEditControllerDelegate
 >
 
-@property (nonatomic, strong) UITableView *tableview;
-@property (nonatomic, strong) UIButton      *addBtn;
-@property (nonatomic, retain) NSMutableArray *dataArr;
-@property (nonatomic, assign) NSUInteger    currentPage;
-@property (nonatomic, assign) NSIndexPath   *correctIndex;
+@property (nonatomic, strong) UITableView       *tableview;
+@property (nonatomic, strong) UIButton          *addBtn;
+@property (nonatomic, retain) NSMutableArray    *dataArr;
+@property (nonatomic, assign) NSUInteger        currentPage;
+@property (nonatomic, assign) NSIndexPath       *correctIndex;
+@property (nonatomic, strong) UISwitch          *if_default;
 
 @end
 
@@ -154,19 +155,30 @@
 }
 
 #pragma mark MyAddressAddControllerDelegate
-- (void)addAddressSucceedWithAddress:(AddressModel *)address
+//- (void)addAddressSucceedWithAddress:(AddressModel *)address
+//{
+//    [self.dataArr addObject:address];
+//    [self.tableview reloadData];
+//}
+- (void)addAddressSucceed
 {
-    [self.dataArr addObject:address];
-    [self.tableview reloadData];
+    [self.dataArr removeAllObjects];
+    [self getAddressOperation];
 }
 
 #pragma  mark MyAddressEditControllerDelegate
-- (void)correctAddressSucceedWith:(AddressModel *)address
+//- (void)correctAddressSucceedWith:(AddressModel *)address
+//{
+//    [_dataArr removeObjectAtIndex:_correctIndex.row];
+//    [_dataArr insertObject:address atIndex:_correctIndex.row];
+//    
+//    [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObjects:_correctIndex, nil] withRowAnimation:UITableViewRowAnimationAutomatic];
+//}
+
+- (void)correctAddressSucceed
 {
-    [_dataArr removeObjectAtIndex:_correctIndex.row];
-    [_dataArr insertObject:address atIndex:_correctIndex.row];
-    
-    [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObjects:_correctIndex, nil] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.dataArr removeAllObjects];
+    [self getAddressOperation];
 }
 
 - (void)deleteAddressSucceed

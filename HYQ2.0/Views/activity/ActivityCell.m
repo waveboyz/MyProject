@@ -42,7 +42,7 @@
     }
 
     if (!_imgPicture) {
-        _imgPicture = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 125, 5, 120, 80)];
+        _imgPicture = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 105, 5, 100, 80)];
         [self.contentView addSubview:_imgPicture];
     }
     
@@ -64,10 +64,17 @@
 - (void)setActivity:(ActivityModel *)activity
 {
     _activity = activity;
-    _titleLbl.text = _activity.title;
-    _desLbl.text = [NSString stringWithFormat:@"%@|%@",_activity.editor,_activity.time];
-    if (_activity.photo) {
-        NSString *str = [NSString stringWithFormat:@"%@%@",LOCAL_HOST,activity.photo];
+    if (![_activity.title isEqualToString:@""]) {
+            _titleLbl.text = _activity.title;
+    }
+    if (![_activity.editor isEqualToString:@""] && ![_activity.time isEqualToString:@""]) {
+        _desLbl.text = [NSString stringWithFormat:@"%@|%@",_activity.editor,_activity.time];
+    }
+
+    if (![_activity.photo isEqualToString:@""] && _activity.photo != nil) {
+        _imgPicture.hidden = NO;
+        _titleLbl.frame = CGRectMake(5, 5, kScreenWidth - 135, 50);
+        NSString *str = [NSString stringWithFormat:@"%@%@",IMAGE_HOST, activity.photo];
         [_imgPicture sd_setImageWithURL:[NSURL URLWithString:str] placeholderImage:[UIImage imageNamed:@"product_placeholder"]];
     }else{
         _imgPicture.hidden = YES;

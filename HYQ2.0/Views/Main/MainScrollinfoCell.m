@@ -67,7 +67,7 @@
 
 - (void)setupTimer
 {
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:3
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:5
                                                       target:self
                                                     selector:@selector(automaticScroll)
                                                     userInfo:nil

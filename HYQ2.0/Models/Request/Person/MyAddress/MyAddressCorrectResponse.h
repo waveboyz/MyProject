@@ -12,10 +12,10 @@
  */
 @protocol MyAddressCorrectResponseDelegate <NSObject>
 
-- (void)correctSucceedWith:(NSNumber *)aid;
-
 @optional
+- (void)correctSucceedWith:(NSNumber *)aid;
 - (void)wrongOperationWithText:(NSString *)text;
+- (void)correctSucceed;
 
 @end
 
@@ -30,6 +30,6 @@
          andWithProvince:(NSString *)province
                  andCity:(NSString *)city
                 andState:(NSString *)state
-               andTacity:(NSUInteger)tacity
+               andTacity:(NSNumber *)tacity
                  andWithAid:(NSString *)aid;
 @end

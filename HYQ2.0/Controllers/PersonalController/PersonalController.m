@@ -14,6 +14,7 @@
 #import "MyCollectController.h"
 #import "MyAddressController.h"
 #import "HYQEditController.h"
+#import "HYQBaseWebController.h"
 #import "HYQUserManager.h"
 
 @interface PersonalController ()
@@ -216,9 +217,23 @@
     }
     
     if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            NSDictionary *userinfo = [[HYQUserManager sharedUserManager] userInfo];
+            NSNumber *uid = [userinfo objectForKey:@"uid"];
+            HYQBaseWebController *bankVC = [[HYQBaseWebController alloc] initWithUrl:[NSString stringWithFormat:@"%@%@",BANK_BASE_URL,[uid stringValue]]    andWithTitle:@"提现"];
+            
+            [self.navigationController pushViewController:bankVC animated:YES];
+        }
         if (indexPath.row == 1) {
             MyPaymentController *paymentVC = [[MyPaymentController alloc] init];
             [self.navigationController pushViewController:paymentVC animated:YES];
+        }
+        if (indexPath.row == 2) {
+            NSDictionary *userinfo = [[HYQUserManager sharedUserManager] userInfo];
+            NSNumber *uid = [userinfo objectForKey:@"uid"];
+            HYQBaseWebController *bankVC = [[HYQBaseWebController alloc] initWithUrl:[NSString stringWithFormat:@"%@%@",SIGNIN_BASE_URL,[uid stringValue]]    andWithTitle:@"提现"];
+            
+            [self.navigationController pushViewController:bankVC animated:YES];
         }
         if (indexPath.row == 3) {
             MYDiscountController *discountVC = [[MYDiscountController alloc] init];

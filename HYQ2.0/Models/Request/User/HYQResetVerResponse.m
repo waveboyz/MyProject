@@ -42,10 +42,6 @@
                 if (self.delegate && [self.delegate respondsToSelector:@selector(sendVerCodeSucceed)]) {
                     [self.delegate sendVerCodeSucceed];
                 }
-                
-                if (self.delegate && [self.delegate respondsToSelector:@selector(wrongOperationWithText:)]) {
-                    [self.delegate wrongOperationWithText:[responseObject objectForKey:@"msg"]];
-                }
             }else{
                 if (self.delegate && [self.delegate respondsToSelector:@selector(wrongOperationWithText:)]) {
                     [self.delegate wrongOperationWithText:[responseObject objectForKey:@"msg"]];

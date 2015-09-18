@@ -9,15 +9,18 @@
 #import "ServiceAddressPickController.h"
 #import "MyAddressCell.h"
 #import "AddressModel.h"
+#import "MyAddressAddController.h"
 
 @interface ServiceAddressPickController ()
 <
     UITableViewDataSource,
-    UITableViewDelegate
+    UITableViewDelegate,
+    MyAddressAddControllerDelegate
 >
 
-@property (nonatomic, retain)   NSMutableArray *dataArr;
-@property (nonatomic, strong)   UITableView     *tableview;
+@property (nonatomic, retain)   NSMutableArray      *dataArr;
+@property (nonatomic, strong)   UITableView         *tableview;
+@property (nonatomic, strong)   UIButton            *addBtn;
 
 @end
 
@@ -39,12 +42,27 @@
 
 - (void)createUI
 {
-    _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
+    _addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_addBtn setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.5]];
+    _addBtn.frame = CGRectMake(0, kScreenHeight - 60, kScreenWidth, 60);
+    [_addBtn setTitle:@"添加新地址" forState:UIControlStateNormal];
+    [_addBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [_addBtn addTarget:self action:@selector(addNewAddress) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_addBtn];
+    
+    _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 124) style:UITableViewStylePlain];
     _tableview.delegate = self;
     _tableview.dataSource = self;
     _tableview.backgroundColor = BG_GRAY_COLOR;
     _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableview];
+}
+
+- (void)addNewAddress
+{
+    MyAddressAddController *addVC = [[MyAddressAddController alloc] init];
+    addVC.delegate = self;
+    [self.navigationController pushViewController:addVC animated:YES];
 }
 
 #pragma mark UITableViewDataSource
@@ -80,6 +98,13 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 80.5f;
+}
+
+#pragma mark MyAddressAddControllerDelegate
+- (void)addAddressSucceedWithAddress:(AddressModel *)address
+{
+    [self.dataArr addObject:address];
+    [self.tableview reloadData];
 }
 
 @end

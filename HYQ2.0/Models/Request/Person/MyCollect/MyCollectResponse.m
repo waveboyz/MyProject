@@ -34,7 +34,7 @@
         if ([responseObject objectForKey:@"favorites"]) {
             NSArray *arr = [responseObject objectForKey:@"favorites"];
             NSMutableArray *modelArr = [CollectModel objectArrayWithKeyValuesArray:arr];
-            if (self.delegate && [self.delegate respondsToSelector:@selector(getCollectListWithArray:)]) {
+            if (![self.delegate isEqual:[NSNull null]] && [self.delegate respondsToSelector:@selector(getCollectListWithArray:)]) {
                 [self.delegate getCollectListWithArray:modelArr];
             }
         }

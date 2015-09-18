@@ -161,7 +161,7 @@ HYQLoginResponseDelegate
     [_resetPWDLbl setTitle:@"忘记密码？" forState:UIControlStateNormal];
     _resetPWDLbl.titleLabel.font = [UIFont systemFontOfSize:15.0f];
     [_resetPWDLbl addTarget:self action:@selector(resetPWDPressed) forControlEvents:UIControlEventTouchUpInside];
-    _resetPWDLbl.titleLabel.textAlignment = NSTextAlignmentLeft;
+    _resetPWDLbl.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [_bgView addSubview:_resetPWDLbl];
     
     //隐藏键盘手势

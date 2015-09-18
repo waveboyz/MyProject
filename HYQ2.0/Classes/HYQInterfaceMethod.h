@@ -96,5 +96,7 @@ extern NSString *const EXCELLENT_OPEN_INTERFACE;
 extern NSString *const GET_PAYORDER_INTERFACE;
 //支付宝回调
 extern NSString *const ALIPAY_CALLBACK_INTERFACE;
+//提现接口
+extern NSString *const  BANK_WITHDRAW_INTERFACE;
 
 @end

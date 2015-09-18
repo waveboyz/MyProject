@@ -62,22 +62,27 @@
 {
     _address = address;
     
-    _nameLbl.text = _address.linkman;
-    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:_nameLbl.text];
-    NSRange range = NSMakeRange(0, attStr.length);
-    [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15.0f] range:range];
-    CGRect rect = [attStr boundingRectWithSize:CGSizeMake(120, 20) options:NSStringDrawingUsesFontLeading context:nil];
-    _nameLbl.frame = CGRectMake(10, 10, rect.size.width, 20);
+    if (![_address.linkman isEqualToString:@""]) {
+        _nameLbl.text = _address.linkman;
+        NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:_nameLbl.text];
+        NSRange range = NSMakeRange(0, attStr.length);
+        [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15.0f] range:range];
+        CGRect rect = [attStr boundingRectWithSize:CGSizeMake(120, 20) options:NSStringDrawingUsesFontLeading context:nil];
+        _nameLbl.frame = CGRectMake(10, 10, rect.size.width, 20);
+    }
+
+    if (_address.linkPhone != nil) {
+        _phoneLbl.text = [_address.linkPhone stringValue];
+        NSMutableAttributedString *phoneAtt = [[NSMutableAttributedString alloc] initWithString:_phoneLbl.text];
+        NSRange phoneRange = NSMakeRange(0, phoneAtt.length);
+        [phoneAtt addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15.0f] range:phoneRange];
+        CGRect phoneRect = [phoneAtt boundingRectWithSize:CGSizeMake(120, 20) options:NSStringDrawingUsesFontLeading context:nil];
+        _phoneLbl.frame = CGRectMake(kScreenWidth - phoneRect.size.width - 40, 10, phoneRect.size.width, 20);
+    }
     
-    _phoneLbl.text = [_address.linkPhone stringValue];
-    NSMutableAttributedString *phoneAtt = [[NSMutableAttributedString alloc] initWithString:_phoneLbl.text];
-    NSRange phoneRange = NSMakeRange(0, phoneAtt.length);
-    [phoneAtt addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15.0f] range:phoneRange];
-    CGRect phoneRect = [phoneAtt boundingRectWithSize:CGSizeMake(120, 20) options:NSStringDrawingUsesFontLeading context:nil];
-    _phoneLbl.frame = CGRectMake(kScreenWidth - phoneRect.size.width - 40, 10, phoneRect.size.width, 20);
-    
-    
-    _addLbl.text = [NSString stringWithFormat:@"%@  %@  %@  %@",_address.province,_address.city,_address.district,_address.address];
+    if (_address.province && _address.city && _address.district &&_address.address) {
+            _addLbl.text = [NSString stringWithFormat:@"%@  %@  %@  %@",_address.province,_address.city,_address.district,_address.address];
+    }
 }
 
 @end

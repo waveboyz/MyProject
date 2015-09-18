@@ -14,9 +14,18 @@
 {
     if (self = [super init]) {
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithCapacity:4];
-        [dic setObject:tradeNO forKey:@"out_trade_no"];
-        [dic setObject:tradeStatus forKey:@"trade_status"];
-        [dic setObject:result forKey:@"result"];
+        if (tradeNO) {
+            [dic setObject:tradeNO forKey:@"out_trade_no"];
+        }
+        
+        if (tradeStatus) {
+            [dic setObject:tradeStatus forKey:@"trade_status"];
+        }
+
+        if (result) {
+            [dic setObject:result forKey:@"result"];
+        }
+
         [self setUploadDictionary:dic];
     }
     
@@ -28,7 +37,9 @@
     NSLog(@"%@",responseObject);
     if (responseObject) {
         if ([[responseObject objectForKey:@"code"] integerValue] == 1) {
-            
+            if (self.delegate && [self.delegate respondsToSelector:@selector(getPayResult)]) {
+                [self.delegate getPayResult];
+            }
         }else{
             if (self.delegate && [self.delegate respondsToSelector:@selector(wrongOperationWithText:)]) {
                 [self.delegate wrongOperationWithText:[responseObject objectForKey:@"msg"]];

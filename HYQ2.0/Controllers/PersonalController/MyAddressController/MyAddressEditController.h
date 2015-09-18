@@ -14,9 +14,10 @@
 @protocol MyAddressEditControllerDelegate <NSObject>
 
 //返回修改地址对象
-- (void)correctAddressSucceedWith:(AddressModel *)address;
 
 @optional
+- (void)correctAddressSucceedWith:(AddressModel *)address;
+- (void)correctAddressSucceed;
 - (void)deleteAddressSucceed;
 
 @end

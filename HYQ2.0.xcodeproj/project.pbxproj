@@ -8,10 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		82D6BBB41B65C3EE00B1B54B /* HYQ2_0Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D6BBB31B65C3EE00B1B54B /* HYQ2_0Tests.m */; };
+		C4593E2F1BA9448600879DE5 /* MyBankWithdrawController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4593E2E1BA9448600879DE5 /* MyBankWithdrawController.m */; };
+		C4593E331BA944AD00879DE5 /* MyBankWithDrawResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C4593E321BA944AD00879DE5 /* MyBankWithDrawResponse.m */; };
+		C467280F1BAB108600EADB23 /* default_no.png in Resources */ = {isa = PBXBuildFile; fileRef = C467280D1BAB108600EADB23 /* default_no.png */; settings = {ASSET_TAGS = (); }; };
+		C46728101BAB108600EADB23 /* default_yes.png in Resources */ = {isa = PBXBuildFile; fileRef = C467280E1BAB108600EADB23 /* default_yes.png */; settings = {ASSET_TAGS = (); }; };
 		C46A0EAD1BA6A65A00EFFD76 /* introview1@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C46A0EAA1BA6A65A00EFFD76 /* introview1@3x.jpg */; };
 		C46A0EAE1BA6A65A00EFFD76 /* introview2@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C46A0EAB1BA6A65A00EFFD76 /* introview2@3x.jpg */; };
 		C46A0EAF1BA6A65A00EFFD76 /* introview3@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C46A0EAC1BA6A65A00EFFD76 /* introview3@3x.jpg */; };
 		C46D5CF31BA81D270052F083 /* HYQResetVerResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C46D5CF21BA81D270052F083 /* HYQResetVerResponse.m */; };
+		C4715B971BAA60B20042ABE8 /* backIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4715B961BAA60B20042ABE8 /* backIcon@2x.png */; };
 		C47CDBB01BA7ACFE00214478 /* ServicePayOrderResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C47CDBAF1BA7ACFE00214478 /* ServicePayOrderResponse.m */; };
 		C47CDBB31BA7AEAF00214478 /* AliPayCallBackResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C47CDBB21BA7AEAF00214478 /* AliPayCallBackResponse.m */; };
 		C486B5441B9FC0210072A7F4 /* QRBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = C486B5431B9FC0210072A7F4 /* QRBlurView.m */; };
@@ -143,9 +148,6 @@
 		C48B698A1B9EAD5500AB0DA5 /* ServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B67F61B9EAD5500AB0DA5 /* ServiceController.m */; };
 		C48B698B1B9EAD5500AB0DA5 /* ServiceDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B67F81B9EAD5500AB0DA5 /* ServiceDetailController.m */; };
 		C48B698C1B9EAD5500AB0DA5 /* ServicePurchaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B67FA1B9EAD5500AB0DA5 /* ServicePurchaseController.m */; };
-		C48B698D1B9EAD5500AB0DA5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C48B67FB1B9EAD5500AB0DA5 /* Images.xcassets */; };
-		C48B698E1B9EAD5500AB0DA5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C48B67FC1B9EAD5500AB0DA5 /* Info.plist */; };
-		C48B698F1B9EAD5500AB0DA5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B67FD1B9EAD5500AB0DA5 /* main.m */; };
 		C48B69901B9EAD5500AB0DA5 /* ActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B68011B9EAD5500AB0DA5 /* ActivityModel.m */; };
 		C48B69911B9EAD5500AB0DA5 /* ActivityTitleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B68031B9EAD5500AB0DA5 /* ActivityTitleModel.m */; };
 		C48B69921B9EAD5500AB0DA5 /* BannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B68061B9EAD5500AB0DA5 /* BannerModel.m */; };
@@ -184,8 +186,6 @@
 		C48B69B31B9EAD5500AB0DA5 /* HYQSendVerCodeResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B68561B9EAD5500AB0DA5 /* HYQSendVerCodeResponse.m */; };
 		C48B69B41B9EAD5500AB0DA5 /* ServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B68591B9EAD5500AB0DA5 /* ServiceModel.m */; };
 		C48B69B51B9EAD5500AB0DA5 /* ServiceTitleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B685B1B9EAD5500AB0DA5 /* ServiceTitleModel.m */; };
-		C48B69B61B9EAD5500AB0DA5 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C48B685D1B9EAD5500AB0DA5 /* AlipaySDK.bundle */; };
-		C48B69B71B9EAD5500AB0DA5 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C48B685E1B9EAD5500AB0DA5 /* AlipaySDK.framework */; };
 		C48B69B81B9EAD5500AB0DA5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B68601B9EAD5500AB0DA5 /* AppDelegate.m */; };
 		C48B69B91B9EAD5500AB0DA5 /* banner_placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C48B68631B9EAD5500AB0DA5 /* banner_placeholder@2x.png */; };
 		C48B69BA1B9EAD5500AB0DA5 /* excellent_plan.png in Resources */ = {isa = PBXBuildFile; fileRef = C48B68651B9EAD5500AB0DA5 /* excellent_plan.png */; };
@@ -277,7 +277,6 @@
 		C48B6A151B9EAD5500AB0DA5 /* PurchaseHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B690B1B9EAD5500AB0DA5 /* PurchaseHeaderCell.m */; };
 		C48B6A161B9EAD5500AB0DA5 /* PurchaseSecondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B690D1B9EAD5500AB0DA5 /* PurchaseSecondCell.m */; };
 		C48B6A171B9EAD5500AB0DA5 /* ServiceViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B690F1B9EAD5500AB0DA5 /* ServiceViewCell.m */; };
-		C4E7CB251BA181B700934244 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4E7CB241BA181B700934244 /* LaunchScreen.xib */; };
 		C4E7CB291BA1821400934244 /* welcome@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4E7CB261BA1821400934244 /* welcome@2x.png */; };
 		C4E7CB2A1BA1821400934244 /* welcome@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4E7CB271BA1821400934244 /* welcome@3x.png */; };
 		C4E7CB2B1BA1821400934244 /* welcome.png in Resources */ = {isa = PBXBuildFile; fileRef = C4E7CB281BA1821400934244 /* welcome.png */; };
@@ -293,6 +292,12 @@
 		C4E8F0061BA2B29A008E45D1 /* RSADataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E8EFFE1BA2B29A008E45D1 /* RSADataVerifier.m */; };
 		C4E8F0091BA2B43E008E45D1 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E8F0071BA2B43E008E45D1 /* libcrypto.a */; };
 		C4E8F00A1BA2B43E008E45D1 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E8F0081BA2B43E008E45D1 /* libssl.a */; };
+		C4FD7FBD1BAA864200F03039 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C4FD7FBA1BAA864200F03039 /* main.m */; settings = {ASSET_TAGS = (); }; };
+		C4FD7FC11BAA86AF00F03039 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4FD7FBE1BAA86AF00F03039 /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
+		C4FD7FC21BAA86AF00F03039 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4FD7FBF1BAA86AF00F03039 /* Info.plist */; settings = {ASSET_TAGS = (); }; };
+		C4FD7FC31BAA86AF00F03039 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4FD7FC01BAA86AF00F03039 /* LaunchScreen.xib */; settings = {ASSET_TAGS = (); }; };
+		C4FD7FC61BAA9D6300F03039 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C4FD7FC41BAA9D6300F03039 /* AlipaySDK.bundle */; settings = {ASSET_TAGS = (); }; };
+		C4FD7FC71BAA9D6300F03039 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4FD7FC51BAA9D6300F03039 /* AlipaySDK.framework */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -310,11 +315,18 @@
 		82D6BBAD1B65C3EE00B1B54B /* HYQ2.0Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HYQ2.0Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D6BBB21B65C3EE00B1B54B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82D6BBB31B65C3EE00B1B54B /* HYQ2_0Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYQ2_0Tests.m; sourceTree = "<group>"; };
+		C4593E2D1BA9448600879DE5 /* MyBankWithdrawController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBankWithdrawController.h; sourceTree = "<group>"; };
+		C4593E2E1BA9448600879DE5 /* MyBankWithdrawController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBankWithdrawController.m; sourceTree = "<group>"; };
+		C4593E311BA944AD00879DE5 /* MyBankWithDrawResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBankWithDrawResponse.h; sourceTree = "<group>"; };
+		C4593E321BA944AD00879DE5 /* MyBankWithDrawResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBankWithDrawResponse.m; sourceTree = "<group>"; };
+		C467280D1BAB108600EADB23 /* default_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_no.png; sourceTree = "<group>"; };
+		C467280E1BAB108600EADB23 /* default_yes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_yes.png; sourceTree = "<group>"; };
 		C46A0EAA1BA6A65A00EFFD76 /* introview1@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "introview1@3x.jpg"; sourceTree = "<group>"; };
 		C46A0EAB1BA6A65A00EFFD76 /* introview2@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "introview2@3x.jpg"; sourceTree = "<group>"; };
 		C46A0EAC1BA6A65A00EFFD76 /* introview3@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "introview3@3x.jpg"; sourceTree = "<group>"; };
 		C46D5CF11BA81D270052F083 /* HYQResetVerResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYQResetVerResponse.h; sourceTree = "<group>"; };
 		C46D5CF21BA81D270052F083 /* HYQResetVerResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYQResetVerResponse.m; sourceTree = "<group>"; };
+		C4715B961BAA60B20042ABE8 /* backIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backIcon@2x.png"; sourceTree = "<group>"; };
 		C47CDBAE1BA7ACFE00214478 /* ServicePayOrderResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicePayOrderResponse.h; sourceTree = "<group>"; };
 		C47CDBAF1BA7ACFE00214478 /* ServicePayOrderResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicePayOrderResponse.m; sourceTree = "<group>"; };
 		C47CDBB11BA7AEAF00214478 /* AliPayCallBackResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliPayCallBackResponse.h; sourceTree = "<group>"; };
@@ -579,9 +591,6 @@
 		C48B67F81B9EAD5500AB0DA5 /* ServiceDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceDetailController.m; sourceTree = "<group>"; };
 		C48B67F91B9EAD5500AB0DA5 /* ServicePurchaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicePurchaseController.h; sourceTree = "<group>"; };
 		C48B67FA1B9EAD5500AB0DA5 /* ServicePurchaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicePurchaseController.m; sourceTree = "<group>"; };
-		C48B67FB1B9EAD5500AB0DA5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C48B67FC1B9EAD5500AB0DA5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C48B67FD1B9EAD5500AB0DA5 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C48B68001B9EAD5500AB0DA5 /* ActivityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityModel.h; sourceTree = "<group>"; };
 		C48B68011B9EAD5500AB0DA5 /* ActivityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityModel.m; sourceTree = "<group>"; };
 		C48B68021B9EAD5500AB0DA5 /* ActivityTitleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTitleModel.h; sourceTree = "<group>"; };
@@ -658,8 +667,6 @@
 		C48B68591B9EAD5500AB0DA5 /* ServiceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceModel.m; sourceTree = "<group>"; };
 		C48B685A1B9EAD5500AB0DA5 /* ServiceTitleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceTitleModel.h; sourceTree = "<group>"; };
 		C48B685B1B9EAD5500AB0DA5 /* ServiceTitleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceTitleModel.m; sourceTree = "<group>"; };
-		C48B685D1B9EAD5500AB0DA5 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
-		C48B685E1B9EAD5500AB0DA5 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		C48B685F1B9EAD5500AB0DA5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C48B68601B9EAD5500AB0DA5 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C48B68631B9EAD5500AB0DA5 /* banner_placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner_placeholder@2x.png"; sourceTree = "<group>"; };
@@ -800,7 +807,6 @@
 		C48B690D1B9EAD5500AB0DA5 /* PurchaseSecondCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseSecondCell.m; sourceTree = "<group>"; };
 		C48B690E1B9EAD5500AB0DA5 /* ServiceViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceViewCell.h; sourceTree = "<group>"; };
 		C48B690F1B9EAD5500AB0DA5 /* ServiceViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceViewCell.m; sourceTree = "<group>"; };
-		C4E7CB241BA181B700934244 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		C4E7CB261BA1821400934244 /* welcome@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome@2x.png"; sourceTree = "<group>"; };
 		C4E7CB271BA1821400934244 /* welcome@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome@3x.png"; sourceTree = "<group>"; };
 		C4E7CB281BA1821400934244 /* welcome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome.png; sourceTree = "<group>"; };
@@ -901,6 +907,12 @@
 		C4E8F0541BA2B455008E45D1 /* x509.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x509.h; sourceTree = "<group>"; };
 		C4E8F0551BA2B455008E45D1 /* x509_vfy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x509_vfy.h; sourceTree = "<group>"; };
 		C4E8F0561BA2B455008E45D1 /* x509v3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x509v3.h; sourceTree = "<group>"; };
+		C4FD7FBA1BAA864200F03039 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C4FD7FBE1BAA86AF00F03039 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C4FD7FBF1BAA86AF00F03039 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4FD7FC01BAA86AF00F03039 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		C4FD7FC41BAA9D6300F03039 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		C4FD7FC51BAA9D6300F03039 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -909,8 +921,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4E8F00A1BA2B43E008E45D1 /* libssl.a in Frameworks */,
+				C4FD7FC71BAA9D6300F03039 /* AlipaySDK.framework in Frameworks */,
 				C48B69551B9EAD5500AB0DA5 /* libUMSocial_Sdk_4.2.3.a in Frameworks */,
-				C48B69B71B9EAD5500AB0DA5 /* AlipaySDK.framework in Frameworks */,
 				C4E8F0091BA2B43E008E45D1 /* libcrypto.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -960,15 +972,33 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C4593E2C1BA9447B00879DE5 /* MyBankController */ = {
+			isa = PBXGroup;
+			children = (
+				C4593E2D1BA9448600879DE5 /* MyBankWithdrawController.h */,
+				C4593E2E1BA9448600879DE5 /* MyBankWithdrawController.m */,
+			);
+			path = MyBankController;
+			sourceTree = "<group>";
+		};
+		C4593E301BA944A500879DE5 /* MyBank */ = {
+			isa = PBXGroup;
+			children = (
+				C4593E311BA944AD00879DE5 /* MyBankWithDrawResponse.h */,
+				C4593E321BA944AD00879DE5 /* MyBankWithDrawResponse.m */,
+			);
+			path = MyBank;
+			sourceTree = "<group>";
+		};
 		C48B66D21B9EAD5500AB0DA5 /* HYQ2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				C4FD7FBE1BAA86AF00F03039 /* Images.xcassets */,
+				C4FD7FBF1BAA86AF00F03039 /* Info.plist */,
+				C4FD7FC01BAA86AF00F03039 /* LaunchScreen.xib */,
 				C48B66D31B9EAD5500AB0DA5 /* 3rdLibs */,
 				C48B67901B9EAD5500AB0DA5 /* Classes */,
 				C48B679C1B9EAD5500AB0DA5 /* Controllers */,
-				C48B67FB1B9EAD5500AB0DA5 /* Images.xcassets */,
-				C48B67FC1B9EAD5500AB0DA5 /* Info.plist */,
-				C48B67FD1B9EAD5500AB0DA5 /* main.m */,
 				C48B67FE1B9EAD5500AB0DA5 /* Models */,
 				C48B685C1B9EAD5500AB0DA5 /* Others */,
 				C48B68611B9EAD5500AB0DA5 /* Resources */,
@@ -1446,6 +1476,7 @@
 		C48B67C61B9EAD5500AB0DA5 /* PersonalController */ = {
 			isa = PBXGroup;
 			children = (
+				C4593E2C1BA9447B00879DE5 /* MyBankController */,
 				C48B67C71B9EAD5500AB0DA5 /* EditPersonal */,
 				C48B67CE1B9EAD5500AB0DA5 /* ForgotPwdVC */,
 				C48B67D11B9EAD5500AB0DA5 /* LoginVC */,
@@ -1673,6 +1704,7 @@
 		C48B68221B9EAD5500AB0DA5 /* Person */ = {
 			isa = PBXGroup;
 			children = (
+				C4593E301BA944A500879DE5 /* MyBank */,
 				C48B68231B9EAD5500AB0DA5 /* MyAddress */,
 				C48B682A1B9EAD5500AB0DA5 /* MyCollect */,
 				C48B68311B9EAD5500AB0DA5 /* MyDiscount */,
@@ -1805,13 +1837,13 @@
 		C48B685C1B9EAD5500AB0DA5 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				C4FD7FC41BAA9D6300F03039 /* AlipaySDK.bundle */,
+				C4FD7FC51BAA9D6300F03039 /* AlipaySDK.framework */,
+				C4FD7FBA1BAA864200F03039 /* main.m */,
 				C4E8F0071BA2B43E008E45D1 /* libcrypto.a */,
 				C4E8F0081BA2B43E008E45D1 /* libssl.a */,
-				C48B685D1B9EAD5500AB0DA5 /* AlipaySDK.bundle */,
-				C48B685E1B9EAD5500AB0DA5 /* AlipaySDK.framework */,
 				C48B685F1B9EAD5500AB0DA5 /* AppDelegate.h */,
 				C48B68601B9EAD5500AB0DA5 /* AppDelegate.m */,
-				C4E7CB241BA181B700934244 /* LaunchScreen.xib */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -1908,6 +1940,8 @@
 		C48B68841B9EAD5500AB0DA5 /* person */ = {
 			isa = PBXGroup;
 			children = (
+				C467280D1BAB108600EADB23 /* default_no.png */,
+				C467280E1BAB108600EADB23 /* default_yes.png */,
 				C48B68851B9EAD5500AB0DA5 /* bg@2x.png */,
 				C48B68861B9EAD5500AB0DA5 /* closeWindow@2x.png */,
 				C48B68871B9EAD5500AB0DA5 /* edit@2x.png */,
@@ -1939,6 +1973,7 @@
 		C48B68901B9EAD5500AB0DA5 /* service */ = {
 			isa = PBXGroup;
 			children = (
+				C4715B961BAA60B20042ABE8 /* backIcon@2x.png */,
 				C4E8EF821BA2AB4A008E45D1 /* aliIcon@2x.png */,
 				C48B68911B9EAD5500AB0DA5 /* collect_icon@2x.png */,
 				C48B68921B9EAD5500AB0DA5 /* heart_collect@2x.png */,
@@ -2410,11 +2445,12 @@
 			files = (
 				C48B69DA1B9EAD5500AB0DA5 /* unused_ticket.png in Resources */,
 				C46A0EAD1BA6A65A00EFFD76 /* introview1@3x.jpg in Resources */,
+				C467280F1BAB108600EADB23 /* default_no.png in Resources */,
 				C48B69CB1B9EAD5500AB0DA5 /* main_icon1@2x.png in Resources */,
 				C48B69C61B9EAD5500AB0DA5 /* codeGetIcon.png in Resources */,
-				C48B698E1B9EAD5500AB0DA5 /* Info.plist in Resources */,
 				C48B69BA1B9EAD5500AB0DA5 /* excellent_plan.png in Resources */,
 				C4E8EF831BA2AB4A008E45D1 /* aliIcon@2x.png in Resources */,
+				C4FD7FC61BAA9D6300F03039 /* AlipaySDK.bundle in Resources */,
 				C48B69BB1B9EAD5500AB0DA5 /* plan_icon1@2x.png in Resources */,
 				C48B69DC1B9EAD5500AB0DA5 /* Address.plist in Resources */,
 				C48B69DE1B9EAD5500AB0DA5 /* collect_icon@2x.png in Resources */,
@@ -2424,17 +2460,21 @@
 				C46A0EAE1BA6A65A00EFFD76 /* introview2@3x.jpg in Resources */,
 				C48B69D81B9EAD5500AB0DA5 /* edit_presonProfile@2x.png in Resources */,
 				C48B69E01B9EAD5500AB0DA5 /* product_placeholder.png in Resources */,
+				C4FD7FC11BAA86AF00F03039 /* Images.xcassets in Resources */,
 				C48B69BC1B9EAD5500AB0DA5 /* plan_icon2@2x.png in Resources */,
 				C46A0EAF1BA6A65A00EFFD76 /* introview3@3x.jpg in Resources */,
 				C4E7CB2A1BA1821400934244 /* welcome@3x.png in Resources */,
 				C48B695C1B9EAD5500AB0DA5 /* UMSnsAccountViewController.xib in Resources */,
+				C4FD7FC31BAA86AF00F03039 /* LaunchScreen.xib in Resources */,
 				C48B69C01B9EAD5500AB0DA5 /* comment@2x.png in Resources */,
 				C48B69D91B9EAD5500AB0DA5 /* enable_ticket.png in Resources */,
+				C4FD7FC21BAA86AF00F03039 /* Info.plist in Resources */,
 				C48B69571B9EAD5500AB0DA5 /* UMSCommentInputController.xib in Resources */,
 				C48B69561B9EAD5500AB0DA5 /* UMSCommentDetailController.xib in Resources */,
 				C48B69C91B9EAD5500AB0DA5 /* avatar_placeholder@2x.png in Resources */,
 				C4E7CB2B1BA1821400934244 /* welcome.png in Resources */,
 				C48B69E61B9EAD5500AB0DA5 /* service_tab@2x.png in Resources */,
+				C46728101BAB108600EADB23 /* default_yes.png in Resources */,
 				C48B69DD1B9EAD5500AB0DA5 /* URLS.plist in Resources */,
 				C48B69E11B9EAD5500AB0DA5 /* star_click@2x.png in Resources */,
 				C48B691C1B9EAD5500AB0DA5 /* Zan.png in Resources */,
@@ -2442,17 +2482,14 @@
 				C48B69D41B9EAD5500AB0DA5 /* scan_icon@2x.png in Resources */,
 				C48B69DB1B9EAD5500AB0DA5 /* Activity.plist in Resources */,
 				C48B69CF1B9EAD5500AB0DA5 /* mainPage.png in Resources */,
-				C48B69B61B9EAD5500AB0DA5 /* AlipaySDK.bundle in Resources */,
 				C48B69D61B9EAD5500AB0DA5 /* closeWindow@2x.png in Resources */,
 				C48B69E41B9EAD5500AB0DA5 /* information_tab@2x.png in Resources */,
 				C48B69E51B9EAD5500AB0DA5 /* plan_tab@2x.png in Resources */,
 				C48B691B1B9EAD5500AB0DA5 /* UnZan.png in Resources */,
-				C4E7CB251BA181B700934244 /* LaunchScreen.xib in Resources */,
 				C48B69D51B9EAD5500AB0DA5 /* bg@2x.png in Resources */,
 				C48B69B91B9EAD5500AB0DA5 /* banner_placeholder@2x.png in Resources */,
 				C48B69C21B9EAD5500AB0DA5 /* skip_icon.png in Resources */,
 				C48B69BD1B9EAD5500AB0DA5 /* plan_icon3@2x.png in Resources */,
-				C48B698D1B9EAD5500AB0DA5 /* Images.xcassets in Resources */,
 				C48B69E21B9EAD5500AB0DA5 /* star_unclick@2x.png in Resources */,
 				C48B695E1B9EAD5500AB0DA5 /* UMSocialSDKResourcesNew.bundle in Resources */,
 				C48B69581B9EAD5500AB0DA5 /* UMSCommentInputControlleriPad.xib in Resources */,
@@ -2469,6 +2506,7 @@
 				C48B691A1B9EAD5500AB0DA5 /* EffectImage.png in Resources */,
 				C48B69BE1B9EAD5500AB0DA5 /* plan_icon4@2x.png in Resources */,
 				C4E7CB291BA1821400934244 /* welcome@2x.png in Resources */,
+				C4715B971BAA60B20042ABE8 /* backIcon@2x.png in Resources */,
 				C48B69D11B9EAD5500AB0DA5 /* qr_scan_line@2x.png in Resources */,
 				C48B69D31B9EAD5500AB0DA5 /* recommend@2x.png in Resources */,
 				C48B69E31B9EAD5500AB0DA5 /* home_tab@2x.png in Resources */,
@@ -2562,6 +2600,7 @@
 				C48B69E91B9EAD5500AB0DA5 /* ExcellentHeaderCell.m in Sources */,
 				C48B69A31B9EAD5500AB0DA5 /* MyCollectResponse.m in Sources */,
 				C48B69311B9EAD5500AB0DA5 /* MJRefreshBackGifFooter.m in Sources */,
+				C4FD7FBD1BAA864200F03039 /* main.m in Sources */,
 				C48B69A71B9EAD5500AB0DA5 /* HYQWithdrawResponse.m in Sources */,
 				C48B69631B9EAD5500AB0DA5 /* GlobalConst.m in Sources */,
 				C48B69FC1B9EAD5500AB0DA5 /* HYQIntroView.m in Sources */,
@@ -2593,6 +2632,7 @@
 				C48B69221B9EAD5500AB0DA5 /* MJFoundation.m in Sources */,
 				C48B6A161B9EAD5500AB0DA5 /* PurchaseSecondCell.m in Sources */,
 				C48B69A21B9EAD5500AB0DA5 /* MyCollectDeleteResponse.m in Sources */,
+				C4593E2F1BA9448600879DE5 /* MyBankWithdrawController.m in Sources */,
 				C48B69A61B9EAD5500AB0DA5 /* MyOrderResponse.m in Sources */,
 				C48B699D1B9EAD5500AB0DA5 /* HYQMainResponse.m in Sources */,
 				C48B69751B9EAD5500AB0DA5 /* InfoWebViewController.m in Sources */,
@@ -2601,6 +2641,7 @@
 				C48B69A11B9EAD5500AB0DA5 /* CollectOperationResponse.m in Sources */,
 				C47CDBB31BA7AEAF00214478 /* AliPayCallBackResponse.m in Sources */,
 				C48B69111B9EAD5500AB0DA5 /* AFHTTPRequestOperationManager.m in Sources */,
+				C4593E331BA944AD00879DE5 /* MyBankWithDrawResponse.m in Sources */,
 				C48B69FB1B9EAD5500AB0DA5 /* ExcellentOpenThirdCell.m in Sources */,
 				C48B69871B9EAD5500AB0DA5 /* PersonalController.m in Sources */,
 				C48B69FA1B9EAD5500AB0DA5 /* ExcellentOpenSecondCell.m in Sources */,
@@ -2674,7 +2715,6 @@
 				C48B69941B9EAD5500AB0DA5 /* AddressModel.m in Sources */,
 				C486B5471B9FC9510072A7F4 /* QRUrlResponse.m in Sources */,
 				C48B69ED1B9EAD5500AB0DA5 /* ExcellentBaseForthCell.m in Sources */,
-				C48B698F1B9EAD5500AB0DA5 /* main.m in Sources */,
 				C48B69251B9EAD5500AB0DA5 /* NSObject+MJCoding.m in Sources */,
 				C48B6A151B9EAD5500AB0DA5 /* PurchaseHeaderCell.m in Sources */,
 				C48B6A0A1B9EAD5500AB0DA5 /* MyDiscountCell.m in Sources */,
@@ -2830,9 +2870,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Li Qun (G6U9FS29RR)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Li Qun (G6U9FS29RR)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HYQ2.0/Others",
@@ -2843,6 +2883,7 @@
 					"$(SRCROOT)/HYQ2.0/Classes",
 				);
 				INFOPLIST_FILE = HYQ2.0/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2860,9 +2901,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Li Qun (G6U9FS29RR)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Li Qun (G6U9FS29RR)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HYQ2.0/Others",
@@ -2873,6 +2914,7 @@
 					"$(SRCROOT)/HYQ2.0/Classes",
 				);
 				INFOPLIST_FILE = HYQ2.0/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

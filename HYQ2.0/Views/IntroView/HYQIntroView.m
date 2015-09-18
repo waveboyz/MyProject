@@ -119,7 +119,7 @@
 -(UIButton *)doneButton
 {
     if (!_doneButton) {
-        _doneButton = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth * 0.25, self.frame.size.height*.85, self.frame.size.width*.5, 30)];
+        _doneButton = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth * 0.25,kScreenHeight - 50, self.frame.size.width*.5, 30)];
         [_doneButton setTintColor:[UIColor whiteColor]];
         [_doneButton setImage:[UIImage imageNamed:@"skip_icon"] forState:UIControlStateNormal];
         [_doneButton addTarget:self.delegate action:@selector(onDoneButtonPressed) forControlEvents:UIControlEventTouchUpInside];

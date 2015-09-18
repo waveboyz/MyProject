@@ -25,6 +25,7 @@
 @property (nonatomic, strong) UITextField *nameField;       //姓名
 @property (nonatomic, strong) UITextField *phoneField;      //电话
 @property (nonatomic, strong) UITextField *detailField;     //详细地址
+@property (nonatomic, strong) UISwitch    *if_default;
 @property (nonatomic, strong) UILabel     *locationLbl;     //地址
 @property (nonatomic, copy)   NSString     *location;       //区
 @property (nonatomic, copy)   NSString     *distritCode;
@@ -48,6 +49,7 @@
     [super viewDidLoad];
     self.title = @"新增地址";
     _location = _address.district;
+    _distritCode = _address.districtCode;
     [self createUI];
 }
 
@@ -131,6 +133,7 @@
 - (void)uploadNewAddressOperation
 {
     [self showNoTextStateHud];
+    NSNumber *is_default = [NSNumber numberWithBool:[_if_default isOn]];
     MyAddressCorrectResponse *response = [[MyAddressCorrectResponse alloc] initWithEnterprise:_enterField.text
                                                                                   andWithName:_nameField.text
                                                                                  andWithPhone:_phoneField.text
@@ -138,7 +141,7 @@
                                                                               andWithProvince:@"浙江"
                                                                                       andCity:@"杭州"
                                                                                      andState:_distritCode
-                                                                                    andTacity:1
+                                                                                    andTacity:is_default
                                                                                    andWithAid:[_address.aid stringValue]];
     response.delegate = self;
     [response start];
@@ -232,10 +235,10 @@
                     _locationLbl = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, kScreenWidth - 40, 60)];
                     _locationLbl.font = [UIFont systemFontOfSize:13.0f];
                     _locationLbl.textColor = [UIColor blackColor];
-                    [cell.contentView addSubview:_locationLbl];
                 }
-                if (![_location isEqualToString:@""]) {
-                    _locationLbl.text = [NSString stringWithFormat:@"浙江省 杭州市 %@",_address.district];
+                    [cell.contentView addSubview:_locationLbl];
+                if (_location != nil) {
+                    _locationLbl.text = [NSString stringWithFormat:@"浙江省 杭州市 %@",_location];
                 }else{
                     _locationLbl.text = @"选择地址";
                 }
@@ -271,6 +274,12 @@
         lbl.text = @"设置为默认地址";
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell.contentView addSubview:lbl];
+        
+        if (!_if_default) {
+            _if_default = [[UISwitch alloc] initWithFrame:CGRectMake(kScreenWidth - 80, 15, 60, 64)];
+            [cell.contentView addSubview:_if_default];
+        }
+            _if_default.on = _address.tacitiy;
     }
     
     return cell;
@@ -317,31 +326,45 @@
 #pragma mark MyAddressPickControllerDelegate
 - (void)finishPickAddressWith:(DistrictModel *)model
 {
+    _location = nil;
     _location = model.location;
     _distritCode = [model.locationID stringValue];
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:3 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark MyAddressCorrectResponseDelegate
+//- (void)correctSucceedWith:(NSNumber *)aid;
+//{
+//    [self stopStateHud];
+//    [self performSelectorOnMainThread:@selector(showStateHudWithText:) withObject:@"添加地址成功！" waitUntilDone:YES];
+//    if (self.delegate && [self.delegate respondsToSelector:@selector(correctAddressSucceedWith:)]) {
+//        AddressModel *model = [[AddressModel alloc] init];
+//        model.district = _location;
+//        model.linkman = _nameField.text;
+//        model.linkPhone = [NSNumber numberWithInteger:[_phoneField.text integerValue]];
+//        model.address = _detailField.text;
+//        model.province = @"浙江";
+//        model.city = @"杭州";
+//        model.districtCode = _distritCode;
+//        model.companyName = _enterField.text;
+//        model.tacitiy = [_if_default isOn];
+//        [self.delegate correctAddressSucceedWith:model];
+//        [self dissmisssSelf];
+//    }
+//    if (self.delegate && [self.delegate respondsToSelector:@selector(correctAddressSucceed)]) {
+//        [self.delegate correctAddressSucceed];
+//    }
+//}
+
 - (void)correctSucceed
 {
     [self stopStateHud];
-    [self performSelectorOnMainThread:@selector(showStateHudWithText:) withObject:@"添加地址成功！" waitUntilDone:YES];
-    if (self.delegate && [self.delegate respondsToSelector:@selector(correctAddressSucceedWith:)]) {
-        AddressModel *model = [[AddressModel alloc] init];
-        model.district = _location;
-        model.linkman = _nameField.text;
-        model.linkPhone = [NSNumber numberWithInteger:[_phoneField.text integerValue]];
-        model.address = _detailField.text;
-        model.province = @"浙江";
-        model.city = @"杭州";
-        model.districtCode = _distritCode;
-        model.companyName = _enterField.text;
-        [self.delegate correctAddressSucceedWith:model];
-        [self dissmisssSelf];
+    [self performSelectorOnMainThread:@selector(showStateHudWithText:) withObject:@"修改地址成功！" waitUntilDone:YES];
+    [self dissmisssSelf];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(correctAddressSucceed)]) {
+        [self.delegate correctAddressSucceed];
     }
 }
-
 - (void)wrongOperationWithText:(NSString *)text
 {
     [self showNoTextStateHud];

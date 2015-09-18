@@ -8,6 +8,7 @@
 
 #import "ScanCameraController.h"
 #import "HYQBaseWebController.h"
+#import "HYQRegisterController.h"
 #import "QRView.h"
 
 @interface ScanCameraController ()
@@ -121,14 +122,34 @@
         AVMetadataMachineReadableCodeObject * metadataObject = [metadataObjects objectAtIndex:0];
         stringValue = metadataObject.stringValue;
     }
+    if (stringValue.length > 34) {
+        NSString *phone = [stringValue substringWithRange:NSMakeRange(34, stringValue.length - 34)];
+        
+        //  手机号正则
+        NSString *mobileRegex = @"[1][34578][0-9]{9}";
+        NSPredicate *mobilePredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", mobileRegex];
+        if([mobilePredicate evaluateWithObject:phone]){
+            HYQRegisterController *regis = [[HYQRegisterController alloc] initWithSuggestNumber:phone];
+            [self.navigationController pushViewController:regis animated:YES];
+        }else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"二维码信息不正确，请扫描好园区app二维码" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"二维码信息不正确，请扫描好园区app二维码" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+
+
+//    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+//    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+//    NSNumber *numTemp = [numberFormatter numberFromString:phone];
     
     NSLog(@" %@",stringValue);
     
     if (self.qrUrlBlock) {
         self.qrUrlBlock(stringValue);
     }
-    
-    [self pop:nil];
 }
 
 @end

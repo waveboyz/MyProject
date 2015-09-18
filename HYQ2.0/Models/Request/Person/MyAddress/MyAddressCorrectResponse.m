@@ -18,7 +18,7 @@
          andWithProvince:(NSString *)province
                  andCity:(NSString *)city
                 andState:(NSString *)state
-               andTacity:(NSUInteger)tacity
+               andTacity:(NSNumber *)tacity
               andWithAid:(NSString *)aid
 {
     if (self = [super init]) {
@@ -29,7 +29,7 @@
         if (enterprise) {
             [dic setObject:enterprise forKey:@"enterprise"];
         }
-        
+
         if (name) {
             [dic setObject:name forKey:@"linkman"];
         }
@@ -55,7 +55,7 @@
         }
         
         if (tacity) {
-            [dic setObject:[NSNumber numberWithInteger:tacity] forKey:@"tacitiy"];
+            [dic setObject:tacity forKey:@"tacitiy"];
         }
         
         if (aid) {
@@ -72,10 +72,16 @@
 {
     NSLog(@"%@",responseObject);
     if ([[responseObject objectForKey:@"code"] integerValue] == 1) {
-        if (self.delegate && [self.delegate respondsToSelector:@selector(correctSucceedWith:)]) {
-            [self.delegate correctSucceedWith:[responseObject objectForKey:@"aid"]];
+        if ([responseObject objectForKey:@"aid"]) {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(correctSucceedWith:)]) {
+                [self.delegate correctSucceedWith:[responseObject objectForKey:@"aid"]];
+            }
+        }else{
+            if (self.delegate && [self.delegate respondsToSelector:@selector(correctSucceed)]) {
+                [self.delegate correctSucceed];
+            }
         }
-    }else if([[responseObject objectForKey:@"code"] integerValue] == 0){
+    }else{
         if (self.delegate && [self.delegate respondsToSelector:@selector(wrongOperationWithText:)]) {
             [self.delegate wrongOperationWithText:[responseObject objectForKey:@"msg"]];
         }

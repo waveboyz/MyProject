@@ -88,9 +88,12 @@
 - (void)setService:(ServiceModel *)service
 {
     _service = service;
-    
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@",LOCAL_HOST,_service.photo];
-    [_imageview sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:[UIImage imageNamed:@"product_placeholder"]];
+    if (_service.photo) {
+        NSString *urlStr = [NSString stringWithFormat:@"%@%@",LOCAL_HOST,_service.photo];
+        [_imageview sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:[UIImage imageNamed:@"product_placeholder"]];
+
+    }
+
     //------------------------------------
     _collectCntLbl.text = [_service.colCount stringValue];
     //------------------------------------

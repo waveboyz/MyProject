@@ -31,12 +31,13 @@
 #define BG_GRAY_COLOR               [UIColor colorWithRed:240.0/255 green:241.0/255 blue:242.0/255 alpha:1]
 
 //------------------Web页面地址--------------------
-
+#define SIGNIN_BASE_URL             @"http://m.haoyuanqu.com/web/weixinpay2/user!topoints.action?id="
 //-----------------判断屏幕大小--------------------
 #define IS_IPHONE5                  [[UIScreen mainScreen] bounds].size.height == 568.0f
 #define IS_IHPONE4                  [[UIScreen mainScreen] bounds].size.height == 480.0f
 //-----------------资讯活动base------------------------
 #define ACTIVITY_BASE_URL           @"http://m.haoyuanqu.com/web/weixinpay2/news!details.action?id="
+#define BANK_BASE_URL               @"http://www.haoyuanqu.com/weixin/web/weixinpay2/user!withdrawals.action?localName="
 #define LOCAL_HOST                  @"http://www.haoyuanqu.com/"
 #define IMAGE_HOST                  @"http://192.168.1.93:90/resources/iosimg/"
 

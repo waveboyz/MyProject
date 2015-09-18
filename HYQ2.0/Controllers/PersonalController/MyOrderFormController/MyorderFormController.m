@@ -12,16 +12,26 @@
 #import "VOSegmentedControl.h"
 #import "MyOrderFormCell.h"
 #import "MyOrderResponse.h"
+#import "Order.h"
+#import "DataSigner.h"
+#import "DownSheet.h"
+#import <AlipaySDK/AlipaySDK.h>
+#import "AliPayCallBackResponse.h"
+#import "OrderModel.h"
 
 @interface MyorderFormController ()
 <
     MyOrderResponseDelegate,
-    MyOrderFormCellDelegate
+    MyOrderFormCellDelegate,
+    DownSheetDelegate,
+    AliPayCallBackResponseDelegate
 >
 
 @property (nonatomic,strong) VOSegmentedControl *segment;
 @property (nonatomic, strong) UIView *emptyView;
 @property (nonatomic, strong) UIView *badNetView;
+@property (nonatomic, retain) NSArray           *sheetArr;      //支付方式数组
+@property (nonatomic, retain) NSIndexPath       *pressedIndex;
 
 @end
 
@@ -67,6 +77,22 @@
     self.tableView.backgroundColor = GRAY_COLOR;
     [_segment addTarget:self action:@selector(swipSegmentWithIndexPath:) forControlEvents:UIControlEventValueChanged];
     [self.tableView.header beginRefreshing];
+}
+
+//actionsheet列表
+- (NSArray *)sheetArr
+{
+    if (!_sheetArr) {
+        DownSheetModel *Model_1 = [[DownSheetModel alloc]init];
+        Model_1.title = @"选择使用支付宝";
+        Model_1.icon = @"aliIcon";
+        DownSheetModel *Model_2 = [[DownSheetModel alloc]init];
+        Model_2.title = @"取消";
+        
+        _sheetArr = [NSArray arrayWithObjects:Model_1,Model_2, nil];
+    }
+    
+    return _sheetArr;
 }
 
 //获取订单列表请求
@@ -147,6 +173,73 @@
     return _emptyView;
 }
 
+- (void)payOperation
+{
+    /*
+     *生成订单信息及签名
+     */
+    //将商品信息赋予AlixPayOrder的成员变量
+    OrderModel *data = self.dataArr[_pressedIndex.section];
+    Order *order = [[Order alloc] init];
+    order.partner = PARTNER;
+    order.seller = SELLER;
+    order.tradeNO = [NSString stringWithFormat:@"%@",data.orderNum]; //订单ID（由商家自行制定）
+    order.productName = data.name; //商品标题
+    order.productDescription = data.proSummery; //商品描述
+    //    order.amount = [NSString stringWithFormat:@"%ld",_totalPrice]; //商品价格
+    float price = [data.money floatValue]* [data.num integerValue];
+    order.amount = [NSString stringWithFormat:@"%f",price];
+//    order.amount = @"0.01";
+    order.notifyURL =  @"http://www.xxx.com"; //回调URL
+    
+    order.service = @"mobile.securitypay.pay";
+    order.paymentType = @"1";
+    order.inputCharset = @"utf-8";
+    order.itBPay = @"30m";
+    order.showUrl = @"m.alipay.com";
+    
+    //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
+    NSString *appScheme = @"HYQ2.0";
+    
+    //将商品信息拼接成字符串
+    NSString *orderSpec = [order description];
+    NSLog(@"orderSpec = %@",orderSpec);
+    
+    NSString *privateKey = PRIVATEKEY;
+    //获取私钥并将商户信息签名,外部商户可以根据情况存放私钥和签名,只需要遵循RSA签名规范,并将签名字符串base64编码和UrlEncode
+    id<DataSigner> signer = CreateRSADataSigner(privateKey);
+    NSString *signedString = [signer signString:orderSpec];
+    
+    //将签名成功字符串格式化为订单字符串,请严格按照该格式
+    NSString *orderString = nil;
+    if (signedString != nil) {
+        orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
+                       orderSpec, signedString, @"RSA"];
+        
+        [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+            NSLog(@"reslut = %@",resultDic);
+            [self payStatusWithDic:resultDic];
+            
+        }];
+    }
+}
+
+//支付宝支付结果返回
+- (void)payStatusWithDic:(NSDictionary *)dic
+{
+    NSNumber *state = [dic objectForKey:@"resultStatus"];
+    
+    OrderModel *data = self.dataArr[_pressedIndex.section];
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    NSNumber *numTemp = [numberFormatter numberFromString:data.orderNum];
+    
+    AliPayCallBackResponse *response = [[AliPayCallBackResponse alloc] initWithTradeNO:numTemp andWithTradeStatus:state andWithResult:[dic objectForKey:@"result"]];
+    response.delegate = self;
+    [response start];
+}
+
+
 #pragma mark MyOrderResponseDelegate
 - (void)getOrderListWithArray:(NSMutableArray *)orderArr
 {
@@ -175,7 +268,7 @@
     [self showStateHudWithText:text];
     [self.tableView.header endRefreshing];
     
-    [self.view insertSubview:self.badNetView belowSubview:self.segment];
+//    [self.view insertSubview:self.badNetView belowSubview:self.segment];
 }
 
 - (void)noDataArr
@@ -232,7 +325,11 @@
 #pragma mark MyOrderFormCellDelegate
 - (void)payBtnPressedWithOid:(NSNumber *)oid andWithIndexPath:(NSIndexPath *)indexPath
 {
-
+    _pressedIndex = nil;
+    _pressedIndex = indexPath;
+    DownSheet *sheet = [[DownSheet alloc]initWithlist:self.sheetArr height:0];
+    sheet.delegate = self;
+    [sheet showInView:self];
 }
 
 - (void)evaluateBtnPressedWithOid:(NSNumber *)oid andWithIndexPath:(NSIndexPath *)indexPath
@@ -245,6 +342,21 @@
 - (void)confirmBtnPressedWithOid:(NSNumber *)oid andWithIndexPath:(NSIndexPath *)indexPath
 {
 
+}
+
+#pragma mark DownSheetDelegate
+-(void)didSelectIndex:(NSInteger)index
+{
+    if (index == 0) {
+        [self payOperation];
+    }
+}
+
+#pragma mark AliPayCallBackResponseDelegate
+- (void)getPayResult
+{
+    [self stopStateHud];
+    [self.tableView.header beginRefreshing];
 }
 
 @end

@@ -18,10 +18,11 @@
 #import "MainBannerCell.h"
 #import "MainProductCell.h"
 //----------------------------
-//#import "ExcellentBaseController.h"
-//#import "ExcellentCampController.h"
-//#import "ExcellentFinantialController.h"
-//#import "ExcellentOpenDayController.h"
+#import "ExcellentBaseController.h"
+#import "ExcellentCampController.h"
+#import "ExcellentFinantialController.h"
+#import "ExcellentOpenDayController.h"
+//-----------------------------
 #import "scanCameraController.h"
 #import "HYQLoginController.h"
 #import "PersonalController.h"
@@ -34,6 +35,7 @@
 #import "HYQMainResponse.h"
 #import "QRUrlResponse.h"
 #import "HYQInterfaceMethod.h"
+#import "QRBlurView.h"
 
 #define NAVBAR_CHANGE_POINT 50
 
@@ -44,17 +46,20 @@
     MainServiceCellDelegate,
     HYQmainResponseDelegate,
     MainScrollinfoCellDelegate,
-    QRUrlResponseDelegate
+    QRUrlResponseDelegate,
+    NSURLConnectionDelegate
 >
 
 @property (nonatomic, strong) UITableView   *tableview;
 @property (nonatomic, strong) UIImageView   *buttonImg;             //navigationbar 头像
 @property (nonatomic, strong) UIButton      *imgBtn;                //navigationbar 头像按钮
 @property (nonatomic, strong) UIView        *emptyView;
+@property (nonatomic, strong) UIView        *bgview;
 @property (nonatomic, retain) NSArray       *inforArr;              //资讯数组
 @property (nonatomic, retain) NSArray       *imgArr;                //banner数组
 @property (nonatomic, retain) NSArray       *productArr;            //商品数组
-
+@property (nonatomic, strong) NSMutableData *receiveData;
+@property (nonatomic, strong) QRBlurView    *blurview;
 @end
 
 @implementation MainPageController
@@ -167,16 +172,16 @@
 //显示个人二维码
 - (void)showQRcodePressed
 {
-//    if ([[HYQUserManager sharedUserManager] isLogin]) {
-//        [self getQRUrlOperation];
-//    }else{
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
-//                                                    message:@"用户未登录~"
-//                                                   delegate:self
-//                                          cancelButtonTitle:@"确定"
-//                                          otherButtonTitles:nil, nil];
-//        [alert show];
-//    }
+    if ([[HYQUserManager sharedUserManager] isLogin]) {
+        [self getQRUrlOperation];
+    }else{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                    message:@"用户未登录~"
+                                                   delegate:self
+                                          cancelButtonTitle:@"确定"
+                                          otherButtonTitles:nil, nil];
+        [alert show];
+    }
 }
 
 //获取二维码图像请求
@@ -185,6 +190,51 @@
     QRUrlResponse *response = [[QRUrlResponse alloc] init];
     response.delegate = self;
     [response start];
+}
+
+- (void)creatMaskBgViewWithContentView:(UIView *)contentView
+{
+    if (!_bgview)
+    {
+        _bgview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+        [_bgview setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
+        _bgview.backgroundColor = [UIColor blackColor];
+        _bgview.alpha = 0.5f;
+        [_bgview addSubview:contentView];
+        [self.view.superview.superview.superview addSubview:_bgview];
+        UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideView)];
+        tapGR.numberOfTapsRequired = 1;
+        [_bgview addGestureRecognizer:tapGR];
+        _bgview.userInteractionEnabled = YES;
+    }
+    
+    [UIView animateWithDuration:0.4 animations:^{
+        contentView.alpha = 1.0f;
+        _bgview.alpha = 1.0f;
+    } completion:^(BOOL finished)
+     {
+         [UIView animateWithDuration:0.1 animations:^{ }];
+     }];
+}
+
+- (void)hideView
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        _blurview.alpha = 0.f;
+        _bgview.alpha = 0.f;
+    } completion:^(BOOL finished)
+     {
+         self.view.superview.userInteractionEnabled = YES;
+         [self removeMaskandBlur];
+     }];
+}
+
+- (void)removeMaskandBlur
+{
+    [_blurview removeFromSuperview];
+    [_bgview removeFromSuperview];
+    _blurview = nil;
+    _bgview = nil;
 }
 
 //扫描二维码入口
@@ -232,7 +282,12 @@
 #pragma mark QRUrlResponseDelegate
 - (void)getQRUrlSucceedWithUrl:(NSString *)url
 {
-
+    _blurview = [[QRBlurView alloc] initWithUrl:url andWithFrame:CGRectMake(20, 50, kScreenWidth - 40,kScreenHeight - 200)];
+    _blurview.backgroundColor = [UIColor whiteColor];
+    _blurview.layer.cornerRadius = 7.5;
+    _blurview.alpha = 0.f;
+    [self creatMaskBgViewWithContentView:_blurview];
+//    [self.view.superview.superview.superview addSubview:_blurview];
 }
 
 #pragma mark NSNotificationCenter
@@ -338,12 +393,10 @@
 {
     [self.tableview deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row >= 4) {
-        ServiceDetailController *serVC = [[ServiceDetailController alloc] initWithServiceModel:_productArr[indexPath.row - 3]];
+        ServiceDetailController *serVC = [[ServiceDetailController alloc] initWithServiceModel:_productArr[indexPath.row - 4]];
         serVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         UINavigationController * jackNavigationController = [[UINavigationController alloc] initWithRootViewController:serVC];
         [self presentViewController:jackNavigationController animated:YES completion:^(void){}];
-        
-
     }
 }
 
@@ -395,25 +448,29 @@
 {
     switch (tag){
             case 0:{
-                HYQBaseWebController *finanVC = [[HYQBaseWebController alloc] initWithUrl:EXCELLENT_FINANTIAL_INTERFACE andWithTitle:@"优创金融方案"];
+//                HYQBaseWebController *finanVC = [[HYQBaseWebController alloc] initWithUrl:EXCELLENT_FINANTIAL_INTERFACE andWithTitle:@"优创金融方案"];
+                ExcellentFinantialController *finanVC = [[ExcellentFinantialController alloc] init];
                 [self.navigationController pushViewController:finanVC animated:YES];
             }
                 break;
 
             case 1:{
-                HYQBaseWebController *baseVC = [[HYQBaseWebController alloc] initWithUrl:EXCELLENT_BASE_INTERFACE andWithTitle:@"优创基地"];
+//                HYQBaseWebController *baseVC = [[HYQBaseWebController alloc] initWithUrl:EXCELLENT_BASE_INTERFACE andWithTitle:@"优创基地"];
+                ExcellentBaseController *baseVC = [[ExcellentBaseController alloc] init];
                 [self.navigationController pushViewController:baseVC animated:YES];
             }
                 break;
                 
             case 2:{
-                HYQBaseWebController *campVC = [[HYQBaseWebController alloc] initWithUrl:EXCELLENT_CAMP_INTERFACE andWithTitle:@"优创基地"];
+//                HYQBaseWebController *campVC = [[HYQBaseWebController alloc] initWithUrl:EXCELLENT_CAMP_INTERFACE andWithTitle:@"优创基地"];
+                ExcellentCampController *campVC = [[ExcellentCampController alloc] init];
                 [self.navigationController pushViewController:campVC animated:YES];
             }
                 break;
                 
             case 3:{
-                HYQBaseWebController *openVC = [[HYQBaseWebController alloc] initWithUrl:EXCELLENT_OPEN_INTERFACE andWithTitle:@"优创开放日"];
+//                HYQBaseWebController *openVC = [[HYQBaseWebController alloc] initWithUrl:EXCELLENT_OPEN_INTERFACE andWithTitle:@"优创开放日"];
+                ExcellentOpenDayController *openVC = [[ExcellentOpenDayController alloc] init];
                 [self.navigationController pushViewController:openVC animated:YES];
             }
                 break;
