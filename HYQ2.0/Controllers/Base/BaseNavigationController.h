@@ -13,7 +13,7 @@
  */
 @interface BaseNavigationController : UINavigationController
 <
-UIGestureRecognizerDelegate
+    UIGestureRecognizerDelegate
 >
 
 //- (void)showMenu;

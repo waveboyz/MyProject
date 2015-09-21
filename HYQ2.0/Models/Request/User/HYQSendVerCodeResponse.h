@@ -22,7 +22,7 @@
 
 @interface HYQSendVerCodeResponse : HYQResponse
 
-@property (nonatomic, assign) id<HYQSendVerCodeResponseDelegate> delegate;
+@property (nonatomic, weak) id<HYQSendVerCodeResponseDelegate> delegate;
 
 - (id)initWithPhoneNumber:(NSString *)phone;
 

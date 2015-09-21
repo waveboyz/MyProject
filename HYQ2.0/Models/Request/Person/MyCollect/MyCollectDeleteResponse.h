@@ -23,7 +23,7 @@
 
 @interface MyCollectDeleteResponse : HYQResponse
 
-@property (nonatomic, assign) id<MyCollectDeleteResponseDelegate>delegate;
+@property (nonatomic, weak) id<MyCollectDeleteResponseDelegate>delegate;
 
 - (id)initWithDeleteArr:(NSArray *)array;
 

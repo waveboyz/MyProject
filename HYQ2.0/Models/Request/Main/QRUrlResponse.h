@@ -19,6 +19,6 @@
 
 @interface QRUrlResponse : HYQResponse
 
-@property (nonatomic, assign) id<QRUrlResponseDelegate> delegate;
+@property (nonatomic, weak) id<QRUrlResponseDelegate> delegate;
 
 @end

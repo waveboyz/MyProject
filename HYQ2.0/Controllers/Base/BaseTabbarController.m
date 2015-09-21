@@ -69,9 +69,9 @@
     _thirdNav = [[BaseNavigationController alloc] initWithRootViewController:serVC];
     _thirdNav.tabBarItem = _thirdItem;
     
-    ExcellentPlanController *planVC = [[ExcellentPlanController alloc] init];
+//    ExcellentPlanController *planVC = [[ExcellentPlanController alloc] init];
     
-//    HYQExcellentPlanController *planVC = [[HYQExcellentPlanController alloc] init];
+    HYQExcellentPlanController *planVC = [[HYQExcellentPlanController alloc] init];
     _forthItem = [[UITabBarItem alloc] initWithTitle:@"优创计划"
                                                image:[UIImage imageNamed:@"plan_tab"]
                                        selectedImage:[UIImage imageNamed:@"plan_tab"]];

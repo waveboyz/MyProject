@@ -67,6 +67,7 @@
     if (![_activity.title isEqualToString:@""]) {
             _titleLbl.text = _activity.title;
     }
+    
     if (![_activity.editor isEqualToString:@""] && ![_activity.time isEqualToString:@""]) {
         _desLbl.text = [NSString stringWithFormat:@"%@|%@",_activity.editor,_activity.time];
     }

@@ -202,7 +202,8 @@
     ServicePayOrderResponse *response = [[ServicePayOrderResponse alloc] initWithPid:_service.pid
                                                                           andWithAid:_addModel.aid
                                                                          andWithOnum:[NSNumber numberWithInteger:_paycount]
-                                                                   andWithTotalPrice:[NSNumber numberWithInteger:_totalPrice] andWithMsg:nil];
+                                                                   andWithTotalPrice:[NSNumber numberWithInteger:_totalPrice]
+                                                                          andWithMsg:nil];
     response.delegate = self;
     [response start];
 }

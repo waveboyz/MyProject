@@ -16,17 +16,19 @@
 @property (nonatomic, assign) NSArray *imgArr;
 @property (nonatomic, assign) NSArray *products;
 @property (nonatomic, assign) NSArray *infoArr;
+@property (nonatomic, assign) NSUInteger currentPage;
 
 @end
 
 @implementation HYQMainResponse
 
-- (id)init
+- (id)initWithPagesize:(NSUInteger)pagesize
 {
     if (self = [super init]) {
+        _currentPage = pagesize;
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithCapacity:2];
-        [dic setObject:[NSNumber numberWithInteger:1] forKey:@"pageSize"];
-        [dic setObject:[NSNumber numberWithInteger:20] forKey:@"pageRow"];
+        [dic setObject:[NSNumber numberWithInteger:pagesize] forKey:@"pageSize"];
+        [dic setObject:[NSNumber numberWithInteger:5] forKey:@"pageRow"];
         [self setUploadDictionary:dic];
     }
     
@@ -42,7 +44,19 @@
                 if ([code integerValue] == 1) {
                     if ([responseObject objectForKey:@"map"]) {
                         NSDictionary *dictionary = [responseObject objectForKey:@"map"];
-                        
+                        if (_currentPage > 1) {
+                            if ([dictionary objectForKey:@"products"]) {
+                                _products = [ServiceModel objectArrayWithKeyValuesArray:[dictionary objectForKey:@"products"]];
+                                
+                                if (self.delegate && [self.delegate respondsToSelector:@selector(getMoreProducts:)]) {
+                                    [self.delegate getMoreProducts:_products];
+                                }
+                            }else{
+                                if (self.delegate && [self.delegate respondsToSelector:@selector(noDataArr)]) {
+                                    [self.delegate noDataArr];
+                                }
+                            }
+                        }else{
                         if ([dictionary objectForKey:@"banners"]) {
                             _imgArr = [BannerModel objectArrayWithKeyValuesArray:[dictionary objectForKey:@"banners"]];
                         }
@@ -58,6 +72,7 @@
                         if (_imgArr && _infoArr && _products) {
                             if (self.delegate && [self.delegate respondsToSelector:@selector(getMainInformationSucceedWithImgArr:andWithProducts:andWithInfo:)]) {
                                 [self.delegate getMainInformationSucceedWithImgArr:_imgArr andWithProducts:_products andWithInfo:_infoArr];
+                                }
                             }
                         }
                     }
@@ -68,7 +83,6 @@
             }
         }
     }
-    
 }
 
 - (NSString *)methodPath

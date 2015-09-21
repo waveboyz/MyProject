@@ -60,8 +60,21 @@
 - (void)setAddress:(AddressModel *)address
 {
     _address = address;
-    _nameLbl.text = _address.linkman;
-    _phoneLbl.text = [_address.linkPhone stringValue];
-    _addressLbl.text = [NSString stringWithFormat:@"%@ %@ %@ %@",_address.province,_address.city,_address.district,_address.address];
+    if (_address.linkman) {
+        _nameLbl.text = _address.linkman;
+    }
+
+    if (_address.linkPhone) {
+        _phoneLbl.text = [_address.linkPhone stringValue];
+    }
+
+    if (_address.province && _address.city && _address.district && _address.address) {
+        if (_address.tacitiy) {
+        _addressLbl.text = [NSString stringWithFormat:@"【默认】%@ %@ %@ %@",_address.province,_address.city,_address.district,_address.address];
+        }else{
+        _addressLbl.text = [NSString stringWithFormat:@"%@ %@ %@ %@",_address.province,_address.city,_address.district,_address.address];
+        }
+    }
+
 }
 @end

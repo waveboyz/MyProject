@@ -24,6 +24,6 @@
 
 - (id)initWithPid:(NSNumber *)pid;
 
-@property (nonatomic, assign) id<ServiceIsCollectResponseDelegate> delegate;
+@property (nonatomic, weak) id<ServiceIsCollectResponseDelegate> delegate;
 
 @end

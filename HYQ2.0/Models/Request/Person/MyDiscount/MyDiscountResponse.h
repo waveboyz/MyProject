@@ -24,7 +24,7 @@
 @interface MyDiscountResponse : HYQResponse
 
 
-@property (nonatomic, assign) id<MyDiscountResponseDelete> delegate;
+@property (nonatomic, weak) id<MyDiscountResponseDelete> delegate;
 
 - (id)initWithType:(NSString *)type andWithCurrentPage:(NSUInteger)page;
 

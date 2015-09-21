@@ -23,6 +23,6 @@
 
 @interface MyCollectResponse : HYQResponse
 
-@property (nonatomic, assign) id<MyCollectResponseDelegate>delegate;
+@property (nonatomic, weak) id<MyCollectResponseDelegate>delegate;
 
 @end

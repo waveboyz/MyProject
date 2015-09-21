@@ -22,7 +22,7 @@
 
 @interface ServicePayOrderResponse : HYQResponse
 
-@property (nonatomic, assign) id<ServicePayOrderResponseDelegate>delegate;
+@property (nonatomic, weak) id<ServicePayOrderResponseDelegate>delegate;
 
 - (id)initWithPid:(NSNumber *)pid
        andWithAid:(NSNumber *)aid

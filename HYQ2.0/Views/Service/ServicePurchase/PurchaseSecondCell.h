@@ -27,5 +27,6 @@
 @property (nonatomic, assign) ServiceModel *service;
 @property (nonatomic, assign) NSUInteger    serviceCnt;
 @property (nonatomic, assign) id<PurchaseSecondCellDelegate> delegate;
+@property (nonatomic, strong) UITextView        *commentView;
 
 @end

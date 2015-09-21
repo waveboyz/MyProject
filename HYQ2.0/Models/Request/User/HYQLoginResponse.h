@@ -20,7 +20,7 @@
 
 @interface HYQLoginResponse : HYQResponse
 
-@property (nonatomic, assign) id<HYQLoginResponseDelegate> delegate;
+@property (nonatomic, weak) id<HYQLoginResponseDelegate> delegate;
 
 - (id)initWithPhoneNumber:(NSString *)phone andWithPassWord:(NSString *)password;
 

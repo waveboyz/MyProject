@@ -22,6 +22,6 @@
 
 @interface HYQServiceTitleResponse : HYQResponse
 
-@property (nonatomic, assign) id<HYQServiceTitleResponseDelegate> delegate;
+@property (nonatomic, weak) id<HYQServiceTitleResponseDelegate> delegate;
 
 @end

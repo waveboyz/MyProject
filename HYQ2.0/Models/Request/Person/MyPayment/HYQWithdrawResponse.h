@@ -24,7 +24,7 @@
 
 @interface HYQWithdrawResponse : HYQResponse
 
-@property (nonatomic, assign) id<HYQWithdrawResponseDelegate> delegate;
+@property (nonatomic, weak) id<HYQWithdrawResponseDelegate> delegate;
 - (id)initWithType:(NSString *)type andWithCurrentPage:(NSUInteger)page;
 
 @end

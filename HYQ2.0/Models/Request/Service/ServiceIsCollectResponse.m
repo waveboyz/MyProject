@@ -29,7 +29,7 @@
     NSLog(@"%@",responseObject);
     if (responseObject) {
         if ([[responseObject objectForKey:@"code"] integerValue] == 1) {
-            if (self.delegate && [self.delegate respondsToSelector:@selector(getCollectSucceedWithIsCollected:)]) {
+            if (self.delegate != nil && [self.delegate respondsToSelector:@selector(getCollectSucceedWithIsCollected:)]) {
                 NSNumber *isCollected = [responseObject objectForKey:@"iSFavorite"];
                 [self.delegate getCollectSucceedWithIsCollected:[isCollected boolValue]];
             }

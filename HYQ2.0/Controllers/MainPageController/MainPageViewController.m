@@ -36,7 +36,7 @@
 #import "QRUrlResponse.h"
 #import "HYQInterfaceMethod.h"
 #import "QRBlurView.h"
-
+#import "MJRefresh.h"
 #define NAVBAR_CHANGE_POINT 50
 
 @interface MainPageController ()
@@ -55,11 +55,12 @@
 @property (nonatomic, strong) UIButton      *imgBtn;                //navigationbar 头像按钮
 @property (nonatomic, strong) UIView        *emptyView;
 @property (nonatomic, strong) UIView        *bgview;
-@property (nonatomic, retain) NSArray       *inforArr;              //资讯数组
-@property (nonatomic, retain) NSArray       *imgArr;                //banner数组
-@property (nonatomic, retain) NSArray       *productArr;            //商品数组
+@property (nonatomic, retain) NSMutableArray       *inforArr;              //资讯数组
+@property (nonatomic, retain) NSMutableArray       *imgArr;                //banner数组
+@property (nonatomic, retain) NSMutableArray       *productArr;            //商品数组
 @property (nonatomic, strong) NSMutableData *receiveData;
 @property (nonatomic, strong) QRBlurView    *blurview;
+@property (nonatomic, assign) NSUInteger    currentpage;
 @end
 
 @implementation MainPageController
@@ -67,9 +68,10 @@
 - (id)init
 {
     if (self = [super init]) {
-        _inforArr = [NSArray new];
-        _imgArr = [NSArray new];
-        _productArr = [NSArray new];
+        _inforArr = [NSMutableArray new];
+        _imgArr = [NSMutableArray new];
+        _productArr = [NSMutableArray new];
+        _currentpage = 1;
     }
     
     return self;
@@ -87,7 +89,7 @@
 - (void)getresponseOperation
 {
     [self showNoTextStateHud];
-    HYQMainResponse *response = [[HYQMainResponse alloc] init];
+    HYQMainResponse *response = [[HYQMainResponse alloc] initWithPagesize:_currentpage];
     response.delegate = self;
     [response start];
 }
@@ -95,9 +97,9 @@
 #pragma mark HYQResponseDelegate
 - (void)getMainInformationSucceedWithImgArr:(NSArray *)imgArr andWithProducts:(NSArray *)products andWithInfo:(NSArray *)information
 {
-    _imgArr = imgArr;
-    _productArr = products;
-    _inforArr = information;
+    _imgArr = [NSMutableArray arrayWithArray:imgArr];
+    _productArr = [NSMutableArray arrayWithArray:products];
+    _inforArr = [NSMutableArray arrayWithArray:information];
     [self stopStateHud];
     dispatch_async(dispatch_get_main_queue(), ^(void){
         [self.tableview reloadData];
@@ -106,9 +108,27 @@
 
 - (void)wrongOperationWithText:(NSString *)text
 {
-    [self showStateHudWithText:@"网络不可用"];
+    [self stopStateHud];
+    [self showStateHudWithText:text];
 }
 
+- (void)noDataArr
+{
+    [self stopStateHud];
+    [self.tableview.footer endRefreshing];
+    _currentpage -= 1;
+    [self showStateHudWithText:@"没有更多数据~"];
+}
+
+- (void)getMoreProducts:(NSArray *)products
+{
+    [self stopStateHud];
+    [self.tableview.footer endRefreshing];
+    [_productArr addObjectsFromArray:products];
+    [self.tableview reloadData];
+}
+
+//----------
 - (void)createUI
 {
     //二维码扫描入口
@@ -140,6 +160,12 @@
     self.tableview.showsVerticalScrollIndicator = NO;
     [self.view addSubview:self.tableview];
     [self.view bringSubviewToFront:self.tableview];
+    
+    MJRefreshBackNormalFooter *footerView = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    [footerView setTitle:@"上拉获取更多~" forState:MJRefreshStateIdle];
+    [footerView setTitle:@"松开刷新~" forState:MJRefreshStatePulling];
+    [footerView setTitle:@"正在刷新..." forState:MJRefreshStateRefreshing];
+    self.tableview.footer = footerView;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -167,6 +193,12 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"replaceAvatar" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"replaceNickName" object:nil];
     
+}
+
+- (void)loadMoreData
+{
+    _currentpage += 1;
+    [self getresponseOperation];
 }
 
 //显示个人二维码
@@ -448,29 +480,29 @@
 {
     switch (tag){
             case 0:{
-//                HYQBaseWebController *finanVC = [[HYQBaseWebController alloc] initWithUrl:EXCELLENT_FINANTIAL_INTERFACE andWithTitle:@"优创金融方案"];
-                ExcellentFinantialController *finanVC = [[ExcellentFinantialController alloc] init];
+                HYQBaseWebController *finanVC = [[HYQBaseWebController alloc] initWithUrl:EXCELLENT_FINANTIAL_INTERFACE andWithTitle:@"优创金融方案"];
+//                ExcellentFinantialController *finanVC = [[ExcellentFinantialController alloc] init];
                 [self.navigationController pushViewController:finanVC animated:YES];
             }
                 break;
 
             case 1:{
-//                HYQBaseWebController *baseVC = [[HYQBaseWebController alloc] initWithUrl:EXCELLENT_BASE_INTERFACE andWithTitle:@"优创基地"];
-                ExcellentBaseController *baseVC = [[ExcellentBaseController alloc] init];
+                HYQBaseWebController *baseVC = [[HYQBaseWebController alloc] initWithUrl:EXCELLENT_BASE_INTERFACE andWithTitle:@"优创基地"];
+//                ExcellentBaseController *baseVC = [[ExcellentBaseController alloc] init];
                 [self.navigationController pushViewController:baseVC animated:YES];
             }
                 break;
                 
             case 2:{
-//                HYQBaseWebController *campVC = [[HYQBaseWebController alloc] initWithUrl:EXCELLENT_CAMP_INTERFACE andWithTitle:@"优创基地"];
-                ExcellentCampController *campVC = [[ExcellentCampController alloc] init];
+                HYQBaseWebController *campVC = [[HYQBaseWebController alloc] initWithUrl:EXCELLENT_CAMP_INTERFACE andWithTitle:@"优创基地"];
+//                ExcellentCampController *campVC = [[ExcellentCampController alloc] init];
                 [self.navigationController pushViewController:campVC animated:YES];
             }
                 break;
                 
             case 3:{
-//                HYQBaseWebController *openVC = [[HYQBaseWebController alloc] initWithUrl:EXCELLENT_OPEN_INTERFACE andWithTitle:@"优创开放日"];
-                ExcellentOpenDayController *openVC = [[ExcellentOpenDayController alloc] init];
+                HYQBaseWebController *openVC = [[HYQBaseWebController alloc] initWithUrl:EXCELLENT_OPEN_INTERFACE andWithTitle:@"优创开放日"];
+//                ExcellentOpenDayController *openVC = [[ExcellentOpenDayController alloc] init];
                 [self.navigationController pushViewController:openVC animated:YES];
             }
                 break;

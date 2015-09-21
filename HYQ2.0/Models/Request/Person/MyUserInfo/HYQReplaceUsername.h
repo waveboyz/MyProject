@@ -24,6 +24,6 @@
 
 - (id)initWithNickName:(NSString *)username;
 
-@property (nonatomic, assign) id<HYQReplaceUsernameDelegate> delegate;
+@property (nonatomic, weak) id<HYQReplaceUsernameDelegate> delegate;
 
 @end

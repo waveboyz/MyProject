@@ -23,6 +23,6 @@
 @interface ReplaceCodeResponse : HYQResponse
 
 - (id)initWithCode:(NSString *)code;
-@property (nonatomic, assign) id<ReplaceCodeResponseDelegate> delegate;
+@property (nonatomic, weak) id<ReplaceCodeResponseDelegate> delegate;
 
 @end

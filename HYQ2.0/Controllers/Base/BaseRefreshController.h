@@ -21,7 +21,7 @@ static const CGFloat MJDuration = 1.0;
     UITableViewDataSource
 >
 
-@property (nonatomic, retain)MBProgressHUD *stateHud;
+@property (nonatomic, retain) MBProgressHUD *stateHud;
 @property (nonatomic, strong) UITableView   *tableView;
 @property (nonatomic, strong) UIView    *loadingView;
 @property (nonatomic, strong) UIView    *netDropView;

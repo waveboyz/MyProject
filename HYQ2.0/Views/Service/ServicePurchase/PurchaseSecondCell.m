@@ -23,7 +23,6 @@
 @property (nonatomic, strong) UILabel           *countLbl;
 @property (nonatomic, strong) UIButton          *minBtn;
 @property (nonatomic, strong) UIButton          *plsBtn;
-@property (nonatomic, strong) UITextView        *commentView;
 
 @end
 

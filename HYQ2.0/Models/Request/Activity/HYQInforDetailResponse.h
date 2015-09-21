@@ -21,7 +21,7 @@
 
 @interface HYQInforDetailResponse : HYQResponse
 
-@property (nonatomic, assign) id<HYQInforDetailResponseDelegate>delegate;
+@property (nonatomic, weak) id<HYQInforDetailResponseDelegate>delegate;
 
 - (id)initWithType:(NSString *)type andWithCurrentPage:(NSUInteger)page;
 

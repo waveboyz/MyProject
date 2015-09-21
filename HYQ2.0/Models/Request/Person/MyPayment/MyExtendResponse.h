@@ -23,7 +23,7 @@
 
 @interface MyExtendResponse : HYQResponse
 
-@property (nonatomic, assign) id<MyExtendResponseDelegate>delegate;
+@property (nonatomic, weak) id<MyExtendResponseDelegate>delegate;
 
 - (id)initWithCurrentPage:(NSUInteger)page;
 

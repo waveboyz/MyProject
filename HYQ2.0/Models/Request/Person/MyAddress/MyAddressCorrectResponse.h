@@ -21,7 +21,7 @@
 
 @interface MyAddressCorrectResponse : HYQResponse
 
-@property (nonatomic, assign) id<MyAddressCorrectResponseDelegate>delegate;
+@property (nonatomic, weak) id<MyAddressCorrectResponseDelegate>delegate;
 
 - (id)initWithEnterprise:(NSString *)enterprise
              andWithName:(NSString *)name

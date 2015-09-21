@@ -22,7 +22,7 @@
 
 @interface MyBankWithDrawResponse : HYQResponse
 
-@property (nonatomic, assign) id<MyBankWithDrawResponseDelegate>delegate;
+@property (nonatomic, weak) id<MyBankWithDrawResponseDelegate>delegate;
 
 - (id)initWithCard:(NSString *)card andWithName:(NSString *)name andWithCash:(NSString *)cash;
 

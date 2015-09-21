@@ -141,7 +141,7 @@
     //---------------------------------
     _stateLbl.text = _order.statusMsg;
     
-    if ([_order.statusBtn isEqualToString:@"待付款"]) {
+    if ([_order.statusBtn isEqualToString:@"付款"]) {
         _confirmBtn.hidden = YES;
         _evalueBtn.hidden = YES;
     }else if ([_order.statusBtn isEqualToString:@"评价"]){

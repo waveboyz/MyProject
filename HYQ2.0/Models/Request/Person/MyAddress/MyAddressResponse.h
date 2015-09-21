@@ -23,6 +23,6 @@
 
 @interface MyAddressResponse : HYQResponse
 
-@property (nonatomic, assign) id<MyAddressResponseDelegate> delegate;
+@property (nonatomic, weak) id<MyAddressResponseDelegate> delegate;
 
 @end

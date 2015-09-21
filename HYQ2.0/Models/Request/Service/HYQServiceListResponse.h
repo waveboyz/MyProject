@@ -23,7 +23,7 @@
 
 @interface HYQServiceListResponse : HYQResponse
 
-@property (nonatomic, assign) id<HYQServiceListResponseDelegate> delegate;
+@property (nonatomic, weak) id<HYQServiceListResponseDelegate> delegate;
 
 - (id)initWithType:(NSString *)type andWithCurrentPage:(NSUInteger)page;
 

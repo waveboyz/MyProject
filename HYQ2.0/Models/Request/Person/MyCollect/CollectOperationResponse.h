@@ -24,7 +24,7 @@
 
 @interface CollectOperationResponse : HYQResponse
 
-@property (nonatomic, assign) id<CollectOperationResponseDelegate> delegate;
+@property (nonatomic, weak) id<CollectOperationResponseDelegate> delegate;
 - (id)initWithPid:(NSNumber *)pid;
 
 @end

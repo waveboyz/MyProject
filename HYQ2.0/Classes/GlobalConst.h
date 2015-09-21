@@ -39,7 +39,7 @@
 #define ACTIVITY_BASE_URL           @"http://m.haoyuanqu.com/web/weixinpay2/news!details.action?id="
 #define BANK_BASE_URL               @"http://www.haoyuanqu.com/weixin/web/weixinpay2/user!withdrawals.action?localName="
 #define LOCAL_HOST                  @"http://www.haoyuanqu.com/"
-#define IMAGE_HOST                  @"http://192.168.1.93:90/resources/iosimg/"
+#define IMAGE_HOST                  @"http://www.haoyuanqu.com/core/resources/"
 
 //-----------------支付宝商户信息------------------------
 #define PARTNER                         @"2088021185544262";        //商户

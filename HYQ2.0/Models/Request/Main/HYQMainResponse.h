@@ -15,11 +15,15 @@
 @optional
 
 - (void)wrongOperationWithText:(NSString *)text;
+- (void)noDataArr;
+- (void)getMoreProducts:(NSArray *)products;
 
 @end
 
 @interface HYQMainResponse : HYQResponse
 
-@property (nonatomic, assign) id<HYQmainResponseDelegate> delegate;
+@property (nonatomic, weak) id<HYQmainResponseDelegate> delegate;
+
+- (id)initWithPagesize:(NSUInteger)pagesize;
 
 @end

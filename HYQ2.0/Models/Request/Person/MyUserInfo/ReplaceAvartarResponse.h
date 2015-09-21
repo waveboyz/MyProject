@@ -21,7 +21,7 @@
 
 @interface ReplaceAvartarResponse : HYQResponse
 
-@property (nonatomic, assign) id<ReplaceAvartarResponseDelegate> delegate;
+@property (nonatomic, weak) id<ReplaceAvartarResponseDelegate> delegate;
 - (id)initWith:(UIImage *)image;
 
 @end

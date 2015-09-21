@@ -23,7 +23,7 @@
 
 @interface HYQInforTitleResponse : HYQResponse
 
-@property (nonatomic, assign) id<HYQInforTitleResponseDelegate> delegate;
+@property (nonatomic, weak) id<HYQInforTitleResponseDelegate> delegate;
 
 
 @end

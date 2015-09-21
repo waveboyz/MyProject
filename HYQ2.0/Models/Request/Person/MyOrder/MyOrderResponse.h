@@ -23,7 +23,7 @@
 
 @interface MyOrderResponse : HYQResponse
 
-@property (nonatomic, assign) id<MyOrderResponseDelegate>delegate;
+@property (nonatomic, weak) id<MyOrderResponseDelegate>delegate;
 
 - (id)initWithTypeNanme:(NSString *)type andWithCurrentPage:(NSUInteger)page;
 

@@ -19,7 +19,7 @@
 
 @interface MyAddressDeleteResponse : HYQResponse
 
-@property (nonatomic, assign) id<MyAddressDeleteResponse> delegate;
+@property (nonatomic, weak) id<MyAddressDeleteResponse> delegate;
 
 - (id)initWithAid:(NSUInteger)aid;
 

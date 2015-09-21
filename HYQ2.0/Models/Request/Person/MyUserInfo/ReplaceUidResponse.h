@@ -23,6 +23,6 @@
 @interface ReplaceUidResponse : HYQResponse
 
 - (id)initWithUrl:(NSString *)imageUrl;
-@property (nonatomic, assign) id<ReplaceUidResponseDelegate> delegate;
+@property (nonatomic, weak) id<ReplaceUidResponseDelegate> delegate;
 
 @end

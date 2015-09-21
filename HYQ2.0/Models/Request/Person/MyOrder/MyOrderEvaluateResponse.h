@@ -20,7 +20,7 @@
 
 @interface MyOrderEvaluateResponse : HYQResponse
 
-@property (nonatomic, assign) id<MyOrderEvaluateResponseDelegate> delegate;
+@property (nonatomic, weak) id<MyOrderEvaluateResponseDelegate> delegate;
 
 - (id)initWithOid:(NSUInteger)oid
      andWithPayID:(NSString *)payID

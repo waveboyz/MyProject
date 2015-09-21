@@ -22,7 +22,7 @@
 
 @interface AliPayCallBackResponse : HYQResponse
 
-@property (nonatomic, assign) id<AliPayCallBackResponseDelegate> delegate;
+@property (nonatomic, weak) id<AliPayCallBackResponseDelegate> delegate;
 
 - (id)initWithTradeNO:(NSNumber *)tradeNO andWithTradeStatus:(NSNumber *)tradeStatus andWithResult:(NSString *)result;
 
