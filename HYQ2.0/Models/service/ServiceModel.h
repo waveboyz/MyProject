@@ -17,6 +17,7 @@
 @property (nonatomic, copy) NSString *DesStr;
 @property (nonatomic, copy) NSString *logoPath;
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic, strong) NSNumber *xiangou;
 @property (nonatomic, strong) NSNumber *pid;
 @property (nonatomic, strong) NSNumber *price;
 @property (nonatomic, strong) NSNumber *payCount;

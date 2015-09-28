@@ -84,7 +84,6 @@
     [self stopStateHud];
     [self showStateHudWithText:@"修改成功！"];
     [self updateUserInfo];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"replaceNickName" object:nil];
     [self performSelector:@selector(dismissSelf) withObject:nil afterDelay:1.5];
 }
 
@@ -105,9 +104,12 @@
 {
     NSDictionary *userInfo  =  [[HYQUserManager sharedUserManager] userInfo];
     NSMutableDictionary *newDic = [NSMutableDictionary dictionaryWithDictionary:userInfo];
-    [newDic removeObjectForKey:@"username"];
-    [newDic setObject:_nameField.text forKey:@"username"];
+    [newDic removeObjectForKey:@"realName"];
+    [newDic setObject:_nameField.text forKey:@"realName"];
     [[HYQUserManager sharedUserManager] updateUserInfo:newDic];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(replaceNickNameSucceed)]) {
+        [self.delegate replaceNickNameSucceed];
+    }
 }
 
 - (void)dismissSelf

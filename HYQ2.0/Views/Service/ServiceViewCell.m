@@ -15,7 +15,6 @@
 @property (nonatomic, strong) UIImageView *imageview;
 @property (nonatomic, strong) UILabel     *titleLbl;
 @property (nonatomic, strong) UILabel     *priceLbl;
-@property (nonatomic, strong) UIImageView *collectView;
 @property (nonatomic, strong) UILabel     *collectCntLbl;
 @property (nonatomic, strong) UILabel     *purchaseCntLbl;
 @property (nonatomic, strong) UILabel     *lineLbl;
@@ -55,14 +54,8 @@
         [self.contentView addSubview:_priceLbl];
     }
     
-    if (!_collectView) {
-        _collectView = [[UIImageView alloc] initWithFrame:CGRectMake(130, 95, 15, 15)];
-        _collectView.image = [UIImage imageNamed:@"heart_collect"];
-        [self.contentView addSubview:_collectView];
-    }
-    
     if (!_collectCntLbl) {
-        _collectCntLbl = [[UILabel alloc] initWithFrame:CGRectMake(150, 95, (kScreenWidth - 155)*0.5, 15)];
+        _collectCntLbl = [[UILabel alloc] initWithFrame:CGRectMake(130, 95, (kScreenWidth - 155)*0.5, 15)];
         _collectCntLbl.textColor = [UIColor grayColor];
         _collectCntLbl.font = [UIFont systemFontOfSize:13.0f];
         [self.contentView addSubview:_collectCntLbl];
@@ -91,22 +84,29 @@
     if (_service.photo) {
         NSString *urlStr = [NSString stringWithFormat:@"%@%@",LOCAL_HOST,_service.photo];
         [_imageview sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:[UIImage imageNamed:@"product_placeholder"]];
-
     }
 
     //------------------------------------
-    _collectCntLbl.text = [_service.colCount stringValue];
+    if (_service.colCount) {
+        _collectCntLbl.text = [NSString stringWithFormat:@"%@人收藏",[_service.colCount stringValue]];
+    }
     //------------------------------------
-    _purchaseCntLbl.text =[NSString stringWithFormat:@"%@人购买",[_service.payCount stringValue]];
-    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:_purchaseCntLbl.text];
-    NSRange range = NSMakeRange(0, attStr.length);
-    [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13.0f] range:range];
-    CGRect rect = [attStr boundingRectWithSize:CGSizeMake(kScreenWidth*0.5, 15) options:NSStringDrawingUsesFontLeading context:nil];
-    _purchaseCntLbl.frame = CGRectMake(kScreenWidth - rect.size.width - 10, 95, rect.size.width, 15);
+    if (_service.payCount) {
+        _purchaseCntLbl.text =[NSString stringWithFormat:@"%@人购买",[_service.payCount stringValue]];
+        NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:_purchaseCntLbl.text];
+        NSRange range = NSMakeRange(0, attStr.length);
+        [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13.0f] range:range];
+        CGRect rect = [attStr boundingRectWithSize:CGSizeMake(kScreenWidth*0.5, 15) options:NSStringDrawingUsesFontLeading context:nil];
+        _purchaseCntLbl.frame = CGRectMake(kScreenWidth - rect.size.width - 10, 95, rect.size.width, 15);
+    }
     //------------------------------------
-    _priceLbl.text = [NSString stringWithFormat:@"￥%@",[_service.price stringValue]];
+    if (_service.price) {
+        _priceLbl.text = [NSString stringWithFormat:@"￥%@",[_service.price stringValue]];
+    }
     //------------------------------------
-    _titleLbl.text = _service.title;
+    if (_service.title) {
+        _titleLbl.text = _service.title;
+    }
 }
 
 @end

@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "GlobalConst.h"
 #import "PaymentModel.h"
+/*
+    我的提成一般cell
+ */
 
 @interface MyPaymentCell : UITableViewCell
 

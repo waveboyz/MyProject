@@ -22,8 +22,8 @@
 
 @property (nonatomic, weak) id<MyOrderEvaluateResponseDelegate> delegate;
 
-- (id)initWithOid:(NSUInteger)oid
-     andWithPayID:(NSString *)payID
+- (id)initWithOid:(NSNumber *)oid
+     andWithPayID:(NSNumber *)payID
     andWithValue1:(NSUInteger)value1
     andWithValue2:(NSUInteger)value2
     andWithValue3:(NSUInteger)value3

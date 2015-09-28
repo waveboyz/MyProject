@@ -15,7 +15,7 @@
 
 //返回新添加地址对象
 @optional
-- (void)addAddressSucceedWithAddress:(AddressModel *)address;
+//- (void)addAddressSucceedWithAddress:(AddressModel *)address;
 - (void)addAddressSucceed;
 
 @end

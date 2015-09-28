@@ -13,6 +13,7 @@
 #import "MyorderFormController.h"
 #import "MyCollectController.h"
 #import "MyAddressController.h"
+#import "MyBankWithdrawController.h"
 #import "HYQEditController.h"
 #import "HYQBaseWebController.h"
 #import "HYQUserManager.h"
@@ -46,14 +47,12 @@
 {
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(replaceAvatar) name:@"replaceAvatar" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(replaceAvatar) name:@"replaceNickName" object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"replaceAvatar" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"replaceNickName" object:nil];
 }
 
 - (void)viewDidLoad {
@@ -77,9 +76,7 @@
 
 - (void)replaceAvatar
 {
-    dispatch_async(dispatch_get_main_queue(), ^(void){
-        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:0 inSection:0], nil] withRowAnimation:UITableViewRowAnimationAutomatic];
-    });
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:0 inSection:0], nil] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark UITableViewDataSource
@@ -218,10 +215,10 @@
     
     if (indexPath.section == 1) {
         if (indexPath.row == 0) {
-            NSDictionary *userinfo = [[HYQUserManager sharedUserManager] userInfo];
-            NSNumber *uid = [userinfo objectForKey:@"uid"];
-            HYQBaseWebController *bankVC = [[HYQBaseWebController alloc] initWithUrl:[NSString stringWithFormat:@"%@%@",BANK_BASE_URL,[uid stringValue]]    andWithTitle:@"提现"];
-            
+//            NSDictionary *userinfo = [[HYQUserManager sharedUserManager] userInfo];
+//            NSNumber *uid = [userinfo objectForKey:@"uid"];
+//            HYQBaseWebController *bankVC = [[HYQBaseWebController alloc] initWithUrl:[NSString stringWithFormat:@"%@%@",BANK_BASE_URL,[uid stringValue]]    andWithTitle:@"提现"];
+            MyBankWithdrawController *bankVC = [[MyBankWithdrawController alloc] init];
             [self.navigationController pushViewController:bankVC animated:YES];
         }
         if (indexPath.row == 1) {
@@ -231,7 +228,7 @@
         if (indexPath.row == 2) {
             NSDictionary *userinfo = [[HYQUserManager sharedUserManager] userInfo];
             NSNumber *uid = [userinfo objectForKey:@"uid"];
-            HYQBaseWebController *bankVC = [[HYQBaseWebController alloc] initWithUrl:[NSString stringWithFormat:@"%@%@",SIGNIN_BASE_URL,[uid stringValue]]    andWithTitle:@"提现"];
+            HYQBaseWebController *bankVC = [[HYQBaseWebController alloc] initWithUrl:[NSString stringWithFormat:@"%@%@",SIGNIN_BASE_URL,[uid stringValue]]    andWithTitle:@"我的积分"];
             
             [self.navigationController pushViewController:bankVC animated:YES];
         }

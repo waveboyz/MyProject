@@ -47,7 +47,8 @@
     HYQmainResponseDelegate,
     MainScrollinfoCellDelegate,
     QRUrlResponseDelegate,
-    NSURLConnectionDelegate
+    NSURLConnectionDelegate,
+    MainBannerCellDelegate
 >
 
 @property (nonatomic, strong) UITableView   *tableview;
@@ -178,7 +179,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:@"didLogin" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:@"didLogout" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:@"replaceAvatar" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:@"replaceNickName" object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -191,7 +191,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:@"didLogout" object:nil];
 //    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didLogout" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"replaceAvatar" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"replaceNickName" object:nil];
     
 }
 
@@ -296,6 +295,7 @@
 - (void)setButton
 {
     if ([[HYQUserManager sharedUserManager] isLogin]) {
+        _buttonImg.image = nil;
         [_buttonImg sd_setImageWithURL:[NSURL URLWithString:[[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"avatarUrl"]] placeholderImage:[UIImage imageNamed:@"avatar_placeholder"]];
     }else{
         _buttonImg.image = [UIImage imageNamed:@"avatar_placeholder"];
@@ -375,6 +375,7 @@
         cell = [tableView dequeueReusableCellWithIdentifier:SECOND_CELL];
         if (!cell) {
             cell = [[MainBannerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SECOND_CELL];
+            [(MainBannerCell *)cell setDelegate:self];
         }
         [(MainBannerCell *)cell setImgArr:_imgArr];
     }else if (indexPath.row == 2){
@@ -510,6 +511,13 @@
             default:
                 break;
     }
+}
+
+#pragma mark MainBannerCellDelegate
+- (void)didSelectedBannerWithUrl:(NSString *)url
+{
+    InfoWebViewController *webView = [[InfoWebViewController alloc] initWithUrl:url andTitle:nil];
+    [self presentViewController:webView animated:YES completion:^(void){}];
 }
 
 @end

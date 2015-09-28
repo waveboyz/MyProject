@@ -17,7 +17,7 @@
 
 @interface ServiceAddressPickController : BaseViewController
 
-- (id)initWithAddressArray:(NSArray *)addressArr;
+//- (id)initWithAddressArray:(NSArray *)addressArr;
 @property (nonatomic, assign) id<ServiceAddressPickControllerDelegate> delegate;
 
 @end

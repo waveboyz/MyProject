@@ -19,7 +19,8 @@
 <
     DownSheetDelegate,
     ReplaceAvartarResponseDelegate,
-    ReplaceUidResponseDelegate
+    ReplaceUidResponseDelegate,
+    HYQReplaceNickControllerDelegeate
 >
 
 @property (nonatomic, retain) UIImagePickerController *pickerVC;
@@ -43,13 +44,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(replaceNickNameSucceed) name:@"replaceNickName" object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"replaceNickName" object:nil];
 }
 
 - (void)createUI
@@ -182,6 +181,7 @@
         [self avatarBtnPressed];
     }else if (indexPath.row == 1){
         HYQReplaceNickController *replaceVC = [[HYQReplaceNickController alloc] init];
+        replaceVC.delegate = self;
         [self.navigationController pushViewController:replaceVC animated:YES];
     }else if (indexPath.row == 2){
         HYQReplaceCodeController *codeVC = [[HYQReplaceCodeController alloc] init];
@@ -294,13 +294,12 @@
     [newDic removeObjectForKey:@"avatarUrl"];
     [newDic setObject:_avatarUrl forKey:@"avatarUrl"];
     [[HYQUserManager sharedUserManager] updateUserInfo:newDic];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"replaceAvatar" object:nil];
-    
-    
     dispatch_async(dispatch_get_main_queue(), ^(void){
-        [self stopStateHud];
+//        [self stopStateHud];
         [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
     });
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"replaceAvatar" object:nil];
 }
 
 - (void)wrongOperationWithText:(NSString *)text
@@ -313,7 +312,7 @@
 - (void)replaceNickNameSucceed
 {
     [self stopStateHud];
-    _useranme = [[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"username"];
+    _useranme = [[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"realName"];
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 

@@ -135,7 +135,7 @@
         _commentView.font = [UIFont systemFontOfSize:15.0f];
         _commentView.textColor = [UIColor blackColor];
         _commentView.delegate = self;
-        _commentView.text = @"我对卖家有话说";
+        _commentView.text = @" 我对卖家有话说";
         [self.contentView addSubview:_commentView];
     }
 }
@@ -143,15 +143,34 @@
 - (void)setService:(ServiceModel *)service
 {
     _service = service;
-    _titleLbl.text = _service.title;
-    _priceLbl.text = [NSString stringWithFormat:@"￥%@",[_service.price stringValue]];
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@",LOCAL_HOST,_service.photo];
-    [_titleImg sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:[UIImage imageNamed:@"product_placeholder"]];
+    if (_service.title) {
+        _titleLbl.text = _service.title;
+    }
+    
+    if (_service.title && _service.xiangou) {
+        _titleLbl.text = [NSString stringWithFormat:@"%@(限购%@份)",_service.title,[_service.xiangou stringValue]];
+    }
+    
+    if (_service.price) {
+        _priceLbl.text = [NSString stringWithFormat:@"￥%@",[_service.price stringValue]];
+    }
+
+    if (_service.photo) {
+        NSString *urlStr = [NSString stringWithFormat:@"%@%@",LOCAL_HOST,_service.photo];
+        [_titleImg sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:[UIImage imageNamed:@"product_placeholder"]];
+    }
 }
 
 - (void)plsBtnPressed
 {
-    _serviceCnt += 1;
+    if (_service.xiangou) {
+        if (_serviceCnt < [_service.xiangou integerValue]) {
+            _serviceCnt += 1;
+        }
+    }else{
+    _serviceCnt +=1;
+    }
+    
     _countLbl.text = [NSString stringWithFormat:@"%ld",_serviceCnt];
     [self calculatorBtnPressed];
 }

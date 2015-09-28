@@ -29,7 +29,7 @@
 
 - (void)createUI
 {
-    _webview = [[UIWebView alloc] initWithFrame:CGRectMake(0, -44, kScreenWidth, kScreenHeight + 44)];
+    _webview = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
     _webview.delegate = self;
     [self.view addSubview:_webview];
     [self showWebView];

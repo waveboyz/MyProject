@@ -303,9 +303,9 @@
 
     _getResendBtn.backgroundColor = [UIColor colorWithWhite:0.6 alpha:1.0];
     [_getResendBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [_getResendBtn setTitle:@"60s 重新获取" forState:UIControlStateNormal];
+    [_getResendBtn setTitle:@"120s 重新获取" forState:UIControlStateNormal];
     _getResendBtn.enabled = NO;
-    _reSendTime = 60;
+    _reSendTime = 120;
     
     _captchaTimer = [NSTimer scheduledTimerWithTimeInterval:1
                                                      target:self

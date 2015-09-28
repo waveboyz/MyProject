@@ -10,9 +10,17 @@
 /*
     修改昵称
  */
+@protocol HYQReplaceNickControllerDelegeate <NSObject>
+
+- (void)replaceNickNameSucceed;
+
+@end
+
 @interface HYQReplaceNickController : BaseViewController
 <
     UITextFieldDelegate
 >
+
+@property (nonatomic, weak) id<HYQReplaceNickControllerDelegeate> delegate;
 
 @end

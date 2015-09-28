@@ -8,6 +8,7 @@
 
 #import "BaseViewController.h"
 #import "ServiceModel.h"
+#import "OrderModel.h"
 /*
     产品详情页
  */
@@ -17,5 +18,6 @@
 >
 
 - (id)initWithServiceModel:(ServiceModel *)service;
+- (id)initWithOrderModel:(OrderModel *)order;
 
 @end

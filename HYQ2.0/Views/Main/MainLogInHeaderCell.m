@@ -52,7 +52,7 @@
         _nameLbl.font = [UIFont systemFontOfSize:13.0f];
         _nameLbl.textColor = [UIColor whiteColor];
         _nameLbl.textAlignment = NSTextAlignmentCenter;
-        _nameLbl.text = [[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"realName"];
+        _nameLbl.text = [[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"phone"];
         [self.contentView addSubview:_nameLbl];
     }
     

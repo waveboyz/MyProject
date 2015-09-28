@@ -13,7 +13,6 @@
 - (void)getResponseDictionary:(NSDictionary *)dictionary;
 
 @optional
-
 - (void)wrongOperationWithText:(NSString *)text;
 
 @end

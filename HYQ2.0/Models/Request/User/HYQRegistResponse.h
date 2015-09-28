@@ -13,7 +13,6 @@
 - (void)registSucceed;
 
 @optional
-
 - (void)wrongOperationWithText:(NSString *)text;
 
 @end

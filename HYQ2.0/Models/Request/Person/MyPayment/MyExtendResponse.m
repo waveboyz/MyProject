@@ -8,6 +8,7 @@
 
 #import "MyExtendResponse.h"
 #import "HYQUserManager.h"
+#import "ExpandModel.h"
 
 @implementation MyExtendResponse
 
@@ -31,8 +32,11 @@
 {
     NSLog(@"%@",responseObject);
     if ([[responseObject objectForKey:@"code"] integerValue] == 1) {
-        if ([responseObject objectForKey:@"products"]) {
-
+        if ([responseObject objectForKey:@"promotions"]) {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(getExtendArrayWith:)]) {
+                NSMutableArray *arr = [ExpandModel objectArrayWithKeyValuesArray:[responseObject objectForKey:@"promotions"]];
+                [self.delegate getExtendArrayWith:arr];
+            }
         }
     }else if([[responseObject objectForKey:@"code"] integerValue] == 2){
         if ([self.delegate respondsToSelector:@selector(noDataArr)]) {

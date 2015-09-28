@@ -20,6 +20,8 @@
 @property (nonatomic, strong) UIButton    *confirmBtn;
 @property (nonatomic, strong) UIButton    *evalueBtn;
 @property (nonatomic, strong) UIButton    *payBtn;
+@property (nonatomic, strong) UIButton    *purchaseBtn;
+@property (nonatomic, strong) UIButton    *deleteBtn;
 @property (nonatomic, strong) UIView      *blankView;
 
 @end
@@ -84,20 +86,42 @@
         [self.contentView addSubview:_lineLbl];
     }
     
-    if (!_confirmBtn) {
-        _confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _confirmBtn.frame = CGRectMake(kScreenWidth - 115, 79.5, 50, 30);
-        [_confirmBtn setTitle:@"查看" forState:UIControlStateNormal];
-        [_confirmBtn setTitleColor:NAVIBAR_GREEN_COLOR forState:UIControlStateNormal];
-        _confirmBtn.layer.borderColor = NAVIBAR_GREEN_COLOR.CGColor;
-        _confirmBtn.layer.borderWidth = 0.5f;
-        [_confirmBtn addTarget:self action:@selector(confirmBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-        [self.contentView addSubview:_confirmBtn];
+//    if (!_confirmBtn) {
+//        _confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        _confirmBtn.frame = CGRectMake(kScreenWidth - 115, 79.5, 50, 30);
+//        [_confirmBtn setTitle:@"查看" forState:UIControlStateNormal];
+//        [_confirmBtn setTitleColor:NAVIBAR_GREEN_COLOR forState:UIControlStateNormal];
+//        _confirmBtn.layer.borderColor = NAVIBAR_GREEN_COLOR.CGColor;
+//        _confirmBtn.layer.borderWidth = 0.5f;
+//        [_confirmBtn addTarget:self action:@selector(confirmBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+//        [self.contentView addSubview:_confirmBtn];
+//    }
+    
+    if (!_deleteBtn) {
+        _deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _deleteBtn.frame = CGRectMake(kScreenWidth - 115, 79.5, 50, 30);
+        [_deleteBtn setTitle:@"删除" forState:UIControlStateNormal];
+        [_deleteBtn setTitleColor:NAVIBAR_GREEN_COLOR forState:UIControlStateNormal];
+        _deleteBtn.layer.borderColor = NAVIBAR_GREEN_COLOR.CGColor;
+        _deleteBtn.layer.borderWidth = 0.5f;
+        [_deleteBtn addTarget:self action:@selector(deleteBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+        [self.contentView addSubview:_deleteBtn];
+    }
+    
+    if (!_purchaseBtn) {
+        _purchaseBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _purchaseBtn.frame = CGRectMake(kScreenWidth - 80, 79.5, 75, 30);
+        [_purchaseBtn setTitle:@"继续购买" forState:UIControlStateNormal];
+        [_purchaseBtn setTitleColor:NAVIBAR_GREEN_COLOR forState:UIControlStateNormal];
+        _purchaseBtn.layer.borderColor = NAVIBAR_GREEN_COLOR.CGColor;
+        _purchaseBtn.layer.borderWidth = 0.5f;
+        [_purchaseBtn addTarget:self action:@selector(purchaseBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+        [self.contentView addSubview:_purchaseBtn];
     }
     
     if (!_evalueBtn) {
         _evalueBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _evalueBtn.frame = CGRectMake(kScreenWidth - 55, 79.5, 50, 30);
+        _evalueBtn.frame = CGRectMake(kScreenWidth - 135, 79.5, 50, 30);
         [_evalueBtn setTitle:@"评价" forState:UIControlStateNormal];
         [_evalueBtn setTitleColor:NAVIBAR_GREEN_COLOR forState:UIControlStateNormal];
         _evalueBtn.layer.borderColor = NAVIBAR_GREEN_COLOR.CGColor;
@@ -129,28 +153,44 @@
 {
     _order = order;
     //----------------------------------
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@",LOCAL_HOST,_order.photo];
-    [_imgPic sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:[UIImage imageNamed:@"product_placeholder"]];
+    if (_order.photo) {
+        NSString *urlStr = [NSString stringWithFormat:@"%@%@",LOCAL_HOST,_order.photo];
+        [_imgPic sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:[UIImage imageNamed:@"product_placeholder"]];
+    }
     //----------------------------------
-    _titleLbl.text = _order.name;
+    if (_order.name) {
+        _titleLbl.text = _order.name;
+    }
     //----------------------------------
-    NSString *money = [_order.money stringValue];
-    _priceLbl.text = [NSString stringWithFormat:@"￥%@",money];
+    if (_order.money != nil) {
+        NSString *money = [_order.money stringValue];
+        _priceLbl.text = [NSString stringWithFormat:@"￥%@",money];
+    }
     //----------------------------------
-    _cntLbl.text = [NSString stringWithFormat:@"X%@",_order.num];
+    if (_order.num) {
+        _cntLbl.text = [NSString stringWithFormat:@"X%@",_order.num];
+    }
     //---------------------------------
     _stateLbl.text = _order.statusMsg;
     
     if ([_order.statusBtn isEqualToString:@"付款"]) {
-        _confirmBtn.hidden = YES;
+//        _confirmBtn.hidden = YES;
+        _payBtn.hidden = NO;
+        _deleteBtn.hidden = NO;
+        _purchaseBtn.hidden = YES;
         _evalueBtn.hidden = YES;
     }else if ([_order.statusBtn isEqualToString:@"评价"]){
+        _evalueBtn.hidden = NO;
+        _purchaseBtn.hidden = NO;
+        _deleteBtn.hidden = YES;
         _payBtn.hidden = YES;
-        _confirmBtn.frame = CGRectMake(kScreenWidth - 115, 79.5, 50, 30);
+//        _confirmBtn.frame = CGRectMake(kScreenWidth - 115, 79.5, 50, 30);
     }else if([_order.statusBtn isEqualToString:@"查看"]){
+        _purchaseBtn.hidden = NO;
+        _deleteBtn.hidden = YES;
         _payBtn.hidden = YES;
         _evalueBtn.hidden = YES;
-        _confirmBtn.frame = CGRectMake(kScreenWidth - 55, 79.5, 50, 30);
+//        _confirmBtn.frame = CGRectMake(kScreenWidth - 55, 79.5, 50, 30);
     }
 }
 
@@ -166,6 +206,13 @@
     }
 }
 
+- (void)deleteBtnPressed
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(deleteBtnPressedWithOid:andWithIndexPath:)]) {
+        [self.delegate deleteBtnPressedWithOid:_order.oid andWithIndexPath:_indexPath];
+    }
+}
+
 - (void)evaluateBtnPressed
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(evaluateBtnPressedWithOid:andWithIndexPath:)]) {
@@ -177,6 +224,13 @@
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(payBtnPressedWithOid:andWithIndexPath:)]) {
         [self.delegate payBtnPressedWithOid:_order.oid andWithIndexPath:_indexPath];
+    }
+}
+
+- (void)purchaseBtnPressed
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(purchaseBtnPressedWithOid:andWithIndexPath:)]) {
+        [self.delegate purchaseBtnPressedWithOid:_order.oid andWithIndexPath:_indexPath];
     }
 }
 

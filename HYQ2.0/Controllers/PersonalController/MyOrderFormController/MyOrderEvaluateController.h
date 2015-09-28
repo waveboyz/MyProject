@@ -11,8 +11,15 @@
 /*
  评价订单
  */
+@protocol MyOrderEvaluateControllerDelegate <NSObject>
+
+- (void)evaluateSucceed;
+
+@end
+
 @interface MyOrderEvaluateController : BaseViewController
 
-- (id)initWithOid:(NSNumber *)oid;
+@property (nonatomic, weak) id<MyOrderEvaluateControllerDelegate> delegate;
+- (id)initWithOid:(NSNumber *)oid andWithSettleID:(NSNumber *)settleID;
 
 @end

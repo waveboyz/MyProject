@@ -16,6 +16,7 @@
 
 @optional
 
+- (void)phoneAlreadyExist;
 - (void)wrongOperationWithText:(NSString *)text;
 
 @end

@@ -23,9 +23,11 @@ typedef NS_ENUM(NSInteger, OrderState){
 @property (nonatomic, copy) NSString *photo;
 @property (nonatomic, copy) NSString *statusBtn;
 @property (nonatomic, copy) NSString *statusMsg;
-@property (nonatomic, copy) NSString *orderNum;
+@property (nonatomic, copy) NSNumber *orderNum;
 @property (nonatomic, copy) NSString *proSummery;
+@property (nonatomic, strong) NSNumber *settlementId;
 @property (nonatomic, strong) NSNumber *oid;
+@property (nonatomic, strong) NSNumber *pid;
 @property (nonatomic, strong) NSNumber *money;
 @property (nonatomic, strong) NSNumber *num;
 

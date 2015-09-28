@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UITextField *cashField;
 @property (nonatomic, assign) NSArray     *titleArr;
 @property (nonatomic, assign) NSArray     *placeArr;
+@property (nonatomic, strong) UIButton    *confirmBtn;
 
 @end
 
@@ -29,13 +30,22 @@
 
 - (void)createUI
 {
-    _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
+    _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 300) style:UITableViewStylePlain];
     _tableview.dataSource = self;
     _tableview.delegate = self;
     _tableview.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 50)];
     _tableview.tableHeaderView = header;
     [self.view addSubview:_tableview];
+    
+    _confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _confirmBtn.frame = CGRectMake(kScreenWidth * 0.5 - 70, 165, 140, 30);
+    _confirmBtn.layer.cornerRadius = CGRectGetWidth(_confirmBtn.frame)/8;
+    [_confirmBtn addTarget:self action:@selector(confirmBtnPressed) forControlEvents:UIControlEventTouchDragInside];
+    [_confirmBtn setBackgroundColor:NAVIBAR_GREEN_COLOR];
+    [_confirmBtn setTitle:@"确认提现" forState:UIControlStateNormal];
+    [_confirmBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.view addSubview:_confirmBtn];
 }
 
 - (NSArray *)titleArr
@@ -56,12 +66,28 @@
     return _placeArr;
 }
 
+- (void)confirmBtnPressed
+{
+    if ([_nameField.text isEqualToString:@""]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"用户名不能为空！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        alert.tag = 200;
+        [alert show];
+    }else if ([_cardField.text isEqualToString:@""]){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"银行卡不能为空！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        alert.tag = 205;
+        [alert show];
+    }else if ([_cashField.text isEqualToString:@""]){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"金额不能为空！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        alert.tag = 210;
+        [alert show];
+    }
+}
+
 #pragma mark UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 3;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -72,10 +98,12 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:BANK_CELL];
     }
     cell.textLabel.text = _titleArr[indexPath.row];
+    UILabel *lineLbl = [[UILabel alloc] initWithFrame:CGRectMake(15, 50, kScreenWidth - 15, 0.5)];
+    [cell.contentView addSubview:lineLbl];
     switch (indexPath.row) {
         case 0:
         {
-            _nameField = [[UITextField alloc] initWithFrame:CGRectMake(70, 0, kScreenWidth - 70, 44)];
+            _nameField = [[UITextField alloc] initWithFrame:CGRectMake(70, 0, kScreenWidth - 70, 50)];
             _nameField.font = [UIFont systemFontOfSize:15.0f];
             _nameField.textColor = [UIColor blackColor];
             _nameField.placeholder = _placeArr[indexPath.row];
@@ -84,7 +112,7 @@
             break;
         case 1:
         {
-            _cardField = [[UITextField alloc] initWithFrame:CGRectMake(70, 0, kScreenWidth - 70, 44)];
+            _cardField = [[UITextField alloc] initWithFrame:CGRectMake(70, 0, kScreenWidth - 70, 50)];
             _cardField.font = [UIFont systemFontOfSize:15.0f];
             _cardField.textColor = [UIColor blackColor];
             _cardField.placeholder = _placeArr[indexPath.row];
@@ -99,7 +127,7 @@
             _cashField.textColor = [UIColor blackColor];
             NSDictionary *userinfo = [[HYQUserManager sharedUserManager] userInfo];
             NSNumber *account = [userinfo objectForKey:@"account"];
-            _cashField.placeholder = [NSString stringWithFormat:@"%@%@",_placeArr[indexPath.row],[account stringValue]];
+            _cashField.placeholder = [NSString stringWithFormat:@"%@%@元",_placeArr[indexPath.row],[account stringValue]];
             [cell.contentView addSubview:_cashField];
         }
             break;
@@ -109,6 +137,24 @@
     }
     
     return cell;
+}
+
+#pragma mark UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50.5f;
+}
+
+#pragma mark UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonInde
+{
+    if (alertView.tag == 200) {
+        [_nameField becomeFirstResponder];
+    }else if (alertView.tag == 205){
+        [_cardField becomeFirstResponder];
+    }else if (alertView.tag == 210){
+        [_cashField becomeFirstResponder];
+    }
 }
 
 @end

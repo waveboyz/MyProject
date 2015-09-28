@@ -150,7 +150,7 @@ HYQLoginResponseDelegate
     _registLbl.frame = CGRectMake(kScreenWidth * 0.5 - 75, 30, 150, 20);
     _registLbl.titleLabel.textAlignment = NSTextAlignmentCenter;
     _registLbl.titleLabel.font = [UIFont systemFontOfSize:15.0f];
-    [_registLbl setTitle:@"没有账号？点这" forState:UIControlStateNormal];
+    [_registLbl setTitle:@"没有账号？点这注册" forState:UIControlStateNormal];
     [_registLbl setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_registLbl addTarget:self action:@selector(pushRegiterViewController) forControlEvents:UIControlEventTouchUpInside];
     [_bgView addSubview:_registLbl];

@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "GlobalConst.h"
-
+/*
+    我的提成头cell
+ */
 @protocol MyPaymenyHeaderDelegate <NSObject>
 
 @end

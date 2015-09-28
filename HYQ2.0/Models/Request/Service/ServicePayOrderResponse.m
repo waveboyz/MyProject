@@ -38,7 +38,7 @@
             [dic setObject:msg forKey:@"buyMsg"];
         }
 
-        [dic setObject:@"IOS端" forKey:@"biaoshi"];
+        [dic setObject:@"IOS" forKey:@"biaoshi"];
         
         [self setUploadDictionary:dic];
     }

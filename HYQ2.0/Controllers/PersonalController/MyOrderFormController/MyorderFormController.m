@@ -8,23 +8,27 @@
 
 #import "MyorderFormController.h"
 #import "MyOrderEvaluateController.h"
-#import "ServicePurchaseController.h"
+//#import "ServicePurchaseController.h"
+#import "ServiceDetailController.h"
 #import "VOSegmentedControl.h"
 #import "MyOrderFormCell.h"
-#import "MyOrderResponse.h"
+#import "OrderModel.h"
 #import "Order.h"
 #import "DataSigner.h"
 #import "DownSheet.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import "MyOrderResponse.h"
 #import "AliPayCallBackResponse.h"
-#import "OrderModel.h"
+#import "MyOrderDeleteResponse.h"
 
 @interface MyorderFormController ()
 <
     MyOrderResponseDelegate,
     MyOrderFormCellDelegate,
     DownSheetDelegate,
-    AliPayCallBackResponseDelegate
+    AliPayCallBackResponseDelegate,
+    MyOrderDeleteResponseDelegate,
+    MyOrderEvaluateControllerDelegate
 >
 
 @property (nonatomic,strong) VOSegmentedControl *segment;
@@ -183,13 +187,12 @@
     Order *order = [[Order alloc] init];
     order.partner = PARTNER;
     order.seller = SELLER;
-    order.tradeNO = [NSString stringWithFormat:@"%@",data.orderNum]; //订单ID（由商家自行制定）
+    order.tradeNO = [data.orderNum stringValue]; //订单ID（由商家自行制定）
     order.productName = data.name; //商品标题
     order.productDescription = data.proSummery; //商品描述
-    //    order.amount = [NSString stringWithFormat:@"%ld",_totalPrice]; //商品价格
     float price = [data.money floatValue]* [data.num integerValue];
-    order.amount = [NSString stringWithFormat:@"%f",price];
-//    order.amount = @"0.01";
+//    order.amount = [NSString stringWithFormat:@"%f",price];
+    order.amount = @"0.01";
     order.notifyURL =  @"http://www.xxx.com"; //回调URL
     
     order.service = @"mobile.securitypay.pay";
@@ -232,13 +235,120 @@
     OrderModel *data = self.dataArr[_pressedIndex.section];
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSNumber *numTemp = [numberFormatter numberFromString:data.orderNum];
+    NSNumber *numTemp = [numberFormatter numberFromString:[data.orderNum stringValue]];
     
     AliPayCallBackResponse *response = [[AliPayCallBackResponse alloc] initWithTradeNO:numTemp andWithTradeStatus:state andWithResult:[dic objectForKey:@"result"]];
     response.delegate = self;
     [response start];
 }
 
+
+
+- (void)noDataArr
+{
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        [self stopStateHud];
+        [self showStateHudWithText:@"没有更多数据~"];
+        if (self.currentPage == 1) {
+            [self.tableView.header endRefreshing];
+            [self.view insertSubview:self.emptyView belowSubview:self.segment];
+        }else{
+            [self.tableView.footer endRefreshing];
+            self.currentPage -=1;
+        }
+    });
+}
+
+#pragma mark UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return self.dataArr.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *ORDER_CELL = @"order_cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ORDER_CELL];
+    if (!cell) {
+        cell = [[MyOrderFormCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ORDER_CELL];
+        [(MyOrderFormCell *)cell setDelegate:self];
+    }
+    [(MyOrderFormCell *)cell setOrder:self.dataArr[indexPath.section]];
+    [(MyOrderFormCell *)cell setIndexPath:indexPath];
+    
+    return cell;
+}
+
+#pragma UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 134.5f;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark MyOrderFormCellDelegate
+- (void)payBtnPressedWithOid:(NSNumber *)oid andWithIndexPath:(NSIndexPath *)indexPath
+{
+    _pressedIndex = nil;
+    _pressedIndex = indexPath;
+    DownSheet *sheet = [[DownSheet alloc]initWithlist:self.sheetArr height:0];
+    sheet.delegate = self;
+    [sheet showInView:self];
+}
+
+- (void)evaluateBtnPressedWithOid:(NSNumber *)oid andWithIndexPath:(NSIndexPath *)indexPath
+{
+    _pressedIndex = nil;
+    _pressedIndex = indexPath;
+    OrderModel *model = self.dataArr[indexPath.row];
+    MyOrderEvaluateController *evaluateVC = [[MyOrderEvaluateController alloc] initWithOid:model.oid andWithSettleID:model.settlementId];
+    evaluateVC.delegate = self;
+    [self.navigationController pushViewController:evaluateVC animated:YES];
+}
+
+- (void)confirmBtnPressedWithOid:(NSNumber *)oid andWithIndexPath:(NSIndexPath *)indexPath
+{
+    _pressedIndex = nil;
+}
+
+- (void)deleteBtnPressedWithOid:(NSNumber *)oid andWithIndexPath:(NSIndexPath *)indexPath
+{
+    _pressedIndex = nil;
+    _pressedIndex = indexPath;
+    OrderModel *model = self.dataArr[indexPath.row];
+    [self showNoTextStateHud];
+    MyOrderDeleteResponse *response = [[MyOrderDeleteResponse alloc] initWithOid:[model.oid integerValue] andWithPayID:model.orderNum];
+    response.delegate = self;
+    [response start];
+}
+
+- (void)purchaseBtnPressedWithOid:(NSNumber *)oid andWithIndexPath:(NSIndexPath *)indexPath
+{
+    _pressedIndex = nil;
+    OrderModel *model = self.dataArr[indexPath.row];
+    ServiceDetailController *serviceVC = [[ServiceDetailController alloc] initWithOrderModel:model];
+    serviceVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    UINavigationController * jackNavigationController = [[UINavigationController alloc] initWithRootViewController:serviceVC];
+    [self presentViewController:jackNavigationController animated:YES completion:^(void){}]; 
+}
+
+#pragma mark MyOrderDeleteResponseDelegate
+- (void)deleteSucceed
+{
+    [self stopStateHud];
+    [self.dataArr removeObjectAtIndex:_pressedIndex.row];
+    [self.tableView reloadData];
+}
 
 #pragma mark MyOrderResponseDelegate
 - (void)getOrderListWithArray:(NSMutableArray *)orderArr
@@ -268,80 +378,7 @@
     [self showStateHudWithText:text];
     [self.tableView.header endRefreshing];
     
-//    [self.view insertSubview:self.badNetView belowSubview:self.segment];
-}
-
-- (void)noDataArr
-{
-    dispatch_async(dispatch_get_main_queue(), ^(void){
-        [self stopStateHud];
-        if (self.currentPage == 1) {
-            [self.tableView.header endRefreshing];
-            [self.view insertSubview:self.emptyView belowSubview:self.segment];
-        }else{
-            [self.tableView.footer endRefreshing];
-            self.currentPage -=1;
-        }
-    });
-}
-
-#pragma mark UITableViewDataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 1;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return self.dataArr.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *ORDER_CELL = @"order_cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ORDER_CELL];
-    if (!cell) {
-        cell = [[MyOrderFormCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ORDER_CELL];
-    }
-    [(MyOrderFormCell *)cell setOrder:self.dataArr[indexPath.row]];
-    [(MyOrderFormCell *)cell setDelegate:self];
-    [(MyOrderFormCell *)cell setIndexPath:indexPath];
-    
-    return cell;
-}
-
-#pragma UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 134.5f;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-#pragma mark MyOrderFormCellDelegate
-- (void)payBtnPressedWithOid:(NSNumber *)oid andWithIndexPath:(NSIndexPath *)indexPath
-{
-    _pressedIndex = nil;
-    _pressedIndex = indexPath;
-    DownSheet *sheet = [[DownSheet alloc]initWithlist:self.sheetArr height:0];
-    sheet.delegate = self;
-    [sheet showInView:self];
-}
-
-- (void)evaluateBtnPressedWithOid:(NSNumber *)oid andWithIndexPath:(NSIndexPath *)indexPath
-{
-    OrderModel *model = self.dataArr[indexPath.row];
-    MyOrderEvaluateController *evaluateVC = [[MyOrderEvaluateController alloc] initWithOid:model.oid];
-    [self.navigationController pushViewController:evaluateVC animated:YES];
-}
-
-- (void)confirmBtnPressedWithOid:(NSNumber *)oid andWithIndexPath:(NSIndexPath *)indexPath
-{
-
+    //    [self.view insertSubview:self.badNetView belowSubview:self.segment];
 }
 
 #pragma mark DownSheetDelegate
@@ -356,6 +393,13 @@
 - (void)getPayResult
 {
     [self stopStateHud];
+    [self.tableView.header beginRefreshing];
+}
+
+#pragma mark MyOrderEvaluateControllerDelegate
+- (void)evaluateSucceed
+{
+    [self.dataArr removeAllObjects];
     [self.tableView.header beginRefreshing];
 }
 

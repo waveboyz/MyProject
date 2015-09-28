@@ -10,11 +10,14 @@
 #import "VOSegmentedControl.h"
 #import "MyPaymentHeader.h"
 #import "MyPaymentCell.h"
+#import "MyPaymentExpandCell.h"
 #import "HYQWithdrawResponse.h"
+#import "MyExtendResponse.h"
 
 @interface MyPaymentController ()
 <
-    HYQWithdrawResponseDelegate
+    HYQWithdrawResponseDelegate,
+    MyExtendResponseDelegate
 >
 
 @property (nonatomic,strong) MyPaymentHeader *header;       //头视图
@@ -92,10 +95,9 @@
             
         case 2:
         {
-            [self stopStateHud];
-            [self.tableView.header endRefreshing];
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"暂未开放" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-            [alert show];
+            MyExtendResponse *response = [[MyExtendResponse alloc] initWithCurrentPage:self.currentPage];
+            response.delegate = self;
+            [response start];
         }
             break;
             
@@ -147,11 +149,39 @@
     [self.tableView.header beginRefreshing];
 }
 
+#pragma mark MyExtendResponseDelegate
+- (void)getExtendArrayWith:(NSMutableArray *)exArr
+{
+    if (self.currentPage == 1) {
+//        [self.dataArr removeAllObjects];
+        self.dataArr = exArr;
+    }else{
+        [self.dataArr addObjectsFromArray:exArr];
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        [self stopStateHud];
+        if (self.currentPage == 1) {
+            [self.tableView.header endRefreshing];
+            [self.tableView reloadData];
+            [self.view insertSubview:self.tableView aboveSubview:self.emptyView];
+            [self.view bringSubviewToFront:self.header];
+            [self.view bringSubviewToFront:self.segment];
+        }else{
+            [self.tableView.footer endRefreshing];
+            [self.tableView reloadData];
+            [self.view insertSubview:self.tableView aboveSubview:self.emptyView];
+            [self.view bringSubviewToFront:self.header];
+            [self.view bringSubviewToFront:self.segment];
+        }
+    });
+}
+
 #pragma mark HYQWithdrawResponseDelegate
 - (void)getInfoWith:(NSMutableArray *)infoArr
 {
     if (self.currentPage == 1) {
-        [self.dataArr removeAllObjects];
+//        [self.dataArr removeAllObjects];
         self.dataArr = infoArr;
     }else {
         [self.dataArr addObjectsFromArray:infoArr];
@@ -163,10 +193,14 @@
             [self.tableView.header endRefreshing];
             [self.tableView reloadData];
             [self.view insertSubview:self.tableView aboveSubview:self.emptyView];
+            [self.view bringSubviewToFront:self.header];
+            [self.view bringSubviewToFront:self.segment];
         }else{
             [self.tableView.footer endRefreshing];
             [self.tableView reloadData];
             [self.view insertSubview:self.tableView aboveSubview:self.emptyView];
+            [self.view bringSubviewToFront:self.header];
+            [self.view bringSubviewToFront:self.segment];
         }
     });
 }
@@ -188,8 +222,9 @@
         [self stopStateHud];
         [self showStateHudWithText:@"暂无更多数据~"];
         if (self.currentPage == 1) {
+//            [self.dataArr removeAllObjects];
             [self.tableView.header endRefreshing];
-            
+            [self.tableView reloadData];
             [self.view insertSubview:self.emptyView aboveSubview:self.tableView];
         }else{
             [self.tableView.footer endRefreshing];
@@ -207,12 +242,22 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *PAYMENT_CELL = @"payment_cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PAYMENT_CELL];
-    if (!cell) {
-        cell = [[MyPaymentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:PAYMENT_CELL];
+    static NSString *EXPAND_CELL = @"expand_cell";
+    UITableViewCell *cell;
+
+    if (_segment.selectedSegmentIndex == 2) {
+        cell = [tableView dequeueReusableCellWithIdentifier:EXPAND_CELL];
+        if (!cell) {
+            cell = [[MyPaymentExpandCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:EXPAND_CELL];
+        }
+        [(MyPaymentExpandCell *)cell setExpand:self.dataArr[indexPath.row]];
+    }else{
+        cell = [tableView dequeueReusableCellWithIdentifier:PAYMENT_CELL];
+        if (!cell) {
+            cell = [[MyPaymentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:PAYMENT_CELL];
+        }
+        [(MyPaymentCell *)cell setPayment:self.dataArr[indexPath.row]];
     }
-    [(MyPaymentCell *)cell setPayment:self.dataArr[indexPath.row]];
     
     return cell;
 }
@@ -225,7 +270,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60.5f;
+    if (_segment.selectedSegmentIndex == 2) {
+        return 40.5;
+    }else{
+        return 60.5f;
+    }
 }
 
 @end

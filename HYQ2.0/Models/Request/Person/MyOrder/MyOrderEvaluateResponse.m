@@ -11,8 +11,8 @@
 
 @implementation MyOrderEvaluateResponse
 
-- (id)initWithOid:(NSUInteger)oid
-     andWithPayID:(NSString *)payID
+- (id)initWithOid:(NSNumber *)oid
+     andWithPayID:(NSNumber *)payID
     andWithValue1:(NSUInteger)value1
     andWithValue2:(NSUInteger)value2
     andWithValue3:(NSUInteger)value3
@@ -22,8 +22,14 @@
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithCapacity:4];
         NSDictionary *userInfo  = [[HYQUserManager sharedUserManager] userInfo];
         [dic setObject:[userInfo objectForKey:@"uid"] forKey:@"uid"];
-        [dic setObject:[NSNumber numberWithInteger:oid] forKey:@"oid"];
-        [dic setObject:payID forKey:@"settlementId"];
+        if (oid) {
+            [dic setObject:oid forKey:@"oid"];
+        }
+
+        if (payID) {
+            [dic setObject:payID forKey:@"settlementId"];
+        }
+
         [dic setObject:[NSNumber numberWithInteger:value1] forKey:@"serviceLevel"];
         [dic setObject:[NSNumber numberWithInteger:value2] forKey:@"serviceLevel1"];
         [dic setObject:[NSNumber numberWithInteger:value3] forKey:@"serviceLevel2"];
@@ -39,15 +45,19 @@
 {
     NSLog(@"%@",responseObject);
     if ([[responseObject objectForKey:@"code"] integerValue] == 1) {
-
-    }else if([[responseObject objectForKey:@"code"] integerValue] == 2){
-
+        if (self.delegate && [self.delegate respondsToSelector:@selector(evaluateSucceed)]) {
+            [self.delegate evaluateSucceed];
+        }
+    }else{
+        if (self.delegate && [self.delegate respondsToSelector:@selector(wrongOperationWithText:)]) {
+            [self.delegate wrongOperationWithText:[responseObject objectForKey:@"msg"]];
+        }
     }
 }
 
 - (NSString *)methodPath
 {
-    return MY_DISCOUNT_INTERFACE;
+    return ORDER_EVALUATE_INTERFACE;
 }
 
 - (void)badNetWork

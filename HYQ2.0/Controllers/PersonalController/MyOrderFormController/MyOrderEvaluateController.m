@@ -19,6 +19,7 @@
 >
 
 @property (nonatomic, strong) NSNumber          *oid;
+@property (nonatomic, strong) NSNumber          *settleNO;
 @property (nonatomic, strong) CWStarRateView    *starview1;
 @property (nonatomic, strong) CWStarRateView    *starview2;
 @property (nonatomic, strong) CWStarRateView    *starview3;
@@ -28,10 +29,11 @@
 
 @implementation MyOrderEvaluateController
 
-- (id)initWithOid:(NSNumber *)oid
+- (id)initWithOid:(NSNumber *)oid andWithSettleID:(NSNumber *)settleID
 {
     if (self = [super init]) {
         _oid = oid;
+        _settleNO = settleID;
     }
     
     return self;
@@ -107,20 +109,30 @@
 
 - (void)evaluateOperation
 {
+    [self showNoTextStateHud];
     NSUInteger value1 = _starview1.scorePercent * 5;
     NSUInteger value2 = _starview2.scorePercent * 5;
     NSUInteger value3 = _starview3.scorePercent * 5;
     NSUInteger value4 = _starview4.scorePercent * 5;
-    MyOrderEvaluateResponse *response = [[MyOrderEvaluateResponse alloc] initWithOid:[_oid integerValue] andWithPayID:nil andWithValue1:value1 andWithValue2:value2 andWithValue3:value3 andWithValue4:value4];
+    MyOrderEvaluateResponse *response = [[MyOrderEvaluateResponse alloc] initWithOid:_oid andWithPayID:_settleNO andWithValue1:value1 andWithValue2:value2 andWithValue3:value3 andWithValue4:value4];
     response.delegate = self;
     [response start];
 }
 
+- (void)dismissSelf
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(evaluateSucceed)]) {
+        [self.delegate evaluateSucceed];
+    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 #pragma mark MyOrderEvaluateResponseDelegate
 - (void)evaluateSucceed
 {
-
+    [self performSelectorOnMainThread:@selector(showNoTextStateHud) withObject:@"评价成功！" waitUntilDone:YES];
+    [self dismissSelf];
 }
 
 - (void)wrongOperationWithText:(NSString *)text

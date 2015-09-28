@@ -49,7 +49,12 @@
     
     _withdrawBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _withdrawBtn.frame = CGRectMake(kScreenWidth * 0.5 - 40, 100, 80, 30);
-    [_withdrawBtn setImage:[UIImage imageNamed:@"edit_presonProfile"] forState:UIControlStateNormal];
+    _withdrawBtn.layer.borderColor = [UIColor whiteColor].CGColor;
+    _withdrawBtn.layer.borderWidth = 0.5;
+    _withdrawBtn.titleLabel.font = [UIFont systemFontOfSize:13.0f];
+    [_withdrawBtn setImage:[UIImage imageNamed:@"cash_icon"] forState:UIControlStateNormal];
+    [_withdrawBtn setTitle:@"转入余额" forState:UIControlStateNormal];
+    [_withdrawBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self addSubview:_withdrawBtn];
 }
 

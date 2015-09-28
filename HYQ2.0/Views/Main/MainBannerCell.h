@@ -9,8 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "GlobalConst.h"
 
+@protocol MainBannerCellDelegate <NSObject>
+
+- (void)didSelectedBannerWithUrl:(NSString *)url;
+
+@end
+
 @interface MainBannerCell : UITableViewCell
 
+@property (nonatomic, weak) id<MainBannerCellDelegate> delegate;
 @property (nonatomic, assign) NSArray *imgArr;
 
 @end

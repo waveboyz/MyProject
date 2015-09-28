@@ -298,19 +298,19 @@
 {
     [self performSelectorOnMainThread:@selector(showStateHudWithText:) withObject:@"添加地址成功！" waitUntilDone:YES];
     [self dissmisssSelf];
-    if (![self.delegate isEqual:[NSNull null]]&& [self.delegate respondsToSelector:@selector(addAddressSucceedWithAddress:)]) {
-        AddressModel *model = [[AddressModel alloc] init];
-        model.district = _location;
-        model.linkman = _nameField.text;
-        model.linkPhone = [NSNumber numberWithInteger:[_phoneField.text integerValue]];
-        model.address = _detailField.text;
-        model.province = @"浙江";
-        model.city = @"杭州";
-        model.districtCode = _distritCode;
-        model.aid = aid;
-        model.tacitiy = [_if_default isOn];
-        [self.delegate addAddressSucceedWithAddress:model];
-    }
+//    if (![self.delegate isEqual:[NSNull null]]&& [self.delegate respondsToSelector:@selector(addAddressSucceedWithAddress:)]) {
+//        AddressModel *model = [[AddressModel alloc] init];
+//        model.district = _location;
+//        model.linkman = _nameField.text;
+//        model.linkPhone = [NSNumber numberWithInteger:[_phoneField.text integerValue]];
+//        model.address = _detailField.text;
+//        model.province = @"浙江";
+//        model.city = @"杭州";
+//        model.districtCode = _distritCode;
+//        model.aid = aid;
+//        model.tacitiy = [_if_default isOn];
+//        [self.delegate addAddressSucceedWithAddress:model];
+//    }
 
     if (self.delegate && [self.delegate respondsToSelector:@selector(addAddressSucceed)]) {
         [self.delegate addAddressSucceed];

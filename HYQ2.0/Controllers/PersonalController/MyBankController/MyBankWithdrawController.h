@@ -7,11 +7,14 @@
 //
 
 #import "BaseViewController.h"
-
+/*
+    提现到银行卡
+ */
 @interface MyBankWithdrawController : BaseViewController
 <
     UITableViewDataSource,
-    UITableViewDelegate
+    UITableViewDelegate,
+    UIAlertViewDelegate
 >
 
 @end

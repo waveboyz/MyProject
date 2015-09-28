@@ -12,6 +12,7 @@
 #import "CatZanButton.h"
 #import "CollectOperationResponse.h"
 #import "ServiceIsCollectResponse.h"
+#import "HYQLoginController.h"
 
 @interface ServiceDetailController ()
 <
@@ -25,6 +26,7 @@
 @property (nonatomic, strong) UIView  *toolView;            //下方工具条
 @property (nonatomic, strong) UIButton *collectBtn;         //收藏按钮
 @property (nonatomic, strong) ServiceModel *service;
+@property (nonatomic, strong) OrderModel *order;
 
 @end
 
@@ -36,6 +38,15 @@
         _service = service;
     }
 
+    return self;
+}
+
+- (id)initWithOrderModel:(OrderModel *)order
+{
+    if (self = [super init]) {
+        _order = order;
+    }
+    
     return self;
 }
 
@@ -133,7 +144,13 @@
 
 - (void)showWebView
 {
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@",PRODUCT_DETAIL_INTERFACE,self.service.pid];
+    NSString *urlStr;
+    if (_order) {
+        urlStr = [NSString stringWithFormat:@"%@%@",PRODUCT_DETAIL_INTERFACE,self.order.pid];
+    }else if (_service){
+        urlStr = [NSString stringWithFormat:@"%@%@",PRODUCT_DETAIL_INTERFACE,self.service.pid];
+    }
+
     NSURL *url = [NSURL URLWithString:urlStr];
     NSURLRequest *req = [[NSURLRequest alloc] initWithURL:url];
     [self showNoTextStateHud];
@@ -144,11 +161,19 @@
 - (void)purchaseBtnPressed
 {
     if ([[HYQUserManager sharedUserManager] isLogin]) {
-        ServicePurchaseController *purchaseVC = [[ServicePurchaseController alloc] initWithService:_service];
+        ServicePurchaseController *purchaseVC;
+        if (_service) {
+            purchaseVC = [[ServicePurchaseController alloc] initWithService:_service];
+        }else if (_order){
+            purchaseVC = [[ServicePurchaseController alloc] initWithService:_service];
+        }
+        
         
         [self.navigationController pushViewController:purchaseVC animated:YES];
     }else{
-        [self performSelectorOnMainThread:@selector(showStateHudWithText:) withObject:@"用户未登录，请先登录~" waitUntilDone:YES];
+//        [self performSelectorOnMainThread:@selector(showStateHudWithText:) withObject:@"用户未登录，请先登录~" waitUntilDone:YES];
+        HYQLoginController *loginVC = [[HYQLoginController alloc] init];
+        [self presentViewController:loginVC animated:YES completion:^(void){}];
     }
 }
 
@@ -156,12 +181,18 @@
 - (void)collectBtnPressed
 {
     if ([[HYQUserManager sharedUserManager] isLogin]) {
-        CollectOperationResponse *response = [[CollectOperationResponse alloc] initWithPid:_service.pid];
+        CollectOperationResponse *response;
+        if (_order) {
+            response = [[CollectOperationResponse alloc] initWithPid:_order.pid];
+        }else if (_service){
+            response = [[CollectOperationResponse alloc] initWithPid:_service.pid];
+        }
+
         response.delegate = self;
         [response start];
     }else{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"用户未登录，无法收藏" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alert show];
+        HYQLoginController *loginVC = [[HYQLoginController alloc] init];
+        [self presentViewController:loginVC animated:YES completion:^(void){}];
     }
 }
 
@@ -174,7 +205,13 @@
 //获取是否收藏信息
 - (void)getServiceDetailOperation
 {
-    ServiceIsCollectResponse *response = [[ServiceIsCollectResponse alloc] initWithPid:_service.pid];
+    ServiceIsCollectResponse *response;
+    if (_service) {
+        response = [[ServiceIsCollectResponse alloc] initWithPid:_service.pid];
+    }else if (_order){
+        response = [[ServiceIsCollectResponse alloc] initWithPid:_order.pid];
+    }
+
     response.delegate = self;
     [response start];
 }

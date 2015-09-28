@@ -18,7 +18,8 @@
 @interface HYQRegisterController()
 <
     HYQSendVerCodeResponseDelegate,
-    HYQRegistResponseDelegate
+    HYQRegistResponseDelegate,
+    UIAlertViewDelegate
 >
 @property (nonatomic, strong)    UITextField     *phoneTxt;         //注册手机
 @property (nonatomic, strong)    UITextField     *codeTxt;          //密码
@@ -107,6 +108,7 @@
     
     UILabel *sepLbl = [[UILabel alloc] initWithFrame:CGRectMake(15, 154, kScreenWidth - 30, 1)];
     sepLbl.backgroundColor = [UIColor whiteColor];
+    sepLbl.hidden = _IS_QRSCAN;
     [_bgView addSubview:sepLbl];
 //----------------------------------------------
     UILabel *phoneLbl = [[UILabel alloc] initWithFrame:CGRectMake(20, 170, 50, 30)];
@@ -377,17 +379,6 @@
     HYQSendVerCodeResponse *response = [[HYQSendVerCodeResponse alloc] initWithPhoneNumber:_phoneTxt.text];
     response.delegate = self;
     [response start];
-    
-    _getResendBtn.backgroundColor = [UIColor colorWithWhite:0.6 alpha:1.0];
-    [_getResendBtn setTitle:@"60s 重新获取" forState:UIControlStateNormal];
-    _getResendBtn.enabled = NO;
-    _reSendTime = 60;
-    
-    _captchaTimer = [NSTimer scheduledTimerWithTimeInterval:1
-                                                     target:self
-                                                   selector:@selector(updateReSendTime:)
-                                                   userInfo:nil
-                                                    repeats:YES];
 }
 
 - (void)updateReSendTime:(NSTimer *)timer
@@ -422,12 +413,29 @@
 #pragma mark - sendVerCode Delegate
 - (void)sendVerCodeSucceed
 {
-
+    _getResendBtn.backgroundColor = [UIColor colorWithWhite:0.6 alpha:1.0];
+    [_getResendBtn setTitle:@"120s 重新获取" forState:UIControlStateNormal];
+    _getResendBtn.enabled = NO;
+    _reSendTime = 120;
+    
+    _captchaTimer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                     target:self
+                                                   selector:@selector(updateReSendTime:)
+                                                   userInfo:nil
+                                                    repeats:YES];
 }
 
 - (void)wrongOperationWithText:(NSString *)text
 {
     [self showStateHudWithText:text];
+}
+
+- (void)phoneAlreadyExist
+{
+    UIAlertView *alertView =[[UIAlertView alloc] initWithTitle:@"提示" message:@"账号已存在！请直接登录" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    alertView.tag = 100;
+    alertView.delegate = self;
+    [alertView show];
 }
 
 #pragma mark - UITextField Input Delegate
@@ -474,5 +482,12 @@
     }
 }
 
+#pragma mark UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 100) {
+        [self dismissRegisterController];
+    }
+}
 
 @end

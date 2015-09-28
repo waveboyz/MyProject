@@ -18,6 +18,7 @@
 #import "ServicePayOrderResponse.h"
 #import "AliPayCallBackResponse.h"
 #import "MyAddressResponse.h"
+#import "PaySucceedController.h"
 
 @interface ServicePurchaseController ()
 <
@@ -52,6 +53,7 @@
         _service = service;
         _price = [_service.price unsignedLongValue];
         _totalPrice = _price;
+        _paycount =  1;
         _addArr = [NSMutableArray new];
     }
     
@@ -290,7 +292,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
-        ServiceAddressPickController *pickVC = [[ServiceAddressPickController alloc] initWithAddressArray:_addArr];
+        ServiceAddressPickController *pickVC = [[ServiceAddressPickController alloc] init];
         pickVC.delegate = self;
         [self.navigationController pushViewController:pickVC animated:YES];
     }
@@ -336,12 +338,9 @@
 #pragma mark AliPayCallBackResponseDelegate
 - (void)getPayResult
 {
-    dispatch_async(dispatch_get_main_queue(), ^(void){
-        [self stopStateHud];
-        [self performSelectorOnMainThread:@selector(showStateHudWithText:) withObject:@"支付成功，请到我的订单查看！" waitUntilDone:YES];
-
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    });
+    [self stopStateHud];
+    PaySucceedController *succeedVC = [[PaySucceedController alloc] init];
+    [self.navigationController pushViewController:succeedVC animated:YES];
 }
 
 #pragma mark DownSheetDelegate

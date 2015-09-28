@@ -12,6 +12,9 @@
 #import "BannerModel.h"
 
 @interface MainBannerCell ()
+<
+    SDCycleScrollViewDelegate
+>
 
 @property (nonatomic, strong) SDCycleScrollView *cycleView;
 
@@ -50,8 +53,16 @@
         _cycleView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
         _cycleView.placeholderImage = [UIImage imageNamed:@"banner_placeholder"];
         _cycleView.pageControlStyle = SDCycleScrollViewPageContolStyleClassic;
-        
+        _cycleView.delegate = self;
         [self.contentView addSubview:_cycleView];
+    }
+}
+
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
+{
+    BannerModel *model = _imgArr[index];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectedBannerWithUrl:)]) {
+        [self.delegate didSelectedBannerWithUrl:model.url];
     }
 }
 

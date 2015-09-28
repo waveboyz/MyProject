@@ -10,12 +10,14 @@
 #import "MyAddressCell.h"
 #import "AddressModel.h"
 #import "MyAddressAddController.h"
+#import "MyAddressResponse.h"
 
 @interface ServiceAddressPickController ()
 <
     UITableViewDataSource,
     UITableViewDelegate,
-    MyAddressAddControllerDelegate
+    MyAddressAddControllerDelegate,
+    MyAddressResponseDelegate
 >
 
 @property (nonatomic, retain)   NSMutableArray      *dataArr;
@@ -26,10 +28,10 @@
 
 @implementation ServiceAddressPickController
 
-- (id)initWithAddressArray:(NSArray *)addressArr
+- (id)init
 {
     if (self = [super init]) {
-        _dataArr = [NSMutableArray arrayWithArray:addressArr];
+        _dataArr = [NSMutableArray new];
     }
     
     return self;
@@ -37,7 +39,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self getAddressOperation];
     [self createUI];
+}
+
+- (void)getAddressOperation
+{
+    [self showNoTextStateHud];
+    MyAddressResponse *response = [[MyAddressResponse alloc] init];
+    response.delegate = self;
+    [response start];
 }
 
 - (void)createUI
@@ -101,10 +112,29 @@
 }
 
 #pragma mark MyAddressAddControllerDelegate
-- (void)addAddressSucceedWithAddress:(AddressModel *)address
+- (void)addAddressSucceed
 {
-    [self.dataArr addObject:address];
+    [self.dataArr removeAllObjects];
+    [self getAddressOperation];
+}
+
+#pragma mark MyAddressResponseDelegate
+- (void)getAddressArrayWith:(NSMutableArray *)array
+{
+    [self stopStateHud];
+    _dataArr = array;
     [self.tableview reloadData];
 }
 
+- (void)wrongOperationWithText:(NSString *)text
+{
+    [self stopStateHud];
+    [self showStateHudWithText:text];
+}
+
+- (void)noDataArr
+{
+    [self stopStateHud];
+    [self showStateHudWithText:@"暂无地址~"];
+}
 @end

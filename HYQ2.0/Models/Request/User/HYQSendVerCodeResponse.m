@@ -46,6 +46,10 @@
                 if (self.delegate && [self.delegate respondsToSelector:@selector(wrongOperationWithText:)]) {
                     [self.delegate wrongOperationWithText:[responseObject objectForKey:@"msg"]];
                 }
+            }else if([code integerValue] == 3){
+                if (self.delegate && [self.delegate respondsToSelector:@selector(phoneAlreadyExist)]) {
+                    [self.delegate phoneAlreadyExist];
+                }
             }else{
                 if (self.delegate && [self.delegate respondsToSelector:@selector(wrongOperationWithText:)]) {
                     [self.delegate wrongOperationWithText:[responseObject objectForKey:@"msg"]];

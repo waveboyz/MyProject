@@ -17,7 +17,7 @@
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithCapacity:3];
         
         if (type) {
-            [dic setObject:type forKey:@"state"];
+            [dic setObject:type forKey:@"status"];
         }
         
         if (page) {
@@ -63,4 +63,5 @@
         [self.delegate wrongOperationWithText:@"网络不给力哦~"];
     }
 }
+
 @end

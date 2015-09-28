@@ -31,7 +31,7 @@
             [dic setObject:sphone forKey:@"sphone"];
         }
         
-        [dic setObject:@"IOS端" forKey:@"biaoshi"];
+        [dic setObject:@"IOS" forKey:@"biaoshi"];
         
         [self setUploadDictionary:dic];
     }
@@ -62,8 +62,6 @@
                 }
             }
         }
-    }else{
-        
     }
 }
 

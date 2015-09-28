@@ -12,9 +12,12 @@
 
 @protocol MyOrderFormCellDelegate <NSObject>
 
+@optional
 - (void)payBtnPressedWithOid:(NSNumber *)oid andWithIndexPath:(NSIndexPath *)indexPath;
 - (void)evaluateBtnPressedWithOid:(NSNumber *)oid andWithIndexPath:(NSIndexPath *)indexPath;
 - (void)confirmBtnPressedWithOid:(NSNumber *)oid andWithIndexPath:(NSIndexPath *)indexPath;
+- (void)deleteBtnPressedWithOid:(NSNumber *)oid andWithIndexPath:(NSIndexPath *)indexPath;
+- (void)purchaseBtnPressedWithOid:(NSNumber *)oid andWithIndexPath:(NSIndexPath *)indexPath;
 
 @end
 

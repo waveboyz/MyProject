@@ -67,8 +67,14 @@
 - (void)setPayment:(PaymentModel *)payment
 {
     _payment = payment;
-    _titleLbl.text = _payment.title;
-    _dateLbl.text = _payment.time;
+    if (_payment.title) {
+        _titleLbl.text = _payment.title;
+    }
+
+    if (_payment.time) {
+        _dateLbl.text = _payment.time;
+    }
+
     if ([_payment.title isEqualToString:@"提成"] || [_payment.title isEqualToString:@"充值"]) {
         _priceLbl.text = [NSString stringWithFormat:@"+%@",[_payment.money stringValue]];
         _priceLbl.textColor = [UIColor redColor];
