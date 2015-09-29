@@ -12,8 +12,6 @@
  */
 @interface MyBankWithdrawController : BaseViewController
 <
-    UITableViewDataSource,
-    UITableViewDelegate,
     UIAlertViewDelegate
 >
 

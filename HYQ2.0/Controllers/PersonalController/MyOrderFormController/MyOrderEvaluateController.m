@@ -24,6 +24,7 @@
 @property (nonatomic, strong) CWStarRateView    *starview2;
 @property (nonatomic, strong) CWStarRateView    *starview3;
 @property (nonatomic, strong) CWStarRateView    *starview4;
+@property (nonatomic, strong) UITextView        *commentText;
 
 @end
 
@@ -98,6 +99,14 @@
     _starview4.hasAnimation = YES;
     [self.view addSubview:_starview4];
     
+    
+    _commentText = [[UITextView alloc] initWithFrame:CGRectMake(20, NAVIBARHEIGHT + 230, kScreenWidth - 40, kScreenHeight - NAVIBARHEIGHT - 330)];
+    _commentText.textColor = [UIColor blackColor];
+    _commentText.text = @"请输入评论内容";
+    _commentText.backgroundColor = [UIColor whiteColor];
+    _commentText.layer.cornerRadius = CGRectGetWidth(_commentText.frame)/8;
+    [self.view addSubview:_commentText];
+    
     UIButton *commitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     commitBtn.frame = CGRectMake(0, kScreenHeight - 49, kScreenWidth, 49);
     [commitBtn setBackgroundColor:NAVIBAR_GREEN_COLOR];
@@ -114,7 +123,7 @@
     NSUInteger value2 = _starview2.scorePercent * 5;
     NSUInteger value3 = _starview3.scorePercent * 5;
     NSUInteger value4 = _starview4.scorePercent * 5;
-    MyOrderEvaluateResponse *response = [[MyOrderEvaluateResponse alloc] initWithOid:_oid andWithPayID:_settleNO andWithValue1:value1 andWithValue2:value2 andWithValue3:value3 andWithValue4:value4];
+    MyOrderEvaluateResponse *response = [[MyOrderEvaluateResponse alloc] initWithOid:_oid andWithPayID:_settleNO andWithValue1:value1 andWithValue2:value2 andWithValue3:value3 andWithValue4:value4 andWithComment:_commentText.text];
     response.delegate = self;
     [response start];
 }

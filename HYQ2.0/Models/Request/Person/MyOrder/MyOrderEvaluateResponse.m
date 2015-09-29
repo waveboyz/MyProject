@@ -17,6 +17,7 @@
     andWithValue2:(NSUInteger)value2
     andWithValue3:(NSUInteger)value3
     andWithValue4:(NSUInteger)value4
+   andWithComment:(NSString *)comment
 {
     if (self = [super init]) {
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithCapacity:4];
@@ -30,10 +31,22 @@
             [dic setObject:payID forKey:@"settlementId"];
         }
 
-        [dic setObject:[NSNumber numberWithInteger:value1] forKey:@"serviceLevel"];
-        [dic setObject:[NSNumber numberWithInteger:value2] forKey:@"serviceLevel1"];
-        [dic setObject:[NSNumber numberWithInteger:value3] forKey:@"serviceLevel2"];
-        [dic setObject:[NSNumber numberWithInteger:value4] forKey:@"serviceLevel3"];
+        if (value1) {
+            [dic setObject:[NSNumber numberWithInteger:value1] forKey:@"serviceLevel"];
+        }
+
+        if (value2) {
+            [dic setObject:[NSNumber numberWithInteger:value2] forKey:@"serviceLevel1"];
+        }
+
+        
+        if (value3) {
+            [dic setObject:[NSNumber numberWithInteger:value3] forKey:@"serviceLevel2"];
+        }
+        
+        if (value4) {
+            [dic setObject:[NSNumber numberWithInteger:value4] forKey:@"serviceLevel3"];
+        }
         
         [self setUploadDictionary:dic];
     }

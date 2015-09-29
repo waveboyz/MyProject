@@ -1,38 +1,33 @@
 //
-//  MyPaymentController.m
+//  TradeRecordController.m
 //  HYQ2.0
 //
-//  Created by waveboyz on 15/8/4.
-//  Copyright (c) 2015年 HZHaoYuanQu. All rights reserved.
+//  Created by 周翔 on 15/9/28.
+//  Copyright © 2015年 HZHaoYuanQu. All rights reserved.
 //
 
-#import "MyPaymentController.h"
+#import "TradeRecordController.h"
 #import "VOSegmentedControl.h"
-#import "MyPaymentHeader.h"
 #import "MyPaymentCell.h"
-#import "MyPaymentExpandCell.h"
 #import "HYQWithdrawResponse.h"
-#import "MyExtendResponse.h"
 
-@interface MyPaymentController ()
+@interface TradeRecordController ()
 <
-    HYQWithdrawResponseDelegate,
-    MyExtendResponseDelegate
+    HYQWithdrawResponseDelegate
 >
 
-@property (nonatomic,strong) MyPaymentHeader *header;       //头视图
-@property (nonatomic,strong) VOSegmentedControl *segment;
+@property (nonatomic, strong) VOSegmentedControl *segment;
 @property (nonatomic, strong) UIView *emptyView;
 @property (nonatomic, strong) UIView *badNetView;
 
 @end
 
-@implementation MyPaymentController
+@implementation TradeRecordController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"我的提成";
+    self.title = @"交易记录";
     [self createUI];
 }
 
@@ -48,37 +43,13 @@
     [self getPaymentOperation];
 }
 
-- (void)createUI
-{
-    [super createUI];
-    [self.tableView setFrame:CGRectMake(0, 220, kScreenWidth, kScreenHeight - 220)];
-    
-    _header = [[MyPaymentHeader alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, 180)];
-    [self.view addSubview:_header];
-    
-    _segment = [[VOSegmentedControl alloc] initWithSegments:@[@{VOSegmentText: @"收益记录"},
-                                                              @{VOSegmentText: @"我的推广"}]];
-    _segment.frame = CGRectMake(0, 244, kScreenWidth, 40);
-    _segment.contentStyle = VOContentStyleTextAlone;
-    _segment.indicatorStyle = VOSegCtrlIndicatorStyleBottomLine;
-    _segment.backgroundColor = BG_GRAY_COLOR;
-    _segment.selectedBackgroundColor = _segment.backgroundColor;
-    _segment.allowNoSelection = NO;
-    _segment.indicatorThickness = 4;
-    _segment.selectedTextColor = NAVIBAR_GREEN_COLOR;
-    _segment.selectedIndicatorColor = NAVIBAR_GREEN_COLOR;
-    [self.view addSubview:_segment];
-    [_segment addTarget:self action:@selector(swipSegmentWithIndexPath:) forControlEvents:UIControlEventValueChanged];
-    [self.tableView.header beginRefreshing];
-}
-
 - (void)getPaymentOperation
 {
     [self showNoTextStateHud];
     switch (_segment.selectedSegmentIndex) {
         case 0:
         {
-            HYQWithdrawResponse *response = [[HYQWithdrawResponse alloc] initWithType:@"收益记录" andWithCurrentPage:self.currentPage];
+            HYQWithdrawResponse *response = [[HYQWithdrawResponse alloc] initWithType:@"全部" andWithCurrentPage:self.currentPage];
             response.delegate = self;
             [response start];
         }
@@ -86,7 +57,31 @@
             
         case 1:
         {
-            MyExtendResponse *response = [[MyExtendResponse alloc] initWithCurrentPage:self.currentPage];
+            HYQWithdrawResponse *response = [[HYQWithdrawResponse alloc] initWithType:@"购买产品" andWithCurrentPage:self.currentPage];
+            response.delegate = self;
+            [response start];
+        }
+            break;
+            
+        case 2:
+        {
+            HYQWithdrawResponse *response = [[HYQWithdrawResponse alloc] initWithType:@"提现" andWithCurrentPage:self.currentPage];
+            response.delegate = self;
+            [response start];
+        }
+            break;
+            
+        case 3:
+        {
+            HYQWithdrawResponse *response = [[HYQWithdrawResponse alloc] initWithType:@"充值" andWithCurrentPage:self.currentPage];
+            response.delegate = self;
+            [response start];
+        }
+            break;
+            
+        case 4:
+        {
+            HYQWithdrawResponse *response = [[HYQWithdrawResponse alloc] initWithType:@"提成" andWithCurrentPage:self.currentPage];
             response.delegate = self;
             [response start];
         }
@@ -97,18 +92,38 @@
     }
 }
 
-//网络错误视图
+- (void)createUI
+{
+    [super createUI];
+    _segment = [[VOSegmentedControl alloc] init];
+    _segment.segments = @[@{VOSegmentText:@"全部"},
+                          @{VOSegmentText:@"购买产品"},
+                          @{VOSegmentText:@"提现"},
+                          @{VOSegmentText:@"充值"},
+                          @{VOSegmentText:@"提成"}];
+    _segment.frame = CGRectMake(0, 64, kScreenWidth, 40);
+    _segment.contentStyle = VOContentStyleTextAlone;
+    _segment.indicatorStyle = VOSegCtrlIndicatorStyleBottomLine;
+    _segment.backgroundColor = BG_GRAY_COLOR;
+    _segment.selectedBackgroundColor = _segment.backgroundColor;
+    _segment.allowNoSelection = NO;
+    _segment.indicatorThickness = 3;
+    _segment.selectedTextColor = NAVIBAR_GREEN_COLOR;
+    _segment.selectedIndicatorColor = NAVIBAR_GREEN_COLOR;
+    [self.view addSubview:_segment];
+    [_segment addTarget:self action:@selector(swipSegmentWithIndexPath:) forControlEvents:UIControlEventValueChanged];
+}
+
 - (UIView *)badNetView
 {
     if (!_badNetView) {
-        _badNetView = [[UIView alloc] initWithFrame:CGRectMake(0,254 , kScreenWidth, kScreenHeight)];
+        _badNetView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
         _badNetView.backgroundColor = GRAY_COLOR;
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(0, kScreenHeight * 0.5 - 40, kScreenWidth, 80);
         [btn setTitle:@"重新加载" forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [btn addTarget:self action:@selector(getPaymentOperation) forControlEvents:UIControlEventTouchUpInside];
         
         [_badNetView addSubview:btn];
     }
@@ -136,43 +151,14 @@
 
 - (void)swipSegmentWithIndexPath:(NSUInteger)indexpath
 {
-    [self.dataArr removeAllObjects];
     [self.tableView.header beginRefreshing];
-}
-
-#pragma mark MyExtendResponseDelegate
-- (void)getExtendArrayWith:(NSMutableArray *)exArr
-{
-    if (self.currentPage == 1) {
-//        [self.dataArr removeAllObjects];
-        self.dataArr = exArr;
-    }else{
-        [self.dataArr addObjectsFromArray:exArr];
-    }
-    
-    dispatch_async(dispatch_get_main_queue(), ^(void){
-        [self stopStateHud];
-        if (self.currentPage == 1) {
-            [self.tableView.header endRefreshing];
-            [self.tableView reloadData];
-            [self.view insertSubview:self.tableView aboveSubview:self.emptyView];
-            [self.view bringSubviewToFront:self.header];
-            [self.view bringSubviewToFront:self.segment];
-        }else{
-            [self.tableView.footer endRefreshing];
-            [self.tableView reloadData];
-            [self.view insertSubview:self.tableView aboveSubview:self.emptyView];
-            [self.view bringSubviewToFront:self.header];
-            [self.view bringSubviewToFront:self.segment];
-        }
-    });
 }
 
 #pragma mark HYQWithdrawResponseDelegate
 - (void)getInfoWith:(NSMutableArray *)infoArr
 {
     if (self.currentPage == 1) {
-//        [self.dataArr removeAllObjects];
+        //        [self.dataArr removeAllObjects];
         self.dataArr = infoArr;
     }else {
         [self.dataArr addObjectsFromArray:infoArr];
@@ -184,16 +170,14 @@
             [self.tableView.header endRefreshing];
             [self.tableView reloadData];
             [self.view insertSubview:self.tableView aboveSubview:self.emptyView];
-            [self.view bringSubviewToFront:self.header];
-            [self.view bringSubviewToFront:self.segment];
         }else{
             [self.tableView.footer endRefreshing];
             [self.tableView reloadData];
             [self.view insertSubview:self.tableView aboveSubview:self.emptyView];
-            [self.view bringSubviewToFront:self.header];
-            [self.view bringSubviewToFront:self.segment];
         }
     });
+
+
 }
 
 - (void)wrongOperationWithText:(NSString *)text
@@ -213,7 +197,7 @@
         [self stopStateHud];
         [self showStateHudWithText:@"暂无更多数据~"];
         if (self.currentPage == 1) {
-//            [self.dataArr removeAllObjects];
+            //            [self.dataArr removeAllObjects];
             [self.tableView.header endRefreshing];
             [self.tableView reloadData];
             [self.view insertSubview:self.emptyView aboveSubview:self.tableView];
@@ -233,22 +217,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *PAYMENT_CELL = @"payment_cell";
-    static NSString *EXPAND_CELL = @"expand_cell";
     UITableViewCell *cell;
-
-    if (_segment.selectedSegmentIndex == 2) {
-        cell = [tableView dequeueReusableCellWithIdentifier:EXPAND_CELL];
-        if (!cell) {
-            cell = [[MyPaymentExpandCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:EXPAND_CELL];
-        }
-        [(MyPaymentExpandCell *)cell setExpand:self.dataArr[indexPath.row]];
-    }else{
-        cell = [tableView dequeueReusableCellWithIdentifier:PAYMENT_CELL];
+    cell = [tableView dequeueReusableCellWithIdentifier:PAYMENT_CELL];
         if (!cell) {
             cell = [[MyPaymentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:PAYMENT_CELL];
         }
         [(MyPaymentCell *)cell setPayment:self.dataArr[indexPath.row]];
-    }
     
     return cell;
 }

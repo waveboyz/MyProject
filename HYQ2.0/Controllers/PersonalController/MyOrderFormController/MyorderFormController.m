@@ -190,7 +190,7 @@
     order.tradeNO = [data.orderNum stringValue]; //订单ID（由商家自行制定）
     order.productName = data.name; //商品标题
     order.productDescription = data.proSummery; //商品描述
-    float price = [data.money floatValue]* [data.num integerValue];
+//    float price = [data.money floatValue]* [data.num integerValue];
 //    order.amount = [NSString stringWithFormat:@"%f",price];
     order.amount = @"0.01";
     order.notifyURL =  @"http://www.xxx.com"; //回调URL

@@ -11,9 +11,10 @@
 
 @interface MyPaymentHeader ()
 
-@property (nonatomic,strong) UILabel    *desLbl;
-@property (nonatomic,strong) UILabel    *propertyLbl;
-@property (nonatomic,strong) UIButton   *withdrawBtn;
+@property (nonatomic, strong) UILabel    *desLbl;
+@property (nonatomic, strong) UILabel    *propertyLbl;
+@property (nonatomic, strong) UILabel    *sumLbl;
+@property (nonatomic, strong) UIButton   *withdrawBtn;
 
 @end
 
@@ -47,8 +48,15 @@
     _propertyLbl.text = [property stringValue];
     [self addSubview:_propertyLbl];
     
+    _sumLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 - 60, 80, 120, 30)];
+    _sumLbl.font = [UIFont systemFontOfSize:15.0f];
+    _sumLbl.textColor = [UIColor whiteColor];
+    _sumLbl.textAlignment = NSTextAlignmentCenter;
+    _sumLbl.text = @"累计提成";
+    [self addSubview:_sumLbl];
+    
     _withdrawBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _withdrawBtn.frame = CGRectMake(kScreenWidth * 0.5 - 40, 100, 80, 30);
+    _withdrawBtn.frame = CGRectMake(kScreenWidth * 0.5 - 40, 130, 80, 30);
     _withdrawBtn.layer.borderColor = [UIColor whiteColor].CGColor;
     _withdrawBtn.layer.borderWidth = 0.5;
     _withdrawBtn.titleLabel.font = [UIFont systemFontOfSize:13.0f];

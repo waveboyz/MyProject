@@ -27,6 +27,7 @@
     andWithValue1:(NSUInteger)value1
     andWithValue2:(NSUInteger)value2
     andWithValue3:(NSUInteger)value3
-    andWithValue4:(NSUInteger)value4;
+    andWithValue4:(NSUInteger)value4
+   andWithComment:(NSString *)comment;
 
 @end

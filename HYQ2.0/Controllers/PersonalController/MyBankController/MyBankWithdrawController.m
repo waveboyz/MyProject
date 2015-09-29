@@ -11,12 +11,10 @@
 
 @interface MyBankWithdrawController ()
 
-@property (nonatomic, strong) UITableView *tableview;
+@property (nonatomic, strong) UIView      *bgView;
 @property (nonatomic, strong) UITextField *nameField;
 @property (nonatomic, strong) UITextField *cardField;
 @property (nonatomic, strong) UITextField *cashField;
-@property (nonatomic, assign) NSArray     *titleArr;
-@property (nonatomic, assign) NSArray     *placeArr;
 @property (nonatomic, strong) UIButton    *confirmBtn;
 
 @end
@@ -30,41 +28,67 @@
 
 - (void)createUI
 {
-    _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 300) style:UITableViewStylePlain];
-    _tableview.dataSource = self;
-    _tableview.delegate = self;
-    _tableview.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 50)];
-    _tableview.tableHeaderView = header;
-    [self.view addSubview:_tableview];
+    _bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 94, kScreenWidth, 151)];
+    _bgView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:_bgView];
+    
+    //-----------------------------------------------
+    UILabel *lbl1 = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 100, 50)];
+    lbl1.font = [UIFont systemFontOfSize:15.0f];
+    lbl1.textColor = [UIColor blackColor];
+    lbl1.text = @"账户提现";
+    [_bgView addSubview:lbl1];
+    
+    _nameField = [[UITextField alloc] initWithFrame:CGRectMake(130, 0, kScreenWidth -  150, 50)];
+    _nameField.font = [UIFont systemFontOfSize:15.0f];
+    _nameField.textColor = [UIColor blackColor];
+    _nameField.placeholder = @"用户名（实名认证姓名）";
+    [_bgView addSubview:_nameField];
+    
+    UILabel *lineLbl1 = [[UILabel alloc] initWithFrame:CGRectMake(15, 50, kScreenWidth - 30, 0.5)];
+    lineLbl1.backgroundColor = LINE_COLOR;
+    [_bgView addSubview:lineLbl1];
+    //-----------------------------------------------
+    UILabel *lbl2 = [[UILabel alloc] initWithFrame:CGRectMake(15, 50.5, 100, 50)];
+    lbl2.font = [UIFont systemFontOfSize:15.0f];
+    lbl2.textColor = [UIColor blackColor];
+    lbl2.text = @"银行卡号";
+    [_bgView addSubview:lbl2];
+    
+    _cardField = [[UITextField alloc] initWithFrame:CGRectMake(130, 50.5, kScreenWidth -  150, 50)];
+    _cardField.font = [UIFont systemFontOfSize:15.0f];
+    _cardField.textColor = [UIColor blackColor];
+    _cardField.placeholder = @"输入您本人的银行卡号";
+    [_bgView addSubview:_cardField];
+    
+    UILabel *lineLbl2 = [[UILabel alloc] initWithFrame:CGRectMake(15, 100.5, kScreenWidth - 30, 0.5)];
+    lineLbl2.backgroundColor = LINE_COLOR;
+    [_bgView addSubview:lineLbl2];
+    //-----------------------------------------------
+    UILabel *lbl3 = [[UILabel alloc] initWithFrame:CGRectMake(15, 101, 100, 50)];
+    lbl3.font = [UIFont systemFontOfSize:15.0f];
+    lbl3.textColor = [UIColor blackColor];
+    lbl3.text = @"提现金额";
+    [_bgView addSubview:lbl3];
+    
+    NSDictionary *userDic = [[HYQUserManager sharedUserManager] userInfo];
+    _cardField = [[UITextField alloc] initWithFrame:CGRectMake(130, 101, kScreenWidth -  150, 50)];
+    _cardField.font = [UIFont systemFontOfSize:15.0f];
+    _cardField.textColor = [UIColor blackColor];
+    _cardField.placeholder = [NSString stringWithFormat:@"本次最多可提现%@元",[userDic objectForKey:@"property"]];
+    [_bgView addSubview:_cardField];
+    //---------------------------------------------
     
     _confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _confirmBtn.frame = CGRectMake(kScreenWidth * 0.5 - 70, 165, 140, 30);
-    _confirmBtn.layer.cornerRadius = CGRectGetWidth(_confirmBtn.frame)/8;
+    _confirmBtn.frame = CGRectMake(20, 260, kScreenWidth - 40, 50);
     [_confirmBtn addTarget:self action:@selector(confirmBtnPressed) forControlEvents:UIControlEventTouchDragInside];
     [_confirmBtn setBackgroundColor:NAVIBAR_GREEN_COLOR];
     [_confirmBtn setTitle:@"确认提现" forState:UIControlStateNormal];
     [_confirmBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_confirmBtn addTarget:self action:@selector(confirmBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_confirmBtn];
 }
 
-- (NSArray *)titleArr
-{
-    if (_titleArr) {
-        _titleArr = @[@"账户提现",@"银行卡号",@"提现金额"];
-    }
-    
-    return _titleArr;
-}
-
-- (NSArray *)placeArr
-{
-    if (_placeArr) {
-        _placeArr = @[@"用户名（实名认证姓名）",@"输入您本人的银行卡号",@"本次最多可提现"];
-    }
-    
-    return _placeArr;
-}
 
 - (void)confirmBtnPressed
 {
@@ -81,68 +105,6 @@
         alert.tag = 210;
         [alert show];
     }
-}
-
-#pragma mark UITableViewDataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 3;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *BANK_CELL = @"bank_cell";
-    UITableViewCell *cell;
-    cell = [tableView dequeueReusableCellWithIdentifier:BANK_CELL];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:BANK_CELL];
-    }
-    cell.textLabel.text = _titleArr[indexPath.row];
-    UILabel *lineLbl = [[UILabel alloc] initWithFrame:CGRectMake(15, 50, kScreenWidth - 15, 0.5)];
-    [cell.contentView addSubview:lineLbl];
-    switch (indexPath.row) {
-        case 0:
-        {
-            _nameField = [[UITextField alloc] initWithFrame:CGRectMake(70, 0, kScreenWidth - 70, 50)];
-            _nameField.font = [UIFont systemFontOfSize:15.0f];
-            _nameField.textColor = [UIColor blackColor];
-            _nameField.placeholder = _placeArr[indexPath.row];
-            [cell.contentView addSubview:_nameField];
-        }
-            break;
-        case 1:
-        {
-            _cardField = [[UITextField alloc] initWithFrame:CGRectMake(70, 0, kScreenWidth - 70, 50)];
-            _cardField.font = [UIFont systemFontOfSize:15.0f];
-            _cardField.textColor = [UIColor blackColor];
-            _cardField.placeholder = _placeArr[indexPath.row];
-            [cell.contentView addSubview:_cardField];
-        }
-            break;
-            
-        case 2:
-        {
-            _cashField = [[UITextField alloc] initWithFrame:CGRectMake(70, 0, kScreenWidth - 70, 44)];
-            _cashField.font = [UIFont systemFontOfSize:15.0f];
-            _cashField.textColor = [UIColor blackColor];
-            NSDictionary *userinfo = [[HYQUserManager sharedUserManager] userInfo];
-            NSNumber *account = [userinfo objectForKey:@"account"];
-            _cashField.placeholder = [NSString stringWithFormat:@"%@%@元",_placeArr[indexPath.row],[account stringValue]];
-            [cell.contentView addSubview:_cashField];
-        }
-            break;
-            
-        default:
-            break;
-    }
-    
-    return cell;
-}
-
-#pragma mark UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 50.5f;
 }
 
 #pragma mark UIAlertViewDelegate

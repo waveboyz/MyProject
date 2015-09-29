@@ -32,7 +32,7 @@
 {
     if (self = [super init]) {
         _titleArr = @[@"提现到银行卡",@"我的提成",@"我的积分",@"我的优惠券"];
-        _title2Arr = @[@"我的订单",@"我的收藏夹",@"地址管理"];
+        _title2Arr = @[@"我的订单",@"交易记录",@"我的收藏夹",@"地址管理"];
     }
     
     return self;
@@ -93,7 +93,7 @@
         return 4;
     }else if (section == 2)
     {
-        return 3;
+        return 4;
     }else if (section ==3){
         return 1;
     }
@@ -243,11 +243,11 @@
             MyorderFormController *orderVC = [[MyorderFormController alloc] init];
             [self.navigationController pushViewController:orderVC animated:YES];
         }
-        if (indexPath.row == 1) {
+        if (indexPath.row == 2) {
             MyCollectController *collectVC = [[MyCollectController alloc] init];
             [self.navigationController pushViewController:collectVC animated:YES];
         }
-        if (indexPath.row == 2) {
+        if (indexPath.row == 3) {
             MyAddressController *addVC = [[MyAddressController alloc] init];
             [self.navigationController pushViewController:addVC animated:YES];
         }

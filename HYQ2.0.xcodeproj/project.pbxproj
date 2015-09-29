@@ -28,6 +28,7 @@
 		C4715B971BAA60B20042ABE8 /* backIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4715B961BAA60B20042ABE8 /* backIcon@2x.png */; };
 		C47CDBB01BA7ACFE00214478 /* ServicePayOrderResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C47CDBAF1BA7ACFE00214478 /* ServicePayOrderResponse.m */; };
 		C47CDBB31BA7AEAF00214478 /* AliPayCallBackResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C47CDBB21BA7AEAF00214478 /* AliPayCallBackResponse.m */; };
+		C483DE561BB919A80014888D /* TradeRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = C483DE551BB919A80014888D /* TradeRecordController.m */; settings = {ASSET_TAGS = (); }; };
 		C486B5441B9FC0210072A7F4 /* QRBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = C486B5431B9FC0210072A7F4 /* QRBlurView.m */; };
 		C486B5471B9FC9510072A7F4 /* QRUrlResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C486B5461B9FC9510072A7F4 /* QRUrlResponse.m */; };
 		C486B54A1BA0253A0072A7F4 /* ServiceAddressPickController.m in Sources */ = {isa = PBXBuildFile; fileRef = C486B5491BA0253A0072A7F4 /* ServiceAddressPickController.m */; };
@@ -346,6 +347,8 @@
 		C47CDBAF1BA7ACFE00214478 /* ServicePayOrderResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicePayOrderResponse.m; sourceTree = "<group>"; };
 		C47CDBB11BA7AEAF00214478 /* AliPayCallBackResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliPayCallBackResponse.h; sourceTree = "<group>"; };
 		C47CDBB21BA7AEAF00214478 /* AliPayCallBackResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AliPayCallBackResponse.m; sourceTree = "<group>"; };
+		C483DE541BB919A80014888D /* TradeRecordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TradeRecordController.h; sourceTree = "<group>"; };
+		C483DE551BB919A80014888D /* TradeRecordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TradeRecordController.m; sourceTree = "<group>"; };
 		C486B5421B9FC0210072A7F4 /* QRBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRBlurView.h; sourceTree = "<group>"; };
 		C486B5431B9FC0210072A7F4 /* QRBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRBlurView.m; sourceTree = "<group>"; };
 		C486B5451B9FC9510072A7F4 /* QRUrlResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRUrlResponse.h; sourceTree = "<group>"; };
@@ -1001,6 +1004,15 @@
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
+		C483DE531BB919890014888D /* MyTradeRecordVC */ = {
+			isa = PBXGroup;
+			children = (
+				C483DE541BB919A80014888D /* TradeRecordController.h */,
+				C483DE551BB919A80014888D /* TradeRecordController.m */,
+			);
+			path = MyTradeRecordVC;
+			sourceTree = "<group>";
+		};
 		C48B66D21B9EAD5500AB0DA5 /* HYQ2.0 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1416,6 +1428,7 @@
 		C48B67C61B9EAD5500AB0DA5 /* PersonalController */ = {
 			isa = PBXGroup;
 			children = (
+				C483DE531BB919890014888D /* MyTradeRecordVC */,
 				C4593E2C1BA9447B00879DE5 /* MyBankController */,
 				C48B67C71B9EAD5500AB0DA5 /* EditPersonal */,
 				C48B67CE1B9EAD5500AB0DA5 /* ForgotPwdVC */,
@@ -2497,6 +2510,7 @@
 				C48B69681B9EAD5500AB0DA5 /* BaseNavigationController.m in Sources */,
 				C48B6A171B9EAD5500AB0DA5 /* ServiceViewCell.m in Sources */,
 				C48B69341B9EAD5500AB0DA5 /* MJRefreshGifHeader.m in Sources */,
+				C483DE561BB919A80014888D /* TradeRecordController.m in Sources */,
 				C48B69741B9EAD5500AB0DA5 /* InformationController.m in Sources */,
 				C48B69651B9EAD5500AB0DA5 /* NSString+HCBStringHelper.m in Sources */,
 				C46A71841BABF36100867C3F /* AFURLResponseSerialization.m in Sources */,
