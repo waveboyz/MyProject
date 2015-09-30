@@ -236,7 +236,7 @@
     static NSString *EXPAND_CELL = @"expand_cell";
     UITableViewCell *cell;
 
-    if (_segment.selectedSegmentIndex == 2) {
+    if (_segment.selectedSegmentIndex == 1) {
         cell = [tableView dequeueReusableCellWithIdentifier:EXPAND_CELL];
         if (!cell) {
             cell = [[MyPaymentExpandCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:EXPAND_CELL];
@@ -261,7 +261,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (_segment.selectedSegmentIndex == 2) {
+    if (_segment.selectedSegmentIndex == 1) {
         return 40.5;
     }else{
         return 60.5f;

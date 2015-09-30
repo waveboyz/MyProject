@@ -95,6 +95,7 @@
 - (void)createUI
 {
     [super createUI];
+    self.tableView.frame = CGRectMake(0, 40, kScreenWidth, kScreenHeight - 40);
     _segment = [[VOSegmentedControl alloc] init];
     _segment.segments = @[@{VOSegmentText:@"全部"},
                           @{VOSegmentText:@"购买产品"},
@@ -112,12 +113,13 @@
     _segment.selectedIndicatorColor = NAVIBAR_GREEN_COLOR;
     [self.view addSubview:_segment];
     [_segment addTarget:self action:@selector(swipSegmentWithIndexPath:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView.header beginRefreshing];
 }
 
 - (UIView *)badNetView
 {
     if (!_badNetView) {
-        _badNetView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+        _badNetView = [[UIView alloc] initWithFrame:CGRectMake(0, 104, kScreenWidth, kScreenHeight - 104)];
         _badNetView.backgroundColor = GRAY_COLOR;
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -134,7 +136,7 @@
 - (UIView *)emptyView
 {
     if (!_emptyView) {
-        _emptyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+        _emptyView = [[UIView alloc] initWithFrame:CGRectMake(0, 104, kScreenWidth, kScreenHeight - 104)];
         _emptyView.backgroundColor = GRAY_COLOR;
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -170,10 +172,12 @@
             [self.tableView.header endRefreshing];
             [self.tableView reloadData];
             [self.view insertSubview:self.tableView aboveSubview:self.emptyView];
+            [self.view bringSubviewToFront:self.segment];
         }else{
             [self.tableView.footer endRefreshing];
             [self.tableView reloadData];
             [self.view insertSubview:self.tableView aboveSubview:self.emptyView];
+            [self.view bringSubviewToFront:self.segment];
         }
     });
 
@@ -235,11 +239,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (_segment.selectedSegmentIndex == 2) {
-        return 40.5;
-    }else{
-        return 60.5f;
-    }
+
+    return 60.5f;
 }
 
 @end

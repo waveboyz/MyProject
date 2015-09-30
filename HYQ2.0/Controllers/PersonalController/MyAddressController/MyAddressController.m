@@ -155,11 +155,6 @@
 }
 
 #pragma mark MyAddressAddControllerDelegate
-//- (void)addAddressSucceedWithAddress:(AddressModel *)address
-//{
-//    [self.dataArr addObject:address];
-//    [self.tableview reloadData];
-//}
 - (void)addAddressSucceed
 {
     [self.dataArr removeAllObjects];
@@ -167,14 +162,6 @@
 }
 
 #pragma  mark MyAddressEditControllerDelegate
-//- (void)correctAddressSucceedWith:(AddressModel *)address
-//{
-//    [_dataArr removeObjectAtIndex:_correctIndex.row];
-//    [_dataArr insertObject:address atIndex:_correctIndex.row];
-//    
-//    [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObjects:_correctIndex, nil] withRowAnimation:UITableViewRowAnimationAutomatic];
-//}
-
 - (void)correctAddressSucceed
 {
     [self.dataArr removeAllObjects];

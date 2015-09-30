@@ -7,7 +7,9 @@
 //
 
 #import "BaseModel.h"
-
+/*
+ 首页banner model
+ */
 @interface BannerModel : BaseModel
 
 @property (nonatomic, copy) NSString *url;

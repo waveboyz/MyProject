@@ -115,9 +115,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(infoCellTouchedWithUrl:)]) {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(infoCellTouchedWithUrl:andWithTitle:)]) {
         ActivityModel *model = _titleArr[indexPath.row];
-        [self.delegate infoCellTouchedWithUrl:[NSString stringWithFormat:@"%@%@",ACTIVITY_BASE_URL,model.aid]];
+        [self.delegate infoCellTouchedWithUrl:[NSString stringWithFormat:@"%@%@",ACTIVITY_BASE_URL,model.aid] andWithTitle:model.title];
     }
 }
 

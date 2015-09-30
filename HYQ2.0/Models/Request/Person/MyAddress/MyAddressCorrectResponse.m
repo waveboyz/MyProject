@@ -7,7 +7,6 @@
 //
 
 #import "MyAddressCorrectResponse.h"
-#import "HYQUserManager.h"
 
 @implementation MyAddressCorrectResponse
 

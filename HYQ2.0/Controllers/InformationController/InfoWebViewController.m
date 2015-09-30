@@ -13,9 +13,8 @@
 @property (nonatomic, retain) NSString  *urlStr;
 @property (nonatomic, retain) NSString  *titleStr;
 @property (nonatomic, strong) UIWebView *webview;
-@property (nonatomic, strong) UIBarButtonItem *backBtn;
-@property (nonatomic, strong) UIBarButtonItem *forwardBtn;
-@property (nonatomic, strong) UIBarButtonItem *refreshBtn;
+@property (nonatomic, strong) UILabel   *titleLbl;
+
 @end
 
 @implementation InfoWebViewController
@@ -47,11 +46,12 @@
 - (void)createUI
 {
     self.title = _titleStr;
-    
-    _webview = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 49)];
+    _webview = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 113)];
     _webview.delegate = self;
     [self.view addSubview:_webview];
     [self showWebView];
+    
+    [self.view addSubview:self.titleLbl];
     
     UIView *toolview = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 49, kScreenWidth, 49)];
     toolview.backgroundColor = [UIColor colorWithRed:0.925 green:0.925 blue:0.925 alpha:0.5];
@@ -62,28 +62,20 @@
     [backBtn setImage:[UIImage imageNamed:@"backIcon"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(dismissBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [toolview addSubview:backBtn];
+}
+
+- (UILabel *)titleLbl
+{
+    if (!_titleLbl) {
+        _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 64)];
+        _titleLbl.backgroundColor = NAVIBAR_GREEN_COLOR;
+        _titleLbl.font = [UIFont systemFontOfSize:13.0f];
+        _titleLbl.textColor = [UIColor whiteColor];
+        _titleLbl.text = _titleStr;
+        _titleLbl.textAlignment = NSTextAlignmentCenter;
+    }
     
-//    UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    shareBtn.frame = CGRectMake(kScreenWidth - 150, 0, 29, 49);
-//    [shareBtn setImage:[UIImage imageNamed:@"share"] forState:UIControlStateNormal];
-//    [toolview addSubview:shareBtn];
-//    
-//    UILabel *shareLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth - 115, 0, 30, 49)];
-//    shareLbl.font = [UIFont systemFontOfSize:13.0f];
-//    shareLbl.textColor = [UIColor blackColor];
-//    shareLbl.text = @"分享";
-//    [toolview addSubview:shareLbl];
-//    
-//    UIButton *commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    commentBtn.frame = CGRectMake(kScreenWidth - 75, 1, 29, 48);
-//    [commentBtn setImage:[UIImage imageNamed:@"comment"] forState:UIControlStateNormal];
-//    [toolview addSubview:commentBtn];
-//    
-//    UILabel *countLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth - 40, 0, 30, 49)];
-//    countLbl.font = [UIFont systemFontOfSize:13.0f];
-//    countLbl.textColor = [UIColor blackColor];
-//    countLbl.text = @"20";
-//    [toolview addSubview:countLbl];
+    return _titleLbl;
 }
 
 - (void)showWebView
@@ -98,22 +90,6 @@
 {
     [self dismissOperationExecute];
 }
-
-//
-//- (void)webViewBack
-//{
-//    [_webview goBack];
-//}
-//
-//- (void)webViewForward
-//{
-//    [_webview goForward];
-//}
-//
-//- (void)webViewRefresh
-//{
-//    [_webview reload];
-//}
 
 #pragma mark UIWebViewDelegate
 - (void)webViewDidStartLoad:(UIWebView *)webView

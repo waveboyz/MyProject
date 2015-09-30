@@ -16,6 +16,7 @@
 #import "MyBankWithdrawController.h"
 #import "HYQEditController.h"
 #import "HYQBaseWebController.h"
+#import "TradeRecordController.h"
 #import "HYQUserManager.h"
 
 @interface PersonalController ()
@@ -242,6 +243,10 @@
         if (indexPath.row == 0) {
             MyorderFormController *orderVC = [[MyorderFormController alloc] init];
             [self.navigationController pushViewController:orderVC animated:YES];
+        }
+        if (indexPath.row == 1) {
+            TradeRecordController *tradeVC = [[TradeRecordController alloc] init];
+            [self.navigationController pushViewController:tradeVC animated:YES];
         }
         if (indexPath.row == 2) {
             MyCollectController *collectVC = [[MyCollectController alloc] init];

@@ -70,9 +70,8 @@
         _propertyLbl.font = [UIFont systemFontOfSize:43.0];
         _propertyLbl.textAlignment = NSTextAlignmentCenter;
         _propertyLbl.textColor = [UIColor whiteColor];
-        if ([[[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"property"] isKindOfClass:[NSNumber class]]) {
-            NSUInteger property = [[[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"property"] intValue];
-        _propertyLbl.text = [NSString stringWithFormat:@"%ld",property];
+        if ([[[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"property"] isKindOfClass:[NSString class]]) {
+            _propertyLbl.text = [[[HYQUserManager sharedUserManager] userInfo]objectForKey:@"property"];
         }
         [self.contentView addSubview:_propertyLbl];
     }

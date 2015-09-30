@@ -94,6 +94,7 @@
     if (!_scrollView) {
         _scrollView = [[UIScrollView alloc] initWithFrame:self.frame];
         _scrollView.showsHorizontalScrollIndicator = NO;
+        
         [_scrollView setDelegate:self];
         [_scrollView setPagingEnabled:YES];
         //设置引导页宽度

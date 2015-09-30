@@ -169,8 +169,9 @@
     _getResendBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
     _getResendBtn.alpha = 0.8;
     [_getResendBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
-    [_getResendBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [_getResendBtn setBackgroundImage:[UIImage imageNamed:@"loginIcon"] forState:UIControlStateNormal];
+    [_getResendBtn setTitleColor:NAVIBAR_GREEN_COLOR forState:UIControlStateNormal];
+//    [_getResendBtn setBackgroundImage:[UIImage imageNamed:@"loginIcon"] forState:UIControlStateNormal];
+    [_getResendBtn setBackgroundColor:GRAY_COLOR];
     [_getResendBtn addTarget:self action:@selector(sendVerCodeButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [_bgView addSubview:_getResendBtn];
 //----------------------------------------------
@@ -180,8 +181,9 @@
     confirmBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
     confirmBtn.alpha = 0.8;
     [confirmBtn setTitle:@"注册" forState:UIControlStateNormal];
-    [confirmBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [confirmBtn setBackgroundImage:[UIImage imageNamed:@"loginIcon"] forState:UIControlStateNormal];
+    [confirmBtn setTitleColor:NAVIBAR_GREEN_COLOR forState:UIControlStateNormal];
+//    [confirmBtn setBackgroundImage:[UIImage imageNamed:@"loginIcon"] forState:UIControlStateNormal];
+    [confirmBtn setBackgroundColor:GRAY_COLOR];
     [confirmBtn addTarget:self action:@selector(submitReg) forControlEvents:UIControlEventTouchUpInside];
     [_bgView addSubview:confirmBtn];
     
@@ -389,9 +391,9 @@
         [_getResendBtn setTitle:[NSString stringWithFormat:@"%lds 重新获取", _reSendTime] forState:UIControlStateNormal];
     } else {
         _getResendBtn.alpha = 0.8;
-        [_getResendBtn setBackgroundColor:BLUE_COLOR];
+        [_getResendBtn setBackgroundColor:GRAY_COLOR];
         [_getResendBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
-        [_getResendBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_getResendBtn setTitleColor:NAVIBAR_GREEN_COLOR forState:UIControlStateNormal];
         [_getResendBtn setBackgroundImage:[UIImage imageNamed:@"loginIcon"] forState:UIControlStateNormal];
         
         _getResendBtn.enabled = YES;

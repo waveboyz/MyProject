@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "GlobalConst.h"
-
+/*
+    首页滚动新闻
+ */
 @protocol MainScrollinfoCellDelegate <NSObject>
 
-- (void)infoCellTouchedWithUrl:(NSString *)url;
+- (void)infoCellTouchedWithUrl:(NSString *)url andWithTitle:(NSString *)title;
 
 @end
 

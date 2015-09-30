@@ -455,9 +455,9 @@
 }
 
 #pragma mark MainScrollinfoCellDelegate
-- (void)infoCellTouchedWithUrl:(NSString *)url
+- (void)infoCellTouchedWithUrl:(NSString *)url andWithTitle:(NSString *)title
 {
-    InfoWebViewController *webView = [[InfoWebViewController alloc] initWithUrl:url andTitle:nil];
+    InfoWebViewController *webView = [[InfoWebViewController alloc] initWithUrl:url andTitle:title];
     [self presentViewController:webView animated:YES completion:^(void){}];
 }
 

@@ -70,7 +70,11 @@
 
     if (_address.province && _address.city && _address.district && _address.address) {
         if (_address.tacitiy) {
-        _addressLbl.text = [NSString stringWithFormat:@"【默认】%@ %@ %@ %@",_address.province,_address.city,_address.district,_address.address];
+            _addressLbl.text = [NSString stringWithFormat:@"【默认】%@ %@ %@ %@",_address.province,_address.city,_address.district,_address.address];
+            self.backgroundColor = BG_GRAY_COLOR;
+            _nameLbl.textColor = NAVIBAR_GREEN_COLOR;
+            _phoneLbl.textColor = NAVIBAR_GREEN_COLOR;
+            _addressLbl.textColor = NAVIBAR_GREEN_COLOR;
         }else{
         _addressLbl.text = [NSString stringWithFormat:@"%@ %@ %@ %@",_address.province,_address.city,_address.district,_address.address];
         }

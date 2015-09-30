@@ -13,6 +13,7 @@
 @protocol MyAddressDeleteResponse <NSObject>
 
 - (void)deleteSucceed;
+@optional
 - (void)wrongOperationWithText:(NSString *)text;
 
 @end

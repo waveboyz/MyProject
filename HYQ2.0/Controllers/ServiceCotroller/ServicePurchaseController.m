@@ -60,6 +60,15 @@
     return self;
 }
 
+- (id)initWithOrder:(OrderModel *)order
+{
+    if (self = [super init]) {
+        _order = order;
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -152,8 +161,8 @@
     order.tradeNO = [NSString stringWithFormat:@"%@",_tradeNo]; //订单ID（由商家自行制定）
     order.productName = _service.title; //商品标题
     order.productDescription = _service.DesStr; //商品描述
-//    order.amount = [NSString stringWithFormat:@"%ld",_totalPrice]; //商品价格
-    order.amount = @"0.01";
+    order.amount = [NSString stringWithFormat:@"%ld",_totalPrice]; //商品价格
+//    order.amount = @"0.01";
     order.notifyURL =  @"http://www.xxx.com"; //回调URL
     
     order.service = @"mobile.securitypay.pay";

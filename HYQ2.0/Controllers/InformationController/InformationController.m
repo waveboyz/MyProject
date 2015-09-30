@@ -233,7 +233,7 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     ActivityModel *model = self.dataArr[indexPath.row];
     NSString *str = [[NSString alloc] initWithFormat:@"%@%ld",ACTIVITY_BASE_URL,[model.aid integerValue]];
-    InfoWebViewController *webVC = [[InfoWebViewController alloc] initWithUrl:str andTitle:nil];
+    InfoWebViewController *webVC = [[InfoWebViewController alloc] initWithUrl:str andTitle:model.title];
     
     [self presentViewController:webVC animated:YES completion:^(void){}];
 }

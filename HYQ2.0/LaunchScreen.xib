@@ -10,7 +10,7 @@
             <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcome.png" translatesAutoresizingMaskIntoConstraints="NO" id="9Ot-43-jIc">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lunchScreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="9Ot-43-jIc">
                     <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                 </imageView>
             </subviews>
@@ -27,6 +27,6 @@
         </view>
     </objects>
     <resources>
-        <image name="welcome.png" width="320" height="568"/>
+        <image name="lunchScreen.png" width="375" height="567"/>
     </resources>
 </document>

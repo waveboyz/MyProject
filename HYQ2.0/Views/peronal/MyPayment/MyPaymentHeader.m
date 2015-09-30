@@ -44,8 +44,8 @@
     _propertyLbl.font = [UIFont systemFontOfSize:31.0f];
     _propertyLbl.textColor = [UIColor whiteColor];
     _propertyLbl.textAlignment = NSTextAlignmentCenter;
-    NSNumber *property = [[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"property"];
-    _propertyLbl.text = [property stringValue];
+//    NSUInteger property = [[[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"property"] integerValue];
+    _propertyLbl.text = [[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"property"];
     [self addSubview:_propertyLbl];
     
     _sumLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 - 60, 80, 120, 30)];

@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "GlobalConst.h"
-
+/*
+    首页banner cell
+ */
 @protocol MainBannerCellDelegate <NSObject>
 
 - (void)didSelectedBannerWithUrl:(NSString *)url;

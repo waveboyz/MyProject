@@ -71,6 +71,8 @@ extern NSString *const MY_WITHDRAW_INTERFACE;
 extern NSString *const MY_COLLECT_INTERFACE;
 //我的收藏夹（删除）
 extern NSString *const MY_COLLECT_DELETE_INTERFACE;
+//我的积分
+extern NSString *const MY_SIGN_IN_INTERFACE;
 //--------------------------------------
 //地址管理
 extern NSString *const MY_ADDRESS_INTERFACE;
