@@ -10,7 +10,9 @@
 /*  
     全局常量
  */
-#define UME_APPKEY              @"5d5405f67e58e6ed1001dbe"
+#define UME_APPKEY              @"561603e167e58e1e300011e3"
+#define QQ_OPEN_ID              @"1104823003"
+#define QQ_APPKEY               @"xxMXC8YV3ZOhYMY7"
 //------------------界面常量--------------------
 
 #define kScreenWidth    [UIScreen mainScreen].bounds.size.width

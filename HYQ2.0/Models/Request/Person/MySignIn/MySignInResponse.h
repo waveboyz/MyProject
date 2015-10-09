@@ -10,7 +10,7 @@
 
 @protocol MySignInResponseDelegate <NSObject>
 
-- (void)getSignArrSucceedWith:(NSArray *)arr andWithNum:(NSNumber *)num;
+- (void)getSignArrSucceedWith:(NSMutableArray *)arr andWithNum:(NSNumber *)num;
 @optional
 
 - (void)wrongOperationWithText:(NSString *)text;

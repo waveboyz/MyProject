@@ -17,6 +17,7 @@
 #import "HYQEditController.h"
 #import "HYQBaseWebController.h"
 #import "TradeRecordController.h"
+#import "MySignInController.h"
 #import "HYQUserManager.h"
 
 @interface PersonalController ()
@@ -216,9 +217,6 @@
     
     if (indexPath.section == 1) {
         if (indexPath.row == 0) {
-//            NSDictionary *userinfo = [[HYQUserManager sharedUserManager] userInfo];
-//            NSNumber *uid = [userinfo objectForKey:@"uid"];
-//            HYQBaseWebController *bankVC = [[HYQBaseWebController alloc] initWithUrl:[NSString stringWithFormat:@"%@%@",BANK_BASE_URL,[uid stringValue]]    andWithTitle:@"提现"];
             MyBankWithdrawController *bankVC = [[MyBankWithdrawController alloc] init];
             [self.navigationController pushViewController:bankVC animated:YES];
         }
@@ -227,11 +225,8 @@
             [self.navigationController pushViewController:paymentVC animated:YES];
         }
         if (indexPath.row == 2) {
-            NSDictionary *userinfo = [[HYQUserManager sharedUserManager] userInfo];
-            NSNumber *uid = [userinfo objectForKey:@"uid"];
-            HYQBaseWebController *bankVC = [[HYQBaseWebController alloc] initWithUrl:[NSString stringWithFormat:@"%@%@",SIGNIN_BASE_URL,[uid stringValue]]    andWithTitle:@"我的积分"];
-            
-            [self.navigationController pushViewController:bankVC animated:YES];
+            MySignInController *signInVC = [[MySignInController alloc] init];
+            [self.navigationController pushViewController:signInVC animated:YES];
         }
         if (indexPath.row == 3) {
             MYDiscountController *discountVC = [[MYDiscountController alloc] init];

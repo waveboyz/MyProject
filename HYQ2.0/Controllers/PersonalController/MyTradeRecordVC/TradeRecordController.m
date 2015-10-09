@@ -160,7 +160,6 @@
 - (void)getInfoWith:(NSMutableArray *)infoArr
 {
     if (self.currentPage == 1) {
-        //        [self.dataArr removeAllObjects];
         self.dataArr = infoArr;
     }else {
         [self.dataArr addObjectsFromArray:infoArr];

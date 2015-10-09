@@ -7,6 +7,7 @@
 //
 
 #import "MySignInResponse.h"
+#import "SignInModel.h"
 
 @implementation MySignInResponse
 
@@ -28,7 +29,12 @@
 {
     NSLog(@"%@",responseObject);
     if ([[responseObject objectForKey:@"code"] integerValue] == 1) {
-
+        NSNumber *mynum = [responseObject objectForKey:@"sumIntegral"];
+        NSArray *dataArr = [responseObject objectForKey:@"map"];
+        NSMutableArray *signinArr = [SignInModel objectArrayWithKeyValuesArray:dataArr];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(getSignArrSucceedWith:andWithNum:)]) {
+            [self.delegate getSignArrSucceedWith:signinArr andWithNum:mynum];
+        }
     }else if([[responseObject objectForKey:@"code"] integerValue] == 2){
         if ([self.delegate respondsToSelector:@selector(noDataArr)]) {
             [self.delegate noDataArr];

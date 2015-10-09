@@ -6,10 +6,10 @@
 //  Copyright © 2015年 HZHaoYuanQu. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "BaseRefreshController.h"
 /*
     我的积分
  */
-@interface MySignInController : BaseViewController
+@interface MySignInController : BaseRefreshController
 
 @end

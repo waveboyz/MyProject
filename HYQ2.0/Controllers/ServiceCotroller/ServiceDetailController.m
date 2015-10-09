@@ -8,15 +8,16 @@
 
 #import "ServiceDetailController.h"
 #import "ServicePurchaseController.h"
+#import "HYQLoginController.h"
 #import "HYQUserManager.h"
-#import "CatZanButton.h"
 #import "CollectOperationResponse.h"
 #import "ServiceIsCollectResponse.h"
-#import "HYQLoginController.h"
+#import "UMSocial.h"
 
 @interface ServiceDetailController ()
 <
     UIWebViewDelegate,
+    UMSocialUIDelegate,
     CollectOperationResponseDelegate,
     ServiceIsCollectResponseDelegate
 >
@@ -171,7 +172,6 @@
         
         [self.navigationController pushViewController:purchaseVC animated:YES];
     }else{
-//        [self performSelectorOnMainThread:@selector(showStateHudWithText:) withObject:@"用户未登录，请先登录~" waitUntilDone:YES];
         HYQLoginController *loginVC = [[HYQLoginController alloc] init];
         [self presentViewController:loginVC animated:YES completion:^(void){}];
     }
@@ -199,7 +199,13 @@
 //分享入口
 - (void)shareBtnPressed
 {
-    [self showStateHudWithText:@"分享暂未开放~"];
+//    [self showStateHudWithText:@"分享暂未开放~"];
+    [UMSocialSnsService presentSnsIconSheetView:self
+                                         appKey:UME_APPKEY
+                                      shareText:@"你要分享的文字"
+                                     shareImage:[UIImage imageNamed:@"icon.png"]
+                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToQQ,UMShareToQzone,UMShareToWechatTimeline,UMShareToWechatFavorite,nil]
+                                       delegate:self];
 }
 
 //获取是否收藏信息

@@ -131,7 +131,8 @@
         }else{
             [self.tableView.footer endRefreshing];
         }
-
+        [self.view insertSubview:self.tableView aboveSubview:self.emptyView];
+        [self.view bringSubviewToFront:self.segment];
         [self.tableView reloadData];
     });
 }

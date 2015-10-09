@@ -33,7 +33,7 @@
 - (void)setViews
 {
     if (!_titleLbl) {
-        _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, kScreenWidth - 135, 50)];
+        _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(15, 5, kScreenWidth - 135, 50)];
         _titleLbl.textColor = USERNAME_COLOR;
         _titleLbl.font = [UIFont systemFontOfSize:15.0f];
         _titleLbl.lineBreakMode = NSLineBreakByCharWrapping;
@@ -42,12 +42,12 @@
     }
 
     if (!_imgPicture) {
-        _imgPicture = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 105, 5, 100, 80)];
+        _imgPicture = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 105, 15, 95, 60)];
         [self.contentView addSubview:_imgPicture];
     }
     
     if (!_desLbl) {
-        _desLbl = [[UILabel alloc] initWithFrame:CGRectMake(5, 65, kScreenWidth - 125, 15)];
+        _desLbl = [[UILabel alloc] initWithFrame:CGRectMake(15, 65, kScreenWidth - 125, 15)];
         _desLbl.font = [UIFont systemFontOfSize:11.0f];
         _desLbl.textColor = [UIColor grayColor];
         [self.contentView addSubview:_desLbl];
@@ -74,12 +74,12 @@
 
     if (![_activity.photo isEqualToString:@""] && _activity.photo != nil) {
         _imgPicture.hidden = NO;
-        _titleLbl.frame = CGRectMake(5, 5, kScreenWidth - 135, 50);
+        _titleLbl.frame = CGRectMake(15, 5, kScreenWidth - 135, 50);
         NSString *str = [NSString stringWithFormat:@"%@%@",IMAGE_HOST, activity.photo];
         [_imgPicture sd_setImageWithURL:[NSURL URLWithString:str] placeholderImage:[UIImage imageNamed:@"product_placeholder"]];
     }else{
         _imgPicture.hidden = YES;
-        _titleLbl.frame = CGRectMake(5, 5, kScreenWidth - 10, 50);
+        _titleLbl.frame = CGRectMake(15, 5, kScreenWidth - 10, 50);
     }
 
 }
