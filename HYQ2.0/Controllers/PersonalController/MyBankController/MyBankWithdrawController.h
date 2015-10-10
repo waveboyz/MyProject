@@ -6,11 +6,11 @@
 //  Copyright (c) 2015年 HZHaoYuanQu. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "BaseRefreshController.h"
 /*
     提现到银行卡
  */
-@interface MyBankWithdrawController : BaseViewController
+@interface MyBankWithdrawController : BaseRefreshController
 <
     UIAlertViewDelegate
 >

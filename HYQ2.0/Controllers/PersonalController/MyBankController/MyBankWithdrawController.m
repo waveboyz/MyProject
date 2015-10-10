@@ -8,10 +8,16 @@
 
 #import "MyBankWithdrawController.h"
 #import "HYQUserManager.h"
+#import "MyPaymentCell.h"
+#import "HYQWithdrawResponse.h"
 
 @interface MyBankWithdrawController ()
+<
+    HYQWithdrawResponseDelegate
+>
 
 @property (nonatomic, strong) UIView      *bgView;
+@property (nonatomic, strong) UIView      *headerView;
 @property (nonatomic, strong) UITextField *nameField;
 @property (nonatomic, strong) UITextField *cardField;
 @property (nonatomic, strong) UITextField *cashField;
@@ -28,7 +34,8 @@
 
 - (void)createUI
 {
-    _bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 94, kScreenWidth, 151)];
+    [super createUI];
+    _bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 94, kScreenWidth, 224)];
     _bgView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_bgView];
     
@@ -59,6 +66,7 @@
     _cardField.font = [UIFont systemFontOfSize:15.0f];
     _cardField.textColor = [UIColor blackColor];
     _cardField.placeholder = @"输入您本人的银行卡号";
+    _cardField.keyboardType = UIKeyboardTypePhonePad;
     [_bgView addSubview:_cardField];
     
     UILabel *lineLbl2 = [[UILabel alloc] initWithFrame:CGRectMake(15, 100.5, kScreenWidth - 30, 0.5)];
@@ -72,23 +80,113 @@
     [_bgView addSubview:lbl3];
     
     NSDictionary *userDic = [[HYQUserManager sharedUserManager] userInfo];
-    _cardField = [[UITextField alloc] initWithFrame:CGRectMake(130, 101, kScreenWidth -  150, 50)];
-    _cardField.font = [UIFont systemFontOfSize:15.0f];
-    _cardField.textColor = [UIColor blackColor];
-    _cardField.placeholder = [NSString stringWithFormat:@"本次最多可提现%@元",[userDic objectForKey:@"property"]];
-    [_bgView addSubview:_cardField];
+    _cashField = [[UITextField alloc] initWithFrame:CGRectMake(130, 101, kScreenWidth -  150, 50)];
+    _cashField.keyboardType = UIKeyboardTypePhonePad;
+    _cashField.font = [UIFont systemFontOfSize:15.0f];
+    _cashField.textColor = [UIColor blackColor];
+    _cashField.placeholder = [NSString stringWithFormat:@"本次最多可提现%@元",[userDic objectForKey:@"property"]];
+    [_bgView addSubview:_cashField];
     //---------------------------------------------
     
     _confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _confirmBtn.frame = CGRectMake(20, 260, kScreenWidth - 40, 50);
+    _confirmBtn.frame = CGRectMake(20, 161, kScreenWidth - 40, 50);
     [_confirmBtn addTarget:self action:@selector(confirmBtnPressed) forControlEvents:UIControlEventTouchDragInside];
     [_confirmBtn setBackgroundColor:NAVIBAR_GREEN_COLOR];
     [_confirmBtn setTitle:@"确认提现" forState:UIControlStateNormal];
     [_confirmBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_confirmBtn addTarget:self action:@selector(confirmBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_confirmBtn];
+    [_bgView addSubview:_confirmBtn];
+    
+    self.tableView.frame = CGRectMake(0, 254, kScreenWidth, kScreenHeight - 254);
+    self.tableView.tableHeaderView = self.headerView;
+    [self.tableView.header beginRefreshing];
 }
 
+- (void)loadNewData
+{
+    [super loadNewData];
+    [self getPaymentOperation];
+}
+
+- (void)loadMoreData
+{
+    [super loadMoreData];
+    [self getPaymentOperation];
+}
+
+- (void)getPaymentOperation
+{
+    [self showNoTextStateHud];
+    HYQWithdrawResponse *response = [[HYQWithdrawResponse alloc] initWithType:@"提现" andWithCurrentPage:self.currentPage];
+    response.delegate = self;
+    [response start];
+}
+
+- (UIView *)headerView
+{
+    if (!_headerView) {
+        _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];
+        _headerView.backgroundColor = [UIColor whiteColor];
+        UILabel *titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 - 50, 0, 100, 40)];
+        titleLbl.text = @"提现";
+        titleLbl.textAlignment = NSTextAlignmentCenter;
+        titleLbl.textColor = NAVIBAR_GREEN_COLOR;
+        titleLbl.font = [UIFont systemFontOfSize:13.0f];
+        titleLbl.backgroundColor = [UIColor whiteColor];
+        [_headerView addSubview:titleLbl];
+    }
+    
+    return _headerView;
+}
+
+#pragma mark HYQWithdrawResponseDelegate
+- (void)getInfoWith:(NSMutableArray *)infoArr
+{
+    if (self.currentPage == 1) {
+        self.dataArr = infoArr;
+    }else {
+        [self.dataArr addObjectsFromArray:infoArr];
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        [self stopStateHud];
+        if (self.currentPage == 1) {
+            [self.tableView.header endRefreshing];
+            [self.tableView reloadData];
+            [self.view bringSubviewToFront:self.bgView];
+        }else{
+            [self.tableView.footer endRefreshing];
+            [self.tableView reloadData];
+            [self.view bringSubviewToFront:self.bgView];
+        }
+    });
+}
+
+- (void)wrongOperationWithText:(NSString *)text
+{
+    [self stopStateHud];
+    [self showStateHudWithText:text];
+    if (self.currentPage == 1) {
+        [self.tableView.header endRefreshing];
+    }else{
+        [self.tableView.footer endRefreshing];
+    }
+}
+
+- (void)noDataArr
+{
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        [self stopStateHud];
+        [self showStateHudWithText:@"暂无更多数据~"];
+        if (self.currentPage == 1) {
+            [self.tableView.header endRefreshing];
+            [self.tableView reloadData];
+        }else{
+            [self.tableView.footer endRefreshing];
+            self.currentPage -=1;
+        }
+    });
+}
 
 - (void)confirmBtnPressed
 {
@@ -117,6 +215,37 @@
     }else if (alertView.tag == 210){
         [_cashField becomeFirstResponder];
     }
+}
+
+#pragma mark UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.dataArr.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *PAYMENT_CELL = @"payment_cell";
+    UITableViewCell *cell;
+    cell = [tableView dequeueReusableCellWithIdentifier:PAYMENT_CELL];
+    if (!cell) {
+        cell = [[MyPaymentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:PAYMENT_CELL];
+    }
+    [(MyPaymentCell *)cell setPayment:self.dataArr[indexPath.row]];
+    
+    return cell;
+}
+
+#pragma UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    return 60.5f;
 }
 
 @end

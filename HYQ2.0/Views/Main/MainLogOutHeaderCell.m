@@ -55,7 +55,7 @@
     if (!_loginBtn) {
         _loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _loginBtn.frame = CGRectMake(kScreenWidth*0.5 - 60, 190, 120, 30);
-        [_loginBtn setBackgroundImage:[UIImage imageNamed:@"codeGetIcon"] forState:UIControlStateNormal];
+        [_loginBtn setBackgroundImage:[UIImage imageNamed:@"btn_no_login"] forState:UIControlStateNormal];
         [_loginBtn setTitle:@"登录/注册" forState:UIControlStateNormal];
         [_loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_loginBtn addTarget:self action:@selector(loginBtnTouched) forControlEvents:UIControlEventTouchUpInside];

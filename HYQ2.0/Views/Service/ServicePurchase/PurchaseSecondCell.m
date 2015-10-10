@@ -107,23 +107,23 @@
         _lineLbl2.backgroundColor = BG_GRAY_COLOR;
         [self.contentView addSubview:_lineLbl2];
     }
-    
-    if (!_desLbl2) {
-        _desLbl2 = [[UILabel alloc] initWithFrame:CGRectMake(10, 190, kScreenWidth * 0.5, 20)];
-        _desLbl2.font = [UIFont systemFontOfSize:15.0f];
-        _desLbl2.textColor = [UIColor blackColor];
-        _desLbl2.text = @"使用积分券";
-        [self.contentView addSubview:_desLbl2];
-    }
-    
-    if (!_lineLbl3) {
-        _lineLbl3 = [[UILabel alloc] initWithFrame:CGRectMake(10, 230, kScreenWidth - 20, 0.5)];
-        _lineLbl3.backgroundColor = BG_GRAY_COLOR;
-        [self.contentView addSubview:_lineLbl3];
-    }
+//    
+//    if (!_desLbl2) {
+//        _desLbl2 = [[UILabel alloc] initWithFrame:CGRectMake(10, 190, kScreenWidth * 0.5, 20)];
+//        _desLbl2.font = [UIFont systemFontOfSize:15.0f];
+//        _desLbl2.textColor = [UIColor blackColor];
+//        _desLbl2.text = @"使用积分券";
+//        [self.contentView addSubview:_desLbl2];
+//    }
+//    
+//    if (!_lineLbl3) {
+//        _lineLbl3 = [[UILabel alloc] initWithFrame:CGRectMake(10, 230, kScreenWidth - 20, 0.5)];
+//        _lineLbl3.backgroundColor = BG_GRAY_COLOR;
+//        [self.contentView addSubview:_lineLbl3];
+//    }
     
     if (!_desLbl3) {
-        _desLbl3 = [[UILabel alloc] initWithFrame:CGRectMake(10, 250, 120, 20)];
+        _desLbl3 = [[UILabel alloc] initWithFrame:CGRectMake(10, 190, 120, 20)];
         _desLbl3.font = [UIFont systemFontOfSize:15.0f];
         _desLbl3.textColor = [UIColor blackColor];
         _desLbl3.text = @"我要留言备注";
@@ -131,7 +131,7 @@
     }
     
     if (!_commentView) {
-        _commentView = [[UITextView alloc] initWithFrame:CGRectMake(0, 280, kScreenWidth, 80)];
+        _commentView = [[UITextView alloc] initWithFrame:CGRectMake(0, 220, kScreenWidth, 80)];
         _commentView.font = [UIFont systemFontOfSize:15.0f];
         _commentView.textColor = [UIColor blackColor];
         _commentView.delegate = self;

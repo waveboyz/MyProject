@@ -34,6 +34,7 @@
 
 //------------------Web页面地址--------------------
 #define SIGNIN_BASE_URL             @"http://m.haoyuanqu.com/web/weixinpay2/user!topoints.action?id="
+#define AGREEMENT_URL               @"http://www.haoyuanqu.com/weixin/web/views/fwu.html"
 //-----------------判断屏幕大小--------------------
 #define IS_IPHONE5                  [[UIScreen mainScreen] bounds].size.height == 568.0f
 #define IS_IHPONE4                  [[UIScreen mainScreen] bounds].size.height == 480.0f

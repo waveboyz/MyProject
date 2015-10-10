@@ -7,8 +7,9 @@
 //
 
 #import "HYQRegisterController.h"
-#import "HYQLoginController.h"
 #import "AppDelegate.h"
+#import "HYQLoginController.h"
+#import "InfoWebViewController.h"
 #import "NSString+HCBStringHelper.h"
 #import "HYQSendVerCodeResponse.h"
 #import "HYQRegistResponse.h"
@@ -170,7 +171,6 @@
     _getResendBtn.alpha = 0.8;
     [_getResendBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
     [_getResendBtn setTitleColor:NAVIBAR_GREEN_COLOR forState:UIControlStateNormal];
-//    [_getResendBtn setBackgroundImage:[UIImage imageNamed:@"loginIcon"] forState:UIControlStateNormal];
     [_getResendBtn setBackgroundColor:GRAY_COLOR];
     [_getResendBtn addTarget:self action:@selector(sendVerCodeButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [_bgView addSubview:_getResendBtn];
@@ -182,11 +182,24 @@
     confirmBtn.alpha = 0.8;
     [confirmBtn setTitle:@"注册" forState:UIControlStateNormal];
     [confirmBtn setTitleColor:NAVIBAR_GREEN_COLOR forState:UIControlStateNormal];
-//    [confirmBtn setBackgroundImage:[UIImage imageNamed:@"loginIcon"] forState:UIControlStateNormal];
     [confirmBtn setBackgroundColor:GRAY_COLOR];
     [confirmBtn addTarget:self action:@selector(submitReg) forControlEvents:UIControlEventTouchUpInside];
     [_bgView addSubview:confirmBtn];
+//------------------------------------------------
+    UILabel *agreeLbl =  [[UILabel alloc] initWithFrame:CGRectMake(15, 417, 150, 20)];
+    agreeLbl.font = [UIFont systemFontOfSize:13.0f];
+    agreeLbl.textColor = [UIColor whiteColor];
+    agreeLbl.text = @"点击“完成”意味着您同意";
+    [_bgView addSubview:agreeLbl];
     
+    UIButton *agreeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    agreeBtn.frame = CGRectMake(165, 417, 95, 20);
+    agreeBtn.titleLabel.font = [UIFont systemFontOfSize:13.0f];
+    [agreeBtn setTitle:@"好园区用户协议" forState:UIControlStateNormal];
+    [agreeBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [agreeBtn addTarget:self action:@selector(showAgreementWeb) forControlEvents:UIControlEventTouchUpInside];
+    [_bgView addSubview:agreeBtn];
+//------------------------------------------------
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [self.view addGestureRecognizer:tap];
 }
@@ -204,6 +217,12 @@
 - (void)dismissRegisterController
 {
     [self dismissViewControllerAnimated:YES completion:^(void){}];
+}
+
+- (void)showAgreementWeb
+{
+    InfoWebViewController *webVC = [[InfoWebViewController alloc] initWithUrl:AGREEMENT_URL andTitle:@"好园区协议"];
+    [self presentViewController:webVC animated:YES completion:^(void){}];
 }
 
 #pragma mark UITextFieldDelegate

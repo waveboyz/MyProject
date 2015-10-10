@@ -31,11 +31,13 @@
 >
 
 @property (nonatomic, strong) UITableView       *tableview;
+@property (nonatomic, strong) UIView            *toolView;        //工具条
+@property (nonatomic, strong) UIView            *payfooterView;     //购买协议
 @property (nonatomic, retain) NSMutableArray    *addArr;       //地址数组
 @property (nonatomic, retain) NSArray           *sheetArr;      //支付方式数组
-@property (nonatomic, strong) UIView            *toolView;        //工具条
 @property (nonatomic, strong) UILabel           *desLbl;          //价格描述
 @property (nonatomic, strong) UILabel           *priceLbl;        //工具条总价格label
+@property (nonatomic, strong) UIButton          *agreeBtn;      //协议赞同按钮
 @property (nonatomic, assign) NSUInteger        price;          //产品单价
 @property (nonatomic, assign) NSUInteger        totalPrice;     //总付款
 @property (nonatomic, assign) NSUInteger        paycount;
@@ -113,7 +115,7 @@
     _tableview.dataSource = self;
     _tableview.backgroundColor = GRAY_COLOR;
     _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
+    _tableview.tableFooterView = self.payfooterView;
     [self.view addSubview:_tableview];
     
     _toolView = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 49, kScreenWidth, 49)];
@@ -143,9 +145,18 @@
 
 - (void)purchaseBtnPressed
 {
-    DownSheet *sheet = [[DownSheet alloc]initWithlist:self.sheetArr height:0];
-    sheet.delegate = self;
-    [sheet showInView:self];
+    if (!_agreeBtn.selected) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"请先阅读购买协议，并勾选赞同"
+                                                       delegate:self
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+    }else{
+        DownSheet *sheet = [[DownSheet alloc]initWithlist:self.sheetArr height:0];
+        sheet.delegate = self;
+        [sheet showInView:self];
+    }
 }
 
 //付款请求
@@ -219,6 +230,44 @@
     [response start];
 }
 
+- (UIView *)payfooterView
+{
+    if (!_payfooterView) {
+        _payfooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];
+        
+        _agreeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _agreeBtn.frame = CGRectMake(30, 0, 30, 40);
+        _agreeBtn.selected = NO;
+        [_agreeBtn setImage:[UIImage imageNamed:@"unselect"] forState:UIControlStateNormal];
+        [_agreeBtn addTarget:self action:@selector(changeAgreeBtn) forControlEvents:UIControlEventTouchUpInside];
+        [_payfooterView addSubview:_agreeBtn];
+
+        UILabel *deslbl = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, 130, 40)];
+        deslbl.textColor = [UIColor blackColor];
+        deslbl.font = [UIFont systemFontOfSize:13.0f];
+        deslbl.text = @"点击同意意味着您遵守";
+        [_payfooterView addSubview:deslbl];
+        
+        UIButton *agreementBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        agreementBtn.frame = CGRectMake(190, 0, 70, 40);
+        agreementBtn.titleLabel.font = [UIFont systemFontOfSize:13.0f];
+        [agreementBtn setTitle:@"好园区协议" forState:UIControlStateNormal];
+        [agreementBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [_payfooterView addSubview:agreementBtn];
+    }
+    
+    return _payfooterView;
+}
+
+- (void)changeAgreeBtn
+{
+    _agreeBtn.selected = !_agreeBtn.selected;
+    if (_agreeBtn.selected) {
+        [_agreeBtn setImage:[UIImage imageNamed:@"unselect"] forState:UIControlStateNormal];
+    }else{
+        [_agreeBtn setImage:[UIImage imageNamed:@"onselect"] forState:UIControlStateNormal];
+    }
+}
 
 #pragma mark MyAddressResponseDelegate
 - (void)getAddressArrayWith:(NSMutableArray *)array

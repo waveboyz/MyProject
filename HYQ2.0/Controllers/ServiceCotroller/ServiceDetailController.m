@@ -199,13 +199,81 @@
 //分享入口
 - (void)shareBtnPressed
 {
-//    [self showStateHudWithText:@"分享暂未开放~"];
-    [UMSocialSnsService presentSnsIconSheetView:self
-                                         appKey:UME_APPKEY
-                                      shareText:@"你要分享的文字"
-                                     shareImage:[UIImage imageNamed:@"icon.png"]
-                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToQQ,UMShareToQzone,UMShareToWechatTimeline,UMShareToWechatFavorite,nil]
-                                       delegate:self];
+    if (_order) {
+        [UMSocialSnsService presentSnsIconSheetView:self
+                                             appKey:UME_APPKEY
+                                          shareText:_order.name
+                                         shareImage:[UIImage imageNamed:@"icon.png"]
+                                    shareToSnsNames:[NSArray arrayWithObjects:UMShareToQQ,UMShareToQzone,UMShareToWechatTimeline,UMShareToWechatFavorite,nil]
+                                           delegate:self];
+    }else if (_service){
+        [UMSocialSnsService presentSnsIconSheetView:self
+                                             appKey:UME_APPKEY
+                                          shareText:_service.title
+                                         shareImage:[UIImage imageNamed:@"icon.png"]
+                                    shareToSnsNames:[NSArray arrayWithObjects:UMShareToQQ,UMShareToQzone,UMShareToWechatTimeline,UMShareToWechatFavorite,nil]
+                                           delegate:self];
+    }
+}
+
+- (void)didSelectSocialPlatform:(NSString *)platformName withSocialData:(UMSocialData *)socialData
+{
+    if (_order) {
+        if ([platformName isEqualToString:UMShareToQQ]) {
+            [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToQQ]
+                                                                content:_order.name
+                                                                  image:nil
+                                                               location:nil
+                                                            urlResource:[[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeDefault url:[NSString stringWithFormat:@"%@%@",PRODUCT_DETAIL_INTERFACE,self.order.pid]]
+                                                    presentedController:self
+                                                             completion:^(UMSocialResponseEntity *response){
+                if (response.responseCode == UMSResponseCodeSuccess) {
+                    NSLog(@"分享成功！");
+                }
+            }];
+//            [UMSocialData defaultData].extConfig.qqData.url = [NSString stringWithFormat:@"%@%@",PRODUCT_DETAIL_INTERFACE,self.order.pid];
+        }else if([platformName isEqualToString:UMShareToQzone]){
+            [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToQzone]
+                                                                content:_order.name
+                                                                  image:[NSString stringWithFormat:@"%@%@",LOCAL_HOST,_service.photo]
+                                                               location:nil
+                                                            urlResource:[[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeDefault url:[NSString stringWithFormat:@"%@%@",PRODUCT_DETAIL_INTERFACE,self.order.pid]]
+                                                    presentedController:self
+                                                             completion:^(UMSocialResponseEntity *response){
+                if (response.responseCode == UMSResponseCodeSuccess) {
+                    NSLog(@"分享成功！");
+                }
+            }];
+//            [UMSocialData defaultData].extConfig.qzoneData.url = [NSString stringWithFormat:@"%@%@",PRODUCT_DETAIL_INTERFACE,self.order.pid];
+        }
+    }else if (_service){
+        if ([platformName isEqualToString:UMShareToQQ]) {
+            [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToQQ]
+                                                                content:_order.name image:nil
+                                                               location:nil
+                                                            urlResource:[[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeDefault url:[NSString stringWithFormat:@"%@%@",PRODUCT_DETAIL_INTERFACE,self.order.pid]]
+                                                    presentedController:self
+                                                             completion:^(UMSocialResponseEntity *response){
+                if (response.responseCode == UMSResponseCodeSuccess) {
+                    NSLog(@"分享成功！");
+                }
+            }];
+//            [UMSocialData defaultData].extConfig.qqData.url = [NSString stringWithFormat:@"%@%@",PRODUCT_DETAIL_INTERFACE,self.order.pid];
+        }else if([platformName isEqualToString:UMShareToQzone]){
+            [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToQzone]
+                                                                content:_order.name
+                                                                  image:[NSString stringWithFormat:@"%@%@",LOCAL_HOST,_service.photo]
+                                                               location:nil
+                                                            urlResource:[[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeDefault url:[NSString stringWithFormat:@"%@%@",PRODUCT_DETAIL_INTERFACE,self.order.pid]]
+                                                    presentedController:self
+                                                             completion:^(UMSocialResponseEntity *response){
+                if (response.responseCode == UMSResponseCodeSuccess) {
+                    NSLog(@"分享成功！");
+                }
+            }];
+//            [UMSocialData defaultData].extConfig.qzoneData.url = [NSString stringWithFormat:@"%@%@",PRODUCT_DETAIL_INTERFACE,self.order.pid];
+        }
+    }
 }
 
 //获取是否收藏信息

@@ -8,7 +8,7 @@
 
 #import "BaseRefreshController.h"
 /*
-    我的提成
+    交易记录
  */
 @interface TradeRecordController : BaseRefreshController
 
