@@ -33,7 +33,6 @@
 #import "ServiceModel.h"
 #import "ActivityModel.h"
 #import "HYQMainResponse.h"
-#import "QRUrlResponse.h"
 #import "HYQInterfaceMethod.h"
 #import "QRBlurView.h"
 #import "MJRefresh.h"
@@ -43,10 +42,10 @@
 <
     MainLogOutHeaderCellDelegate,
     MainLogInHeaderCellDelegate,
+
     MainServiceCellDelegate,
     HYQmainResponseDelegate,
     MainScrollinfoCellDelegate,
-    QRUrlResponseDelegate,
     NSURLConnectionDelegate,
     MainBannerCellDelegate
 >
@@ -204,7 +203,7 @@
 - (void)showQRcodePressed
 {
     if ([[HYQUserManager sharedUserManager] isLogin]) {
-        [self getQRUrlOperation];
+        [self generateQRView];
     }else{
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
                                                     message:@"用户未登录~"
@@ -215,12 +214,14 @@
     }
 }
 
-//获取二维码图像请求
-- (void)getQRUrlOperation
+//生成二维码View
+- (void)generateQRView
 {
-    QRUrlResponse *response = [[QRUrlResponse alloc] init];
-    response.delegate = self;
-    [response start];
+    _blurview = [[QRBlurView alloc] initWithFrame:CGRectMake(20, 50, kScreenWidth - 40,kScreenHeight - 130)];
+    _blurview.backgroundColor = [UIColor whiteColor];
+    _blurview.layer.cornerRadius = 7.5;
+    _blurview.alpha = 0.f;
+    [self creatMaskBgViewWithContentView:_blurview];
 }
 
 - (void)creatMaskBgViewWithContentView:(UIView *)contentView
@@ -248,6 +249,7 @@
      }];
 }
 
+//隐藏二维码View
 - (void)hideView
 {
     [UIView animateWithDuration:0.3 animations:^{
@@ -260,6 +262,7 @@
      }];
 }
 
+//移除二维码View
 - (void)removeMaskandBlur
 {
     [_blurview removeFromSuperview];
@@ -311,16 +314,6 @@
     }
 }
 
-#pragma mark QRUrlResponseDelegate
-- (void)getQRUrlSucceedWithUrl:(NSString *)url
-{
-    _blurview = [[QRBlurView alloc] initWithUrl:url andWithFrame:CGRectMake(20, 50, kScreenWidth - 40,kScreenHeight - 200)];
-    _blurview.backgroundColor = [UIColor whiteColor];
-    _blurview.layer.cornerRadius = 7.5;
-    _blurview.alpha = 0.f;
-    [self creatMaskBgViewWithContentView:_blurview];
-//    [self.view.superview.superview.superview addSubview:_blurview];
-}
 
 #pragma mark NSNotificationCenter
 - (void)userDidLogin

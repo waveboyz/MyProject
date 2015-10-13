@@ -10,9 +10,12 @@
 #import "HYQBaseWebController.h"
 #import "HYQRegisterController.h"
 #import "QRView.h"
-#import "GTMBase64.h"
+#import "HYQUserManager.h"
 
 @interface ScanCameraController ()
+<
+    UIAlertViewDelegate
+>
 
 @property (strong, nonatomic) AVCaptureDevice * device;
 @property (strong, nonatomic) AVCaptureDeviceInput * input;
@@ -124,25 +127,32 @@
         stringValue = metadataObject.stringValue;
     }
     if (stringValue.length > 34) {
-        NSString *base64 = [stringValue substringWithRange:NSMakeRange(34, stringValue.length - 34)];
-        NSData *encodeData = [base64 dataUsingEncoding:NSUTF8StringEncoding];
-        NSData *decodeData = [GTMBase64 decodeData:encodeData];
-        NSString *phone = [[NSString alloc] initWithData:decodeData encoding:NSUTF8StringEncoding];
+        NSString *originStr = [stringValue substringWithRange:NSMakeRange(25, stringValue.length - 26)];
+        //替换url末尾无法识别符号“_”
+        NSString *bas64str = [NSString stringWithFormat:@"%@=",originStr];
+        NSData *decode64 = [[NSData alloc] initWithBase64EncodedString:bas64str options:NSDataBase64DecodingIgnoreUnknownCharacters];
+        NSString *phone = [[NSString alloc] initWithData:decode64 encoding:NSUTF8StringEncoding];
         //  手机号正则
         NSString *mobileRegex = @"[1][34578][0-9]{9}";
         NSPredicate *mobilePredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", mobileRegex];
-//        if([mobilePredicate evaluateWithObject:phone]){
+        if([mobilePredicate evaluateWithObject:phone]){
             HYQRegisterController *regis = [[HYQRegisterController alloc] initWithSuggestNumber:phone];
         [self presentViewController:regis animated:YES completion:^(void){}];
-//        }else{
-//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"二维码信息不正确，请扫描好园区app二维码" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-//            [alert show];
-//        }
-//    }else{
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"二维码信息不正确，请扫描好园区app二维码" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-//        [alert show];
-//    }
+        }else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"二维码信息不正确，请扫描好园区app二维码" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"二维码信息不正确，请扫描好园区app二维码" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
     }
 }
 
+#pragma mark UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        [_session startRunning];
+    }
+}
 @end

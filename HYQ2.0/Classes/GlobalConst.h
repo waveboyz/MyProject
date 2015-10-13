@@ -13,6 +13,8 @@
 #define UME_APPKEY              @"561603e167e58e1e300011e3"
 #define QQ_OPEN_ID              @"1104823003"
 #define QQ_APPKEY               @"xxMXC8YV3ZOhYMY7"
+#define WECHAT_ID              @"wx8e02488d3d27f20a"
+#define WECHAT_APPKEY           @"d4f0c1443cf648a26d6a8e3362f126d1"
 //------------------界面常量--------------------
 
 #define kScreenWidth    [UIScreen mainScreen].bounds.size.width
@@ -35,6 +37,7 @@
 //------------------Web页面地址--------------------
 #define SIGNIN_BASE_URL             @"http://m.haoyuanqu.com/web/weixinpay2/user!topoints.action?id="
 #define AGREEMENT_URL               @"http://www.haoyuanqu.com/weixin/web/views/fwu.html"
+#define PUCHASE_AGREEMENT_URL       @"http://m.haoyuanqu.com/web/views/xyi.html"
 //-----------------判断屏幕大小--------------------
 #define IS_IPHONE5                  [[UIScreen mainScreen] bounds].size.height == 568.0f
 #define IS_IHPONE4                  [[UIScreen mainScreen] bounds].size.height == 480.0f

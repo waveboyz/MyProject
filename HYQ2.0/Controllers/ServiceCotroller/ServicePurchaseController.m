@@ -8,6 +8,7 @@
 
 #import "ServicePurchaseController.h"
 #import "ServiceAddressPickController.h"
+#import "InfoWebViewController.h"
 #import "PurchaseHeaderCell.h"
 #import "PurchaseSecondCell.h"
 #import "AddressModel.h"
@@ -173,9 +174,7 @@
     order.productName = _service.title; //商品标题
     order.productDescription = _service.DesStr; //商品描述
     order.amount = [NSString stringWithFormat:@"%ld",_totalPrice]; //商品价格
-//    order.amount = @"0.01";
     order.notifyURL =  @"http://www.xxx.com"; //回调URL
-    
     order.service = @"mobile.securitypay.pay";
     order.paymentType = @"1";
     order.inputCharset = @"utf-8";
@@ -188,7 +187,6 @@
     //将商品信息拼接成字符串
     NSString *orderSpec = [order description];
     NSLog(@"orderSpec = %@",orderSpec);
-    
     NSString *privateKey = PRIVATEKEY;
     //获取私钥并将商户信息签名,外部商户可以根据情况存放私钥和签名,只需要遵循RSA签名规范,并将签名字符串base64编码和UrlEncode
 	id<DataSigner> signer = CreateRSADataSigner(privateKey);
@@ -251,12 +249,19 @@
         UIButton *agreementBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         agreementBtn.frame = CGRectMake(190, 0, 70, 40);
         agreementBtn.titleLabel.font = [UIFont systemFontOfSize:13.0f];
+        [agreementBtn addTarget:self action:@selector(showProtocalPressed) forControlEvents:UIControlEventTouchUpInside];
         [agreementBtn setTitle:@"好园区协议" forState:UIControlStateNormal];
         [agreementBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         [_payfooterView addSubview:agreementBtn];
     }
     
     return _payfooterView;
+}
+
+- (void)showProtocalPressed
+{
+    InfoWebViewController *webVC = [[InfoWebViewController alloc] initWithUrl:PUCHASE_AGREEMENT_URL andTitle:@"用户协议"];
+    [self presentViewController:webVC animated:YES completion:^(void){}];
 }
 
 - (void)changeAgreeBtn

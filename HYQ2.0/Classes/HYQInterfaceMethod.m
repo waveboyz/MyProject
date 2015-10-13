@@ -28,7 +28,7 @@ NSString *const REPLACE_UID_INTERFACE           =       @"http://www.haoyuanqu.c
 // *修改昵称*
 NSString *const REPLACE_NAME_INTERFACE          =       @"http://www.haoyuanqu.com/app/appInterface!updateName.action";
 // *获取二维码图*
-NSString *const GET_QRURL_INTERFACE             =       @"http://www.souqian.com/SuccessServlet2?mobile=";
+NSString *const GET_QRURL_INTERFACE             =       @"http://m.haoyuanqu.com/r/";
 //--------------------
 // * 首页 *
 NSString *const MAIN_INTERFACE                  =       @"http://www.haoyuanqu.com/app/appInterface!index.action";
@@ -85,15 +85,15 @@ NSString *const ADDRESS_DELETE_INTERFACE        =       @"http://www.haoyuanqu.c
 
 //-----------------------------
 //优创计划
-NSString *const EXCELLENT_PLAN_INTERFACE        =       @"http://m.haoyuanqu.com/plan/planlist/YCJH2";
+NSString *const EXCELLENT_PLAN_INTERFACE        =       @"http://m.haoyuanqu.com/plan/planlist/YCJH2?biaoshi=iOS";
 //优创金融方案
-NSString *const EXCELLENT_FINANTIAL_INTERFACE   =       @"http://m.haoyuanqu.com/plan/planlist/YCJRFA";
+NSString *const EXCELLENT_FINANTIAL_INTERFACE   =       @"http://m.haoyuanqu.com/plan/planlist/YCJRFA?biaoshi=iOS";
 //优创基地
-NSString *const EXCELLENT_BASE_INTERFACE        =       @"http://m.haoyuanqu.com/plan/planlist/YCJD";
+NSString *const EXCELLENT_BASE_INTERFACE        =       @"http://m.haoyuanqu.com/plan/planlist/YCJD?biaoshi=iOS";
 //优创训练营
-NSString *const EXCELLENT_CAMP_INTERFACE        =       @"http://m.haoyuanqu.com/plan/planlist/YCXLY";
+NSString *const EXCELLENT_CAMP_INTERFACE        =       @"http://m.haoyuanqu.com/plan/planlist/YCXLY?biaoshi=iOS";
 //优创开放日
-NSString *const EXCELLENT_OPEN_INTERFACE        =       @"http://m.haoyuanqu.com/plan/planlist/YCKFR";
+NSString *const EXCELLENT_OPEN_INTERFACE        =       @"http://m.haoyuanqu.com/plan/planlist/YCKFR?biaoshi=iOS";
 
 //-----------------------------
 //立即购买

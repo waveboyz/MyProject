@@ -10,22 +10,25 @@
 #import "HYQUserManager.h"
 #import "UIImageView+WebCache.h"
 #import "GlobalConst.h"
+#import "HYQInterfaceMethod.h"
+#import "UIImageExtension.h"
 
 @interface QRBlurView ()
 
 @property (nonatomic, strong) UIImageView   *avatarImg;
 @property (nonatomic, strong) UIImageView   *QRView;
 @property (nonatomic, strong) UILabel       *nameLbl;
+@property (nonatomic, strong) UILabel       *linkLbl;
+@property (nonatomic, strong) UIButton      *shareBtn;
 
 @end
 
 @implementation QRBlurView
 
-- (id)initWithUrl:(NSString *)url andWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
         self.frame = frame;
-        _QRUrl = url;
         [self createUI];
     }
     
@@ -34,9 +37,13 @@
 
 - (void)createUI
 {
-    NSLog(@"%@",_QRUrl);
     self.backgroundColor = [UIColor whiteColor];
     NSDictionary *userInfo = [[HYQUserManager sharedUserManager] userInfo];
+    NSString *phone = [userInfo objectForKey:@"phone"];
+    NSData *unencodeData = [phone dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *encoddeStr = [unencodeData base64EncodedStringWithOptions:0];
+    NSString *QRInfo = [NSString stringWithFormat:@"%@%@",GET_QRURL_INTERFACE,encoddeStr];
+    
     _avatarImg = [[UIImageView alloc] initWithFrame:CGRectMake((kScreenWidth - 40)*0.5 - 40, 20, 80, 80)];
     _avatarImg.layer.cornerRadius = CGRectGetWidth(_avatarImg.frame)/2;
     NSString *urlStr = [userInfo objectForKey:@"avatarUrl"];
@@ -51,9 +58,31 @@
     [self addSubview:_nameLbl];
     
     _QRView = [[UIImageView alloc] initWithFrame:CGRectMake((kScreenWidth - 40)* 0.5 -75, 180, 150, 150)];
-    NSString *QRStr    = @"http://www.souqian.com/images/qrcode/zxing.png";
-    [_QRView sd_setImageWithURL:[NSURL URLWithString:QRStr] placeholderImage:nil];
+    UIImage *qrcode =[[UIImage alloc] createNonInterpolatedUIImageFormCIImage:[self createQRForString:QRInfo] withSize:250.f];
+    UIImage *customQrcode =[[UIImage alloc] imageBlackToTransparent:qrcode withRed:60.0f andGreen:74.0f andBlue:89.0f];
+    _QRView.image = customQrcode;
     [self addSubview:_QRView];
+    
+    _shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _shareBtn.frame = CGRectMake((kScreenWidth - 40) * 0.5 - 50, 340, 100, 30);
+    _shareBtn.layer.cornerRadius = CGRectGetWidth(_shareBtn.frame) / 8;
+    [_shareBtn setBackgroundColor:NAVIBAR_GREEN_COLOR];
+    [_shareBtn setTitle:@"点击分享" forState:UIControlStateNormal];
+    [_shareBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self addSubview:_shareBtn];
+}
+
+#pragma mark - QRCodeGenerator
+- (CIImage *)createQRForString:(NSString *)qrString {
+    // Need to convert the string to a UTF-8 encoded NSData object
+    NSData *stringData = [qrString dataUsingEncoding:NSUTF8StringEncoding];
+    // Create the filter
+    CIFilter *qrFilter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
+    // Set the message content and error-correction level
+    [qrFilter setValue:stringData forKey:@"inputMessage"];
+    [qrFilter setValue:@"M" forKey:@"inputCorrectionLevel"];
+    // Send the image back
+    return qrFilter.outputImage;
 }
 
 @end

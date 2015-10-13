@@ -10,8 +10,4 @@
 
 @interface QRBlurView : UIView
 
-@property (nonatomic, copy) NSString *QRUrl;
-
-- (id)initWithUrl:(NSString *)url andWithFrame:(CGRect)frame;
-
 @end

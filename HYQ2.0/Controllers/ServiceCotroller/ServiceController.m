@@ -215,7 +215,7 @@
     static NSString *SERVICE_CELL = @"service_cell";
     UITableViewCell *cell;
     cell = [tableView dequeueReusableCellWithIdentifier:SERVICE_CELL];
-    
+
     if (!cell) {
         cell = [[ServiceViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SERVICE_CELL];
     }

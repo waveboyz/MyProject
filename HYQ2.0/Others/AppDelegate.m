@@ -14,6 +14,7 @@
 #import <AlipaySDK/AlipaySDK.h>
 #import "UMSocial.h"
 #import "UMSocialQQHandler.h"
+#import "UMSocialWechatHandler.h"
 
 @interface AppDelegate ()
 <
@@ -40,6 +41,7 @@
     
     [UMSocialData setAppKey:UME_APPKEY];
     [UMSocialQQHandler setQQWithAppId:QQ_OPEN_ID appKey:QQ_APPKEY url:LOCAL_HOST];
+    [UMSocialWechatHandler setWXAppId:WECHAT_ID appSecret:WECHAT_APPKEY url:LOCAL_HOST];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         if (![defaults objectForKey:@"intro_screen_viewed"]) {
