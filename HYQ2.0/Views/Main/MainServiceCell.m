@@ -94,7 +94,7 @@
             _firstLbl.font = [UIFont systemFontOfSize:10.0f];
         }
         _firstLbl.textAlignment = NSTextAlignmentCenter;
-        _firstLbl.text = @"优创金融方案";
+        _firstLbl.text = @"优创基地";
         [_firstLbl setCenter:CGPointMake(_firstIcon.center.x, _firstLbl.center.y)];
         
         [self.contentView addSubview:_firstLbl];
@@ -107,7 +107,7 @@
             _secondLbl.font = [UIFont systemFontOfSize:10.0f];
         }
         _secondLbl.textAlignment = NSTextAlignmentCenter;
-        _secondLbl.text = @"优创基地";
+        _secondLbl.text = @"优创训练营";
         [_secondLbl setCenter:CGPointMake(_secondIcon.center.x, _secondLbl.center.y)];
         
         [self.contentView addSubview:_secondLbl];
@@ -120,7 +120,7 @@
             _thirdLbl.font = [UIFont systemFontOfSize:10.0f];
         }
         _thirdLbl.textAlignment = NSTextAlignmentCenter;
-        _thirdLbl.text = @"优创训练营";
+        _thirdLbl.text = @"优创金融方案";
         [_thirdLbl setCenter:CGPointMake(_thirdIcon.center.x, _thirdLbl.center.y)];
         
         [self.contentView addSubview:_thirdLbl];

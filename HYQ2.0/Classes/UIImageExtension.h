@@ -11,7 +11,6 @@
 @interface UIImage(HYQExtension)
 
 - (UIImage *)createNonInterpolatedUIImageFormCIImage:(CIImage *)image withSize:(CGFloat) size;
-- (CIImage *)createQRForString:(NSString *)qrString;
 - (UIImage*)imageBlackToTransparent:(UIImage*)image withRed:(CGFloat)red andGreen:(CGFloat)green andBlue:(CGFloat)blue;
 
 @end

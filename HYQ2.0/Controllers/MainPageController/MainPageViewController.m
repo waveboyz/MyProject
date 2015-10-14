@@ -221,6 +221,10 @@
     _blurview.backgroundColor = [UIColor whiteColor];
     _blurview.layer.cornerRadius = 7.5;
     _blurview.alpha = 0.f;
+    UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideView)];
+    tapGR.numberOfTapsRequired = 1;
+    [_blurview addGestureRecognizer:tapGR];
+    _blurview.userInteractionEnabled = YES;
     [self creatMaskBgViewWithContentView:_blurview];
 }
 
@@ -230,10 +234,10 @@
     {
         _bgview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
         [_bgview setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
-        _bgview.backgroundColor = [UIColor blackColor];
+        _bgview.backgroundColor = [UIColor grayColor];
         _bgview.alpha = 0.5f;
-        [_bgview addSubview:contentView];
-        [self.view.superview.superview.superview addSubview:_bgview];
+        [self.view.superview.superview addSubview:_bgview];
+        [self.view.superview.superview.superview addSubview:contentView];
         UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideView)];
         tapGR.numberOfTapsRequired = 1;
         [_bgview addGestureRecognizer:tapGR];
@@ -242,7 +246,7 @@
     
     [UIView animateWithDuration:0.4 animations:^{
         contentView.alpha = 1.0f;
-        _bgview.alpha = 1.0f;
+        _bgview.alpha = 0.8f;
     } completion:^(BOOL finished)
      {
          [UIView animateWithDuration:0.1 animations:^{ }];

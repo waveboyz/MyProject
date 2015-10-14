@@ -41,8 +41,14 @@
     NSDictionary *userInfo = [[HYQUserManager sharedUserManager] userInfo];
     NSString *phone = [userInfo objectForKey:@"phone"];
     NSData *unencodeData = [phone dataUsingEncoding:NSUTF8StringEncoding];
+    // 将手机号base64加密
     NSString *encoddeStr = [unencodeData base64EncodedStringWithOptions:0];
-    NSString *QRInfo = [NSString stringWithFormat:@"%@%@",GET_QRURL_INTERFACE,encoddeStr];
+    //由于web打开base64末端“=”不可行
+    NSString *subStr = [encoddeStr substringWithRange:NSMakeRange(0, encoddeStr.length -2)];
+    //将末端“=”替换“_”
+    NSString *finalStr = [NSString stringWithFormat:@"%@_",subStr];
+
+    NSString *QRInfo = [NSString stringWithFormat:@"%@%@",GET_QRURL_INTERFACE,finalStr];
     
     _avatarImg = [[UIImageView alloc] initWithFrame:CGRectMake((kScreenWidth - 40)*0.5 - 40, 20, 80, 80)];
     _avatarImg.layer.cornerRadius = CGRectGetWidth(_avatarImg.frame)/2;
@@ -73,7 +79,8 @@
 }
 
 #pragma mark - QRCodeGenerator
-- (CIImage *)createQRForString:(NSString *)qrString {
+- (CIImage *)createQRForString:(NSString *)qrString
+{
     // Need to convert the string to a UTF-8 encoded NSData object
     NSData *stringData = [qrString dataUsingEncoding:NSUTF8StringEncoding];
     // Create the filter
