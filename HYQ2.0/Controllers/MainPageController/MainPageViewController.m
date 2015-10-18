@@ -36,6 +36,7 @@
 #import "HYQInterfaceMethod.h"
 #import "QRBlurView.h"
 #import "MJRefresh.h"
+#import "UMSocial.h"
 #define NAVBAR_CHANGE_POINT 50
 
 @interface MainPageController ()
@@ -47,7 +48,9 @@
     HYQmainResponseDelegate,
     MainScrollinfoCellDelegate,
     NSURLConnectionDelegate,
-    MainBannerCellDelegate
+    MainBannerCellDelegate,
+    QRBlurViewDelegate,
+    UMSocialUIDelegate
 >
 
 @property (nonatomic, strong) UITableView   *tableview;
@@ -61,6 +64,7 @@
 @property (nonatomic, strong) NSMutableData *receiveData;
 @property (nonatomic, strong) QRBlurView    *blurview;
 @property (nonatomic, assign) NSUInteger    currentpage;
+
 @end
 
 @implementation MainPageController
@@ -218,6 +222,7 @@
 - (void)generateQRView
 {
     _blurview = [[QRBlurView alloc] initWithFrame:CGRectMake(20, 50, kScreenWidth - 40,kScreenHeight - 130)];
+    _blurview.delegate = self;
     _blurview.backgroundColor = [UIColor whiteColor];
     _blurview.layer.cornerRadius = 7.5;
     _blurview.alpha = 0.f;
@@ -508,6 +513,22 @@
             default:
                 break;
     }
+}
+
+#pragma mark QRBlurViewDelegate
+- (void)shareQRCodeWithUrl:(NSString *)url
+{
+    [UMSocialSnsService presentSnsIconSheetView:self
+                                         appKey:UME_APPKEY
+                                      shareText:@"注册好园区"
+                                     shareImage:[UIImage imageNamed:@"appIcon"]
+                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToQQ,UMShareToQzone,UMShareToWechatTimeline,UMShareToWechatSession,nil]
+                                       delegate:self];
+    
+    [UMSocialData defaultData].extConfig.wechatSessionData.url = url;
+    [UMSocialData defaultData].extConfig.wechatTimelineData.url = url;
+    [UMSocialData defaultData].extConfig.qqData.url = url;
+    [UMSocialData defaultData].extConfig.qzoneData.url = url;
 }
 
 #pragma mark MainBannerCellDelegate

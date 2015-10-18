@@ -13,6 +13,7 @@
 #import "CollectOperationResponse.h"
 #import "ServiceIsCollectResponse.h"
 #import "UMSocial.h"
+#import "UIImageView+WebCache.h"
 
 @interface ServiceDetailController ()
 <
@@ -199,7 +200,9 @@
 //分享入口
 - (void)shareBtnPressed
 {
+    NSString *webUrl = [NSString new];
     if (_order) {
+        webUrl = [NSString stringWithFormat:@"%@%@",PRODUCT_DETAIL_INTERFACE,self.order.pid];
         [UMSocialSnsService presentSnsIconSheetView:self
                                              appKey:UME_APPKEY
                                           shareText:_order.name
@@ -207,6 +210,7 @@
                                     shareToSnsNames:[NSArray arrayWithObjects:UMShareToQQ,UMShareToQzone,UMShareToWechatTimeline,UMShareToWechatSession,nil]
                                            delegate:self];
     }else if (_service){
+        webUrl = [NSString stringWithFormat:@"%@%@",PRODUCT_DETAIL_INTERFACE,self.service.pid];
         [UMSocialSnsService presentSnsIconSheetView:self
                                              appKey:UME_APPKEY
                                           shareText:_service.title
@@ -214,6 +218,11 @@
                                     shareToSnsNames:[NSArray arrayWithObjects:UMShareToQQ,UMShareToQzone,UMShareToWechatTimeline,UMShareToWechatSession,nil]
                                            delegate:self];
     }
+    
+    [UMSocialData defaultData].extConfig.wechatSessionData.url = webUrl;
+    [UMSocialData defaultData].extConfig.wechatTimelineData.url = webUrl;
+    [UMSocialData defaultData].extConfig.qqData.url = webUrl;
+    [UMSocialData defaultData].extConfig.qzoneData.url = webUrl;
 }
 
 //获取是否收藏信息

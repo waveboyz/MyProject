@@ -8,7 +8,7 @@
 
 #import "HYQResponse.h"
 /*
- 我的提成
+ 我的提成列表
  
  */
 @protocol HYQWithdrawResponseDelegate <NSObject>

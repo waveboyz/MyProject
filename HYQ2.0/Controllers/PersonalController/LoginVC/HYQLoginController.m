@@ -16,7 +16,7 @@
 
 @interface HYQLoginController ()
 <
-HYQLoginResponseDelegate
+    HYQLoginResponseDelegate
 >
 
 @property (nonatomic, strong)    UITextField     *phoneTxt;

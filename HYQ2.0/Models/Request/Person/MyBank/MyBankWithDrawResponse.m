@@ -14,16 +14,19 @@
 {
     if (self = [super init]) {
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithCapacity:5];
+        NSNumber *uid = [[[HYQUserManager sharedUserManager] userInfo] objectForKey:@"uid"];
+        [dic setObject:uid forKey:@"uid"];
+        
         if (card) {
-            [dic setObject:card forKey:@""];
+            [dic setObject:card forKey:@"cardNum"];
         }
         
         if (name) {
-            [dic setObject:name forKey:@""];
+            [dic setObject:name forKey:@"name"];
         }
         
-        if (card) {
-            [dic setObject:card forKey:@""];
+        if (cash) {
+            [dic setObject:cash forKey:@"money"];
         }
 
         [self setUploadDictionary:dic];

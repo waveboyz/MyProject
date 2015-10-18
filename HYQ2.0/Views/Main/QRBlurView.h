@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol QRBlurViewDelegate <NSObject>
+
+- (void)shareQRCodeWithUrl:(NSString *)url;
+
+@end
+
 @interface QRBlurView : UIView
+
+@property (nonatomic, weak) id<QRBlurViewDelegate> delegate;
 
 @end

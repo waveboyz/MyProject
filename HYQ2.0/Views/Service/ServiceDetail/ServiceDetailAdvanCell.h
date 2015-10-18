@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "GlobalConst.h"
-
+/*
+    
+ */
 @interface ServiceDetailAdvanCell : UITableViewCell
 
 @end

@@ -20,6 +20,7 @@
 @property (nonatomic, strong) UILabel       *nameLbl;
 @property (nonatomic, strong) UILabel       *linkLbl;
 @property (nonatomic, strong) UIButton      *shareBtn;
+@property (nonatomic, copy)   NSString      *shareUrl;
 
 @end
 
@@ -47,8 +48,8 @@
     NSString *subStr = [encoddeStr substringWithRange:NSMakeRange(0, encoddeStr.length -2)];
     //将末端“=”替换“_”
     NSString *finalStr = [NSString stringWithFormat:@"%@_",subStr];
-
-    NSString *QRInfo = [NSString stringWithFormat:@"%@%@",GET_QRURL_INTERFACE,finalStr];
+    //最终分享url
+   _shareUrl = [NSString stringWithFormat:@"%@%@",GET_QRURL_INTERFACE,finalStr];
     
     _avatarImg = [[UIImageView alloc] initWithFrame:CGRectMake((kScreenWidth - 40)*0.5 - 40, 20, 80, 80)];
     _avatarImg.layer.cornerRadius = CGRectGetWidth(_avatarImg.frame)/2;
@@ -64,7 +65,7 @@
     [self addSubview:_nameLbl];
     
     _QRView = [[UIImageView alloc] initWithFrame:CGRectMake((kScreenWidth - 40)* 0.5 -75, 180, 150, 150)];
-    UIImage *qrcode =[[UIImage alloc] createNonInterpolatedUIImageFormCIImage:[self createQRForString:QRInfo] withSize:250.f];
+    UIImage *qrcode =[[UIImage alloc] createNonInterpolatedUIImageFormCIImage:[self createQRForString:_shareUrl] withSize:250.f];
     UIImage *customQrcode =[[UIImage alloc] imageBlackToTransparent:qrcode withRed:60.0f andGreen:74.0f andBlue:89.0f];
     _QRView.image = customQrcode;
     [self addSubview:_QRView];
@@ -72,10 +73,18 @@
     _shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _shareBtn.frame = CGRectMake((kScreenWidth - 40) * 0.5 - 50, 340, 100, 30);
     _shareBtn.layer.cornerRadius = CGRectGetWidth(_shareBtn.frame) / 8;
+    [_shareBtn addTarget:self action:@selector(shareBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [_shareBtn setBackgroundColor:NAVIBAR_GREEN_COLOR];
     [_shareBtn setTitle:@"点击分享" forState:UIControlStateNormal];
     [_shareBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self addSubview:_shareBtn];
+}
+
+- (void)shareBtnPressed
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(shareQRCodeWithUrl:)]) {
+        [self.delegate shareQRCodeWithUrl:_shareUrl];
+    }
 }
 
 #pragma mark - QRCodeGenerator

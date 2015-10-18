@@ -10,10 +10,12 @@
 #import "HYQUserManager.h"
 #import "MyPaymentCell.h"
 #import "HYQWithdrawResponse.h"
+#import "MyBankWithDrawResponse.h"
 
 @interface MyBankWithdrawController ()
 <
-    HYQWithdrawResponseDelegate
+    HYQWithdrawResponseDelegate,
+    MyBankWithDrawResponseDelegate
 >
 
 @property (nonatomic, strong) UIView      *bgView;
@@ -22,6 +24,7 @@
 @property (nonatomic, strong) UITextField *cardField;
 @property (nonatomic, strong) UITextField *cashField;
 @property (nonatomic, strong) UIButton    *confirmBtn;
+@property (nonatomic, assign) NSInteger    cashCount;
 
 @end
 
@@ -188,6 +191,63 @@
     });
 }
 
+//银行卡正则校验
+- (BOOL) checkCardNo:(NSString*) cardNo
+{
+    int oddsum = 0;     //奇数求和
+    int evensum = 0;    //偶数求和
+    int allsum = 0;
+    int cardNoLength = (int)[cardNo length];
+    int lastNum = [[cardNo substringFromIndex:cardNoLength-1] intValue];
+    
+    cardNo = [cardNo substringToIndex:cardNoLength - 1];
+    for (int i = cardNoLength -1 ; i>=1;i--) {
+        NSString *tmpString = [cardNo substringWithRange:NSMakeRange(i-1, 1)];
+        int tmpVal = [tmpString intValue];
+        if (cardNoLength % 2 ==1 ) {
+            if((i % 2) == 0){
+                tmpVal *= 2;
+                if(tmpVal>=10)
+                    tmpVal -= 9;
+                evensum += tmpVal;
+            }else{
+                oddsum += tmpVal;
+            }
+        }else{
+            if((i % 2) == 1){
+                tmpVal *= 2;
+                if(tmpVal>=10)
+                    tmpVal -= 9;
+                evensum += tmpVal;
+            }else{
+                oddsum += tmpVal;
+            }
+        }
+    }
+    
+    allsum = oddsum + evensum;
+    allsum += lastNum;
+    if((allsum % 10) == 0)
+        return YES;
+    else
+        return NO;
+}
+
+//检验申请金额是否超过可提现金额
+- (BOOL)checkCashCountCorrectWith:(NSString *)cash
+{
+    NSInteger count = [cash integerValue];
+    NSDictionary *userDic = [[HYQUserManager sharedUserManager] userInfo];
+    NSString *propertyStr = [userDic objectForKey:@"property"];
+    NSInteger property = [propertyStr integerValue];
+    
+    if (count > property) {
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
 - (void)confirmBtnPressed
 {
     if ([_nameField.text isEqualToString:@""]) {
@@ -202,7 +262,26 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"金额不能为空！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         alert.tag = 210;
         [alert show];
+    }else if (![self checkCardNo:_cardField.text]){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"银行卡输入有误！！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        alert.tag = 205;
+        [alert show];
+    }else if ([self  checkCashCountCorrectWith:_cashField.text]){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"超过可提现金额！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        alert.tag = 210;
+        [alert show];
     }
+}
+
+- (void)bankWithDrawOperation
+{
+
+}
+
+#pragma mark MyBankWithDrawResponseDelegate
+- (void)withdrawSucceed
+{
+
 }
 
 #pragma mark UIAlertViewDelegate

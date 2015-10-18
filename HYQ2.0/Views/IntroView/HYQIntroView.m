@@ -30,14 +30,14 @@
         
         [self addSubview:backgroundImageView];
         [self addSubview:self.scrollView];
-        [self addSubview:self.pageControl];
+//        [self addSubview:self.pageControl];
         
         [self.scrollView addSubview:self.viewOne];
         [self.scrollView addSubview:self.viewTwo];
         [self.scrollView addSubview:self.viewThree];
         
         //Done Button
-        [self addSubview:self.doneButton];
+//        [self addSubview:self.doneButton];
     }
     
     return self;
@@ -84,6 +84,9 @@
         imageview.contentMode = UIViewContentModeScaleToFill;
         imageview.image = [UIImage imageNamed:@"introview3"];
         [_viewThree addSubview:imageview];
+        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewThreeTouched)];
+        [_viewThree addGestureRecognizer:gesture];
+        _viewThree.userInteractionEnabled = YES;
     }
     
     return _viewThree;
@@ -105,30 +108,37 @@
     return _scrollView;
 }
 
--(UIPageControl *)pageControl
+- (void)viewThreeTouched
 {
-    if (!_pageControl) {
-        _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, kScreenHeight - 20, kScreenWidth, 10)];
-        [_pageControl setCurrentPageIndicatorTintColor:[UIColor blackColor]];
-        [_pageControl setPageIndicatorTintColor:[UIColor grayColor]];
-        [_pageControl setNumberOfPages:3];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(onDoneButtonPressed)]) {
+        [self.delegate onDoneButtonPressed];
     }
-    
-    return _pageControl;
 }
+//
+//-(UIPageControl *)pageControl
+//{
+//    if (!_pageControl) {
+//        _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, kScreenHeight - 20, kScreenWidth, 10)];
+//        [_pageControl setCurrentPageIndicatorTintColor:[UIColor blackColor]];
+//        [_pageControl setPageIndicatorTintColor:[UIColor grayColor]];
+//        [_pageControl setNumberOfPages:3];
+//    }
+//    
+//    return _pageControl;
+//}
 
--(UIButton *)doneButton
-{
-    if (!_doneButton) {
-        _doneButton = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth * 0.25,kScreenHeight - 100, self.frame.size.width*.5, 30)];
-        [_doneButton setTintColor:[UIColor whiteColor]];
-        [_doneButton setImage:[UIImage imageNamed:@"skip_icon"] forState:UIControlStateNormal];
-        [_doneButton addTarget:self.delegate action:@selector(onDoneButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-        [_doneButton.layer setCornerRadius:5];
-        [_doneButton setClipsToBounds:YES];
-    }
-    
-    return _doneButton;
-}
+//-(UIButton *)doneButton
+//{
+//    if (!_doneButton) {
+//        _doneButton = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth * 0.25,kScreenHeight - 100, self.frame.size.width*.5, 30)];
+//        [_doneButton setTintColor:[UIColor whiteColor]];
+//        [_doneButton setImage:[UIImage imageNamed:@"skip_icon"] forState:UIControlStateNormal];
+//        [_doneButton addTarget:self.delegate action:@selector(onDoneButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+//        [_doneButton.layer setCornerRadius:5];
+//        [_doneButton setClipsToBounds:YES];
+//    }
+//    
+//    return _doneButton;
+//}
 
 @end
