@@ -7,14 +7,15 @@
 //
 
 #import "ServiceController.h"
+#import "ServiceDetailController.h"
+#import "HYQLoginController.h"
 #import "VOSegmentedControl.h"
 #import "ServiceViewCell.h"
-#import "ServiceDetailController.h"
+#import "ServiceTitleModel.h"
 #import "ServiceModel.h"
 #import "HYQServiceListResponse.h"
 #import "HYQServiceTitleResponse.h"
-#import "HYQServiceListResponse.h"
-#import "ServiceTitleModel.h"
+#import "HYQUserManager.h"
 
 @interface ServiceController ()
 <
@@ -227,11 +228,16 @@
 #pragma mark UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ServiceDetailController *detail = [[ServiceDetailController alloc] initWithServiceModel:self.dataArr[indexPath.row]];
-    detail.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    UINavigationController * jackNavigationController = [[UINavigationController alloc] initWithRootViewController:detail];
-    [self presentViewController:jackNavigationController animated:YES completion:^(void){}];
-    
+    if ([[HYQUserManager sharedUserManager] isLogin]) {
+        ServiceDetailController *detail = [[ServiceDetailController alloc] initWithServiceModel:self.dataArr[indexPath.row]];
+        detail.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        UINavigationController * jackNavigationController = [[UINavigationController alloc] initWithRootViewController:detail];
+        [self presentViewController:jackNavigationController animated:YES completion:^(void){}];
+    }else{
+        HYQLoginController *loginVC = [[HYQLoginController alloc] init];
+        [self presentViewController:loginVC animated:YES completion:^(void){}];
+    }
+
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

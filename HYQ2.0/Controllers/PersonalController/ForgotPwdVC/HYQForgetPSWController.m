@@ -39,10 +39,12 @@
 - (void)setViews
 {
     [self.navigationController setNavigationBarHidden:YES animated:YES];
-    self.view.backgroundColor = BG_GRAY_COLOR;
     _bgView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
-    _bgView.backgroundColor = NAVIBAR_GREEN_COLOR;
     [self.view addSubview:_bgView];
+    
+    UIImageView *backImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"loginBackImg"]];
+    backImg.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+    [_bgView addSubview:backImg];
     
     UIImageView *btnImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_back"]];
     btnImg.frame = CGRectMake(15, 29.5, 18, 18);
@@ -53,78 +55,100 @@
     [cancelBtn addTarget:self action:@selector(dismissLoginController) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:cancelBtn];
     
-    UILabel *phoneLbl = [[UILabel alloc] initWithFrame:CGRectMake(20, 220, 50, 30)];
-    phoneLbl.textColor = [UIColor whiteColor];
-    phoneLbl.font = [UIFont systemFontOfSize:13.0f];
-    phoneLbl.text = @"手机";
-    [_bgView addSubview:phoneLbl];
+    //好园区Icon
+    UIImageView *iconImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"IconLOGO"]];
+    iconImg.frame = CGRectMake(kScreenWidth * 0.5 - 50, 50, 100, 100);
+    [_bgView addSubview:iconImg];
     
-    _phoneTxt = [[UITextField alloc] initWithFrame:CGRectMake(60, 220, kScreenWidth - 80, 30)];
+//    UILabel *phoneLbl = [[UILabel alloc] initWithFrame:CGRectMake(20, 220, 50, 30)];
+//    phoneLbl.textColor = [UIColor whiteColor];
+//    phoneLbl.font = [UIFont systemFontOfSize:13.0f];
+//    phoneLbl.text = @"手机";
+//    [_bgView addSubview:phoneLbl];
+    
+    //登录名描述
+    UIImageView *phoneImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"phoneIcon"]];
+    phoneImg.frame = CGRectMake(20, 220, 15, 20);
+    [_bgView addSubview:phoneImg];
+    
+    NSString *phonePlacholder = @"输入手机号";
+    NSMutableAttributedString *phoneAttri = [[NSMutableAttributedString alloc] initWithString:phonePlacholder];
+    [phoneAttri setAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:15.0f]} range:NSMakeRange(0, phoneAttri.length)];
+    
+    _phoneTxt = [[UITextField alloc] initWithFrame:CGRectMake(45, 215, kScreenWidth - 80, 30)];
     _phoneTxt.textColor = [UIColor whiteColor];
-    _phoneTxt.font = [UIFont systemFontOfSize:13.0f];
+    _phoneTxt.font = [UIFont systemFontOfSize:15.0f];
     _phoneTxt.keyboardType = UIKeyboardTypePhonePad;
     _phoneTxt.delegate = self;
+    _phoneTxt.attributedPlaceholder = phoneAttri;
     [_bgView addSubview:_phoneTxt];
     
-    UILabel *lineLbl = [[UILabel alloc] initWithFrame:CGRectMake(15, 260, kScreenWidth - 30, 1)];
+    UILabel *lineLbl = [[UILabel alloc] initWithFrame:CGRectMake(15, 250, kScreenWidth - 30, 1)];
     lineLbl.backgroundColor = [UIColor whiteColor];
     [_bgView addSubview:lineLbl];
-
-    UILabel *newCode = [[UILabel alloc] initWithFrame:CGRectMake(20, 276, 70, 30)];
-    newCode.textColor = [UIColor whiteColor];
-    newCode.font = [UIFont systemFontOfSize:13.0f];
-    newCode.text = @"新密码";
-    [_bgView addSubview:newCode];
+//------------------------------------
+    UIImageView *codeImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"codeIcon"]];
+    codeImg.frame = CGRectMake(20, 265, 15, 20);
+    [_bgView addSubview:codeImg];
     
-    _codeTxt = [[UITextField alloc] initWithFrame:CGRectMake(80, 276, kScreenWidth - 100, 30)];
+    NSString *codePlacholder = @"设置6-20位密码含数字字母";
+    NSMutableAttributedString *codeAttri = [[NSMutableAttributedString alloc] initWithString:codePlacholder];
+    [codeAttri setAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:15.0f]} range:NSMakeRange(0, codeAttri.length)];
+    
+    _codeTxt = [[UITextField alloc] initWithFrame:CGRectMake(45, 260, kScreenWidth - 100, 30)];
     _codeTxt.textColor = [UIColor whiteColor];
     _codeTxt.font = [UIFont systemFontOfSize:13.0];
     _codeTxt.secureTextEntry = YES;
     _codeTxt.clearButtonMode = UITextFieldViewModeWhileEditing;
     _codeTxt.delegate = self;
+    _codeTxt.attributedPlaceholder = codeAttri;
     [_bgView addSubview:_codeTxt];
     
-    UILabel *lineLbl2 = [[UILabel alloc] initWithFrame:CGRectMake(15, 316, kScreenWidth - 30, 1)];
+    UILabel *lineLbl2 = [[UILabel alloc] initWithFrame:CGRectMake(15, 295, kScreenWidth - 30, 1)];
     lineLbl2.backgroundColor=[UIColor whiteColor];
     [_bgView addSubview:lineLbl2];
+//-------------------------------------
+    UIImageView *resendImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"resendIcon"]];
+    resendImg.frame = CGRectMake(20, 310, 15, 20);
+    [_bgView addSubview:resendImg];
     
+    NSString *resendPlacholder = @"输入验证码";
+    NSMutableAttributedString *resendAttri = [[NSMutableAttributedString alloc] initWithString:resendPlacholder];
+    [resendAttri setAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:15.0f]} range:NSMakeRange(0, resendAttri.length)];
     
-    UILabel *reSendLbl = [[UILabel alloc]initWithFrame:CGRectMake(20, 332, 70, 30)];
-    reSendLbl.textColor = [UIColor whiteColor];
-    reSendLbl.font = [UIFont systemFontOfSize:13.0f];
-    reSendLbl.text = @"验证码";
-    [_bgView addSubview:reSendLbl];
-    
-    _resendTxt = [[UITextField alloc] initWithFrame:CGRectMake(80, 332, kScreenWidth * 0.5 - 15, 30)];
+    _resendTxt = [[UITextField alloc] initWithFrame:CGRectMake(45, 305, kScreenWidth * 0.5 - 15, 30)];
     _resendTxt.textColor = [UIColor whiteColor];
-    _resendTxt.font = [UIFont systemFontOfSize:13.0];
+    _resendTxt.font = [UIFont systemFontOfSize:15.0f];
     _resendTxt.keyboardType = UIKeyboardTypeNumberPad;
     _resendTxt.delegate = self;
+    _resendTxt.attributedPlaceholder = resendAttri;
     [_bgView addSubview:_resendTxt];
     
-    UILabel *lineLbl3 = [[UILabel alloc] initWithFrame:CGRectMake(15, 372, kScreenWidth * 0.5 - 15, 1)];
+    UILabel *lineLbl3 = [[UILabel alloc] initWithFrame:CGRectMake(15, 340, kScreenWidth - 30, 1)];
     lineLbl3.backgroundColor = [UIColor whiteColor];
     [_bgView addSubview:lineLbl3];
     
     _getResendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _getResendBtn.frame = CGRectMake(CGRectGetMaxX(lineLbl3.frame), 317, kScreenWidth * 0.5 - 15, 55);
+    _getResendBtn.frame = CGRectMake(kScreenWidth - 105, 310, 90, 25);
     _getResendBtn.titleLabel.font = [UIFont systemFontOfSize:14.0f];
     _getResendBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+    _getResendBtn.layer.cornerRadius = CGRectGetWidth(_getResendBtn.frame) / 32;
     _getResendBtn.alpha = 0.8;
     [_getResendBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
     [_getResendBtn setTitleColor:NAVIBAR_GREEN_COLOR forState:UIControlStateNormal];
-    [_getResendBtn setBackgroundColor:GRAY_COLOR];
+    [_getResendBtn setBackgroundColor:[UIColor whiteColor]];
     [_getResendBtn addTarget:self action:@selector(sendVerCodeButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [_bgView addSubview:_getResendBtn];
-    
+//----------------------------------
     UIButton *confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    confirmBtn.frame = CGRectMake(15, 408, kScreenWidth - 30, 45);
+    confirmBtn.frame = CGRectMake(15, 375, kScreenWidth - 30, 45);
     confirmBtn.titleLabel.font = [UIFont systemFontOfSize:14.0f];
     confirmBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
     confirmBtn.alpha = 0.8;
+    confirmBtn.layer.cornerRadius = CGRectGetWidth(confirmBtn.frame) /32;
     [confirmBtn setTitle:@"完成" forState:UIControlStateNormal];
     [confirmBtn setTitleColor:NAVIBAR_GREEN_COLOR forState:UIControlStateNormal];
-    [confirmBtn setBackgroundColor:GRAY_COLOR];
+    [confirmBtn setBackgroundColor:[UIColor whiteColor]];
     [confirmBtn addTarget:self action:@selector(submitReg) forControlEvents:UIControlEventTouchUpInside];
     [_bgView addSubview:confirmBtn];
     

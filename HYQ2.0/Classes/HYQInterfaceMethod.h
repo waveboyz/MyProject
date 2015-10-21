@@ -31,11 +31,11 @@ extern NSString *const REPLACE_UID_INTERFACE;
 extern NSString *const REPLACE_NAME_INTERFACE;
 // *获取二维码图*
 extern NSString *const GET_QRURL_INTERFACE;
+//* 启动广告*
+extern NSString *const LAUNCH_ADVERTISE_INTERFACE;
 //---------------------------------
 // * 首页 *
 extern NSString *const MAIN_INTERFACE;
-
-
 //---------------------------------
 // * 资讯类别*
 extern NSString *const INFORMATION_TITLE_INTERFACE;

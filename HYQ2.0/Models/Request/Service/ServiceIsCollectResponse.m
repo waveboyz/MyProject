@@ -7,6 +7,8 @@
 //
 
 #import "ServiceIsCollectResponse.h"
+#import "ProductModel.h"
+#import "EvaluateModel.h"
 #import "HYQUserManager.h"
 
 @implementation ServiceIsCollectResponse
@@ -29,9 +31,14 @@
     NSLog(@"%@",responseObject);
     if (responseObject) {
         if ([[responseObject objectForKey:@"code"] integerValue] == 1) {
-            if (self.delegate != nil && [self.delegate respondsToSelector:@selector(getCollectSucceedWithIsCollected:)]) {
+            if (self.delegate != nil && [self.delegate respondsToSelector:@selector(getCollectSucceedWithIsCollected:andWith:andWith:)]) {
                 NSNumber *isCollected = [responseObject objectForKey:@"iSFavorite"];
-                [self.delegate getCollectSucceedWithIsCollected:[isCollected boolValue]];
+                NSDictionary *productDic = [responseObject objectForKey:@"product"];
+                ProductModel *product = [ProductModel objectWithKeyValues:productDic];
+                
+                NSDictionary *evaluatedic = [responseObject objectForKey:@"evaluate"];
+                EvaluateModel *evaluate = [EvaluateModel objectWithKeyValues:evaluatedic];
+                [self.delegate getCollectSucceedWithIsCollected:[isCollected boolValue] andWith:product andWith:evaluate];
             }
         }else{
             if (self.delegate && [self.delegate respondsToSelector:@selector(wrongOperationWithText:)]) {

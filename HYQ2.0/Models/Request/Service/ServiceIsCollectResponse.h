@@ -10,9 +10,11 @@
 /*
     收藏请求
  */
+@class ProductModel;
+@class EvaluateModel;
 @protocol ServiceIsCollectResponseDelegate <NSObject>
 
-- (void)getCollectSucceedWithIsCollected:(BOOL)isCollected;
+- (void)getCollectSucceedWithIsCollected:(BOOL)isCollected andWith:(ProductModel *)product andWith:(EvaluateModel *)evaluate;
 
 @optional
 

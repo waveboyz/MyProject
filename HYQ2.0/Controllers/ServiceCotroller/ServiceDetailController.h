@@ -14,7 +14,9 @@
  */
 @interface ServiceDetailController : BaseViewController
 <
-    UIAlertViewDelegate
+    UIAlertViewDelegate,
+    UITableViewDataSource,
+    UITableViewDelegate
 >
 
 - (id)initWithServiceModel:(ServiceModel *)service;
