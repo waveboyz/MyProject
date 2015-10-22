@@ -114,7 +114,7 @@
     }
     
     if (!_thirdLbl) {
-        _thirdLbl = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(_thirdIcon.frame) - 10 , 15 + IconWidth, IconWidth + 10, 15)];
+        _thirdLbl = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(_thirdIcon.frame) - 10 , 15 + IconWidth, IconWidth + 20, 15)];
         _thirdLbl.font = [UIFont systemFontOfSize:12.0f];
         if (IS_IHPONE4 || IS_IPHONE5) {
             _thirdLbl.font = [UIFont systemFontOfSize:10.0f];

@@ -21,23 +21,26 @@
 #import "PurchaseQualityCell.h"
 #import "PurchaseDetailCell.h"
 #import "CalculateHeight.h"
+#import "ServiceSelectionView.h"
 
 @interface ServiceDetailController ()
 <
-    UIWebViewDelegate,
     UMSocialUIDelegate,
     CollectOperationResponseDelegate,
     ServiceIsCollectResponseDelegate
 >
 
 @property (nonatomic, strong) UITableView *tableview;
-//@property (nonatomic, strong) UIWebView *webView;           //产品详情调用webview
+@property (nonatomic, strong) ServiceSelectionView *selectView;
 @property (nonatomic, strong) UIView  *toolView;            //下方工具条
 @property (nonatomic, strong) UIButton *collectBtn;         //收藏按钮
 @property (nonatomic, strong) ServiceModel *service;
 @property (nonatomic, strong) OrderModel *order;
 @property (nonatomic, strong) ProductModel *product;
 @property (nonatomic, strong) EvaluateModel *evaluate;
+@property (nonatomic, retain) NSMutableArray *typeArr;
+@property (nonatomic, retain) NSMutableArray *comboArr;
+@property (nonatomic, retain) UIView        *shadowView;
 
 @end
 
@@ -61,10 +64,10 @@
     return self;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self createUI];
-    
     [self getServiceDetailOperation];
 }
 
@@ -92,10 +95,6 @@
 
 - (void)createUI
 {
-//    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
-//    _webView.delegate = self;
-//    [self.view addSubview:_webView];
-//    [self showWebView];
     _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 49) style:UITableViewStylePlain];
     _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableview.backgroundColor = BG_GRAY_COLOR;
@@ -165,25 +164,10 @@
     [self dismissViewControllerAnimated:YES completion:^(void){}];
 }
 
-//- (void)showWebView
-//{
-//    NSString *urlStr;
-//    if (_order) {
-//        urlStr = [NSString stringWithFormat:@"%@%@",PRODUCT_DETAIL_INTERFACE,self.order.pid];
-//    }else if (_service){
-//        urlStr = [NSString stringWithFormat:@"%@%@",PRODUCT_DETAIL_INTERFACE,self.service.pid];
-//    }
-//
-//    NSURL *url = [NSURL URLWithString:urlStr];
-//    NSURLRequest *req = [[NSURLRequest alloc] initWithURL:url];
-//    [self showNoTextStateHud];
-//    [_webView loadRequest:req];
-//}
-
 //购买入口
 - (void)purchaseBtnPressed
 {
-    ServicePurchaseController *purchaseVC = [[ServicePurchaseController alloc] init];
+    ServicePurchaseController *purchaseVC = [[ServicePurchaseController alloc] initWithProduct:_product];
     [self.navigationController pushViewController:purchaseVC animated:YES];
 }
 
@@ -204,29 +188,29 @@
 //分享入口
 - (void)shareBtnPressed
 {
+    UIImageView *sharedImg = [[UIImageView alloc] init];
+    NSString *imgUrl = [NSString new];
+    imgUrl = [NSString stringWithFormat:@"%@%@",LOCAL_HOST,self.product.photo];
+    [sharedImg sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"product_placeholder"]];
+
     NSString *webUrl = [NSString new];
-    if (_order) {
-        webUrl = [NSString stringWithFormat:@"%@%@",PRODUCT_DETAIL_INTERFACE,self.order.pid];
-        [UMSocialSnsService presentSnsIconSheetView:self
-                                             appKey:UME_APPKEY
-                                          shareText:_order.name
-                                         shareImage:[UIImage imageNamed:@"appIcon"]
-                                    shareToSnsNames:[NSArray arrayWithObjects:UMShareToQQ,UMShareToQzone,UMShareToWechatTimeline,UMShareToWechatSession,nil]
-                                           delegate:self];
-    }else if (_service){
-        webUrl = [NSString stringWithFormat:@"%@%@",PRODUCT_DETAIL_INTERFACE,self.service.pid];
-        [UMSocialSnsService presentSnsIconSheetView:self
-                                             appKey:UME_APPKEY
-                                          shareText:_service.title
-                                         shareImage:[UIImage imageNamed:@"appIcon"]
-                                    shareToSnsNames:[NSArray arrayWithObjects:UMShareToQQ,UMShareToQzone,UMShareToWechatTimeline,UMShareToWechatSession,nil]
-                                           delegate:self];
-    }
+    webUrl = [NSString stringWithFormat:@"%@%@",PRODUCT_DETAIL_INTERFACE,self.product.pid];
+    [UMSocialSnsService presentSnsIconSheetView:self
+                                            appKey:UME_APPKEY
+                                        shareText:_product.contentText
+                                        shareImage:sharedImg.image
+                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToQQ,UMShareToQzone,UMShareToWechatTimeline,UMShareToWechatSession,nil]
+                                        delegate:self];
     
     [UMSocialData defaultData].extConfig.wechatSessionData.url = webUrl;
     [UMSocialData defaultData].extConfig.wechatTimelineData.url = webUrl;
     [UMSocialData defaultData].extConfig.qqData.url = webUrl;
     [UMSocialData defaultData].extConfig.qzoneData.url = webUrl;
+    
+    [UMSocialData defaultData].extConfig.wechatSessionData.title = _product.name;
+    [UMSocialData defaultData].extConfig.wechatTimelineData.title = _product.name;
+    [UMSocialData defaultData].extConfig.qqData.title = _product.name;
+    [UMSocialData defaultData].extConfig.qzoneData.title = _product.name;
 }
 
 //获取是否收藏信息
@@ -235,22 +219,65 @@
     [self showNoTextStateHud];
     ServiceIsCollectResponse *response;
     if (_service) {
-        response = [[ServiceIsCollectResponse alloc] initWithPid:_service.pid];
+        response = [[ServiceIsCollectResponse alloc] initWithPid:_service.pid andWithPTID:_service.ptid];
     }else if (_order){
-        response = [[ServiceIsCollectResponse alloc] initWithPid:_order.pid];
+        response = [[ServiceIsCollectResponse alloc] initWithPid:_order.pid andWithPTID:nil];
     }
 
     response.delegate = self;
     [response start];
 }
 
+- (void)showSelectViewOperation
+{
+    _shadowView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 120)];
+    _shadowView.backgroundColor = [UIColor blackColor];
+    _shadowView.alpha = 0;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideSelectionViewOperation)];
+    [_shadowView addGestureRecognizer:tap];
+    _shadowView.userInteractionEnabled = YES;
+    [self.view addSubview:_shadowView];
+    
+    [UIView animateWithDuration:0.5 animations:^(void){
+        CGRect rect = _selectView.frame;
+        rect.origin.y -=kScreenHeight - 120;
+        [_selectView setFrame:rect];
+    } completion:^(BOOL finished){
+        _shadowView.alpha = 0.8;
+    }];
+}
+
+- (void)hideSelectionViewOperation
+{
+    [UIView animateWithDuration:0.5 animations:^(void){
+        CGRect rect = _selectView.frame;
+        rect.origin.y +=kScreenHeight - 120;
+        _selectView.frame = rect;
+        _shadowView.alpha = 0;
+        [_shadowView removeFromSuperview];
+        _shadowView = nil;
+    }];
+}
+
 #pragma mark ServiceIsCollectResponseDelegate
-- (void)getCollectSucceedWithIsCollected:(BOOL)isCollected andWith:(ProductModel *)product andWith:(EvaluateModel *)evaluate
+- (void)getCollectSucceedWithIsCollected:(BOOL)isCollected
+                                 andWith:(ProductModel *)product
+                                 andWith:(EvaluateModel *)evaluate
+                                 andWith:(NSMutableArray *)comboArr
+                                 andwith:(NSMutableArray *)typeArr
 {
     [self stopStateHud];
     _product = product;
     _evaluate = evaluate;
+    _typeArr = typeArr;
+    _comboArr = comboArr;
+    
     dispatch_async(dispatch_get_main_queue(), ^(void){
+        _selectView = [[ServiceSelectionView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, kScreenHeight - 120)
+                                                   andWithProduct:_product
+                                                   andWithTypeArr:_typeArr
+                                                          andWith:_comboArr];
+        [self.view addSubview:_selectView];
         [self.tableview reloadData];
         if (isCollected) {
             [_collectBtn setImage:[UIImage imageNamed:@"heart_collect"] forState:UIControlStateNormal];
@@ -286,11 +313,6 @@
 #pragma mark UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
     return 4;
 }
 
@@ -302,24 +324,24 @@
     static NSString *EVALUATE_CELL = @"evaluate_cell";
     static NSString *DETAIL_CELL = @"detail_cell";
 
-    if (indexPath.section == 0) {
+    if (indexPath.row == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:IMAGE_CELL];
         if (!cell) {
             cell = [[PurchaseDetailImageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:IMAGE_CELL];
         }
         [(PurchaseDetailImageCell *)cell setProduct:self.product];
-    }else if (indexPath.section == 1){
+    }else if (indexPath.row == 1){
         cell = [tableView dequeueReusableCellWithIdentifier:SELECT_CELL];
         if (!cell) {
             cell = [[PurchaseDetailSelectCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SELECT_CELL];
         }
-    }else if (indexPath.section == 2){
+    }else if (indexPath.row == 2){
         cell = [tableView dequeueReusableCellWithIdentifier:EVALUATE_CELL];
         if (!cell) {
             cell = [[PurchaseQualityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:EVALUATE_CELL];
         }
         [(PurchaseQualityCell *)cell setEvaluate:self.evaluate];
-    }else if (indexPath.section == 3){
+    }else if (indexPath.row == 3){
         cell = [tableView dequeueReusableCellWithIdentifier:DETAIL_CELL];
         if (!cell) {
             cell = [[PurchaseDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:DETAIL_CELL];
@@ -333,47 +355,28 @@
 #pragma mark UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
-        return 390.0f;
-    }else if (indexPath.section == 1){
-        return 55.0f;
-    }else if (indexPath.section == 2){
-        return 130.0f;
-    }else if (indexPath.section == 3){
+    if (indexPath.row == 0) {
+        return 355.0f;
+    }else if (indexPath.row == 1){
+        return 95.0f;
+    }else if (indexPath.row == 2){
+        return 170.0f;
+    }else if (indexPath.row == 3){
         CGFloat height = [[CalculateHeight calculate] calculateHeightWithString:_product.contentText];
         
-        return 85 + height;
+        return 75 + height;
     }
     
     return 0;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIView *blankView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];
-    blankView.backgroundColor = BG_GRAY_COLOR;
-    return blankView;
+    if (indexPath.row == 1) {
+        [self showSelectViewOperation];
+    }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 40.0f;
-}
-
-//#pragma mark UIWebViewDelegate
-//- (void)webViewDidStartLoad:(UIWebView *)webView
-//{
-//    [self showNoTextStateHud];
-//}
-//
-//- (void)webViewDidFinishLoad:(UIWebView *)webView
-//{
-//    [self stopStateHud];
-//}
-//
-//- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
-//{
-//    [self showStateHudWithText:@"网页加载失败~"];
-//}
 
 @end

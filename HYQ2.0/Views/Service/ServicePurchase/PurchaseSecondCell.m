@@ -42,7 +42,6 @@
 {
     if (!_titleImg) {
         _titleImg = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 80, 80)];
-//        _titleImg.image = [UIImage imageNamed:@"product_placeholder"];
         [self.contentView addSubview:_titleImg];
     }
     
@@ -140,31 +139,31 @@
     }
 }
 
-- (void)setService:(ServiceModel *)service
+- (void)setProduct:(ProductModel *)product
 {
-    _service = service;
-    if (_service.title) {
-        _titleLbl.text = _service.title;
+    _product = product;
+    if (_product.name) {
+        _titleLbl.text = _product.name;
     }
     
-    if (_service.title && _service.xiangou) {
-        _titleLbl.text = [NSString stringWithFormat:@"%@(限购%@份)",_service.title,[_service.xiangou stringValue]];
+    if (_product.name && _product.xiangou) {
+        _titleLbl.text = [NSString stringWithFormat:@"%@(限购%@份)",_product.name,[_product.xiangou stringValue]];
     }
     
-    if (_service.price) {
-        _priceLbl.text = [NSString stringWithFormat:@"￥%@",[_service.price stringValue]];
+    if (_product.price) {
+        _priceLbl.text = [NSString stringWithFormat:@"￥%@",[_product.price stringValue]];
     }
 
-    if (_service.photo) {
-        NSString *urlStr = [NSString stringWithFormat:@"%@%@",LOCAL_HOST,_service.photo];
+    if (_product.photo) {
+        NSString *urlStr = [NSString stringWithFormat:@"%@%@",LOCAL_HOST,_product.photo];
         [_titleImg sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:[UIImage imageNamed:@"product_placeholder"]];
     }
 }
 
 - (void)plsBtnPressed
 {
-    if (_service.xiangou) {
-        if (_serviceCnt < [_service.xiangou integerValue]) {
+    if (_product.xiangou) {
+        if (_serviceCnt < [_product.xiangou integerValue]) {
             _serviceCnt += 1;
         }
     }else{

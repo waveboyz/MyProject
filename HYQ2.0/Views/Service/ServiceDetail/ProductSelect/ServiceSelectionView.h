@@ -10,6 +10,12 @@
 /*
     产品选择页
  */
+@protocol ServiceSelectionViewDelegate <NSObject>
+
+
+@end
+
+@class ProductModel;
 @interface ServiceSelectionView : UIView
 <
     UITableViewDataSource,
@@ -17,5 +23,12 @@
 >
 
 @property (nonatomic, strong) UITableView *tableView;
+
+@property (nonatomic, weak) id<ServiceSelectionViewDelegate> delegate;
+
+- (id)initWithFrame:(CGRect)frame
+     andWithProduct:(ProductModel *)product
+     andWithTypeArr:(NSMutableArray *)typeArr
+            andWith:(NSMutableArray *)comboArr;
 
 @end

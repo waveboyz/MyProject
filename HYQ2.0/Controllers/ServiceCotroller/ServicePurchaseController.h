@@ -7,8 +7,8 @@
 //
 
 #import "BaseViewController.h"
-#import "ServiceModel.h"
-#import "OrderModel.h"
+
+@class ProductModel;
 /*
     产品购买页
  */
@@ -17,11 +17,8 @@
     UITableViewDataSource,
     UITableViewDelegate
 >
+- (id)initWithProduct:(ProductModel *)product;
 
-- (id)initWithService:(ServiceModel *)service;
-- (id)initWithOrder:(OrderModel *)order;
-
-@property (nonatomic, assign) ServiceModel *service;
-@property (nonatomic, assign) OrderModel   *order;
+@property (nonatomic, strong) ProductModel *product;
 
 @end

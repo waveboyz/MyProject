@@ -19,6 +19,7 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, strong) NSNumber *xiangou;
 @property (nonatomic, strong) NSNumber *pid;
+@property (nonatomic, strong) NSNumber *ptid;
 @property (nonatomic, strong) NSNumber *price;
 @property (nonatomic, strong) NSNumber *payCount;
 @property (nonatomic, strong) NSNumber *colCount;

@@ -7,7 +7,9 @@
 //
 
 #import "BaseModel.h"
-
+/*
+    评价模型
+ */
 @interface EvaluateModel : BaseModel
 
 @property (nonatomic, strong) NSNumber *level0;

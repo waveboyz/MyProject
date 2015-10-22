@@ -23,6 +23,7 @@
 @property (nonatomic, strong) CWStarRateView    *rateView2;
 @property (nonatomic, strong) CWStarRateView    *rateView3;
 @property (nonatomic, strong) CWStarRateView    *rateView4;
+@property (nonatomic, strong) UIView  *blankView;
 
 @end
 
@@ -110,6 +111,12 @@
         _rateView4 = [[CWStarRateView alloc] initWithFrame:CGRectMake(kScreenWidth * 0.5 + width, 100, width, 20) numberOfStars:5];
         _rateView4.userInteractionEnabled = NO;
         [self.contentView addSubview:_rateView4];
+    }
+    
+    if (!_blankView) {
+        _blankView = [[UIView alloc] initWithFrame:CGRectMake(0, 130, kScreenWidth, 40)];
+        _blankView.backgroundColor = BG_GRAY_COLOR;
+        [self.contentView addSubview:_blankView];
     }
 }
 

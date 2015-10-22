@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GlobalConst.h"
-#import "ServiceModel.h"
+#import "ProductModel.h"
 
 @protocol PurchaseSecondCellDelegate <NSObject>
 
@@ -24,7 +24,7 @@
     UITextViewDelegate
 >
 
-@property (nonatomic, assign) ServiceModel *service;
+@property (nonatomic, assign) ProductModel *product;
 @property (nonatomic, assign) NSUInteger    serviceCnt;
 @property (nonatomic, assign) id<PurchaseSecondCellDelegate> delegate;
 @property (nonatomic, strong) UITextView        *commentView;

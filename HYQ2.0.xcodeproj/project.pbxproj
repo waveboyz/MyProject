@@ -17,7 +17,6 @@
 		C43E6BB61BD4E23D005F7F18 /* PurchaseDetailSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C43E6BB51BD4E23D005F7F18 /* PurchaseDetailSelectCell.m */; settings = {ASSET_TAGS = (); }; };
 		C43E6BB91BD4E24E005F7F18 /* PurchaseQualityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C43E6BB81BD4E24E005F7F18 /* PurchaseQualityCell.m */; settings = {ASSET_TAGS = (); }; };
 		C43E6BBC1BD4E46E005F7F18 /* PurchaseDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C43E6BBB1BD4E46E005F7F18 /* PurchaseDetailCell.m */; settings = {ASSET_TAGS = (); }; };
-		C43E6BBF1BD50F03005F7F18 /* ServiceSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C43E6BBE1BD50F03005F7F18 /* ServiceSelectionView.m */; settings = {ASSET_TAGS = (); }; };
 		C4593E2F1BA9448600879DE5 /* MyBankWithdrawController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4593E2E1BA9448600879DE5 /* MyBankWithdrawController.m */; };
 		C4593E331BA944AD00879DE5 /* MyBankWithDrawResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C4593E321BA944AD00879DE5 /* MyBankWithDrawResponse.m */; };
 		C45F949E1BD5D76F009DE0FF /* loginBackImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45F949D1BD5D76F009DE0FF /* loginBackImg@2x.png */; settings = {ASSET_TAGS = (); }; };
@@ -31,6 +30,12 @@
 		C45F94AF1BD64A59009DE0FF /* ProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C45F94AE1BD64A59009DE0FF /* ProductModel.m */; settings = {ASSET_TAGS = (); }; };
 		C45F94B21BD68EA3009DE0FF /* EvaluateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C45F94B11BD68EA3009DE0FF /* EvaluateModel.m */; settings = {ASSET_TAGS = (); }; };
 		C45F94B51BD73AAB009DE0FF /* CalculateHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = C45F94B41BD73AAB009DE0FF /* CalculateHeight.m */; settings = {ASSET_TAGS = (); }; };
+		C45F94B81BD763BB009DE0FF /* ProductTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C45F94B71BD763BB009DE0FF /* ProductTypeModel.m */; settings = {ASSET_TAGS = (); }; };
+		C45F94BB1BD764A2009DE0FF /* ProductComboModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C45F94BA1BD764A2009DE0FF /* ProductComboModel.m */; settings = {ASSET_TAGS = (); }; };
+		C45F94BF1BD78ADD009DE0FF /* ServiceSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C45F94BE1BD78ADD009DE0FF /* ServiceSelectionView.m */; settings = {ASSET_TAGS = (); }; };
+		C45F94C21BD78E99009DE0FF /* ProductSelectImgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C45F94C11BD78E99009DE0FF /* ProductSelectImgCell.m */; settings = {ASSET_TAGS = (); }; };
+		C45F94C51BD79A11009DE0FF /* ProductTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C45F94C41BD79A11009DE0FF /* ProductTypeCell.m */; settings = {ASSET_TAGS = (); }; };
+		C45F94C81BD79C69009DE0FF /* ProductComboCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C45F94C71BD79C69009DE0FF /* ProductComboCell.m */; settings = {ASSET_TAGS = (); }; };
 		C467280F1BAB108600EADB23 /* default_no.png in Resources */ = {isa = PBXBuildFile; fileRef = C467280D1BAB108600EADB23 /* default_no.png */; settings = {ASSET_TAGS = (); }; };
 		C46728101BAB108600EADB23 /* default_yes.png in Resources */ = {isa = PBXBuildFile; fileRef = C467280E1BAB108600EADB23 /* default_yes.png */; settings = {ASSET_TAGS = (); }; };
 		C46A717D1BABF36100867C3F /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C46A716B1BABF36100867C3F /* AFHTTPRequestOperation.m */; settings = {ASSET_TAGS = (); }; };
@@ -43,6 +48,7 @@
 		C46A71841BABF36100867C3F /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = C46A717A1BABF36100867C3F /* AFURLResponseSerialization.m */; settings = {ASSET_TAGS = (); }; };
 		C46A71851BABF36100867C3F /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C46A717C1BABF36100867C3F /* AFURLSessionManager.m */; settings = {ASSET_TAGS = (); }; };
 		C46D5CF31BA81D270052F083 /* HYQResetVerResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C46D5CF21BA81D270052F083 /* HYQResetVerResponse.m */; };
+		C47052481BD895EF00968910 /* CalculateButtonHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = C47052471BD895EF00968910 /* CalculateButtonHeight.m */; settings = {ASSET_TAGS = (); }; };
 		C4715B971BAA60B20042ABE8 /* backIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4715B961BAA60B20042ABE8 /* backIcon@2x.png */; };
 		C47B92A51BCB6D0400E9FE5C /* appIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C47B92A41BCB6D0400E9FE5C /* appIcon@2x.png */; settings = {ASSET_TAGS = (); }; };
 		C47CDBB01BA7ACFE00214478 /* ServicePayOrderResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C47CDBAF1BA7ACFE00214478 /* ServicePayOrderResponse.m */; };
@@ -349,8 +355,6 @@
 		C43E6BB81BD4E24E005F7F18 /* PurchaseQualityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseQualityCell.m; sourceTree = "<group>"; };
 		C43E6BBA1BD4E46E005F7F18 /* PurchaseDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseDetailCell.h; sourceTree = "<group>"; };
 		C43E6BBB1BD4E46E005F7F18 /* PurchaseDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseDetailCell.m; sourceTree = "<group>"; };
-		C43E6BBD1BD50F03005F7F18 /* ServiceSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSelectionView.h; sourceTree = "<group>"; };
-		C43E6BBE1BD50F03005F7F18 /* ServiceSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSelectionView.m; sourceTree = "<group>"; };
 		C4593E2D1BA9448600879DE5 /* MyBankWithdrawController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBankWithdrawController.h; sourceTree = "<group>"; };
 		C4593E2E1BA9448600879DE5 /* MyBankWithdrawController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBankWithdrawController.m; sourceTree = "<group>"; };
 		C4593E311BA944AD00879DE5 /* MyBankWithDrawResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBankWithDrawResponse.h; sourceTree = "<group>"; };
@@ -369,6 +373,18 @@
 		C45F94B11BD68EA3009DE0FF /* EvaluateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvaluateModel.m; sourceTree = "<group>"; };
 		C45F94B31BD73AAB009DE0FF /* CalculateHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculateHeight.h; sourceTree = "<group>"; };
 		C45F94B41BD73AAB009DE0FF /* CalculateHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculateHeight.m; sourceTree = "<group>"; };
+		C45F94B61BD763BB009DE0FF /* ProductTypeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductTypeModel.h; sourceTree = "<group>"; };
+		C45F94B71BD763BB009DE0FF /* ProductTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductTypeModel.m; sourceTree = "<group>"; };
+		C45F94B91BD764A2009DE0FF /* ProductComboModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductComboModel.h; sourceTree = "<group>"; };
+		C45F94BA1BD764A2009DE0FF /* ProductComboModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductComboModel.m; sourceTree = "<group>"; };
+		C45F94BD1BD78ADD009DE0FF /* ServiceSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSelectionView.h; sourceTree = "<group>"; };
+		C45F94BE1BD78ADD009DE0FF /* ServiceSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSelectionView.m; sourceTree = "<group>"; };
+		C45F94C01BD78E99009DE0FF /* ProductSelectImgCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductSelectImgCell.h; sourceTree = "<group>"; };
+		C45F94C11BD78E99009DE0FF /* ProductSelectImgCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductSelectImgCell.m; sourceTree = "<group>"; };
+		C45F94C31BD79A11009DE0FF /* ProductTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductTypeCell.h; sourceTree = "<group>"; };
+		C45F94C41BD79A11009DE0FF /* ProductTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductTypeCell.m; sourceTree = "<group>"; };
+		C45F94C61BD79C69009DE0FF /* ProductComboCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductComboCell.h; sourceTree = "<group>"; };
+		C45F94C71BD79C69009DE0FF /* ProductComboCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductComboCell.m; sourceTree = "<group>"; };
 		C467280D1BAB108600EADB23 /* default_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_no.png; sourceTree = "<group>"; };
 		C467280E1BAB108600EADB23 /* default_yes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_yes.png; sourceTree = "<group>"; };
 		C46A716A1BABF36100867C3F /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -392,6 +408,8 @@
 		C46A717C1BABF36100867C3F /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 		C46D5CF11BA81D270052F083 /* HYQResetVerResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYQResetVerResponse.h; sourceTree = "<group>"; };
 		C46D5CF21BA81D270052F083 /* HYQResetVerResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYQResetVerResponse.m; sourceTree = "<group>"; };
+		C47052461BD895EF00968910 /* CalculateButtonHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculateButtonHeight.h; sourceTree = "<group>"; };
+		C47052471BD895EF00968910 /* CalculateButtonHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculateButtonHeight.m; sourceTree = "<group>"; };
 		C4715B961BAA60B20042ABE8 /* backIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backIcon@2x.png"; sourceTree = "<group>"; };
 		C47B92A41BCB6D0400E9FE5C /* appIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appIcon@2x.png"; sourceTree = "<group>"; };
 		C47CDBAE1BA7ACFE00214478 /* ServicePayOrderResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicePayOrderResponse.h; sourceTree = "<group>"; };
@@ -1061,6 +1079,21 @@
 			path = MyBank;
 			sourceTree = "<group>";
 		};
+		C45F94BC1BD78AB8009DE0FF /* ProductSelect */ = {
+			isa = PBXGroup;
+			children = (
+				C45F94BD1BD78ADD009DE0FF /* ServiceSelectionView.h */,
+				C45F94BE1BD78ADD009DE0FF /* ServiceSelectionView.m */,
+				C45F94C01BD78E99009DE0FF /* ProductSelectImgCell.h */,
+				C45F94C11BD78E99009DE0FF /* ProductSelectImgCell.m */,
+				C45F94C31BD79A11009DE0FF /* ProductTypeCell.h */,
+				C45F94C41BD79A11009DE0FF /* ProductTypeCell.m */,
+				C45F94C61BD79C69009DE0FF /* ProductComboCell.h */,
+				C45F94C71BD79C69009DE0FF /* ProductComboCell.m */,
+			);
+			path = ProductSelect;
+			sourceTree = "<group>";
+		};
 		C46A71691BABF36100867C3F /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
@@ -1359,6 +1392,7 @@
 		C48B67901B9EAD5500AB0DA5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C48B67991B9EAD5500AB0DA5 /* user */,
 				C4E8F00B1BA2B455008E45D1 /* openssl */,
 				C4E8EFED1BA2B29A008E45D1 /* Util */,
 				C48B67911B9EAD5500AB0DA5 /* GlobalConst.h */,
@@ -1371,7 +1405,8 @@
 				C48B67981B9EAD5500AB0DA5 /* UINavigationBar+Awesome.m */,
 				C43048CA1BCCEAFA00BC78FD /* UIImageExtension.h */,
 				C43048CB1BCCEAFA00BC78FD /* UIImageExtension.m */,
-				C48B67991B9EAD5500AB0DA5 /* user */,
+				C47052461BD895EF00968910 /* CalculateButtonHeight.h */,
+				C47052471BD895EF00968910 /* CalculateButtonHeight.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1870,6 +1905,10 @@
 				C45F94B11BD68EA3009DE0FF /* EvaluateModel.m */,
 				C45F94B31BD73AAB009DE0FF /* CalculateHeight.h */,
 				C45F94B41BD73AAB009DE0FF /* CalculateHeight.m */,
+				C45F94B61BD763BB009DE0FF /* ProductTypeModel.h */,
+				C45F94B71BD763BB009DE0FF /* ProductTypeModel.m */,
+				C45F94B91BD764A2009DE0FF /* ProductComboModel.h */,
+				C45F94BA1BD764A2009DE0FF /* ProductComboModel.m */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -2272,8 +2311,7 @@
 				C43E6BB81BD4E24E005F7F18 /* PurchaseQualityCell.m */,
 				C43E6BBA1BD4E46E005F7F18 /* PurchaseDetailCell.h */,
 				C43E6BBB1BD4E46E005F7F18 /* PurchaseDetailCell.m */,
-				C43E6BBD1BD50F03005F7F18 /* ServiceSelectionView.h */,
-				C43E6BBE1BD50F03005F7F18 /* ServiceSelectionView.m */,
+				C45F94BC1BD78AB8009DE0FF /* ProductSelect */,
 			);
 			path = ServiceDetail;
 			sourceTree = "<group>";
@@ -2705,6 +2743,7 @@
 				C48B6A091B9EAD5500AB0DA5 /* MyCollectCell.m in Sources */,
 				C48B691D1B9EAD5500AB0DA5 /* DownSheet.m in Sources */,
 				C48B69F71B9EAD5500AB0DA5 /* ExcellentFinantialThirdCell.m in Sources */,
+				C45F94BB1BD764A2009DE0FF /* ProductComboModel.m in Sources */,
 				C48B69771B9EAD5500AB0DA5 /* ScanCameraController.m in Sources */,
 				C48B69501B9EAD5500AB0DA5 /* UIImage+WebP.m in Sources */,
 				C48B69301B9EAD5500AB0DA5 /* MJRefreshAutoStateFooter.m in Sources */,
@@ -2712,7 +2751,9 @@
 				C48B69441B9EAD5500AB0DA5 /* MKAnnotationView+WebCache.m in Sources */,
 				C48B6A081B9EAD5500AB0DA5 /* MyAddressCell.m in Sources */,
 				C48B691F1B9EAD5500AB0DA5 /* DownSheetModel.m in Sources */,
+				C47052481BD895EF00968910 /* CalculateButtonHeight.m in Sources */,
 				C48B69701B9EAD5500AB0DA5 /* ExcellentOpenDayController.m in Sources */,
+				C45F94C21BD78E99009DE0FF /* ProductSelectImgCell.m in Sources */,
 				C48B697D1B9EAD5500AB0DA5 /* MyAddressAddController.m in Sources */,
 				C486B54D1BA02E100072A7F4 /* ServiceAddressCell.m in Sources */,
 				C4E8F0011BA2B29A008E45D1 /* DataVerifier.m in Sources */,
@@ -2752,7 +2793,6 @@
 				C48B69B01B9EAD5500AB0DA5 /* HYQLoginResponse.m in Sources */,
 				C48B691E1B9EAD5500AB0DA5 /* DownSheetCell.m in Sources */,
 				C48B692A1B9EAD5500AB0DA5 /* MJRefreshBackFooter.m in Sources */,
-				C43E6BBF1BD50F03005F7F18 /* ServiceSelectionView.m in Sources */,
 				C48B69EC1B9EAD5500AB0DA5 /* ExcellentBaseFirstCell.m in Sources */,
 				C48B69B81B9EAD5500AB0DA5 /* AppDelegate.m in Sources */,
 				C48B69E91B9EAD5500AB0DA5 /* ExcellentHeaderCell.m in Sources */,
@@ -2769,6 +2809,7 @@
 				C48B69231B9EAD5500AB0DA5 /* MJProperty.m in Sources */,
 				C48B69B21B9EAD5500AB0DA5 /* HYQResetResponse.m in Sources */,
 				C48B69361B9EAD5500AB0DA5 /* MJRefreshStateHeader.m in Sources */,
+				C45F94BF1BD78ADD009DE0FF /* ServiceSelectionView.m in Sources */,
 				C48B69991B9EAD5500AB0DA5 /* PaymentModel.m in Sources */,
 				C48B69401B9EAD5500AB0DA5 /* TAPageControl.m in Sources */,
 				C48B69451B9EAD5500AB0DA5 /* NSData+ImageContentType.m in Sources */,
@@ -2785,6 +2826,7 @@
 				C48B696D1B9EAD5500AB0DA5 /* ExcellentBaseController.m in Sources */,
 				C48B69801B9EAD5500AB0DA5 /* MyAddressPickController.m in Sources */,
 				C46A717E1BABF36100867C3F /* AFHTTPRequestOperationManager.m in Sources */,
+				C45F94C81BD79C69009DE0FF /* ProductComboCell.m in Sources */,
 				C4E8F0001BA2B29A008E45D1 /* DataSigner.m in Sources */,
 				C48B69711B9EAD5500AB0DA5 /* ExcellentPlanController.m in Sources */,
 				C48B69951B9EAD5500AB0DA5 /* CollectModel.m in Sources */,
@@ -2820,6 +2862,7 @@
 				C48B6A0F1B9EAD5500AB0DA5 /* CWStarRateView.m in Sources */,
 				C48B69A91B9EAD5500AB0DA5 /* HYQReplaceUsername.m in Sources */,
 				C4D2FD391BC6138400AE88C8 /* SignInModel.m in Sources */,
+				C45F94C51BD79A11009DE0FF /* ProductTypeCell.m in Sources */,
 				C48B69621B9EAD5500AB0DA5 /* VOSegmentedControl.m in Sources */,
 				C48B69EE1B9EAD5500AB0DA5 /* ExcellentBaseSecondCell.m in Sources */,
 				C48B69A51B9EAD5500AB0DA5 /* MyOrderEvaluateResponse.m in Sources */,
@@ -2842,6 +2885,7 @@
 				C48B6A0B1B9EAD5500AB0DA5 /* MyOrderFormCell.m in Sources */,
 				C48B6A031B9EAD5500AB0DA5 /* MainServiceCell.m in Sources */,
 				C48B69331B9EAD5500AB0DA5 /* MJRefreshBackStateFooter.m in Sources */,
+				C45F94B81BD763BB009DE0FF /* ProductTypeModel.m in Sources */,
 				C48B692F1B9EAD5500AB0DA5 /* MJRefreshAutoNormalFooter.m in Sources */,
 				C48B69861B9EAD5500AB0DA5 /* MyPaymentWithdrawController.m in Sources */,
 				C48B693D1B9EAD5500AB0DA5 /* TAAbstractDotView.m in Sources */,

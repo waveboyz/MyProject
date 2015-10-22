@@ -7,7 +7,9 @@
 //
 
 #import "BaseModel.h"
-
+/*
+    产品列表页标题模型
+ */
 @interface ServiceTitleModel : BaseModel
 
 @property (nonatomic, assign) NSUInteger tid;

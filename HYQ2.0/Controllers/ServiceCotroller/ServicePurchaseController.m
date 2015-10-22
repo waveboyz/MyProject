@@ -20,6 +20,7 @@
 #import "AliPayCallBackResponse.h"
 #import "MyAddressResponse.h"
 #import "PaySucceedController.h"
+#import "ProductModel.h"
 
 @interface ServicePurchaseController ()
 <
@@ -50,23 +51,11 @@
 
 @implementation ServicePurchaseController
 
-- (id)initWithService:(ServiceModel *)service
+- (id)initWithProduct:(ProductModel *)product
 {
     if (self = [super init]) {
-        _service = service;
-        _price = [_service.price unsignedLongValue];
-        _totalPrice = _price;
-        _paycount =  1;
-        _addArr = [NSMutableArray new];
-    }
-    
-    return self;
-}
-
-- (id)initWithOrder:(OrderModel *)order
-{
-    if (self = [super init]) {
-        _order = order;
+        _product = product;
+        _price = [_product.price integerValue];
     }
     
     return self;
@@ -117,6 +106,7 @@
     _tableview.backgroundColor = GRAY_COLOR;
     _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableview.tableFooterView = self.payfooterView;
+    _tableview.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     [self.view addSubview:_tableview];
     
     _toolView = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 49, kScreenWidth, 49)];
@@ -171,8 +161,8 @@
     order.partner = PARTNER;
     order.seller = SELLER;
     order.tradeNO = [NSString stringWithFormat:@"%@",_tradeNo]; //订单ID（由商家自行制定）
-    order.productName = _service.title; //商品标题
-    order.productDescription = _service.DesStr; //商品描述
+    order.productName = _product.name; //商品标题
+    order.productDescription = _product.contentText; //商品描述
     order.amount = [NSString stringWithFormat:@"%ld",_totalPrice]; //商品价格
     order.notifyURL =  @"http://www.xxx.com"; //回调URL
     order.service = @"mobile.securitypay.pay";
@@ -219,7 +209,7 @@
 - (void)getPayOrderOperation
 {
     [self showNoTextStateHud];
-    ServicePayOrderResponse *response = [[ServicePayOrderResponse alloc] initWithPid:_service.pid
+    ServicePayOrderResponse *response = [[ServicePayOrderResponse alloc] initWithPid:_product.pid
                                                                           andWithAid:_addModel.aid
                                                                          andWithOnum:[NSNumber numberWithInteger:_paycount]
                                                                    andWithTotalPrice:[NSNumber numberWithInteger:_totalPrice]
@@ -237,6 +227,7 @@
         _agreeBtn.frame = CGRectMake(30, 0, 30, 40);
         _agreeBtn.selected = NO;
         [_agreeBtn setImage:[UIImage imageNamed:@"unselect"] forState:UIControlStateNormal];
+        [_agreeBtn setImage:[UIImage imageNamed:@"onselect"] forState:UIControlStateSelected];
         [_agreeBtn addTarget:self action:@selector(changeAgreeBtn) forControlEvents:UIControlEventTouchUpInside];
         [_payfooterView addSubview:_agreeBtn];
 
@@ -267,11 +258,6 @@
 - (void)changeAgreeBtn
 {
     _agreeBtn.selected = !_agreeBtn.selected;
-    if (_agreeBtn.selected) {
-        [_agreeBtn setImage:[UIImage imageNamed:@"unselect"] forState:UIControlStateNormal];
-    }else{
-        [_agreeBtn setImage:[UIImage imageNamed:@"onselect"] forState:UIControlStateNormal];
-    }
 }
 
 #pragma mark MyAddressResponseDelegate
@@ -335,7 +321,7 @@
             cell = [[PurchaseSecondCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:PURCHASE_SECOND];
         }
         [(PurchaseSecondCell *)cell setDelegate:self];
-        [(PurchaseSecondCell *)cell setService:_service];
+        [(PurchaseSecondCell *)cell setProduct:_product];
     }
     
     return cell;

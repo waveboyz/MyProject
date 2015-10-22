@@ -43,24 +43,24 @@
     [self.window setRootViewController:_tabBarVC];
     [self.window makeKeyAndVisible];
 //    [NSThread sleepForTimeInterval:1.5];
-    HYQAdvertiseResponse *response = [[HYQAdvertiseResponse alloc] init];
-    response.delegate = self;
-    [response start];
+//    HYQAdvertiseResponse *response = [[HYQAdvertiseResponse alloc] init];
+//    response.delegate = self;
+//    [response start];
     
     [UMSocialData setAppKey:UME_APPKEY];
     [UMSocialQQHandler setQQWithAppId:QQ_OPEN_ID appKey:QQ_APPKEY url:LOCAL_HOST];
     [UMSocialWechatHandler setWXAppId:WECHAT_ID appSecret:WECHAT_APPKEY url:LOCAL_HOST];
 
-    _adView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
-    [self.window bringSubviewToFront:_adView];
-    [self.window addSubview:_adView];
+//    _adView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+//    [self.window bringSubviewToFront:_adView];
+//    [self.window addSubview:_adView];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![defaults objectForKey:@"intro_screen_viewed"]) {
         self.introView = [[HYQIntroView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
         self.introView.delegate = self;
         self.introView.backgroundColor = [UIColor greenColor];
-//        [self.window addSubview:self.introView];
+        [self.window addSubview:self.introView];
         [self.window insertSubview:self.introView belowSubview:self.adView];
     }
     
@@ -104,20 +104,20 @@
     return [UMSocialSnsService handleOpenURL:url];
 }
 
-#pragma mark HYQAdvertiseResponseDelegate
-- (void)getAdvertiseSucceedWithUrl:(NSString *)url
-{
-    [_adView sd_setImageWithURL:[NSURL URLWithString:url]];
-    [UIView animateWithDuration:3.0 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        _adView.alpha = 0;
-    } completion:^(BOOL finished) {
-        [self.adView removeFromSuperview];
-    }];
-}
-
-- (void)getAdvertiseFalse
-{
-    [self.adView removeFromSuperview];
-}
+//#pragma mark HYQAdvertiseResponseDelegate
+//- (void)getAdvertiseSucceedWithUrl:(NSString *)url
+//{
+//    [_adView sd_setImageWithURL:[NSURL URLWithString:url]];
+//    [UIView animateWithDuration:3.0 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+//        _adView.alpha = 0;
+//    } completion:^(BOOL finished) {
+//        [self.adView removeFromSuperview];
+//    }];
+//}
+//
+//- (void)getAdvertiseFalse
+//{
+//    [self.adView removeFromSuperview];
+//}
 
 @end

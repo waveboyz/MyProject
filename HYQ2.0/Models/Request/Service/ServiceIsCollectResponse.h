@@ -12,9 +12,14 @@
  */
 @class ProductModel;
 @class EvaluateModel;
+
 @protocol ServiceIsCollectResponseDelegate <NSObject>
 
-- (void)getCollectSucceedWithIsCollected:(BOOL)isCollected andWith:(ProductModel *)product andWith:(EvaluateModel *)evaluate;
+- (void)getCollectSucceedWithIsCollected:(BOOL)isCollected
+                                 andWith:(ProductModel *)product
+                                 andWith:(EvaluateModel *)evaluate
+                                 andWith:(NSMutableArray *)comboArr
+                                 andwith:(NSMutableArray *)typeArr;
 
 @optional
 
@@ -24,7 +29,7 @@
 
 @interface ServiceIsCollectResponse : HYQResponse
 
-- (id)initWithPid:(NSNumber *)pid;
+- (id)initWithPid:(NSNumber *)pid andWithPTID:(NSNumber *)ptid;
 
 @property (nonatomic, weak) id<ServiceIsCollectResponseDelegate> delegate;
 

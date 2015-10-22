@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
+/*
+    支付宝订单模型
+ */
 @interface Order : NSObject
 
 @property(nonatomic, copy) NSString * partner;

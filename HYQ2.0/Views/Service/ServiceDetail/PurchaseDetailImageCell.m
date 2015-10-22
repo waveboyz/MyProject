@@ -34,26 +34,26 @@
 - (void)setViews
 {
     if (!_titleImg) {
-        _titleImg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 300)];
+        _titleImg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 235)];
         [self.contentView addSubview:_titleImg];
     }
     
     if (!_titleLbl) {
-        _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(15, 315, kScreenWidth - 30, 30)];
+        _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(15, 250, kScreenWidth - 30, 30)];
         _titleLbl.font = [UIFont systemFontOfSize:17.0f];
         _titleLbl.textColor = [UIColor blackColor];
         [self.contentView addSubview:_titleLbl];
     }
     
     if (!_desLbl) {
-        _desLbl = [[UILabel alloc] initWithFrame:CGRectMake(15, 350, kScreenWidth - 30, 25)];
+        _desLbl = [[UILabel alloc] initWithFrame:CGRectMake(15, 285, kScreenWidth - 30, 25)];
         _desLbl.font = [UIFont systemFontOfSize:17.0f];
         _desLbl.textColor = ORANGE_COLOR;
         [self.contentView addSubview:_desLbl];
     }
     
     if (!_blankView) {
-        _blankView = [[UIView alloc] initWithFrame:CGRectMake(0, 375, kScreenWidth, 40)];
+        _blankView = [[UIView alloc] initWithFrame:CGRectMake(0, 315, kScreenWidth, 40)];
         _blankView.backgroundColor = BG_GRAY_COLOR;
         [self.contentView addSubview:_blankView];
     }

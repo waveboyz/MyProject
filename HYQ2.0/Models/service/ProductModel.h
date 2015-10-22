@@ -7,12 +7,15 @@
 //
 
 #import "BaseModel.h"
-
+/*
+    产品详情模型
+ */
 @interface ProductModel : BaseModel
 
 @property (nonatomic, copy) NSString *contentText;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *photo;
+@property (nonatomic, strong) NSNumber *xiangou;
 @property (nonatomic, strong) NSNumber *oldPrice;
 @property (nonatomic, strong) NSNumber *pid;
 @property (nonatomic, strong) NSNumber *price;
