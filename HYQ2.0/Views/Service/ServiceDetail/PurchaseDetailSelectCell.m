@@ -8,6 +8,8 @@
 
 #import "PurchaseDetailSelectCell.h"
 #import "GlobalConst.h"
+#import "ProductComboModel.h"
+#import "ProductTypeModel.h"
 
 @interface PurchaseDetailSelectCell ()
 
@@ -47,6 +49,7 @@
         _priceLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth - 145, 15, 130, 25)];
         _priceLbl.font = [UIFont systemFontOfSize:15.0f];
         _priceLbl.textColor = ORANGE_COLOR;
+        _priceLbl.textAlignment = NSTextAlignmentRight;
         [self.contentView addSubview:_priceLbl];
     }
     
@@ -54,6 +57,45 @@
         _blankView = [[UIView alloc] initWithFrame:CGRectMake(0, 55, kScreenWidth, 40)];
         _blankView.backgroundColor = BG_GRAY_COLOR;
         [self.contentView addSubview:_blankView];
+    }
+}
+
+- (void)setType:(ProductTypeModel *)type
+{
+    _type = type;
+    [self reloadDesLable];
+}
+
+- (void)setComboArr:(NSArray *)comboArr
+{
+    _comboArr = comboArr;
+    [self reloadDesLable];
+}
+- (void)reloadDesLable
+{
+    NSMutableString *str = [NSMutableString new];
+    
+    NSInteger price = [_type.price integerValue];
+    
+    for (ProductComboModel *combo in _comboArr) {
+        price += [combo.pdrice integerValue];
+    }
+    _priceLbl.text = [NSString stringWithFormat:@"￥%ld",price];
+    
+    if (_type && _comboArr.count) {
+        for (ProductComboModel *combo in _comboArr) {
+            [str appendFormat:@"%@ ",combo.pdname];
+        }
+        
+        _desLbl.text = [NSString stringWithFormat:@"已选：“%@”，“%@”",_type.psname,str];
+    }else if (_type){
+        _desLbl.text = [NSString stringWithFormat:@"已选：“%@”",_type.psname];
+    }else if (_comboArr.count){
+        for (ProductComboModel *combo in _comboArr) {
+            [str appendFormat:@"%@ ",combo.pdname];
+        }
+        
+        _desLbl.text = [NSString stringWithFormat:@"已选：“%@”",str];
     }
 }
 

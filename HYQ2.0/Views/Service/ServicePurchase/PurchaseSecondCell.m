@@ -8,21 +8,25 @@
 
 #import "PurchaseSecondCell.h"
 #import "UIImageView+WebCache.h"
+#import "ProductTypeModel.h"
+#import "ProductComboModel.h"
 
 @interface PurchaseSecondCell ()
 
-@property (nonatomic, strong) UIImageView       *titleImg;
-@property (nonatomic, strong) UILabel           *titleLbl;
-@property (nonatomic, strong) UILabel           *priceLbl;
-@property (nonatomic, strong) UILabel           *desLbl1;
+@property (nonatomic, strong) UIImageView       *titleImg;  //产品图
+@property (nonatomic, strong) UILabel           *titleLbl;  //产品标题
+@property (nonatomic, strong) UILabel           *priceLbl;  //价格标签
+@property (nonatomic, strong) UILabel           *desLbl1;   //购买数量
+@property (nonatomic, strong) UILabel           *typeLbl;    //购买的子产品
+@property (nonatomic, strong) UILabel           *comboLbl;  //购买的套餐
 @property (nonatomic, strong) UILabel           *desLbl2;
-@property (nonatomic, strong) UILabel           *desLbl3;
+@property (nonatomic, strong) UILabel           *desLbl3;   //留言备注
 @property (nonatomic, strong) UILabel           *lineLbl1;
 @property (nonatomic, strong) UILabel           *lineLbl2;
 @property (nonatomic, strong) UILabel           *lineLbl3;
-@property (nonatomic, strong) UILabel           *countLbl;
-@property (nonatomic, strong) UIButton          *minBtn;
-@property (nonatomic, strong) UIButton          *plsBtn;
+@property (nonatomic, strong) UILabel           *countLbl;  //显示数量
+@property (nonatomic, strong) UIButton          *minBtn;    //减
+@property (nonatomic, strong) UIButton          *plsBtn;    //加
 
 @end
 
@@ -32,6 +36,7 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self setViews];
+        _comboArr = [NSArray new];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
@@ -52,10 +57,24 @@
         [self.contentView addSubview:_titleLbl];
     }
     
+    if (!_typeLbl) {
+        _typeLbl = [[UILabel alloc] initWithFrame:CGRectMake(100, 35, kScreenWidth - 130, 15)];
+        _typeLbl.font = [UIFont systemFontOfSize:13.0f];
+        _typeLbl.textColor = [UIColor grayColor];
+        [self.contentView addSubview:_typeLbl];
+    }
+    
+    if (!_comboLbl) {
+        _comboLbl = [[UILabel alloc] initWithFrame:CGRectMake(100, 50, kScreenWidth - 130, 15)];
+        _comboLbl.font = [UIFont systemFontOfSize:13.0f];
+        _comboLbl.textColor = [UIColor grayColor];
+        [self.contentView addSubview:_comboLbl];
+    }
+    
     if (!_priceLbl) {
-        _priceLbl = [[UILabel alloc] initWithFrame:CGRectMake(100, 50, kScreenWidth - 130, 30)];
+        _priceLbl = [[UILabel alloc] initWithFrame:CGRectMake(100, 70, kScreenWidth - 130, 20)];
         _priceLbl.textColor = [UIColor redColor];
-        _priceLbl.font = [UIFont systemFontOfSize:18.0f];
+        _priceLbl.font = [UIFont systemFontOfSize:15.0f];
         [self.contentView addSubview:_priceLbl];
     }
     
@@ -149,14 +168,41 @@
     if (_product.name && _product.xiangou) {
         _titleLbl.text = [NSString stringWithFormat:@"%@(限购%@份)",_product.name,[_product.xiangou stringValue]];
     }
-    
-    if (_product.price) {
-        _priceLbl.text = [NSString stringWithFormat:@"￥%@",[_product.price stringValue]];
-    }
 
     if (_product.photo) {
         NSString *urlStr = [NSString stringWithFormat:@"%@%@",LOCAL_HOST,_product.photo];
         [_titleImg sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:[UIImage imageNamed:@"product_placeholder"]];
+    }
+}
+
+- (void)setType:(ProductTypeModel *)type
+{
+    _type = type;
+    if(_type.psname) {
+        _typeLbl.text = [NSString stringWithFormat:@"已选择：“%@”",_type.psname];
+    }
+}
+
+- (void)setComboArr:(NSArray *)comboArr
+{
+    _comboArr = comboArr;
+    NSMutableString *str = [NSMutableString new];
+    if (_comboArr.count) {
+        for (ProductComboModel *model in _comboArr) {
+            [str appendFormat:@"“%@”",model.pdname];
+        }
+    }
+    
+    _comboLbl.text = [NSString stringWithFormat:@"已选择：%@",str];
+}
+
+//------------------------------------
+- (void)setPrice:(NSInteger)price
+{
+    _price = price;
+    
+    if (_price) {
+        _priceLbl.text = [NSString stringWithFormat:@"￥%ld",_price];
     }
 }
 

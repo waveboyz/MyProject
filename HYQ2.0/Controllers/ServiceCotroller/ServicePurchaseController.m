@@ -11,7 +11,6 @@
 #import "InfoWebViewController.h"
 #import "PurchaseHeaderCell.h"
 #import "PurchaseSecondCell.h"
-#import "AddressModel.h"
 #import "Order.h"
 #import "DataSigner.h"
 #import "DownSheet.h"
@@ -21,6 +20,9 @@
 #import "MyAddressResponse.h"
 #import "PaySucceedController.h"
 #import "ProductModel.h"
+#import "AddressModel.h"
+#import "DiscountModel.h"
+#import "ProductTypeModel.h"
 
 @interface ServicePurchaseController ()
 <
@@ -46,16 +48,27 @@
 @property (nonatomic, retain) NSNumber          *tradeNo;       //订单号
 @property (nonatomic, retain) NSNumber          *oid;
 @property (nonatomic, strong) AddressModel      *addModel;
+@property (nonatomic, strong) DistrictModel     *district;
+@property (nonatomic, strong) ProductTypeModel *type;
+@property (nonatomic, retain) NSArray          *comboArr;
 
 @end
 
 @implementation ServicePurchaseController
 
-- (id)initWithProduct:(ProductModel *)product
+- (id)initWithProduct:(ProductModel *)product andWithType:(ProductTypeModel *)type andWithComboArr:(NSArray *)comboArr andWithDistrict:(DistrictModel *)district
 {
     if (self = [super init]) {
+        _paycount = 1;
         _product = product;
-        _price = [_product.price integerValue];
+        _type = type;
+        _comboArr = comboArr;
+        _district = district;
+        _price = [_type.price integerValue];
+        for (ProductComboModel *combo in _comboArr) {
+            _price += [combo.pdrice integerValue];
+        }
+        _totalPrice = _price * _paycount;
     }
     
     return self;
@@ -164,6 +177,7 @@
     order.productName = _product.name; //商品标题
     order.productDescription = _product.contentText; //商品描述
     order.amount = [NSString stringWithFormat:@"%ld",_totalPrice]; //商品价格
+//    order.amount = @"0.1";
     order.notifyURL =  @"http://www.xxx.com"; //回调URL
     order.service = @"mobile.securitypay.pay";
     order.paymentType = @"1";
@@ -213,7 +227,10 @@
                                                                           andWithAid:_addModel.aid
                                                                          andWithOnum:[NSNumber numberWithInteger:_paycount]
                                                                    andWithTotalPrice:[NSNumber numberWithInteger:_totalPrice]
-                                                                          andWithMsg:nil];
+                                                                          andWithMsg:nil
+                                                                         andWithType:_type
+                                                                       andWithCombos:_comboArr
+                                                                     andWithDistrict:_district];
     response.delegate = self;
     [response start];
 }
@@ -319,9 +336,12 @@
         cell = [tableView dequeueReusableCellWithIdentifier:PURCHASE_SECOND];
         if (!cell) {
             cell = [[PurchaseSecondCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:PURCHASE_SECOND];
+            [(PurchaseSecondCell *)cell setDelegate:self];
         }
-        [(PurchaseSecondCell *)cell setDelegate:self];
         [(PurchaseSecondCell *)cell setProduct:_product];
+        [(PurchaseSecondCell *)cell setPrice:_price];
+        [(PurchaseSecondCell *)cell setType:_type];
+        [(PurchaseSecondCell *)cell setComboArr:_comboArr];
     }
     
     return cell;

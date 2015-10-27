@@ -8,10 +8,20 @@
 
 #import "ServicePayOrderResponse.h"
 #import "HYQUserManager.h"
+#import "DistrictModel.h"
+#import "ProductComboModel.h"
+#import "ProductTypeModel.h"
 
 @implementation ServicePayOrderResponse
 
-- (id)initWithPid:(NSNumber *)pid andWithAid:(NSNumber *)aid andWithOnum:(NSNumber *)onum andWithTotalPrice:(NSNumber *)price andWithMsg:(NSString *)msg
+- (id)initWithPid:(NSNumber *)pid
+       andWithAid:(NSNumber *)aid
+      andWithOnum:(NSNumber *)onum
+andWithTotalPrice:(NSNumber *)price
+       andWithMsg:(NSString *)msg
+      andWithType:(ProductTypeModel *)type
+    andWithCombos:(NSArray *)combos
+  andWithDistrict:(DistrictModel *)district
 {
     if (self = [super init]) {
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithCapacity:4];
@@ -31,13 +41,37 @@
         }
 
         if (price) {
-            [dic setObject:price forKey:@"pay"];
+            [dic setObject:price forKey:@"pay"];    //实付金额
         }
-
+        
         if (msg) {
             [dic setObject:msg forKey:@"buyMsg"];
         }
 
+        if (type.pdTypeId) {
+            [dic setObject:type.pdTypeId forKey:@"detailTypeId"];   //子产品id
+        }
+        
+        if (type.price) {
+            [dic setObject:type.price forKey:@"detailTypeprice"];  //子产品单价
+        }
+        
+        if (combos.count) {
+            NSMutableString *IDStr = [NSMutableString new];
+            NSMutableString *nameStr = [NSMutableString new];
+            for (ProductComboModel *model in combos) {
+                [IDStr appendFormat:@"%@,",model.pdid];
+                [nameStr appendFormat:@"%@,",model.pdname];
+            }
+            [dic setObject:IDStr forKey:@"detailIds"];
+            [dic setObject:nameStr forKey:@"detailNames"];
+        }
+        
+        if (district) {
+            [dic setObject:district.location forKey:@"qu"];
+        }
+        
+        [dic setObject:[NSNumber numberWithFloat:0.1] forKey:@"yuanjine"];
         [dic setObject:@"IOS" forKey:@"biaoshi"];
         
         [self setUploadDictionary:dic];

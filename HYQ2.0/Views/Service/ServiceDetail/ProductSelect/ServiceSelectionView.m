@@ -13,6 +13,7 @@
 #import "ProductSelectImgCell.h"
 #import "ProductTypeCell.h"
 #import "ProductComboCell.h"
+#import "ProductAddressCell.h"
 
 @interface ServiceSelectionView ()
 <
@@ -24,6 +25,7 @@
 @property (nonatomic, retain) NSMutableArray *comboArr;
 @property (nonatomic, retain) NSMutableArray *selectComboArr;
 @property (nonatomic, assign) ProductModel *product;
+@property (nonatomic, assign) DistrictModel *selectDis;
 @property (nonatomic, assign) ProductTypeModel *selectType;
 
 @end
@@ -33,12 +35,11 @@
 - (id)initWithFrame:(CGRect)frame
      andWithProduct:(ProductModel *)product
      andWithTypeArr:(NSMutableArray *)typeArr
-            andWith:(NSMutableArray *)comboArr
 {
     if (self = [super initWithFrame:frame]) {
         _typeArr = typeArr;
-        _comboArr = comboArr;
         _product = product;
+        _selectType = _typeArr[0];
         _selectComboArr = [NSMutableArray new];
         [self createUI];
     }
@@ -67,13 +68,22 @@
 
 - (void)confirmBtnPressed
 {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(finishedPickWithType:andWithDistrict:andWithComboArr:)]) {
+        [self.delegate finishedPickWithType:_selectType andWithDistrict:_selectDis andWithComboArr:_selectComboArr];
+    }
+}
 
+- (void)reloadAddressCellWith:(DistrictModel *)district
+{
+    _selectDis = nil;
+    _selectDis = district;
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForItem:3 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 #pragma mark UITableDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -81,6 +91,7 @@
     static NSString *SELECT_IMG_CELL = @"select_img_cell";
     static NSString *SELECT_TYPE_CELL = @"select_type_cell";
     static NSString *SELECT_COMBO_CELL = @"select_combo_cell";
+    static NSString *SELECT_ADD_CELL = @"select_add_cell";
     
     UITableViewCell *cell;
     
@@ -105,11 +116,18 @@
             cell = [[ProductComboCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SELECT_COMBO_CELL];
             [(ProductComboCell *)cell setDelegate:self];
         }
-        [(ProductComboCell *)cell setComboArr:_comboArr];
+        [(ProductComboCell *)cell setProduct:_selectType];
+    }else if (indexPath.row == 3){
+        cell = [tableView dequeueReusableCellWithIdentifier:SELECT_ADD_CELL];
+        if (!cell) {
+            cell = [[ProductAddressCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SELECT_ADD_CELL];
+        }
+        [(ProductAddressCell *)cell setDistrit:_selectDis];
     }
     return cell;
 }
 
+#pragma mark UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
@@ -120,7 +138,14 @@
         return [[CalculateButtonHeight calculate] calculateHeightWithString:_comboArr.count];
     }
     
-    return 20.0f;
+    return 55.5f;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 3) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"pickDistrict" object:nil];
+    }
 }
 
 #pragma mark    ProductComboCellDlegate
@@ -128,7 +153,7 @@
 {
     [_selectComboArr removeAllObjects];
     _selectComboArr = [NSMutableArray arrayWithArray:comboArr];
-    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 #pragma mark    ProductTypeCellDlegate
@@ -136,6 +161,10 @@
 {
     _selectType = nil;
     _selectType = type;
-    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [_selectComboArr removeAllObjects];
+    NSIndexPath *path1 = [NSIndexPath indexPathForRow:0 inSection:0];
+    NSIndexPath *path2 = [NSIndexPath indexPathForRow:2 inSection:0];
+    NSArray *indexArr = @[path1,path2];
+    [self.tableView reloadRowsAtIndexPaths:indexArr withRowAnimation:UITableViewRowAnimationNone];
 }
 @end

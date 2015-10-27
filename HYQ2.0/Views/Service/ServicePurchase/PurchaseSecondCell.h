@@ -10,6 +10,7 @@
 #import "GlobalConst.h"
 #import "ProductModel.h"
 
+@class ProductTypeModel;
 @protocol PurchaseSecondCellDelegate <NSObject>
 
 - (void)mathBtnPressedWithCount:(NSUInteger)count;
@@ -23,10 +24,12 @@
 <
     UITextViewDelegate
 >
-
-@property (nonatomic, assign) ProductModel *product;
-@property (nonatomic, assign) NSUInteger    serviceCnt;
 @property (nonatomic, assign) id<PurchaseSecondCellDelegate> delegate;
+@property (nonatomic, assign) ProductModel *product;
+@property (nonatomic, assign) ProductTypeModel *type;
+@property (nonatomic, retain) NSArray       *comboArr;
+@property (nonatomic, assign) NSInteger     price;
+@property (nonatomic, assign) NSUInteger    serviceCnt;
 @property (nonatomic, strong) UITextView        *commentView;
 
 @end

@@ -46,7 +46,7 @@
 //    HYQAdvertiseResponse *response = [[HYQAdvertiseResponse alloc] init];
 //    response.delegate = self;
 //    [response start];
-    
+
     [UMSocialData setAppKey:UME_APPKEY];
     [UMSocialQQHandler setQQWithAppId:QQ_OPEN_ID appKey:QQ_APPKEY url:LOCAL_HOST];
     [UMSocialWechatHandler setWXAppId:WECHAT_ID appSecret:WECHAT_APPKEY url:LOCAL_HOST];

@@ -10,6 +10,7 @@
 /*
     产品选择页套餐组合
  */
+@class ProductTypeModel;
 @protocol ProductComboCellDlegate <NSObject>
 
 - (void)selectComboArrWith:(NSMutableArray *)comboArr;
@@ -17,7 +18,7 @@
 @end
 @interface ProductComboCell : UITableViewCell
 
-@property (nonatomic, retain) NSArray *comboArr;
+@property (nonatomic, assign) ProductTypeModel *product;
 @property (nonatomic, weak) id<ProductComboCellDlegate> delegate;
 
 @end

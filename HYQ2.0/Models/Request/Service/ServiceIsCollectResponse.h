@@ -18,7 +18,6 @@
 - (void)getCollectSucceedWithIsCollected:(BOOL)isCollected
                                  andWith:(ProductModel *)product
                                  andWith:(EvaluateModel *)evaluate
-                                 andWith:(NSMutableArray *)comboArr
                                  andwith:(NSMutableArray *)typeArr;
 
 @optional

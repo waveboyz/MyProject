@@ -35,6 +35,7 @@
     if (self = [super init]) {
         _oid = oid;
         _settleNO = settleID;
+
     }
     
     return self;

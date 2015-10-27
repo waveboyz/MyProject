@@ -9,6 +9,7 @@
 #import "ServiceDetailController.h"
 #import "ServicePurchaseController.h"
 #import "HYQLoginController.h"
+#import "MyAddressPickController.h"
 #import "HYQUserManager.h"
 #import "CollectOperationResponse.h"
 #import "ServiceIsCollectResponse.h"
@@ -16,6 +17,9 @@
 #import "UIImageView+WebCache.h"
 #import "ProductModel.h"
 #import "EvaluateModel.h"
+#import "ProductTypeModel.h"
+#import "ProductComboModel.h"
+#import "DistrictModel.h"
 #import "PurchaseDetailImageCell.h"
 #import "PurchaseDetailSelectCell.h"
 #import "PurchaseQualityCell.h"
@@ -23,24 +27,27 @@
 #import "CalculateHeight.h"
 #import "ServiceSelectionView.h"
 
+
 @interface ServiceDetailController ()
 <
     UMSocialUIDelegate,
     CollectOperationResponseDelegate,
-    ServiceIsCollectResponseDelegate
+    ServiceIsCollectResponseDelegate,
+    ServiceSelectionViewDelegate
 >
 
 @property (nonatomic, strong) UITableView *tableview;
 @property (nonatomic, strong) ServiceSelectionView *selectView;
 @property (nonatomic, strong) UIView  *toolView;            //下方工具条
 @property (nonatomic, strong) UIButton *collectBtn;         //收藏按钮
-@property (nonatomic, strong) ServiceModel *service;
-@property (nonatomic, strong) OrderModel *order;
-@property (nonatomic, strong) ProductModel *product;
-@property (nonatomic, strong) EvaluateModel *evaluate;
-@property (nonatomic, retain) NSMutableArray *typeArr;
-@property (nonatomic, retain) NSMutableArray *comboArr;
-@property (nonatomic, retain) UIView        *shadowView;
+@property (nonatomic, strong) ServiceModel *service;    //产品列表模型
+@property (nonatomic, strong) OrderModel *order;        //订单模型
+@property (nonatomic, strong) ProductModel *product;    //产品详情模型
+@property (nonatomic, strong) EvaluateModel *evaluate;  //评价模型
+@property (nonatomic, strong) DistrictModel *selectDis; //已选择地址模型
+@property (nonatomic, strong) ProductTypeModel *selectType; //已选择type
+@property (nonatomic, retain) NSMutableArray *selectCombos;//已选择套餐
+@property (nonatomic, retain) UIView        *shadowView; //阴影图片
 
 @end
 
@@ -50,6 +57,7 @@
 {
     if (self = [super init]) {
         _service = service;
+        _selectCombos = [NSMutableArray new];
     }
 
     return self;
@@ -59,6 +67,7 @@
 {
     if (self = [super init]) {
         _order = order;
+        _selectCombos = [NSMutableArray new];
     }
     
     return self;
@@ -75,12 +84,16 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showDistrictController) name:@"pickDistrict" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadSelectView:) name:@"finishedAddPick" object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     self.navigationController.navigationBarHidden = NO;
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"pickDistrict" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"pickDistrict" object:nil];
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -167,8 +180,14 @@
 //购买入口
 - (void)purchaseBtnPressed
 {
-    ServicePurchaseController *purchaseVC = [[ServicePurchaseController alloc] initWithProduct:_product];
-    [self.navigationController pushViewController:purchaseVC animated:YES];
+    if (!_selectDis) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"未选择地址" message:@"请在选择服务类型中选择服务地址！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        
+        [alert show];
+    }else{
+        ServicePurchaseController *purchaseVC = [[ServicePurchaseController alloc] initWithProduct:_product andWithType:_selectType andWithComboArr:_selectCombos andWithDistrict:_selectDis];
+        [self.navigationController pushViewController:purchaseVC animated:YES];
+    }
 }
 
 //收藏入口
@@ -233,9 +252,6 @@
     _shadowView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 120)];
     _shadowView.backgroundColor = [UIColor blackColor];
     _shadowView.alpha = 0;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideSelectionViewOperation)];
-    [_shadowView addGestureRecognizer:tap];
-    _shadowView.userInteractionEnabled = YES;
     [self.view addSubview:_shadowView];
     
     [UIView animateWithDuration:0.5 animations:^(void){
@@ -247,36 +263,21 @@
     }];
 }
 
-- (void)hideSelectionViewOperation
-{
-    [UIView animateWithDuration:0.5 animations:^(void){
-        CGRect rect = _selectView.frame;
-        rect.origin.y +=kScreenHeight - 120;
-        _selectView.frame = rect;
-        _shadowView.alpha = 0;
-        [_shadowView removeFromSuperview];
-        _shadowView = nil;
-    }];
-}
-
 #pragma mark ServiceIsCollectResponseDelegate
 - (void)getCollectSucceedWithIsCollected:(BOOL)isCollected
                                  andWith:(ProductModel *)product
                                  andWith:(EvaluateModel *)evaluate
-                                 andWith:(NSMutableArray *)comboArr
                                  andwith:(NSMutableArray *)typeArr
 {
     [self stopStateHud];
     _product = product;
     _evaluate = evaluate;
-    _typeArr = typeArr;
-    _comboArr = comboArr;
     
     dispatch_async(dispatch_get_main_queue(), ^(void){
         _selectView = [[ServiceSelectionView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, kScreenHeight - 120)
                                                    andWithProduct:_product
-                                                   andWithTypeArr:_typeArr
-                                                          andWith:_comboArr];
+                                                   andWithTypeArr:typeArr];
+        _selectView.delegate = self;
         [self.view addSubview:_selectView];
         [self.tableview reloadData];
         if (isCollected) {
@@ -335,6 +336,8 @@
         if (!cell) {
             cell = [[PurchaseDetailSelectCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SELECT_CELL];
         }
+        [(PurchaseDetailSelectCell *)cell setType:_selectType];
+        [(PurchaseDetailSelectCell *)cell setComboArr:_selectCombos];
     }else if (indexPath.row == 2){
         cell = [tableView dequeueReusableCellWithIdentifier:EVALUATE_CELL];
         if (!cell) {
@@ -379,4 +382,50 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+
+#pragma mark ServiceSelectionViewDelegate
+- (void)finishedPickWithType:(ProductTypeModel *)type
+             andWithDistrict:(DistrictModel *)district
+             andWithComboArr:(NSMutableArray *)comboArr
+{
+    _selectType = nil;
+    _selectDis = nil;
+    [_selectCombos removeAllObjects];
+    
+    _selectType = type;
+    _selectDis = district;
+    _selectCombos = comboArr;
+    [self hideSelectionViewOperation];
+    [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForItem:1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+}
+
+//确认后隐藏选择页
+- (void)hideSelectionViewOperation
+{
+    [UIView animateWithDuration:0.5 animations:^(void){
+        CGRect rect = _selectView.frame;
+        rect.origin.y +=kScreenHeight - 120;
+        _selectView.frame = rect;
+        _shadowView.alpha = 0;
+        [_shadowView removeFromSuperview];
+        _shadowView = nil;
+    }];
+}
+
+//显示地区选择
+- (void)showDistrictController
+{
+    MyAddressPickController *addVC = [[MyAddressPickController alloc] init];
+    [self.navigationController pushViewController:addVC animated:YES];
+}
+
+//刷新SelectView
+- (void)reloadSelectView:(NSNotification *)aNotification
+{
+    id unknown = [aNotification object];
+    if ([unknown isKindOfClass:[DistrictModel class]]) {
+        _selectDis = (DistrictModel *)unknown;
+        [self.selectView reloadAddressCellWith:(DistrictModel *)unknown];
+    }
+}
 @end

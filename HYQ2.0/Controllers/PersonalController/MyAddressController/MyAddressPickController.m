@@ -68,12 +68,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    DistrictModel *district = _addressArr[indexPath.row];
     if (self.delegate && [self.delegate respondsToSelector:@selector(finishPickAddressWith:)]) {
-        DistrictModel *district = _addressArr[indexPath.row];
         [self.delegate finishPickAddressWith:district];
     }
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"finishedAddPick" object:district];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

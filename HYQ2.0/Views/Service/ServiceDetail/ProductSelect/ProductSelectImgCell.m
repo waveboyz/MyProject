@@ -30,6 +30,7 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.backgroundColor = BG_GRAY_COLOR;
+        _comboArr = [NSMutableArray new];
         [self setViews];
     }
     
@@ -94,7 +95,7 @@
     [self reloadDesLable];
 }
 
-- (void)setComboArr:(NSArray *)comboArr
+- (void)setComboArr:(NSMutableArray *)comboArr
 {
     _comboArr = comboArr;
     [self reloadDesLable];
@@ -103,14 +104,22 @@
 - (void)reloadDesLable
 {
     NSMutableString *str = [NSMutableString new];
+    
+    NSInteger price = [_type.price integerValue];
+    
+    for (ProductComboModel *combo in _comboArr) {
+        price += [combo.pdrice integerValue];
+    }
+    _priceLbl.text = [NSString stringWithFormat:@"￥%ld",price];
+    
     if (_type && _comboArr.count) {
         for (ProductComboModel *combo in _comboArr) {
             [str appendFormat:@"%@ ",combo.pdname];
         }
         
-        _desLbl.text = [NSString stringWithFormat:@"已选：“%@”，“%@”",_type.pdtname,str];
+        _desLbl.text = [NSString stringWithFormat:@"已选：“%@”，“%@”",_type.psname,str];
     }else if (_type){
-        _desLbl.text = [NSString stringWithFormat:@"已选：“%@”",_type.pdtname];
+        _desLbl.text = [NSString stringWithFormat:@"已选：“%@”",_type.psname];
     }else if (_comboArr.count){
         for (ProductComboModel *combo in _comboArr) {
             [str appendFormat:@"%@ ",combo.pdname];

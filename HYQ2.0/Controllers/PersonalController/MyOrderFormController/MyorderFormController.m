@@ -8,7 +8,7 @@
 
 #import "MyorderFormController.h"
 #import "MyOrderEvaluateController.h"
-//#import "ServicePurchaseController.h"
+#import "MyOrderDetailController.h"
 #import "ServiceDetailController.h"
 #import "VOSegmentedControl.h"
 #import "MyOrderFormCell.h"
@@ -294,6 +294,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    OrderModel *order = self.dataArr[indexPath.section];
+//    if (![order.statusMsg isEqualToString:@"待付款"] && order.statusMsg) {
+//        MyOrderDetailController *detailVC = [[MyOrderDetailController alloc] initWithOrder:order];
+//        [self.navigationController pushViewController:detailVC animated:YES];
+//    }
 }
 
 #pragma mark MyOrderFormCellDelegate
@@ -377,8 +382,6 @@
     [self stopStateHud];
     [self showStateHudWithText:text];
     [self.tableView.header endRefreshing];
-    
-    //    [self.view insertSubview:self.badNetView belowSubview:self.segment];
 }
 
 #pragma mark DownSheetDelegate

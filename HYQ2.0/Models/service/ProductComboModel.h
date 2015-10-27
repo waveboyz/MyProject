@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong) NSNumber *pdTypeId;
 @property (nonatomic, strong) NSNumber *pdid;
-@property (nonatomic, strong) NSNumber *pdprice;
+@property (nonatomic, strong) NSNumber *pdrice;
 @property (nonatomic, strong) NSString *pdname;
 
 @end

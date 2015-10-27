@@ -10,12 +10,18 @@
 /*
     产品选择页
  */
+@class DistrictModel;
+@class ProductModel;
+@class ProductTypeModel;
+
 @protocol ServiceSelectionViewDelegate <NSObject>
 
+- (void)finishedPickWithType:(ProductTypeModel *)type
+             andWithDistrict:(DistrictModel *)district
+             andWithComboArr:(NSMutableArray *)comboArr;
 
 @end
 
-@class ProductModel;
 @interface ServiceSelectionView : UIView
 <
     UITableViewDataSource,
@@ -28,7 +34,8 @@
 
 - (id)initWithFrame:(CGRect)frame
      andWithProduct:(ProductModel *)product
-     andWithTypeArr:(NSMutableArray *)typeArr
-            andWith:(NSMutableArray *)comboArr;
+     andWithTypeArr:(NSMutableArray *)typeArr;
+
+- (void)reloadAddressCellWith:(DistrictModel *)district;
 
 @end

@@ -14,7 +14,8 @@
 
 @implementation BaseViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     self.view.backgroundColor = BG_GRAY_COLOR;
     self.modalTransitionStyle = UIModalTransitionStyleCoverVertical;

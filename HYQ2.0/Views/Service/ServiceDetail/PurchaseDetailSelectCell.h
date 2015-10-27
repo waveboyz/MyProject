@@ -10,6 +10,11 @@
 /*
     购买组合选择
  */
+@class ProductComboModel;
+@class ProductTypeModel;
 @interface PurchaseDetailSelectCell : UITableViewCell
+
+@property (nonatomic, assign) ProductTypeModel *type;
+@property (nonatomic, retain) NSArray   *comboArr;
 
 @end

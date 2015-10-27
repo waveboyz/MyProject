@@ -9,6 +9,8 @@
 #import "BaseViewController.h"
 
 @class ProductModel;
+@class ProductTypeModel;
+@class DistrictModel;
 /*
     产品购买页
  */
@@ -17,7 +19,10 @@
     UITableViewDataSource,
     UITableViewDelegate
 >
-- (id)initWithProduct:(ProductModel *)product;
+- (id)initWithProduct:(ProductModel *)product
+          andWithType:(ProductTypeModel *)type
+      andWithComboArr:(NSArray *)comboArr
+      andWithDistrict:(DistrictModel *)district;
 
 @property (nonatomic, strong) ProductModel *product;
 

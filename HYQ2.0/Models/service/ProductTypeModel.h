@@ -7,15 +7,15 @@
 //
 
 #import "BaseModel.h"
+#import "ProductComboModel.h"
 /*
     产品服务类型
  */
 @interface ProductTypeModel : BaseModel
 
 @property (nonatomic, strong) NSNumber *pdTypeId;
-@property (nonatomic, strong) NSNumber *pdtprice;
-@property (nonatomic, strong) NSNumber *pdtunit;
-@property (nonatomic, strong) NSNumber *pid;
-@property (nonatomic, copy)   NSString *pdtname;
-
+@property (nonatomic, strong) NSNumber *price;
+@property (nonatomic, copy)   NSString *pname;
+@property (nonatomic, copy)   NSString *psname;
+@property (nonatomic, retain) NSArray  *productDetatil;
 @end

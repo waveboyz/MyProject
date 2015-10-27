@@ -9,9 +9,11 @@
 #import "ProductComboCell.h"
 #import "GlobalConst.h"
 #import "ProductComboModel.h"
+#import "ProductTypeModel.h"
 
 @interface ProductComboCell ()
 
+@property (nonatomic, retain) NSMutableArray *comboArr;
 @property (nonatomic, strong) UILabel *titleLbl;
 @property (nonatomic, strong) UILabel *lineLbl;
 @property (nonatomic, retain) NSMutableArray *selectBtnArr;
@@ -28,6 +30,7 @@
         self.backgroundColor = BG_GRAY_COLOR;
         _selectBtnArr = [NSMutableArray new];
         _selectDataArr = [NSMutableArray new];
+        _comboArr = [NSMutableArray new];
         [self setViews];
     }
     
@@ -52,13 +55,23 @@
     }
 }
 
-- (void)setComboArr:(NSArray *)comboArr
+- (void)setProduct:(ProductTypeModel *)product
 {
     CGFloat width = 90.0f;
     CGFloat height = 25.0f;
     CGFloat blank = 15.0f;
-    _comboArr = comboArr;
+    _product = product;
+    [_comboArr removeAllObjects];
+    [_selectBtnArr removeAllObjects];
+    _comboArr =[NSMutableArray arrayWithArray:_product.productDetatil];
     NSInteger count = _comboArr.count;
+    
+    for (UIView *content in [self.contentView subviews]) {
+        if ([content isKindOfClass:[UIButton class]]) {
+            [content removeFromSuperview];
+        }
+    }
+    
     if (count) {
         for (int i = 0; i < count; i++) {
             ProductComboModel *combo = _comboArr[i];

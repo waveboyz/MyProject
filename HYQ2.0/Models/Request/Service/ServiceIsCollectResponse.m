@@ -39,7 +39,7 @@
     NSLog(@"%@",responseObject);
     if (responseObject) {
         if ([[responseObject objectForKey:@"code"] integerValue] == 1) {
-            if (self.delegate != nil && [self.delegate respondsToSelector:@selector(getCollectSucceedWithIsCollected:andWith:andWith:andWith:andwith:)]) {
+            if (self.delegate != nil && [self.delegate respondsToSelector:@selector(getCollectSucceedWithIsCollected:andWith:andWith:andwith:)]) {
                 NSNumber *isCollected = [responseObject objectForKey:@"iSFavorite"];
                 NSDictionary *productDic = [responseObject objectForKey:@"product"];
                 ProductModel *product = [ProductModel objectWithKeyValues:productDic];
@@ -47,16 +47,23 @@
                 NSDictionary *evaluatedic = [responseObject objectForKey:@"evaluate"];
                 EvaluateModel *evaluate = [EvaluateModel objectWithKeyValues:evaluatedic];
                 
+                [ProductTypeModel setupObjectClassInArray:^NSDictionary *{
+                    return @{
+                             @"productDetatil":@"ProductComboModel"
+                             };
+                }];
                 NSArray *typedic = [responseObject objectForKey:@"productDetatilType"];
                 NSMutableArray *typeArr = [ProductTypeModel objectArrayWithKeyValuesArray:typedic];
-                
-                NSArray *combodic = [responseObject objectForKey:@"productDetatil"];
-                NSMutableArray *comboArr = [ProductComboModel objectArrayWithKeyValuesArray:combodic];
+//                NSMutableArray *finalArr = [NSMutableArray new];
+//                
+//                for (id model in typedic) {
+//                    ProductTypeModel *type = [ProductTypeModel objectWithKeyValues:model];
+//                    [finalArr addObject:type];
+//                }
                 
                 [self.delegate getCollectSucceedWithIsCollected:[isCollected boolValue]
                                                         andWith:product
                                                         andWith:evaluate
-                                                        andWith:comboArr
                                                         andwith:typeArr];
             }
         }else{

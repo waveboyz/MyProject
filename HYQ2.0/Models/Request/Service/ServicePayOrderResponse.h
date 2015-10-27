@@ -10,6 +10,8 @@
 /*
     获取订单号和订单ID
  */
+@class ProductTypeModel;
+@class DistrictModel;
 @protocol ServicePayOrderResponseDelegate <NSObject>
 
 - (void)getPayOrderSucceedWithPayOrder:(NSNumber *)payorder andOid:(NSNumber *)oid;
@@ -28,6 +30,9 @@
        andWithAid:(NSNumber *)aid
       andWithOnum:(NSNumber *)onum
 andWithTotalPrice:(NSNumber *)price
-       andWithMsg:(NSString *)msg;
+       andWithMsg:(NSString *)msg
+      andWithType:(ProductTypeModel *)type
+    andWithCombos:(NSArray *)combos
+  andWithDistrict:(DistrictModel *)district;
 
 @end

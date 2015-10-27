@@ -96,9 +96,13 @@ extern NSString *const EXCELLENT_OPEN_INTERFACE;
 //------------------------------------
 //立即购买
 extern NSString *const GET_PAYORDER_INTERFACE;
+//订单金额为0接口
+extern NSString *const PAYORDER_FREE_INTERFACE;
 //支付宝回调
 extern NSString *const ALIPAY_CALLBACK_INTERFACE;
 //提现接口
 extern NSString *const  BANK_WITHDRAW_INTERFACE;
+//订单详情
+extern NSString *const ORDER_DETAIL_INTERFACE;
 
 @end

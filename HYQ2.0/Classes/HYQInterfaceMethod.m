@@ -100,7 +100,11 @@ NSString *const EXCELLENT_OPEN_INTERFACE        =       @"http://192.168.1.93:90
 //-----------------------------
 //立即购买
 NSString *const GET_PAYORDER_INTERFACE          =       @"http://192.168.1.93:90/app/appInterface!buy.action";
+//订单金额为0接口
+NSString *const PAYORDER_FREE_INTERFACE         =       @"http://192.168.1.93:90/app/appInterface!buynoAlipay.action";
 //支付宝回调
 NSString *const ALIPAY_CALLBACK_INTERFACE       =       @"http://192.168.1.93:90/app/appInterface!paySuccess.action";
+//订单详情
+NSString *const ORDER_DETAIL_INTERFACE          =       @"http://192.168.1.93:90/app/appInterfaceUser!orderDetail.action";
 
 @end

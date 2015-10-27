@@ -68,8 +68,8 @@
             [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
             [btn setBackgroundImage:[self createImageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
             [btn setBackgroundImage:[self createImageWithColor:NAVIBAR_GREEN_COLOR] forState:UIControlStateSelected];
-            [btn setTitle:type.pdtname forState:UIControlStateNormal];
-            [btn setTitle:type.pdtname forState:UIControlStateSelected];
+            [btn setTitle:type.psname forState:UIControlStateNormal];
+            [btn setTitle:type.psname forState:UIControlStateSelected];
             [btn addTarget:self action:@selector(typeBtnPressedWith:) forControlEvents:UIControlEventTouchUpInside];
             [self.contentView addSubview:btn];
             [_btnArray addObject:btn];
@@ -77,6 +77,11 @@
     }
     
     _lineLbl.frame = CGRectMake(15, 60 + (blank + height) * (count / 3 + 1), kScreenWidth - 30, 0.5);
+    
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.tag = 0;
+    [self typeBtnPressedWith:btn];
 }
 
 - (UIImage*)createImageWithColor:(UIColor*)color

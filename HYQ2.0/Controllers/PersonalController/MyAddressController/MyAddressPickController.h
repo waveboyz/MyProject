@@ -13,6 +13,7 @@
  */
 @protocol MyAddressPickControllerDelegate <NSObject>
 
+@optional
 - (void)finishPickAddressWith:(DistrictModel *)model;
 
 @end

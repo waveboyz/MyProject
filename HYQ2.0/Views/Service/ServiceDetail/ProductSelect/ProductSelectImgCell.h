@@ -18,6 +18,6 @@
 
 @property (nonatomic, assign) ProductModel *product;
 @property (nonatomic, assign) ProductTypeModel *type;
-@property (nonatomic, retain) NSArray *comboArr;
+@property (nonatomic, retain) NSMutableArray *comboArr;
 
 @end
