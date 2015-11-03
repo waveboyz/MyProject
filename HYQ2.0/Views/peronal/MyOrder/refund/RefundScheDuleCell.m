@@ -1,15 +1,17 @@
 //
-//  OrderDetailCell.m
+//  RefundScheDuleCell.m
 //  HYQ2.0
 //
-//  Created by 周翔 on 15/10/26.
+//  Created by 周翔 on 15/10/28.
 //  Copyright © 2015年 HZHaoYuanQu. All rights reserved.
 //
 
-#import "OrderDetailCell.h"
+#import "RefundScheDuleCell.h"
+#import "GlobalConst.h"
+#import "OrderModel.h"
 #import "UIImageView+WebCache.h"
 
-@interface OrderDetailCell ()
+@interface RefundScheDuleCell ()
 
 @property (nonatomic, strong) UIImageView *imgPic;
 @property (nonatomic, strong) UILabel     *titleLbl;
@@ -17,12 +19,11 @@
 @property (nonatomic, strong) UILabel     *priceLbl;
 @property (nonatomic, strong) UILabel     *cntLbl;
 @property (nonatomic, strong) UILabel     *lineLbl;
-@property (nonatomic, strong) UIButton    *refundBtn;
-@property (nonatomic, strong) UIButton    *purchaseBtn;
+@property (nonatomic, strong) UIButton    *cancelBtn;
 @property (nonatomic, strong) UIView      *blankView;
 
 @end
-@implementation OrderDetailCell
+@implementation RefundScheDuleCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -81,26 +82,16 @@
         
         [self.contentView addSubview:_lineLbl];
     }
-    
-    if (!_refundBtn) {
-        _refundBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _refundBtn.frame = CGRectMake(kScreenWidth - 165, 79.5, 75, 30);
-        [_refundBtn setTitle:@"申请退款" forState:UIControlStateNormal];
-        [_refundBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        _refundBtn.layer.borderColor = [UIColor grayColor].CGColor;
-        _refundBtn.layer.borderWidth = 0.5f;
-        [_refundBtn addTarget:self action:@selector(refundBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-        [self.contentView addSubview:_refundBtn];
-    }
-    if (!_purchaseBtn) {
-        _purchaseBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _purchaseBtn.frame = CGRectMake(kScreenWidth - 80, 79.5, 75, 30);
-        [_purchaseBtn setTitle:@"继续购买" forState:UIControlStateNormal];
-        [_purchaseBtn setTitleColor:NAVIBAR_GREEN_COLOR forState:UIControlStateNormal];
-        _purchaseBtn.layer.borderColor = NAVIBAR_GREEN_COLOR.CGColor;
-        _purchaseBtn.layer.borderWidth = 0.5f;
-        [_purchaseBtn addTarget:self action:@selector(purchaseBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-        [self.contentView addSubview:_purchaseBtn];
+
+    if (!_cancelBtn) {
+        _cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _cancelBtn.frame = CGRectMake(kScreenWidth - 80, 79.5, 75, 30);
+        [_cancelBtn setTitle:@"取消退款" forState:UIControlStateNormal];
+        [_cancelBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        _cancelBtn.layer.borderColor = [UIColor grayColor].CGColor;
+        _cancelBtn.layer.borderWidth = 0.5f;
+        [_cancelBtn addTarget:self action:@selector(cancelBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+        [self.contentView addSubview:_cancelBtn];
     }
 }
 
@@ -129,24 +120,11 @@
     if (_order.statusMsg) {
         _stateLbl.text = _order.statusMsg;
     }
-    
-    if ([_order.statusMsg isEqualToString:@"服务结束"]) {
-        _refundBtn.hidden = YES;
-    }
 }
 
-- (void)refundBtnPressed
+- (void)cancelBtnPressed
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(refundBtnTouched)]) {
-        [self.delegate refundBtnTouched];
-    }
-}
 
-- (void)purchaseBtnPressed
-{
-    if (self.delegate && [self.delegate respondsToSelector:@selector(purchaseBtnTouched)]) {
-        [self.delegate purchaseBtnTouched];
-    }
 }
 
 @end

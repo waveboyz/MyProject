@@ -14,6 +14,8 @@
 #import "SubOrderCell.h"
 #import "OrderModel.h"
 #import "CalculateSubOrderHeight.h"
+#import "RefundController.h"
+#import "ServiceDetailController.h"
 
 @interface MyOrderDetailController ()
 <
@@ -53,7 +55,7 @@
 - (void)getOrderdetailOperation
 {
     [self showNoTextStateHud];
-    MyOrderDetailResponse *response = [[MyOrderDetailResponse alloc] initWithOid:[_order.oid integerValue]];
+    MyOrderDetailResponse *response = [[MyOrderDetailResponse alloc] initWithOid:_order.oid];
     response.delegate = self;
     [response start];
 }
@@ -84,11 +86,19 @@
 }
 
 #pragma mark OrderDetailCellDelegate
-- (void)purchaseBtnTouched
+- (void)refundBtnTouched
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"你是否取消该订单的退款shenqing" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"你是否要申请退款？(已服务订单不予退款)" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     alert.tag = 1005;
     [alert show];
+}
+
+- (void)purchaseBtnTouched
+{
+    ServiceDetailController *serVC = [[ServiceDetailController alloc] initWithOrderModel:_order];
+    serVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    UINavigationController * jackNavigationController = [[UINavigationController alloc] initWithRootViewController:serVC];
+    [self presentViewController:jackNavigationController animated:YES completion:^(void){}];
 }
 
 #pragma mark UITableViewDataSource
@@ -100,7 +110,7 @@
 #pragma mark UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (alertView.tag == 105) {
+    if (alertView.tag == 1005) {
         if (buttonIndex == 1) {
             [self showRefundView];
         }
@@ -109,7 +119,8 @@
 
 - (void)showRefundView
 {
-
+    RefundController *refundVC = [[RefundController alloc] initWithSubArr:self.dataArr andWithOrder:_order];
+    [self.navigationController pushViewController:refundVC animated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -126,6 +137,7 @@
             cell = [[OrderDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ORDER_DETAIL_CELL];
         }
         [(OrderDetailCell *)cell setOrder:_order];
+        [(OrderDetailCell *)cell setDelegate:self];
     }else if (indexPath.section == 1){
         cell = [tableView dequeueReusableCellWithIdentifier:SUB_ORDER_CELL];
         if (!cell) {

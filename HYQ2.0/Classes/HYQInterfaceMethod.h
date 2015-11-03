@@ -105,4 +105,16 @@ extern NSString *const  BANK_WITHDRAW_INTERFACE;
 //订单详情
 extern NSString *const ORDER_DETAIL_INTERFACE;
 
+//-----------------------------------
+//子订单评论
+extern NSString *const SUBORDER_COMMENT_INTERFACE;
+//查看子订单评论
+extern NSString *const SUBORDER_CHECK_INTERFACE;
+//申请退款
+extern NSString *const REFUND_SAVE_INTERFACE;
+//退款进度
+extern NSString *const REFUND_PROGRESS_INTERFACE;
+//取消退款
+extern NSString *const CANCEL_REFUND_INTERFACE;
+
 @end

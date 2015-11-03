@@ -10,6 +10,7 @@
 #import "MyOrderEvaluateController.h"
 #import "MyOrderDetailController.h"
 #import "ServiceDetailController.h"
+#import "RefundScheduleController.h"
 #import "VOSegmentedControl.h"
 #import "MyOrderFormCell.h"
 #import "OrderModel.h"
@@ -190,9 +191,9 @@
     order.tradeNO = [data.orderNum stringValue]; //订单ID（由商家自行制定）
     order.productName = data.name; //商品标题
     order.productDescription = data.proSummery; //商品描述
-//    float price = [data.money floatValue]* [data.num integerValue];
-//    order.amount = [NSString stringWithFormat:@"%f",price];
-    order.amount = @"0.01";
+    NSInteger price = [data.money floatValue]* [data.num integerValue];
+    order.amount = [NSString stringWithFormat:@"%ld",price];
+//    order.amount = @"0.01";
     order.notifyURL =  @"http://www.xxx.com"; //回调URL
     
     order.service = @"mobile.securitypay.pay";
@@ -294,11 +295,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    OrderModel *order = self.dataArr[indexPath.section];
-//    if (![order.statusMsg isEqualToString:@"待付款"] && order.statusMsg) {
-//        MyOrderDetailController *detailVC = [[MyOrderDetailController alloc] initWithOrder:order];
-//        [self.navigationController pushViewController:detailVC animated:YES];
-//    }
+    OrderModel *order = self.dataArr[indexPath.section];
+    if ([order.statusMsg isEqualToString:@"待付款"]) {
+
+    }else if ([order.statusMsg isEqualToString:@"退款中"]){
+        RefundScheduleController *refundVC = [[RefundScheduleController alloc] initWithOrder:order];
+        [self.navigationController pushViewController:refundVC animated:YES];
+    }else{
+        MyOrderDetailController *detailVC = [[MyOrderDetailController alloc] initWithOrder:order];
+        [self.navigationController pushViewController:detailVC animated:YES];
+    }
 }
 
 #pragma mark MyOrderFormCellDelegate

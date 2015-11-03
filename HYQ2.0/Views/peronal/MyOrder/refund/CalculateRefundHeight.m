@@ -1,20 +1,21 @@
 //
-//  CalculateSubOrderHeight.m
+//  CalculateRefundHeight.m
 //  HYQ2.0
 //
 //  Created by 周翔 on 15/10/27.
 //  Copyright © 2015年 HZHaoYuanQu. All rights reserved.
 //
 
-#import "CalculateSubOrderHeight.h"
-static CalculateSubOrderHeight *_calculateHeight;
+#import "CalculateRefundHeight.h"
+static CalculateRefundHeight *_calculateHeight;
 
-@implementation CalculateSubOrderHeight
+@implementation CalculateRefundHeight
+
 //实例化
-+ (CalculateSubOrderHeight *)calculate
++ (CalculateRefundHeight *)calculate
 {
     if (!_calculateHeight) {
-        _calculateHeight = [[CalculateSubOrderHeight alloc] init];
+        _calculateHeight = [[CalculateRefundHeight alloc] init];
     }
     
     return _calculateHeight;
@@ -24,9 +25,10 @@ static CalculateSubOrderHeight *_calculateHeight;
 - (CGFloat)calculateHeightWithArraycount:(NSInteger)count
 {
     if (count) {
-        return 90 + 25 * count;
-    }else{
-        return 90;
+        return 60 + 25 * count;
     }
+    
+    return 60;
 }
+
 @end

@@ -42,6 +42,7 @@ andWithTotalPrice:(NSNumber *)price
 
         if (price) {
             [dic setObject:price forKey:@"pay"];    //实付金额
+            [dic setObject:price forKey:@"yuanjine"];   //原金额
         }
         
         if (msg) {
@@ -68,10 +69,10 @@ andWithTotalPrice:(NSNumber *)price
         }
         
         if (district) {
-            [dic setObject:district.location forKey:@"qu"];
+            [dic setObject:district.locationID forKey:@"qu"];
         }
         
-        [dic setObject:[NSNumber numberWithFloat:0.1] forKey:@"yuanjine"];
+
         [dic setObject:@"IOS" forKey:@"biaoshi"];
         
         [self setUploadDictionary:dic];

@@ -16,6 +16,7 @@
 
 @optional
 - (void)purchaseBtnTouched;
+- (void)refundBtnTouched;
 
 @end
 

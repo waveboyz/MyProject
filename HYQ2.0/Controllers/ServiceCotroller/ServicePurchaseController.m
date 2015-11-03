@@ -204,8 +204,8 @@
         
         [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
             NSLog(@"reslut = %@",resultDic);
+            [self stopStateHud];
             [self payStatusWithDic:resultDic];
-
         }];
     }
 }

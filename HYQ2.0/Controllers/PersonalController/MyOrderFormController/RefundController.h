@@ -7,9 +7,12 @@
 //
 
 #import "BaseViewController.h"
-
+/*
+    订单退款页
+ */
+@class OrderModel;
 @interface RefundController : BaseViewController
 
-- (id)initWithSubArr:(NSArray *)arr;
+- (id)initWithSubArr:(NSArray *)arr andWithOrder:(OrderModel *)order;
 
 @end

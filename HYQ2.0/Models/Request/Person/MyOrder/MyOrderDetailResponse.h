@@ -7,7 +7,9 @@
 //
 
 #import "HYQResponse.h"
-
+/*
+ 订单详情
+ */
 @class SubOrderModel;
 @class OrderInfoModel;
 @protocol MyOrderDetailResponseDelegate <NSObject>
@@ -20,7 +22,7 @@
 
 @interface MyOrderDetailResponse : HYQResponse
 
-- (id)initWithOid:(NSInteger)oid;
+- (id)initWithOid:(NSNumber *)oid;
 @property (nonatomic, weak) id<MyOrderDetailResponseDelegate> delegate;
 
 @end

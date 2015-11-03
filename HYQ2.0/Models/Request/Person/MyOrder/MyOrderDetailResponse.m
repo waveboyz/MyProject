@@ -13,13 +13,14 @@
 
 @implementation MyOrderDetailResponse
 
-- (id)initWithOid:(NSInteger)oid
+- (id)initWithOid:(NSNumber *)oid
 {
     if (self = [super init]) {
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithCapacity:3];
         
         if (oid) {
-            [dic setObject:[NSNumber numberWithInteger:1925] forKey:@"oid"];
+            [dic setObject:oid forKey:@"oid"];
+//            [dic setObject:[NSNumber numberWithInteger:1931] forKey:@"oid"];
         }
         
         NSNumber *uid = [[[HYQUserManager sharedUserManager] userInfo]objectForKey:@"uid"];

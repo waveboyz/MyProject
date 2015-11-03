@@ -34,7 +34,7 @@
 - (void)setViews
 {
     if (!_desLbl) {
-        _desLbl = [[UILabel alloc] initWithFrame:CGRectMake(15, 15, kScreenWidth - 150, 25)];
+        _desLbl = [[UILabel alloc] initWithFrame:CGRectMake(15, 15, kScreenWidth - 115, 25)];
         _desLbl.font = [UIFont systemFontOfSize:15.0f];
         [self.contentView addSubview:_desLbl];
         NSString *str = @"选择 服务类型 搭配产品";
@@ -46,7 +46,7 @@
     }
     
     if (!_priceLbl) {
-        _priceLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth - 145, 15, 130, 25)];
+        _priceLbl = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth - 100, 15, 85, 25)];
         _priceLbl.font = [UIFont systemFontOfSize:15.0f];
         _priceLbl.textColor = ORANGE_COLOR;
         _priceLbl.textAlignment = NSTextAlignmentRight;
@@ -71,6 +71,7 @@
     _comboArr = comboArr;
     [self reloadDesLable];
 }
+
 - (void)reloadDesLable
 {
     NSMutableString *str = [NSMutableString new];
