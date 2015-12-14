@@ -9,19 +9,16 @@
 #import "AppDelegate.h"
 #import "GlobalConst.h"
 #import "BaseTabbarController.h"
-#import "PersonalController.h"
 #import "HYQIntroView.h"
 #import <AlipaySDK/AlipaySDK.h>
 #import "UMSocial.h"
 #import "UMSocialQQHandler.h"
 #import "UMSocialWechatHandler.h"
-#import "HYQAdvertiseResponse.h"
 #import "UIImageView+WebCache.h"
 
 @interface AppDelegate ()
 <
-    HYQIntroViewDelegate,
-    HYQAdvertiseResponseDelegate
+    HYQIntroViewDelegate
 >
 
 @property (nonatomic, strong)   BaseTabbarController *tabBarVC;
@@ -50,10 +47,6 @@
     [UMSocialData setAppKey:UME_APPKEY];
     [UMSocialQQHandler setQQWithAppId:QQ_OPEN_ID appKey:QQ_APPKEY url:LOCAL_HOST];
     [UMSocialWechatHandler setWXAppId:WECHAT_ID appSecret:WECHAT_APPKEY url:LOCAL_HOST];
-
-//    _adView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
-//    [self.window bringSubviewToFront:_adView];
-//    [self.window addSubview:_adView];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![defaults objectForKey:@"intro_screen_viewed"]) {
@@ -103,21 +96,5 @@
 {
     return [UMSocialSnsService handleOpenURL:url];
 }
-
-//#pragma mark HYQAdvertiseResponseDelegate
-//- (void)getAdvertiseSucceedWithUrl:(NSString *)url
-//{
-//    [_adView sd_setImageWithURL:[NSURL URLWithString:url]];
-//    [UIView animateWithDuration:3.0 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-//        _adView.alpha = 0;
-//    } completion:^(BOOL finished) {
-//        [self.adView removeFromSuperview];
-//    }];
-//}
-//
-//- (void)getAdvertiseFalse
-//{
-//    [self.adView removeFromSuperview];
-//}
 
 @end
